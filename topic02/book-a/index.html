@@ -99,6 +99,10 @@ h3
           <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
           <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
           <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
+          <li><a href= "#08" data-toggle="tab"> 08 </a> </li>
+          <li><a href= "#09" data-toggle="tab"> 09 </a> </li>
+          <li><a href= "#10" data-toggle="tab"> 10 </a> </li>
+          <li><a href= "#11" data-toggle="tab"> 11 </a> </li>
           <li><a href= "#Exercises" data-toggle="tab"> Exercises </a> </li>
       </ul>
     </div>
@@ -114,10 +118,607 @@ h3
   </div>
 
     <div class="tab-pane fade" id="01">
-      <h1>Package Name</h1>
-<p>In the first Donation lab you created a repository <em>donation-android-2015</em>.</p>
+      <h1>Donation-01 Solutions</h1>
+<p>In this lab we shall all work on the NUC platform. </p>
 <ul>
-<li>In a bash terminal (Windows), <em>cd</em> into <em>donation-android-2015</em> folder and run the command <em>git status</em>  to ensure your working directory is clean.<ul>
+<li>
+<p>At the end of the lab you will commit and push your work to your Bitbucket accounts and download it into your personal computers.</p>
+</li>
+<li>
+<p>In the Donation-01 lab you created a repository <em>donation-android-2015</em>. Save this to a secure location. </p>
+</li>
+<li>
+<p>In this lab we shall provide a model solution to the lab (named <em>donation-android-2015</em>) so that we will all begin this Donation-02 with exactly the same code base. There already exists a folder in the NUC named repo. Many of you may have been developing here. Therefore it is important to avoid name clashes. If a folder named <em>donation-android-2015</em> already exists in <em>repo</em>, either rename it, delete it or move it to a subfolder within repo.</p>
+</li>
+<li>
+<p>You create a folder with the mkdir command:</p>
+</li>
+</ul>
+<pre><code>mkdir &lt;new folder&gt;
+</code></pre>
+
+<p>For example:</p>
+<pre><code>mkdir backup-projects
+</code></pre>
+
+<p>You may remove a folder and all its contents with this (dangerous) command:</p>
+<pre><code>rm -rf &lt;folder name&gt;
+</code></pre>
+
+<p>You may also move a folder. For example to move a folder named folder1 into a folder2:</p>
+<pre><code>mv folder 1 folder2/
+</code></pre>
+
+<p>Note: do not omit the / at the end of, for example, folder2.</p>
+<p>All passwords are ictskills.</p>
+<p>You may move a folder as follows. For example, move <em>donation-android-2015</em> to a backup-projects folder which is also in repo:</p>
+<pre><code>mv donation-android-2015 backup-projects/
+</code></pre>
+
+<p>When you ready, download <em>donation-android-2015</em> from GitHub as follows:</p>
+<pre><code>git clone https://github.com/usplitu/donation-android-2015.git
+</code></pre>
+
+<ul>
+<li>GitHub is an alternative repository hosting company to BitBucket.</li>
+<li>In this instance neither a password nor an ssh key is required as the project is public.</li>
+<li>When you have downloaded the project, change into its root directory:</li>
+</ul>
+<pre><code>cd donation-android-2015
+</code></pre>
+
+<ul>
+<li>Check the commits: use your customized log command (gitp). An example is shown here.
+<img alt="" src="img/12.png"></li>
+<li>Check the tags: (git tag -n).<ul>
+<li>There aren't any.</li>
+</ul>
+</li>
+<li>Build on this repository, making appropriate commits and tags, as you progress through this and subsequent Donation labs.<ul>
+<li>You may wish to apply a tag at the end of each lab, for example, v1, v2, v3...</li>
+<li>Notice that in the downloaded project, all steps that involve code changes are committed separately. This has the advantage of being able to easily roll back to the beginning of the current step within a lab in the event that insurmountable difficulties arise.</li>
+</ul>
+</li>
+<li>Launch Android Studio and open this project.<ul>
+<li>If the project is not present in the Recent Projects panel, open the project as shown in Figure 1:</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 1: Open and existing Android Studio project" src="img/10.png"></p>
+<p>You may be presented with a message as shown in Figure 2 indicating an unregistered version control system (VCS).</p>
+<ul>
+<li>Click <strong>Add root</strong>.</li>
+</ul>
+<p><img alt="Figure 2: Configure git VCS" src="img/11.png"></p>
+<p>Once you have opened the project in Android Studio you are ready to proceed with the lab, the first part of which is to provide solutions to the exercises at the end of Donation-01.</p>
+    </div>
+    <div class="tab-pane fade" id="02">
+      <h1>Donation-01 Solution Exercise 2</h1>
+<p>We are now in a position to address the exercises presented at the end of Donation-01, excluding Exercise 1. We are skipping Exercise 1 Solution because you have already gained considerable experience in the use of git during the summer school and because we shall be providing instructions on committing and pushing the code developed in this lab.</p>
+<h2>Exercise 2:</h2>
+<p>Consider an alternative to the NumberPicker - specifically one of the "Text Fields" controls:</p>
+<p><img alt="Figure 1: Textfields" src="img/25.png"></p>
+<p>These are mostly EditView objects:</p>
+<ul>
+<li><a href="http://developer.android.com/reference/android/widget/EditText.html">http://developer.android.com/reference/android/widget/EditText.html</a></li>
+</ul>
+<p>Redesign the activity to take a value from the picker or directly from a text view:</p>
+<p><img alt="Figure 2: Textview alternative number input" src="img/26.png"></p>
+<p>If the number picker is set to zero, then attempt to get a number from the text view.</p>
+<p>Here is a hint (a version of donatButonPressed that does what we want):</p>
+<pre><code class="java">  public void donateButtonPressed (View view) 
+  {
+    String method = paymentMethod.getCheckedRadioButtonId() == R.id.PayPal ? &quot;PayPal&quot; : &quot;Direct&quot;;
+    progressBar.setProgress(totalDonated);
+
+    int donatedAmount =  amountPicker.getValue();
+    if (donatedAmount == 0)
+    {
+      String text = amountText.getText().toString();
+      if (!text.equals(&quot;&quot;))
+        donatedAmount = Integer.parseInt(text);
+    }
+    totalDonated  = totalDonated + donatedAmount;
+    Log.v(&quot;Donate&quot;, amountPicker.getValue() + &quot; donated by &quot; +  method + &quot;\nCurrent total &quot; + totalDonated);
+   }
+</code></pre>
+
+<h2>Exercise 2 Solution</h2>
+<p>Here is the refactored layout file:</p>
+<pre><code>&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+                xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:paddingBottom=&quot;@dimen/activity_vertical_margin&quot;
+                android:paddingLeft=&quot;@dimen/activity_horizontal_margin&quot;
+                android:paddingRight=&quot;@dimen/activity_horizontal_margin&quot;
+                android:paddingTop=&quot;@dimen/activity_vertical_margin&quot;
+                tools:context=&quot;.Donate&quot; &gt;
+
+  &lt;TextView
+      android:id=&quot;@+id/donateTitle&quot;
+      android:layout_width=&quot;wrap_content&quot;
+      android:layout_height=&quot;wrap_content&quot;
+      android:layout_alignParentLeft=&quot;true&quot;
+      android:layout_alignParentRight=&quot;true&quot;
+      android:layout_alignParentTop=&quot;true&quot;
+      android:text=&quot;@string/donateTitle&quot;
+      android:textAppearance=&quot;?android:attr/textAppearanceLarge&quot; /&gt;
+
+  &lt;TextView
+      android:id=&quot;@+id/donateSubtitle&quot;
+      android:layout_width=&quot;wrap_content&quot;
+      android:layout_height=&quot;wrap_content&quot;
+      android:layout_alignParentLeft=&quot;true&quot;
+      android:layout_alignParentRight=&quot;true&quot;
+      android:layout_below=&quot;@+id/donateTitle&quot;
+      android:text=&quot;@string/donateSubtitle&quot;
+      android:textAppearance=&quot;?android:attr/textAppearanceMedium&quot; /&gt;
+
+  &lt;RadioGroup
+      android:id=&quot;@+id/paymentMethod&quot;
+      android:layout_width=&quot;wrap_content&quot;
+      android:layout_height=&quot;wrap_content&quot;
+      android:layout_above=&quot;@+id/progressBar&quot;
+      android:layout_alignLeft=&quot;@+id/donateSubtitle&quot;
+      android:layout_below=&quot;@+id/donateSubtitle&quot;
+      android:layout_marginLeft=&quot;14dp&quot;
+      android:layout_marginTop=&quot;26dp&quot;
+      android:layout_toLeftOf=&quot;@+id/amountPicker&quot; &gt;
+
+    &lt;RadioButton
+        android:id=&quot;@+id/PayPal&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:checked=&quot;true&quot;
+        android:text=&quot;@string/PayPal&quot; /&gt;
+
+    &lt;RadioButton
+        android:id=&quot;@+id/Direct&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;@string/Direct&quot; /&gt;
+
+  &lt;/RadioGroup&gt;
+
+  &lt;ProgressBar
+      android:id=&quot;@+id/progressBar&quot;
+      style=&quot;?android:attr/progressBarStyleHorizontal&quot;
+      android:layout_width=&quot;wrap_content&quot;
+      android:layout_height=&quot;wrap_content&quot;
+      android:layout_above=&quot;@+id/donateButton&quot;
+      android:layout_alignParentLeft=&quot;true&quot;
+      android:layout_alignParentRight=&quot;true&quot;
+      android:layout_marginBottom=&quot;67dp&quot; /&gt;
+
+  &lt;NumberPicker
+      android:id=&quot;@+id/amountPicker&quot;
+      android:layout_width=&quot;wrap_content&quot;
+      android:layout_height=&quot;wrap_content&quot;
+      android:layout_alignRight=&quot;@+id/donateSubtitle&quot;
+      android:layout_alignTop=&quot;@+id/paymentMethod&quot; /&gt;
+
+  &lt;EditText
+      android:id=&quot;@+id/amountText&quot;
+      android:layout_width=&quot;wrap_content&quot;
+      android:layout_height=&quot;wrap_content&quot;
+      android:layout_above=&quot;@+id/donateButton&quot;
+      android:layout_alignParentRight=&quot;true&quot;
+      android:layout_marginBottom=&quot;20dp&quot;
+      android:ems=&quot;10&quot;
+      android:inputType=&quot;number&quot; &gt;
+    &lt;requestFocus /&gt;
+  &lt;/EditText&gt;
+
+  &lt;TextView
+      android:id=&quot;@+id/amountLabel&quot;
+      android:layout_width=&quot;wrap_content&quot;
+      android:layout_height=&quot;wrap_content&quot;
+      android:layout_alignBottom=&quot;@+id/amountText&quot;
+      android:layout_alignLeft=&quot;@+id/paymentMethod&quot;
+      android:labelFor=&quot;@id/amountText&quot;
+      android:text=&quot;@string/amount&quot;
+      android:textAppearance=&quot;?android:attr/textAppearanceMedium&quot; /&gt;
+
+  &lt;Button
+      android:id=&quot;@+id/donateButton&quot;
+      android:layout_width=&quot;wrap_content&quot;
+      android:layout_height=&quot;wrap_content&quot;
+      android:layout_alignParentBottom=&quot;true&quot;
+      android:layout_alignParentLeft=&quot;true&quot;
+      android:layout_marginBottom=&quot;15dp&quot;
+      android:onClick=&quot;donateButtonPressed&quot;
+      android:text=&quot;@string/donateButton&quot; /&gt;
+
+  &lt;TextView
+      android:id=&quot;@+id/amountTotal&quot;
+      android:layout_width=&quot;wrap_content&quot;
+      android:layout_height=&quot;wrap_content&quot;
+      android:layout_alignBottom=&quot;@+id/donateButton&quot;
+      android:layout_alignRight=&quot;@+id/amountText&quot;
+      android:text=&quot;@string/initialAmount&quot;
+      android:textAppearance=&quot;?android:attr/textAppearanceMedium&quot; /&gt;
+
+  &lt;TextView
+      android:id=&quot;@+id/totalLabel&quot;
+      android:layout_width=&quot;wrap_content&quot;
+      android:layout_height=&quot;wrap_content&quot;
+      android:layout_alignBaseline=&quot;@+id/amountTotal&quot;
+      android:layout_alignBottom=&quot;@+id/amountTotal&quot;
+      android:layout_toLeftOf=&quot;@+id/amountPicker&quot;
+      android:text=&quot;@string/amountSoFarLabel&quot;
+      android:textAppearance=&quot;?android:attr/textAppearanceMedium&quot; /&gt;
+
+&lt;/RelativeLayout&gt;
+</code></pre>
+
+<p>Here is the refactored Donation activity file:</p>
+<ul>
+<li>Note that output is written to logcat.</li>
+</ul>
+<pre><code>package com.example.donation;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.NumberPicker;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+public class Donate extends AppCompatActivity
+{
+
+  private Button       donateButton;
+  private RadioGroup   paymentMethod;
+  private ProgressBar  progressBar;
+  private NumberPicker amountPicker;
+  private int          totalDonated;
+
+  private TextView     amountText;
+  private TextView     amountTotal;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_donate);
+
+    donateButton  = (Button) findViewById(R.id.donateButton);
+    paymentMethod = (RadioGroup)   findViewById(R.id.paymentMethod);
+    progressBar   = (ProgressBar)  findViewById(R.id.progressBar);
+    amountPicker  = (NumberPicker) findViewById(R.id.amountPicker);
+
+    amountText    = (EditText)     findViewById(R.id.amountText);
+
+    amountPicker.setMinValue(0);
+    amountPicker.setMaxValue(1000);
+    progressBar.setMax(10000);
+
+    totalDonated = 0;
+
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu)
+  {
+    // Inflate the menu; this adds items to the action bar if it is present.
+    getMenuInflater().inflate(R.menu.menu_donate, menu);
+    return true;
+  }
+
+
+  public void donateButtonPressed (View view)
+  {
+    String method = paymentMethod.getCheckedRadioButtonId() == R.id.PayPal ? &quot;PayPal&quot; : &quot;Direct&quot;;
+    progressBar.setProgress(totalDonated);
+
+    int donatedAmount =  amountPicker.getValue();
+    if (donatedAmount == 0)
+    {
+      String text = amountText.getText().toString();
+      if (!text.equals(&quot;&quot;))
+        donatedAmount = Integer.parseInt(text);
+    }
+    totalDonated  = totalDonated + donatedAmount;
+    Log.v(&quot;Donate&quot;, amountPicker.getValue() + &quot; donated by &quot; + method + &quot;\nCurrent total &quot; + totalDonated);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    // Handle action bar item clicks here. The action bar will
+    // automatically handle clicks on the Home/Up button, so long
+    // as you specify a parent activity in AndroidManifest.xml.
+    int id = item.getItemId();
+
+    //noinspection SimplifiableIfStatement
+    if (id == R.id.action_settings)
+    {
+      return true;
+    }
+
+    return super.onOptionsItemSelected(item);
+  }
+}
+
+</code></pre>
+    </div>
+    <div class="tab-pane fade" id="03">
+      <h1>Donation-01 Solution Exercise 3</h1>
+<h2>Exercise 3:</h2>
+<p>Revise the app such that when the target is achieved (10000) - then no more donations accepted, and the user is made aware of this.</p>
+<p>Hint - here is how you can display a simple alert:</p>
+<pre><code class="java">      Toast toast = Toast.makeText(this, &quot;Target Exceeded!&quot;, Toast.LENGTH_SHORT);
+      toast.show();
+</code></pre>
+
+<h2>Exercise 3 Solution</h2>
+<p>Here is the refactored Donation activity:</p>
+<pre><code>package com.example.donation;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.NumberPicker;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class Donate extends AppCompatActivity
+{
+
+  private Button       donateButton;
+  private RadioGroup   paymentMethod;
+  private ProgressBar  progressBar;
+  private NumberPicker amountPicker;
+  private int          totalDonated;
+  private int          target;
+
+  private TextView     amountText;
+  private TextView     amountTotal;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_donate);
+
+    donateButton  = (Button) findViewById(R.id.donateButton);
+    paymentMethod = (RadioGroup)   findViewById(R.id.paymentMethod);
+    progressBar   = (ProgressBar)  findViewById(R.id.progressBar);
+    amountPicker  = (NumberPicker) findViewById(R.id.amountPicker);
+    amountTotal   = (TextView)     findViewById(R.id.amountTotal);
+    amountText    = (EditText)     findViewById(R.id.amountText);
+
+    amountPicker.setMinValue(0);
+    amountPicker.setMaxValue(1000);
+    progressBar.setMax(10000);
+
+    totalDonated = 0;
+    target = 10000;
+
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu)
+  {
+    // Inflate the menu; this adds items to the action bar if it is present.
+    getMenuInflater().inflate(R.menu.menu_donate, menu);
+    return true;
+  }
+
+
+  public void donateButtonPressed (View view)
+  {
+    if (totalDonated &gt;= target)
+    {
+      Toast toast = Toast.makeText(this, &quot;Target Exceeded!&quot;, Toast.LENGTH_SHORT);
+      toast.show();
+      Log.v(&quot;Donate&quot;,&quot;Target Exceeded: &quot; + totalDonated);
+      return;
+    }
+    String method = paymentMethod.getCheckedRadioButtonId() == R.id.PayPal ? &quot;PayPal&quot; : &quot;Direct&quot;;
+    int donatedAmount = amountPicker.getValue();
+    if (donatedAmount == 0)
+    {
+      String text = amountText.getText().toString();
+      if (!text.equals(&quot;&quot;))
+      {
+        totalDonated += Integer.parseInt(text);
+      }
+    }
+    else
+    {
+      totalDonated = totalDonated + donatedAmount;
+    }
+    Log.v(&quot;Donate&quot;, donatedAmount + &quot; donated by &quot; + method + &quot; Current total &quot; + totalDonated);
+    progressBar.setProgress(totalDonated);
+
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    // Handle action bar item clicks here. The action bar will
+    // automatically handle clicks on the Home/Up button, so long
+    // as you specify a parent activity in AndroidManifest.xml.
+    int id = item.getItemId();
+
+    //noinspection SimplifiableIfStatement
+    if (id == R.id.action_settings)
+    {
+      return true;
+    }
+
+    return super.onOptionsItemSelected(item);
+  }
+}
+
+
+</code></pre>
+    </div>
+    <div class="tab-pane fade" id="04">
+      <h1>Donation-01 Solution Exercise 4</h1>
+<h2>Exercise 4:</h2>
+<p>Show on screen at all times the total amount donated.</p>
+<p>You will use standard TextView for this:</p>
+<ul>
+<li><a href="http://developer.android.com/reference/android/widget/TextView.html">http://developer.android.com/reference/android/widget/TextView.html</a></li>
+</ul>
+<p>You already have a number of these on screen. Your layout could be revised to look like this:</p>
+<p><img alt="Figure 3: Total so far displayed" src="img/27.png"></p>
+<h2>Exercise 4 Solution</h2>
+<p>Here is the refactored Donation activity;</p>
+<pre><code>package com.example.donation;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.NumberPicker;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class Donate extends AppCompatActivity
+{
+
+  private Button       donateButton;
+  private RadioGroup   paymentMethod;
+  private ProgressBar  progressBar;
+  private NumberPicker amountPicker;
+  private int          totalDonated;
+  private int          target;
+
+  private TextView     amountText;
+  private TextView     amountTotal;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_donate);
+
+    donateButton  = (Button) findViewById(R.id.donateButton);
+    paymentMethod = (RadioGroup)   findViewById(R.id.paymentMethod);
+    progressBar   = (ProgressBar)  findViewById(R.id.progressBar);
+    amountPicker  = (NumberPicker) findViewById(R.id.amountPicker);
+    amountTotal   = (TextView)     findViewById(R.id.amountTotal);
+    amountText    = (EditText)     findViewById(R.id.amountText);
+
+    amountPicker.setMinValue(0);
+    amountPicker.setMaxValue(1000);
+    progressBar.setMax(10000);
+
+    totalDonated = 0;
+    target = 10000;
+
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu)
+  {
+    // Inflate the menu; this adds items to the action bar if it is present.
+    getMenuInflater().inflate(R.menu.menu_donate, menu);
+    return true;
+  }
+
+
+  public void donateButtonPressed (View view)
+  {
+    if (totalDonated &gt;= target)
+    {
+      Toast toast = Toast.makeText(this, &quot;Target Exceeded!&quot;, Toast.LENGTH_SHORT);
+      toast.show();
+      Log.v(&quot;Donate&quot;,&quot;Target Exceeded: &quot; + totalDonated);
+      return;
+    }
+    String method = paymentMethod.getCheckedRadioButtonId() == R.id.PayPal ? &quot;PayPal&quot; : &quot;Direct&quot;;
+    int donatedAmount = amountPicker.getValue();
+    if (donatedAmount == 0)
+    {
+      String text = amountText.getText().toString();
+      if (!text.equals(&quot;&quot;))
+      {
+        totalDonated += Integer.parseInt(text);
+      }
+    }
+    else
+    {
+      totalDonated = totalDonated + donatedAmount;
+    }
+    Log.v(&quot;Donate&quot;, donatedAmount + &quot; donated by &quot; + method + &quot; Current total &quot; + totalDonated);
+    progressBar.setProgress(totalDonated);
+
+    String totalDonatedStr = &quot;$&quot; + totalDonated;
+    amountTotal.setText(totalDonatedStr);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    // Handle action bar item clicks here. The action bar will
+    // automatically handle clicks on the Home/Up button, so long
+    // as you specify a parent activity in AndroidManifest.xml.
+    int id = item.getItemId();
+
+    //noinspection SimplifiableIfStatement
+    if (id == R.id.action_settings)
+    {
+      return true;
+    }
+
+    return super.onOptionsItemSelected(item);
+  }
+}
+
+</code></pre>
+    </div>
+    <div class="tab-pane fade" id="05">
+      <h1>Package Name</h1>
+<p>In the first Donation lab you created a repository <em>donation-android-2015</em>. </p>
+<p>In this lab we shall provide a model solution to the lab so that we will all begin this Donation lab 2 with exactly the same code base. Save your version of Donation lab 1 to a secure location.</p>
+<p>Furthermore, we shall all work on the NUC platform. At the end of the lab you will commit and push your work to your Bitbucket accounts and download it into your personal computers.</p>
+<p>There already exists a folder in the NUC named repo. Many of you may have been developing here, therefore it is important we avoid name clashes. If a folder named <em>donation-android-2015</em> already exists in <em>repo</em>, either rename it, delete it or move it to a subfolder within repo.</p>
+<ul>
+<li>You create a folder with the mkdir command:</li>
+</ul>
+<pre><code>mkdir &lt;new folder&gt;
+</code></pre>
+
+<p>For example:</p>
+<pre><code>mkdir backup-projects
+</code></pre>
+
+<p>When you have completed this, download <em>donation-android-2015</em> from GitHub:</p>
+<pre><code>git clone https://github.com/usplitu/donation-android-2015.git
+</code></pre>
+
+<ul>
+<li>GitHub is an alternative repository hosting company to BitBucket.</li>
+<li>
+<p>In this instance neither a password nor an ssh key is required as the project is public.</p>
+</li>
+<li>
+<p>In a bash terminal (Windows), <em>cd</em> into <em>donation-android-2015</em> folder and run the command <em>git status</em>  to ensure your working directory is clean.</p>
+<ul>
 <li>If not, deal with the problem before proceeding.</li>
 </ul>
 </li>
@@ -172,7 +773,7 @@ This can be changed as follows:</p>
 <p>Here is the revised structure:
 <img alt="Figure 8: Revised structure" src="img/25.png"></p>
     </div>
-    <div class="tab-pane fade" id="02">
+    <div class="tab-pane fade" id="06">
       <h1>Menu</h1>
 <p>In Donate.java, introduce the following menu event handler:</p>
 <pre><code class="java">    @Override
@@ -230,7 +831,7 @@ This can be changed as follows:</p>
 <p>Run the app and when you press the menu hardware button (or the overflow menu) and select 'Settings', you should see the toast message appear.</p>
 <p><img alt="" src="img/05.png"></p>
     </div>
-    <div class="tab-pane fade" id="03">
+    <div class="tab-pane fade" id="07">
       <h1>Reports Activity</h1>
 <p>Design a new layout called Report defined within a file named activity_report.xml located in res/layout - to look something like this:</p>
 <p><img alt="Figure 1: Report activity design view" src="img/01.png"></p>
@@ -334,7 +935,7 @@ public class Report extends Activity
 <p>Try it all now - it should load. Here is an example using the inbuilt emulator (AVD).</p>
 <p><img alt="Figure 2: Report rendered on Android AVD" src="img/06.png"></p>
     </div>
-    <div class="tab-pane fade" id="04">
+    <div class="tab-pane fade" id="08">
       <h1>Application Object</h1>
 <p>In order to keep out application design coherent, we now bring in an 'Application' object.</p>
 <p>Create a new package called 'app.main'. Expand the empty middle packages before doing so and compact them when you have added the new class <em>DonationApp</em> described below. See Figure 1.</p>
@@ -375,7 +976,7 @@ public class DonationApp extends Application
 <p>Make sure the 'Donation App Started' appears in the logs to verify that it has actually been engaged correctly as demonstrated in Figure 3.</p>
 <p><img alt="Figure 3: Logcat window" src="img/08.png"></p>
     </div>
-    <div class="tab-pane fade" id="05">
+    <div class="tab-pane fade" id="09">
       <h1>Donation Model</h1>
 <p>Create a new package called 'models' and bring in this class here:</p>
 <pre><code class="java">package app.models;
@@ -435,7 +1036,7 @@ public class DonationApp extends Application
 }
 </code></pre>
     </div>
-    <div class="tab-pane fade" id="06">
+    <div class="tab-pane fade" id="10">
       <h1>Refactored Donate</h1>
 <p>The Donate activity can now be completely re factored to make use of the DonationApp object.</p>
 <pre><code class="java">package app.activities;
@@ -524,7 +1125,7 @@ public class Donate extends Activity
 <p>Replace your version with this and execute it.</p>
 <p>Look carefully at the changes to this version over the v1 attempt.</p>
     </div>
-    <div class="tab-pane fade" id="07">
+    <div class="tab-pane fade" id="11">
       <h1>Refactored Report</h1>
 <p>We now rework Report to render the actual donations - held in the DonationApp list.</p>
 <p>First some layout additions. Include these new string in strings.xml</p>
