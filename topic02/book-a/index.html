@@ -693,58 +693,12 @@ public class Donate extends AppCompatActivity
     </div>
     <div class="tab-pane fade" id="05">
       <h1>Package Name</h1>
-<p>In the first Donation lab you created a repository <em>donation-android-2015</em>. </p>
-<p>In this lab we shall provide a model solution to the lab so that we will all begin this Donation lab 2 with exactly the same code base. Save your version of Donation lab 1 to a secure location.</p>
-<p>Furthermore, we shall all work on the NUC platform. At the end of the lab you will commit and push your work to your Bitbucket accounts and download it into your personal computers.</p>
-<p>There already exists a folder in the NUC named repo. Many of you may have been developing here, therefore it is important we avoid name clashes. If a folder named <em>donation-android-2015</em> already exists in <em>repo</em>, either rename it, delete it or move it to a subfolder within repo.</p>
-<ul>
-<li>You create a folder with the mkdir command:</li>
-</ul>
-<pre><code>mkdir &lt;new folder&gt;
-</code></pre>
-
-<p>For example:</p>
-<pre><code>mkdir backup-projects
-</code></pre>
-
-<p>When you have completed this, download <em>donation-android-2015</em> from GitHub:</p>
-<pre><code>git clone https://github.com/usplitu/donation-android-2015.git
-</code></pre>
-
-<ul>
-<li>GitHub is an alternative repository hosting company to BitBucket.</li>
-<li>
-<p>In this instance neither a password nor an ssh key is required as the project is public.</p>
-</li>
-<li>
-<p>In a bash terminal (Windows), <em>cd</em> into <em>donation-android-2015</em> folder and run the command <em>git status</em>  to ensure your working directory is clean.</p>
-<ul>
-<li>If not, deal with the problem before proceeding.</li>
-</ul>
-</li>
-<li>Check the commits: use your customized log command (gitp).</li>
-<li>Check the tags: (git tag -n).</li>
-<li>Build on this repository, making appropriate commits and tags, as you progress through this and subsequent Donation labs.<ul>
-<li>Apply a tag at the end of each lab, for example, v1, v2, v3...</li>
-</ul>
-</li>
-<li>Launch Android Studio and open this project.<ul>
-<li>If the project is not present in the Recent Projects panel, open the project as shown in Figure 1:</li>
-</ul>
-</li>
-</ul>
-<p><img alt="Figure 1: Open and existing Android Studio project" src="img/10.png"></p>
-<p>You may be presented with a message as shown in Figure 2 indicating an unregistered version control system (VCS).</p>
-<ul>
-<li>Click <strong>Add root</strong>.</li>
-</ul>
-<p><img alt="Figure 2: Configure git VCS" src="img/11.png"></p>
 <p>This version is a little misconfigured - we have a leftover - the package name 'com.example.donation' form the project generation wizard.<br> 
 This can be changed as follows:</p>
 <ul>
 <li>With the project imported to Android Studio, select Project in the Project Structure pane.</li>
 <li>Expand the folders in <em>src</em> to reveal <em>com.example.donation</em> packages in both <em>androidTest</em> and <em>main</em>.
-<img alt="Figure 3: Project Structure pane" src="img/20.png"></li>
+<img alt="Figure 1: Project Structure pane" src="img/20.png"></li>
 <li>Create a new package <em>app.donation</em> in <em>androidTest/java</em>.<ul>
 <li>Drag the file <em>ApplicationTest</em> to this new package.</li>
 </ul>
@@ -754,12 +708,12 @@ This can be changed as follows:</p>
 </ul>
 </li>
 <li>Both original packages, <em>com.example.donation</em> should be deleted automatically without user intervention.
-<img alt="Figure 4: Create new packages and populate by drag and drop" src="img/21.png"></li>
+<img alt="Figure 2: Create new packages and populate by drag and drop" src="img/21.png"></li>
 <li>Change the package name to <em>app.donation</em> in <em>AndroidManifest.xml</em>.
-<img alt="Figure 5: Update AndroidManifest.xml" src="img/24.png"></li>
+<img alt="Figure 3: Update AndroidManifest.xml" src="img/24.png"></li>
 <li>Change <em>applicationID</em> to <em>app.donation</em> in build.gradle.<ul>
 <li>Sync Now if prompted.
-<img alt="Figure 6: Update build.gradle" src="img/22.png"></li>
+<img alt="Figure 4: Update build.gradle" src="img/22.png"></li>
 </ul>
 </li>
 <li>Check that the import statement in <em>Donate.java</em> is as follows:<ul>
@@ -767,11 +721,11 @@ This can be changed as follows:</p>
 </ul>
 </li>
 <li>Clean the project.
-<img alt="Figure 7: Clean project" src="img/23.png"></li>
+<img alt="Figure 5: Clean project" src="img/23.png"></li>
 <li>Test by rebuilding (Build | Rebuild) and running (Run | Run 'app').</li>
 </ul>
 <p>Here is the revised structure:
-<img alt="Figure 8: Revised structure" src="img/25.png"></p>
+<img alt="Figure 6: Revised structure" src="img/25.png"></p>
     </div>
     <div class="tab-pane fade" id="06">
       <h1>Menu</h1>
