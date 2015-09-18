@@ -175,12 +175,19 @@ h3
 <li>Build on this repository, making appropriate commits and tags, as you progress through this and subsequent Donation labs.<ul>
 <li>You may wish to apply a tag at the end of each lab, for example, v1, v2, v3...</li>
 <li>Notice that in the downloaded project, all steps that involve code changes are committed separately. This has the advantage of being able to easily roll back to the beginning of the current step within a lab in the event that insurmountable difficulties arise.</li>
+<li>Before making any commits, remove GitHub as the remote repo and reconfigure git to use your name and email address. Here is the script to do that: just insert your name and email in the placeholders. Consult <a href="https://help.github.com/articles/setting-your-username-in-git/">documentation</a> if necessary.</li>
 </ul>
 </li>
-<li>Launch Android Studio and open this project.<ul>
+</ul>
+<pre><code>git remote rm origin
+git user.name  = &quot;your name here&quot;  &lt;------ use double quotes
+git user.email = &quot;your email here&quot; &lt;------ use double quotes
+git config -l &lt;------ execute this command to check
+</code></pre>
+
+<ul>
+<li>Launch Android Studio and open this project.</li>
 <li>If the project is not present in the Recent Projects panel, open the project as shown in Figure 1:</li>
-</ul>
-</li>
 </ul>
 <p><img alt="Figure 1: Open and existing Android Studio project" src="img/10.png"></p>
 <p>You may be presented with a message as shown in Figure 2 indicating an unregistered version control system (VCS).</p>
@@ -202,7 +209,7 @@ This can be changed as follows:</p>
 <li>Drag the file <em>ApplicationTest</em> to this new package.</li>
 </ul>
 </li>
-<li>Create a new package <em>app.donation</em> in <em>main/java</em>.<ul>
+<li>Create a new package <em>app.activities</em> in <em>main/java</em>.<ul>
 <li>Drag file <em>Donate</em> to this new package.</li>
 </ul>
 </li>
@@ -219,7 +226,7 @@ This can be changed as follows:</p>
 </ul>
 <pre><code>import android.widget.Toast;
 
-import app.donation.R;
+import com.example.donation.R;
 
 public class Donate extends AppCompatActivity
 </code></pre>
@@ -230,7 +237,7 @@ public class Donate extends AppCompatActivity
 <li>Test by rebuilding (Build | Rebuild) and running (Run | Run 'app').</li>
 </ul>
 <p>Here is the revised structure:
-<img alt="Figure 6: Revised structure" src="img/21.png"></p>
+<img alt="Figure 6: Revised structure" src="img/25.png"></p>
     </div>
     <div class="tab-pane fade" id="03">
       <h1>Menu</h1>
