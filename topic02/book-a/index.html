@@ -209,7 +209,7 @@ This can be changed as follows:</p>
 <li>Drag the file <em>ApplicationTest</em> to this new package.</li>
 </ul>
 </li>
-<li>Create a new package <em>app.activities</em> in <em>main/java</em>.<ul>
+<li>Create a new package <em>app.donation</em> in <em>main/java</em>.<ul>
 <li>Drag file <em>Donate</em> to this new package.</li>
 </ul>
 </li>
@@ -226,7 +226,7 @@ This can be changed as follows:</p>
 </ul>
 <pre><code>import android.widget.Toast;
 
-import com.example.donation.R;
+import app.donation.R;
 
 public class Donate extends AppCompatActivity
 </code></pre>
@@ -237,7 +237,7 @@ public class Donate extends AppCompatActivity
 <li>Test by rebuilding (Build | Rebuild) and running (Run | Run 'app').</li>
 </ul>
 <p>Here is the revised structure:
-<img alt="Figure 6: Revised structure" src="img/25.png"></p>
+<img alt="Figure 6: Revised structure" src="img/21.png"></p>
     </div>
     <div class="tab-pane fade" id="03">
       <h1>Menu</h1>
@@ -425,7 +425,7 @@ public class DonationApp extends Application
   public void onCreate()
   {
     super.onCreate();
-    Log.v(&quot;Donation&quot;, &quot;Donation App Started&quot;);
+    Log.v(&quot;Donate&quot;, &quot;Donation App Started&quot;);
   }
 }
 </code></pre>
@@ -521,7 +521,7 @@ public class DonationApp extends Application
   public void onCreate()
   {
     super.onCreate();
-    Log.v(&quot;Donation&quot;, &quot;Donation App Started&quot;);
+    Log.v(&quot;Donate&quot;, &quot;Donation App Started&quot;);
   }
 }
 </code></pre>
@@ -822,8 +822,16 @@ git push -u origin --tags
       <h1>Exercises</h1>
 <p>Project so far:</p>
 <ul>
-<li><a href="archives/donation-android-2015.zip">donation-android-2015.zip</a></li>
+<li>
+<p><a href="archives/donation-android-2015.zip">donation-android-2015.zip</a></p>
+</li>
+<li>
+<p>Also available to clone from GitHub:</p>
+</li>
 </ul>
+<pre><code> git clone https://github.com/usplitu/donation-android-2015.git
+</code></pre>
+
 <h2>Exercise 1</h2>
 <p>Run the app and insert amounts of varying lengths (1, 222, 23, 2323). Note that the second column - payment method -may be displayed at different positions. If this happens, fix it.</p>
 <p>Hint: each row is laid out by a row_donate.xml layout. The easiest way to fix this would be to experiment with they layout, and have the text fields aligned with the edges and not with eachother.</p>
