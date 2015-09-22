@@ -1,3 +1,3 @@
 Donation Android V3
 
-This lab presents the solution to the series of challenges in the Donation-02 lab. If you have completed these challenges you may just with to examine our solutions, which may be largely the same as yours. If you have not completed them all, the incorporated these into your solution now and have a got at the exercises at the end of this lab. You should be able to complete these exercises.
+These slides present the solution to the series of challenges in the Donation-02 lab, a series of 8 'challenges' introducing new feature into the donation app.
