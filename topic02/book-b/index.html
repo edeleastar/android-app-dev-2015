@@ -123,8 +123,14 @@ h3
 <pre><code>git clone https://github.com/edeleastar/donation-2015-02.git
 </code></pre>
 
-<p>Open the project in Androiud studio and make sure it runs correctly.</p>
-<p>Then proceed though the lab.</p>
+<p>Open the project in Android studio and make sure it runs correctly.</p>
+<p>If you are prompted to 'add .. root' for the project, accept this option.</p>
+<p>Before we start the lab proper, we will also clone a final version of the lab :</p>
+<pre><code>git clone https://github.com/edeleastar/donation-2015-03.git
+</code></pre>
+
+<p>Open this one also, and make sure it runs correctly. Note that this version will require you to register and log in.</p>
+<p>Now switch back to the first one (donation-2015-02)  and proceed though the lab.</p>
   </div>
 
     <div class="tab-pane fade" id="01">
@@ -822,7 +828,7 @@ public class Signup extends AppCompatActivity
 </code></pre>
 
 <p>There is how we would like the class to be implemented:</p>
-<pre><code class="java">package app.activities;
+<pre><code class="java">package app.donation;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -866,13 +872,13 @@ public class Login extends Activity
 </code></pre>
 
 <p>And redirect the Signup screen to the Welcome screen once the Register button is pressed:</p>
-<pre><code>    public void registerPressed (View view)
-    {
-        startActivity (new Intent(this, Welcome.class));
-    }
+<pre><code>  public void registerPressed (View view)
+  {
+    startActivity (new Intent(this, Welcome.class));
+  }
 </code></pre>
 
-<p>Now launch the app and verify that this route works as expected.</p>
+<p>The navigation is a little tricky to get right - so verify that you can launch and follow from one screen to the next.</p>
     </div>
     <div class="tab-pane fade" id="08">
       <h1>Exercise 7</h1>
@@ -1027,7 +1033,9 @@ public class User
 <p><img alt="" src="img/12.png"></p>
 <h2>2. Drag and drop the classes into the appropriate packages</h2>
 <p><img alt="" src="img/13.png"></p>
-<p>Drag/drop/refactor will make sure all the imports are correctly inserted - including changing AndroidManifest.xml</p>
+<p>Proceed with caution!</p>
+<p>If drag and drop seems to be unavailable - exit and restart Android Studio, as the refactoring options may be temporarily disabled.</p>
+<p>Drag/drop/refactor will make sure all the imports are correctly inserted - including changing AndroidManifest.xml, however you may need to allow time for the refactoring to 'catch up' (it is making significant changes) before you press on to the next one.</p>
 <p>This represents a cleaner structure, and a better foundation should we introduce more models and activities.</p>
     </div>
     <div class="tab-pane fade" id="Solution">
