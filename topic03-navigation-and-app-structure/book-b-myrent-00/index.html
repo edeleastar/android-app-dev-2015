@@ -178,6 +178,12 @@ build/
 </ul>
 </li>
 </ul>
+<p>Before committing check that git is properly configured with your name and email:</p>
+<pre><code>git config --global -l
+git config --global user.name &lt;your name&gt;
+git config --global user.email &lt;your email&gt;
+</code></pre>
+
 <pre><code>git add .
 git commit -m 'MyRent-00 (step 01): Baseline app built using Android Studio 1.3.2'
 </code></pre>
@@ -245,6 +251,9 @@ The textual content of the file is as follows. </p>
 <p>A short tutorial is available is available <a href="http://www.mkyong.com/android/android-wrap_content-and-fill_parent-example/">here</a> that demonstrates the effect of different values for <em>layout_width</em> and <em>layout_height</em> attributes.</p>
 <p>An interesting feature of Android Studio may be observed here. Figure 6 below contains a screen shot of of <em>activity_myrent.xml</em>. At first glance the string <em>Hello world</em> seems to be hardwired. However if you hover over the string (as was done in preparing the screenshot) you will notice the underlying reference to <em>@string/hello_world</em> in the <em>res/values/strings.xml</em> file. This approach differs from that in Eclipse where <em>@string/hello_world</em> is displayed in the xml file. </p>
 <ul>
+<li>
+<p>You may disable this feature by accessing Preferences | Editor | Code Folding and unticking Android String References.</p>
+</li>
 <li>
 <p>It's also interesting to note that if you copy the textual content of <em>activity_myrent.xml</em> from Android Studio and paste it to a text editor, <em>@string/hello_world</em> is displayed, not <em>Hello world</em>.</p>
 </li>
