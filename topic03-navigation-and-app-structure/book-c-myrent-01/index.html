@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,40 +81,49 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        3: Navigation & App Structure
-      </div>
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      3: Navigation & App Structure
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    <a class="active item" data-tab="MyRent-01">
+        MyRent-01
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
     </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#MyRent-01" data-toggle="tab"> MyRent-01 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
 
 <br><br>
 
-<div class="tab-content">
-  <div class="tab-pane active" id="MyRent-01">
+  <div  class="ui tab segment lab" data-tab="MyRent-01">
     <h1>Objectives</h1>
 <p>In this version of MyRent, we introduce a range of UI Widgets to evolve the UX into something more useful. These widgets will be 'active', meaning that the host Activity will be intercepting and responding to events the user may generate when interacting with the application.</p>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Preview</h1>
+  <div  class="ui tab segment lab" data-tab="01">
+    <h1>Preview</h1>
 <p>At the end of this topic our goal is to have a screen looking something like this:</p>
 <p><img alt="" src="img/01.png"></p>
 <p>We will have added: </p>
@@ -147,9 +157,9 @@ h3
 </ul>
 </li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Restructure MyRent</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="02">
+    <h1>Restructure MyRent</h1>
 <p>Continue building the MyRent app that you commenced in the previous lab.</p>
 <p>For reference, we are providing a version here, MyRent-00:</p>
 <pre><code>git clone https://github.com/wit-computing/myrent-00.git
@@ -175,9 +185,9 @@ h3
 <li>Ensure that when the refactoring is complete you tick this menu item again resulting in the required layout as shown in Figure 2 above and again here in Figure 8.
 <img alt="Figure 8: Structure following refactoring" src="img/25f.png"></li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Layout</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="03">
+    <h1>Layout</h1>
 <p>Before proceeding make a name use the menu refactor command to rename MyRentActivity to ResidenceAcivity.</p>
 <ul>
 <li>This change is being made to provide nameing consistency with future classes that we shall be developing.</li>
@@ -347,9 +357,9 @@ h3
 
 &lt;/LinearLayout&gt;
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Add Widgets</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="04">
+    <h1>Add Widgets</h1>
 <p>We shall now complete remaining work on the layout using the Graphical Layout and the Outline panel.</p>
 <p>Here is the the layout at this stage of development.</p>
 <pre><code>&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
@@ -425,9 +435,9 @@ h3
 <li>Notice that the LinearLayout orientation is vertical thus creating a stack of xml nodes comprising the various UI widgets.</li>
 </ul>
 <p><img alt="Figure 3: Hierarchical arrangement of UI components" src="img/13.png"></p>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Activity &amp; Model Updates</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="05">
+    <h1>Activity &amp; Model Updates</h1>
 <p>Replace your Residence class with the following:</p>
 <pre><code>package org.wit.myrent.models;
 
@@ -597,9 +607,9 @@ public class ResidenceActivity extends AppCompatActivity implements TextWatcher,
 }
 
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>Test</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="06">
+    <h1>Test</h1>
 <p>Run the app and check that the layout presented is as expected, something like that shown in Figure 1.</p>
 <p><img alt="Figure 1: MyRent" src="img/01.png"></p>
 <p>Run the app and use the debugger to ensure data is being transmitted to and from the Residence object.</p>
@@ -621,9 +631,9 @@ public class ResidenceActivity extends AppCompatActivity implements TextWatcher,
 </ul>
 <p>Press the Run to Cursor toolbar icon to run to completion.</p>
 <p><img alt="Figure 2: Using debugger to verify data input transmitted to model object" src="img/21.png"></p>
-    </div>
-    <div class="tab-pane fade" id="07">
-      <h1>Summary</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="07">
+    <h1>Summary</h1>
 <p>Here is what we have achieved in this topic:</p>
 <ul>
 <li>Explored various ways of modifying layout working with the Graphical Layout editor, the XML editor and the Outline view.</li>
@@ -645,31 +655,45 @@ public class ResidenceActivity extends AppCompatActivity implements TextWatcher,
 <p>Described how to conduct a simple test using the debugger to verify that the listeners operate correctly and that UI data transmission takes place successfully in both directions between model and UI.</p>
 </li>
 </ul>
+  </div>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
+
+
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-</div>
-<br> <br>
-
-
-    </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

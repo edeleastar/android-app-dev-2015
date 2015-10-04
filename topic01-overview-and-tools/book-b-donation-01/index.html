@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,42 +81,55 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        1: Overview & Tools
-      </div>
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      1: Overview & Tools
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    <a class="active item" data-tab="Donation-01">
+        Donation-01
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
+      <a class="item" data-tab="08">
+        08
+      </a>
+      <a class="item" data-tab="Exercises">
+        Exercises
+      </a>
     </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#Donation-01" data-toggle="tab"> Donation-01 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
-          <li><a href= "#08" data-toggle="tab"> 08 </a> </li>
-          <li><a href= "#Exercises" data-toggle="tab"> Exercises </a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
 
 <br><br>
 
-<div class="tab-content">
-  <div class="tab-pane active" id="Donation-01">
+  <div  class="ui tab segment lab" data-tab="Donation-01">
     <h1>Objectives</h1>
 <p>Here we proceed to explore in detail the creating of a simple activity class + the associated layout. This process will seem quite complex on first contact - but as we proceed through the labs over the next few sessions the deep structure should start to emerge.</p>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Create Project</h1>
+  <div  class="ui tab segment lab" data-tab="01">
+    <h1>Create Project</h1>
 <p>Create a new Android application as demonstrated in the following 5 screenshots:</p>
 <p><img alt="Figure 1: Welcome Screen Android Studio - Start new project" src="img/00.png">
 <img alt="Figure 2: Configure new project" src="img/01.png">
@@ -173,9 +187,9 @@ dependencies {
 </ul>
 </li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Layout Donation Activity</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="02">
+    <h1>Layout Donation Activity</h1>
 <p>For this lab, our objective is to reproduce in Android this feature from the web app:</p>
 <p><img alt="Figure 1: Objective is to recreate this make donation page from web app" src="img/07.png"></p>
 <p>In Android Studio, delete the current 'Hello World' text, and drag and drop a new'LargeText' form widget onto the canvas. </p>
@@ -280,9 +294,9 @@ dependencies {
 &lt;/resources&gt;
 
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Donate Button</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="03">
+    <h1>Donate Button</h1>
 <p>Place a button directly on to the activity - attached to the bottom of the screen as shown:</p>
 <p><img alt="Figure 1: Add new button" src="img/13.png"></p>
 <p>Following a similar procedure as in the previous step, rename the button and add an id, as shown in Figures 2 and 3.</p>
@@ -464,9 +478,9 @@ public class Donate extends Activity {
 <p><img alt="Figure 6: Configure LogCat filter" src="img/17.png"></p>
 <p>If you then select the filter, we should see our message:</p>
 <p><img alt="Figure 7: LogCat output" src="img/18.png"></p>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Documentation</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="04">
+    <h1>Documentation</h1>
 <p>The android documentation is particularly helpful and well designed. These are the two key starting points:</p>
 <ul>
 <li><a href="http://developer.android.com/guide/components/index.html">http://developer.android.com/guide/components/index.html</a></li>
@@ -509,9 +523,9 @@ public class Donate extends Activity {
 <p>Save everything and execute the app, and monitor the log as you press the button:</p>
 <p><img alt="Figure 1: LogCat message generated on Donation button press" src="img/19.png"></p>
 <p>We now have our first interaction working!</p>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Research + New Control Layout</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="05">
+    <h1>Research + New Control Layout</h1>
 <p>Recall the UI we are trying to implement:</p>
 <p><img alt="Figure 1: The Web app UI we are attempting to implement in Android" src="img/20.png"></p>
 <p>We need a Radio Buttons, some sort of selection/combo box + a progress bar. These can be found in various locations in the palette:</p>
@@ -674,9 +688,9 @@ public class Donate extends AppCompatActivity
 }
 
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>NumberPicker</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="06">
+    <h1>NumberPicker</h1>
 <p>This is our reference documentation:</p>
 <ul>
 <li><a href="http://developer.android.com/reference/android/widget/NumberPicker.html">http://developer.android.com/reference/android/widget/NumberPicker.html</a></li>
@@ -714,9 +728,9 @@ public class Donate extends AppCompatActivity
 </code></pre>
 
 <p>Run this now - and verify that it operates as expected (see the actual amounts in the log file).</p>
-    </div>
-    <div class="tab-pane fade" id="07">
-      <h1>Radio Button</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="07">
+    <h1>Radio Button</h1>
 <p>In donateButtonPressed we need to discover which payment method has been selected. Our RadioGroup documentation is here:</p>
 <ul>
 <li><a href="http://developer.android.com/reference/android/widget/RadioGroup.html">http://developer.android.com/reference/android/widget/RadioGroup.html</a></li>
@@ -827,9 +841,9 @@ public class Donate extends AppCompatActivity
 }
 
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="08">
-      <h1>Progress</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="08">
+    <h1>Progress</h1>
 <p>The progress bar documentation:</p>
 <ul>
 <li><a href="http://developer.android.com/reference/android/widget/ProgressBar.html">http://developer.android.com/reference/android/widget/ProgressBar.html</a></li>
@@ -1035,9 +1049,9 @@ public class Donate extends AppCompatActivity
 </code></pre>
 
 <p>Android code can become very verbose and complex. Carefully formatting is essential if you are not to be overwhelmed.</p>
-    </div>
-    <div class="tab-pane fade" id="Exercises">
-      <h1>Exercises</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="Exercises">
+    <h1>Exercises</h1>
 <h2>Exercise 1:</h2>
 <p>Archive of lab so far:</p>
 <ul>
@@ -1125,31 +1139,45 @@ build/
 </ul>
 <p>You already have a number of these on screen. Your layout could be revised to look like this:</p>
 <p><img alt="Figure 3: Total so far displayed" src="img/27.png"></p>
+  </div>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
+
+
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-</div>
-<br> <br>
-
-
-    </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,45 +81,64 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        3: Navigation & App Structure
-      </div>
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      3: Navigation & App Structure
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    <a class="active item" data-tab="Donation-03">
+        Donation-03
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
+      <a class="item" data-tab="08">
+        08
+      </a>
+      <a class="item" data-tab="09">
+        09
+      </a>
+      <a class="item" data-tab="10">
+        10
+      </a>
+      <a class="item" data-tab="11">
+        11
+      </a>
+      <a class="item" data-tab="Solution">
+        Solution
+      </a>
     </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#Donation-03" data-toggle="tab"> Donation-03 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
-          <li><a href= "#08" data-toggle="tab"> 08 </a> </li>
-          <li><a href= "#09" data-toggle="tab"> 09 </a> </li>
-          <li><a href= "#10" data-toggle="tab"> 10 </a> </li>
-          <li><a href= "#11" data-toggle="tab"> 11 </a> </li>
-          <li><a href= "#Solution" data-toggle="tab"> Solution </a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
 
 <br><br>
 
-<div class="tab-content">
-  <div class="tab-pane active" id="Donation-03">
+  <div  class="ui tab segment lab" data-tab="Donation-03">
     <h1>Objectives</h1>
 <p>We continue the implementation of Donation to including the welcome, sign up and login. Support these views with a User model, and validate the users on log in. Continue to build on your Donation repository.</p>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Starting Point - Donation-02</h1>
+  <div  class="ui tab segment lab" data-tab="01">
+    <h1>Starting Point - Donation-02</h1>
 <p>The best starting point for this lab is the completed lab from the `donation-02' lab available here:</p>
 <ul>
 <li><a href="https://github.com/wit-computing/donation-android-2015-02">https://github.com/wit-computing/donation-android-2015-02</a></li>
@@ -188,9 +208,9 @@ h3
 <ul>
 <li><a href="https://github.com/wit-computing/donation-android-2015-03/commit/30cf7214c33b8138cf250cdfca8a302813c9b720">Exercise-02</a></li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Exercise 2</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="02">
+    <h1>Exercise 2</h1>
 <p>When a donation is accepted, set the amount on screen to 0 (in both picker and text field).</p>
 <h1>Solution</h1>
 <p>Add these two lines at the end of Donate.donateButtonPressed()</p>
@@ -202,9 +222,9 @@ h3
 <ul>
 <li><a href="https://github.com/wit-computing/donation-android-2015-03/commit/9deccddb9848eb8dbc6a0b39cc74008734535594">Exercise-02</a></li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Exercise 3</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="03">
+    <h1>Exercise 3</h1>
 <p>When you navigate from the Donate activity to reports, there will be no menu available. Bring in a menu, with two options 'Settings' and 'Donate' - Donate should bring you back to the donate screen.</p>
 <h1>Solution</h1>
 <p>Introduce a new string constant into strings.xml:</p>
@@ -274,9 +294,9 @@ import android.view.Menu;
 <ul>
 <li><a href="https://github.com/wit-computing/donation-android-2015-03/commit/37d4e19afb1569a340ceabdf8ceb46fcb15f6ddc">Exercise-03</a></li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Exercise 4: Welcome</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="04">
+    <h1>Exercise 4: Welcome</h1>
 <p>Introduce a new welcome screen - which should display a greeting + give the user 2 options (as simple buttons)</p>
 <ul>
 <li>Signup</li>
@@ -466,9 +486,9 @@ import android.widget.Toast;
 <ul>
 <li><a href="https://github.com/wit-computing/donation-android-2015-03/commit/75cef1b50feb75278100f8df70f052cd2361ecc1">Exercise-04</a></li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Exercise 5 - Part 1 Signup Layout</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="05">
+    <h1>Exercise 5 - Part 1 Signup Layout</h1>
 <p>Introduce a Signup Activity, which should present the user with:</p>
 <ul>
 <li>First Name</li>
@@ -670,9 +690,9 @@ import android.widget.Toast;
     &lt;string name=&quot;signupPassword&quot;&gt;Password&lt;/string&gt;
     &lt;string name=&quot;signupRegister&quot;&gt;Register&lt;/string&gt;
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>Exercise 5 - Part 2 Signup Activity Class</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="06">
+    <h1>Exercise 5 - Part 2 Signup Activity Class</h1>
 <p>(continued)</p>
 <p>Pressing Register should take you directly to "Donate" activity. Also, refactor the Welcome screen such that the 'signup' button takes you to this screen (the Donate activity).</p>
 <h1>Solution</h1>
@@ -763,9 +783,9 @@ public class Signup extends AppCompatActivity
 <ul>
 <li><a href="https://github.com/wit-computing/donation-android-2015-03/commit/30139f4f9e9f46cbb7ea5dbf6a7054deb2c872f1">Exercise-05</a></li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="07">
-      <h1>Exercise 6: : Login</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="07">
+    <h1>Exercise 6: : Login</h1>
 <p>Introduce a Login activty, which should just look for</p>
 <ul>
 <li>email</li>
@@ -923,9 +943,9 @@ public class Login extends Activity
 <ul>
 <li><a href="https://github.com/wit-computing/donation-android-2015-03/commit/e8885a5c37676f3e4328537083c28596e50b7a10">Exercise-06</a></li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="08">
-      <h1>Exercise 7</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="08">
+    <h1>Exercise 7</h1>
 <p>Bring in a new menu option - 'logout'. It should take you to the welcome screen, and should be available from the donate and report activities.</p>
 <h1>Solution</h1>
 <p>Introduce a new string resource for the menu item in strings.xml:</p>
@@ -975,9 +995,9 @@ public class Login extends Activity
 <ul>
 <li><a href="https://github.com/wit-computing/donation-android-2015-03/commit/a4071dc3663508f08fd1472838cd1ee62a036ed8">Exercise-07</a></li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="09">
-      <h1>Exercise 8</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="09">
+    <h1>Exercise 8</h1>
 <p>Introduce a 'User' into the models package to represent the user in the usual way. Maintain a list of Users in the DonationApp object. Whenever anyone registers, then create a new User object in this list.</p>
 <h1>Solution</h1>
 <p>Bring in this new class the project</p>
@@ -1035,9 +1055,9 @@ public class User
 <li><a href="https://github.com/wit-computing/donation-android-2015-03/commit/b46d89dd8947081b1e16caa80dd717a5f289240a">Exercise-08</a></li>
 </ul>
 <p>(this commit has been miss titled exercise 09)</p>
-    </div>
-    <div class="tab-pane fade" id="10">
-      <h1>Exercise 9</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="10">
+    <h1>Exercise 9</h1>
 <p>Implement the Login activity so that users are permitted to Donate only if they are registered (i.e. a matching email + password exists in the list of users maintained by DonationApp)</p>
 <h1>Solution</h1>
 <p>Here is a new method for DonationApp that will validate users :</p>
@@ -1080,9 +1100,9 @@ public class User
 <li><a href="https://github.com/wit-computing/donation-android-2015-03/commit/39ecb6b49bfdea9be3607adfc340dd3f4e0f6e6e">Exercise-09</a></li>
 </ul>
 <p>(this commit has been miss titled exercise 10)</p>
-    </div>
-    <div class="tab-pane fade" id="11">
-      <h1>Refactor Package Structure</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="11">
+    <h1>Refactor Package Structure</h1>
 <p>Currently our project package structure looks like this:</p>
 <p><img alt="" src="img/11.png"></p>
 <p>This is a reasonable number of classes in the <code>app.donation</code> package, but we might consider it a bit cluttered. </p>
@@ -1099,9 +1119,9 @@ public class User
 <ul>
 <li><a href="https://github.com/wit-computing/donation-android-2015-03/commit/c4fe5ab18a12431b265402952ec3fa3d0c99a2bf">Final</a></li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="Solution">
-      <h1>Solution</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="Solution">
+    <h1>Solution</h1>
 <p>Project so far:</p>
 <ul>
 <li><a href="https://github.com/wit-computing/donation-android-2015-03">https://github.com/wit-computing/donation-android-2015-03</a></li>
@@ -1125,31 +1145,45 @@ public class User
 </code></pre>
 
 <p>You will be asked for your password for the remote service before the push will be fulfilled</p>
+  </div>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
+
+
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-</div>
-<br> <br>
-
-
-    </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,40 +81,49 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        1: Overview & Tools
-      </div>
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      1: Overview & Tools
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    <a class="active item" data-tab="Android-Tools-01">
+        Android-Tools-01
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
     </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#Android-Tools-01" data-toggle="tab"> Android-Tools-01 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
 
 <br><br>
 
-<div class="tab-content">
-  <div class="tab-pane active" id="Android-Tools-01">
+  <div  class="ui tab segment lab" data-tab="Android-Tools-01">
     <h1>Objectives</h1>
 <p>Here we discuss how to install and set up effective tools for Android application development. These include the Android Studio IDE  + an emulator. The emulator we hope to use - Genymotion - is a third party application not strictly part of the android build tools. Optionally, in some cases, we may use an emulator that is included as part of Android Studio installation although this may prove significantly slower than Genymotion. It may not be possible to use an emulator in some environments and in such cases it shall be necessary to test on a physical device such as a phone or tablet.</p>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Android Studio &amp; SDK Tools</h1>
+  <div  class="ui tab segment lab" data-tab="01">
+    <h1>Android Studio &amp; SDK Tools</h1>
 <p>These steps describe how to download and install Android Studio &amp; bundled SDK Tools:</p>
 <ul>
 <li>
@@ -176,9 +186,9 @@ exit 0
 <img alt="Figure 15: Components being downloaded" src="img/012.png">
 <img alt="Figure 16: All components downloaded" src="img/013.png">
 <img alt="Figure 17: Welcome screen presenting range of options" src="img/014.png"></p>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Your First Android App</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="02">
+    <h1>Your First Android App</h1>
 <p>To create your first Android app launch Android Studio and follow the sequence of steps in the figures below:</p>
 <p><img alt="Figure 1: Start a new Android Studio project" src="img/014a.png"></p>
 <p>In Figure 2 you will be asked for your Company Domain. The purpose of this is to facilitate compliance with the <a href="https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html">Java package naming convention</a>. Here, in this lab, we provide a fictitious domain.</p>
@@ -215,9 +225,9 @@ exit 0
 <img alt="Figure 12: Confirmation the emulator software is running in accelerated mode" src="img/72.png">
 <img alt="Figure 13: Confirmation emulator has launched" src="img/73.png">
 <img alt="Figure 14: Emulator brought into view displaying default text - Hello world!" src="img/022.png"></p>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Genymotion emulator installation</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="03">
+    <h1>Genymotion emulator installation</h1>
 <p>During development of an Android application it is necessary to compile and run the app many times. The app may be tested by installing and running it on a physical device, such as an Android phone or tablet. But the app may also be run on a virtual device or emulator. In this course we shall have a choice of two emulators, Genymotion and Android Virtual Device (AVD). </p>
 <ul>
 <li>Genymotion is produced by a third party and includes a free version for personal use. Our experience to date is that it is orders of magnitude faster than AVD and consequently it is our intention to use this in preference to AVD. </li>
@@ -276,14 +286,19 @@ exit 0
 </li>
 </ul>
 <p><img alt="Figure 5: Installing genymotion on OSX (Mac) platform" src="img/17.png"></p>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Genymotion plugin</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="04">
+    <h1>Genymotion plugin</h1>
 <p>Note that what are referred to as Preferences on the Mac in Android Studio are Settings on Windows. These are different names for essentially the same window.</p>
-<ul>
-<li>Figure 1 is a screenshot from a Windows 10 install in which Settings is accessed from the menu File | Settings command (Ctrl-Alt-S).</li>
-<li>Figure 2 is a screenshot from a Mac install accessed from the menu Android | Preferences (&#8984;,).</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>- Figure 1 is a screenshot from a Windows 10 install in which Settings is accessed from the menu File</th>
+<th>Settings command (Ctrl-Alt-S).</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
 <p>This step briefly describes how to:</p>
 <ul>
 <li>Install Genymotion plugin in Android Studio.<ul>
@@ -354,9 +369,9 @@ exit 0
 </li>
 </ul>
 <p><img alt="Figure 13: Genymotion emulator" src="img/14.png"></p>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Install app on Genymotion</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="05">
+    <h1>Install app on Genymotion</h1>
 <p>Install and test the default app on the Genymotion emulator as shown in following figures.</p>
 <ul>
 <li>Click on the Genymotion toolbar icon (as shown in Figure 4 in the previous step).</li>
@@ -365,9 +380,9 @@ exit 0
 <p>Now, in addition to the built-in emulator, Genymotion is available:</p>
 <p><img alt="Figure 2: Select Genymotion emulator on which to install the app" src="img/genymotion_021.png"></p>
 <p><img alt="Figure 3: App runs on Genymotion emulator" src="img/genymotion_022.png"></p>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>Android physical device</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="06">
+    <h1>Android physical device</h1>
 <p>This step applies only to those who may intend using an external device such as an Android phone or tablet.</p>
 <ul>
 <li>It also applies to the default app we have just developed. More sophisticated apps will likely require alterations to the build.gradle file provided below.</li>
@@ -443,35 +458,49 @@ Service pack 3, Windows Media Player, version 11 or higher or USB driver for Win
 <ul>
 <li>After a few moments the application should install and launch on your phone.</li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="07">
-      <h1>Setup summary</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="07">
+    <h1>Setup summary</h1>
 <p><img alt="" src="img/28.png"></p>
+  </div>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
+
+
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-</div>
-<br> <br>
-
-
-    </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

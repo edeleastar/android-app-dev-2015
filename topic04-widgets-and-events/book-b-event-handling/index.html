@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,39 +81,46 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        4: Platform & Events
-      </div>
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      4: Platform & Events
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    <a class="active item" data-tab="Event-Handling">
+        Event-Handling
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="Exercises">
+        Exercises
+      </a>
+      <a class="item" data-tab="Archives">
+        Archives
+      </a>
     </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#Event-Handling" data-toggle="tab"> Event-Handling </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#Exercises" data-toggle="tab"> Exercises </a> </li>
-          <li><a href= "#Archives" data-toggle="tab"> Archives </a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
 
 <br><br>
 
-<div class="tab-content">
-  <div class="tab-pane active" id="Event-Handling">
+  <div  class="ui tab segment lab" data-tab="Event-Handling">
     <h1>Objectives</h1>
 <p>This is a short lab whose aim is to provide a detailed explanation of event handling via a simple standalone non-android application</p>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>MyRentFragment</h1>
+  <div  class="ui tab segment lab" data-tab="01">
+    <h1>MyRentFragment</h1>
 <p>Here is an extract from MyRentFragment.java:</p>
 <pre><code>  EditText geolocation;
   ...
@@ -147,9 +155,9 @@ h3
 <p><img alt="Figure 1: Analysis of callback and listener code" src="img/01.png"></p>
 <p>In the following steps we shall develop short programs that will, hopefully, explain more fully how the pattern in this method, <em>geolocation</em>, works.</p>
 <p>We shall select names for classes, interface and methods that, where appropriate, are the same as in <em>geolocation</em>.</p>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Callback (Standalone method)</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="02">
+    <h1>Callback (Standalone method)</h1>
 <p>This approach is for the purpose of instruction only and is unlikely to be used in practice.</p>
 <ul>
 <li>Create a project in Eclipse named <em>callbacks</em>.</li>
@@ -294,9 +302,9 @@ public class EventLoop
 </ul>
 <p>Run the application and observe the output:</p>
 <p><img alt="Figure 1: Callback in action" src="img/02.png"></p>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Callback (Anonymous class method)</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="03">
+    <h1>Callback (Anonymous class method)</h1>
 <p>We shall now dispense with the <em>Callback</em> class</p>
 <ul>
 <li>Create a new package in the <em>callbacks</em> project named <em>org.wit.callbackanon</em>.</li>
@@ -380,9 +388,9 @@ public class EventLoop
 
 <p>Figure 1 below presents a flow diagram of the program.</p>
 <p><img alt="Figure 1: Flow diagram of callback program" src="img/07.png"></p>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Callback (Delegated method)</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="04">
+    <h1>Callback (Delegated method)</h1>
 <ul>
 <li>Create a package in <em>callbacks</em> project named <em>org.wit.callbackimpl</em>.</li>
 <li>
@@ -554,9 +562,9 @@ public class EventLoop implements TextWatcher
   }
 }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="Exercises">
-      <h1>Exercise 1</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="Exercises">
+    <h1>Exercise 1</h1>
 <p>Modify the the Delegate callback method as follows:</p>
 <ul>
 <li>Introduce a new interface, KeyBoardListener, inherited from the existing interface TextWatcher.<ul>
@@ -684,38 +692,52 @@ public class Keypress extends TextView
 
 <p>Here are suggested class diagrams for the solution.</p>
 <p><img alt="" src="img/14.png"></p>
-    </div>
-    <div class="tab-pane fade" id="Archives">
-      <h1>Archives</h1>
+  </div>
+  <div  class="ui tab segment lab" data-tab="Archives">
+    <h1>Archives</h1>
 <p>This is downloadable archive of the event handling code complete to the end if this lab:</p>
 <ul>
 <li><a href="archives/event_handling.zip">Event_handling</a></li>
 </ul>
+  </div>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
+
+
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-</div>
-<br> <br>
-
-
-    </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 
