@@ -395,41 +395,29 @@ public class ResidenceFragment extends Fragment implements TextWatcher,
     <h1>ResidenceListActivity</h1>
 <p>As is the case with ResidenceActivity, much of ResidenceListActivity's code is also moved to its new associated fragment class - ResidenceListFragment.</p>
 <p>Here is the refactored ResidenceListActivity:</p>
-<pre><code>package org.wit.myrent.activities;
-
-import org.wit.myrent.R;
-
-import android.os.Bundle;
+<p>```
+package org.wit.myrent.activities;</p>
+<p>import org.wit.myrent.R;</p>
+<p>import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-
-
-public class ResidenceListActivity extends FragmentActivity
+import android.support.v4.app.FragmentManager;</p>
+<p>public class ResidenceListActivity extends FragmentActivity
 {
-
   public void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.fragment_container);
-
-    FragmentManager manager = getSupportFragmentManager();
-    Fragment fragment = manager.findFragmentById(R.id.fragmentContainer);
-    if (fragment == null)
-    {
-      fragment = new ResidenceListFragment();
-      manager.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
-    }
-  }
+    setContentView(R.layout.fragment_container);</p>
+<pre><code>FragmentManager manager = getSupportFragmentManager();
+Fragment fragment = manager.findFragmentById(R.id.fragmentContainer);
+if (fragment == null)
+{
+  fragment = new ResidenceListFragment();
+  manager.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
 }
 </code></pre>
-
-<p>As with the ResidenceActivity, a container is required:</p>
-<pre><code>&lt;FrameLayout android:id=&quot;@+id/fragmentResidenceListContainer&quot;
-             xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-             android:layout_width=&quot;match_parent&quot;
-             android:layout_height=&quot;match_parent&quot;/&gt;
-</code></pre>
+<p>}
+}</p>
   </div>
   <div  class="ui tab segment lab" data-tab="05">
     <h1>ResidenceListFragment</h1>
