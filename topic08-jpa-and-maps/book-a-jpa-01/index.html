@@ -116,14 +116,14 @@ h3
       <a class="item" data-tab="08">
         08
       </a>
+      <a class="item" data-tab="09">
+        09
+      </a>
       <a class="item" data-tab="10">
         10
       </a>
       <a class="item" data-tab="11">
         11
-      </a>
-      <a class="item" data-tab="12">
-        12
       </a>
     </div>
 </div>
@@ -138,7 +138,7 @@ h3
     <h1>Exercises</h1>
 <p>The witpress-v2 app, completed during the summer school, implements a simple blogging app with comments. You may have this app in your workspace. If not, this is the archive here:</p>
 <ul>
-<li><a href="archives/witpressapp.zip">witpressapp.zip</a></li>
+<li><a href="https://github.com/wit-computing/witpressapp/releases/tag/V01">https://github.com/wit-computing/witpressapp/releases/tag/V01</a></li>
 </ul>
 <h2>Exercise 1:</h2>
 <p>Your task is to implement a comprehensive set of unit tests to fully exercise the model classes. The following screen capture is and example of the type of tests you should attempt to implement:</p>
@@ -147,9 +147,7 @@ h3
 <p>The PostTests are a little different in that they exercise features form the collection library - rather than the model classes themselves. I.e. they represent tests that are focused not so much on your classes, but on verifying your understanding of how some library classes work.</p>
 <h2>Exercise 1 Solution:</h2>
 <ul>
-<li><a href="archives/BlogTest.java">BlogTest</a></li>
-<li><a href="archives/PostTest.java">PostTest</a></li>
-<li><a href="archives/CommentTest.java">CommentTest</a></li>
+<li><a href="https://github.com/wit-computing/witpressapp/releases/tag/V02">https://github.com/wit-computing/witpressapp/releases/tag/V02</a></li>
 </ul>
 <h2>Exercise 3:</h2>
 <p>Currently a Blog is not modeled - a blog just a collection of posts. Model a Blog as a first class object, developing tests to verify the implementation as you go. Do this in two versions:</p>
@@ -161,7 +159,7 @@ h3
 <h2>Exercise 3 Solution:</h2>
 <p>This is a complete solution to Exercise 3 :</p>
 <ul>
-<li><a href="archives/witpress-v3.zip">witpress-v3.zip</a></li>
+<li><a href="https://github.com/wit-computing/witpress-alt">https://github.com/wit-computing/witpress-alt</a></li>
 </ul>
 <p>Which encompasses:</p>
 <ul>
@@ -169,9 +167,16 @@ h3
 <li>Tests which verify this model change</li>
 <li>UI, sufficient changes have been made to the UI to enable it to function using the revised model.</li>
 </ul>
+<p>Note: this solution uses the <a href="http://getbootstrap.com/">Bootstrap</a> ui library instead of <a href="http://semantic-ui.com">Semantic UI</a>. You can ignore that aspect, and focus on the models + tests.</p>
   </div>
   <div  class="ui tab segment lab" data-tab="02">
-    <h1>JPA Model Project</h1>
+    <h1>Update Play</h1>
+<p>Play has just been updated to 1.4.0</p>
+<ul>
+<li><a href="https://www.playframework.com/download">https://www.playframework.com/download</a></li>
+</ul>
+<p>Download and replace your version with this.</p>
+<h1>JPA Model Project</h1>
 <p>Create a brand new Play project. Do this by navigating to the correct folder folder (most likely your workspace) and running a command prompt. Then type:</p>
 <pre><code>play new jpamodel
 </code></pre>
@@ -292,6 +297,10 @@ public class PlayerTest extends UnitTest
 <ul>
 <li><a href="http://localhost:9000/@db">http://localhost:9000/@db</a></li>
 </ul>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V02">https://github.com/wit-computing/jpamodel/releases/tag/V02</a></li>
+</ul>
   </div>
   <div  class="ui tab segment lab" data-tab="03">
     <h1>Initial Tests for Player and Club</h1>
@@ -369,12 +378,7 @@ public class PlayerTest extends UnitTest
 <p>All tests should pass now.</p>
 <h2>ClubTest</h2>
 <p>Extend Club with the same utility methods as Player:</p>
-<pre><code class="java">  public String toString()
-  {
-    return name;
-  }
-
-  public static Club findByName(String name)
+<pre><code class="java">  public static Club findByName(String name)
   {
     return find(&quot;name&quot;, name).first();
   }  
@@ -434,13 +438,32 @@ public class ClubTest extends UnitTest
 </code></pre>
 
 <p>These tests should run successfully. Experiment with commenting out the @After annotation and seeing the actual objects in the database.</p>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V03">https://github.com/wit-computing/jpamodel/releases/tag/V03</a></li>
+</ul>
   </div>
   <div  class="ui tab segment lab" data-tab="04">
     <h1>Modeling a Player / Club Relationship</h1>
 <p>Currently there is no relationship between player and club - which can be modeled like this:</p>
 <p><img alt="" src="img/14.png"></p>
 <p>We can now implement this relationship. Modify the Club class as follows:</p>
-<pre><code class="java">public class Club extends Model
+<pre><code class="java">
+...
+...
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+import play.db.jpa.Model;
+...
+...
+
+
+public class Club extends Model
 {
   //... 
   @OneToMany(cascade=CascadeType.ALL)
@@ -527,6 +550,10 @@ public class ClubTest extends UnitTest
 
 <p>Read and absorb the logic of this test. As an experiment, comment out the final line (deleting mike). Then look to the database interface and note that mike is still in the database after the test have run. </p>
 <p>Note also that if we leave the deletion of mike commented out, and re-run the tests - then other tests start to fail. The only cure now will be to restart the application.</p>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V04">https://github.com/wit-computing/jpamodel/releases/tag/V04</a></li>
+</ul>
   </div>
   <div  class="ui tab segment lab" data-tab="05">
     <h2>Bidirectional Club / Player Relationship</h2>
@@ -536,7 +563,11 @@ public class ClubTest extends UnitTest
 <p><img alt="" src="img/14.png"></p>
 <p>Implementing this variant of the relationship requires additional attributes and annotations in both Player and Club.</p>
 <h2>Player:</h2>
-<pre><code class="java">  @ManyToOne
+<pre><code class="java">...
+import javax.persistence.ManyToOne;
+...
+
+  @ManyToOne
   public Club club;
 </code></pre>
 
@@ -564,7 +595,11 @@ public class ClubTest extends UnitTest
   }
 </code></pre>
 
-<p>Make sure this passes.</p>
+<p>Whenever you change the model you should restart the application. Do this now and make sure this passes.</p>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V05">https://github.com/wit-computing/jpamodel/releases/tag/V05</a></li>
+</ul>
   </div>
   <div  class="ui tab segment lab" data-tab="06">
     <h1>Division + Sponsor</h1>
@@ -679,19 +714,35 @@ public class Sponsor extends Model
   }
 
 </code></pre>
+
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V06">https://github.com/wit-computing/jpamodel/releases/tag/V06</a></li>
+</ul>
   </div>
   <div  class="ui tab segment lab" data-tab="07">
     <h1>Tests</h1>
 <p>We can significantly simplify aspects of the testing if we invest some time in setting up test objects in yaml first.</p>
-<p>Open 'data.yaml' and replace its contents with the following:</p>
-<pre><code>Club(dunmore):
+<p>Create a 'data.yml' file in 'conf' and populate as follows:</p>
+<pre><code>Sponsor(pub):
+    name: pub 
+
+Sponsor(newsagent):
+    name: newsagent    
+
+Club(dunmore):
     name: dunmore
 
 Club(tramore):
     name: tramore
+    sponsors:
+          - pub
+          - newsagent
 
 Club(fenor):
     name: fenor
+    sponsors:
+          - newsagent   
 
 Player(jim):
     name: jim
@@ -730,11 +781,17 @@ Division(junior):
 
 Sponsor(newsagent):
     name: newsagent
+    support:
+         - tramore
+         - fenor
 
 Sponsor(pub):
     name: pub 
+    support:
+         - tramore
 </code></pre>
 
+<p>Note carefully how the sponsors appear twice. Why is this?</p>
 <p>Now bring in a new test class that will exercise this model:</p>
 <pre><code class="java">import org.junit.*;
 
@@ -746,28 +803,10 @@ import models.*;
 
 public class ComprehensiveTest extends UnitTest
 {
-  public static void loadSponsorships()
-  {
-    Club    tramore   = Club.find(&quot;byName&quot;, &quot;tramore&quot;).first();
-    Club    dunmore   = Club.find(&quot;byName&quot;, &quot;dunmore&quot;).first();
-    Sponsor newsagent = Sponsor.find(&quot;byName&quot;, &quot;newsagent&quot;).first();
-
-    tramore.addSponsor(newsagent);
-    dunmore.addSponsor(newsagent);
-
-    newsagent.addSuport(tramore);
-    newsagent.addSuport(dunmore);
-
-    tramore.save();
-    dunmore.save();
-    newsagent.save();
-  }
-
   @Before
   public void setup()
   {
     Fixtures.loadModels(&quot;data.yml&quot;);
-    loadSponsorships();
   }
 
   @After
@@ -843,13 +882,13 @@ public class ComprehensiveTest extends UnitTest
   public void testClubSponsorShort()
   {
     Sponsor  newsagent = Sponsor.find(&quot;byName&quot;, &quot;newsagent&quot;).first();
-    Club     dunmore   = Club.find(&quot;byName&quot;, &quot;dunmore&quot;).first();
+    Club     fenor   = Club.find(&quot;byName&quot;, &quot;fenor&quot;).first();
     Club     tramore   = Club.find(&quot;byName&quot;, &quot;tramore&quot;).first();
 
-    assertTrue(newsagent.support.contains(dunmore));
+    assertTrue(newsagent.support.contains(fenor));
     assertTrue(newsagent.support.contains(tramore));
 
-    assertTrue(dunmore.sponsors.contains(newsagent));
+    assertTrue(fenor.sponsors.contains(newsagent));
     assertTrue(tramore.sponsors.contains(newsagent));
   }
 
@@ -879,15 +918,15 @@ public class ComprehensiveTest extends UnitTest
   public void testEditClubSponsor()
   {
     Sponsor  newsagent = Sponsor.find(&quot;byName&quot;, &quot;newsagent&quot;).first();
-    Club     dunmore   = Club.find(&quot;byName&quot;, &quot;dunmore&quot;).first();
+    Club     fenor   = Club.find(&quot;byName&quot;, &quot;fenor&quot;).first();
 
     assertEquals(2, newsagent.support.size());  
 
-    newsagent.support.remove(dunmore);
-    dunmore.sponsors.remove(newsagent);
+    newsagent.support.remove(fenor);
+    fenor.sponsors.remove(newsagent);
 
     newsagent.save();
-    dunmore.save();
+    fenor.save();
 
     assertEquals(1, newsagent.support.size());  
   }
@@ -895,7 +934,10 @@ public class ComprehensiveTest extends UnitTest
 </code></pre>
 
 <p>Run the app in test mode, and run this new test suite. All of these tests should run.</p>
-<p>Note carefully how we have 'manually' loaded the sponsorship relationships after the model has been loaded.</p>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V07">https://github.com/wit-computing/jpamodel/releases/tag/V07</a></li>
+</ul>
   </div>
   <div  class="ui tab segment lab" data-tab="08">
     <h1>Controllers/View</h1>
@@ -1119,9 +1161,18 @@ public class Division extends Controller
   &lt;/table&gt;
 &lt;/section&gt;
 </code></pre>
+
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V08">https://github.com/wit-computing/jpamodel/releases/tag/V08</a></li>
+</ul>
   </div>
-  <div  class="ui tab segment lab" data-tab="10">
+  <div  class="ui tab segment lab" data-tab="09">
     <h1>Routes + Test Data</h1>
+<p>Before we can start the app in normal mode, we will need to make sure this line is uncommented in the <code>application.conf</code> file:</p>
+<pre><code>db.default=mem
+</code></pre>
+
 <p>Now incorporate the following routes:</p>
 <pre><code># Home page
 GET     /                                       Divisions.index
@@ -1160,8 +1211,12 @@ public class Bootstrap extends Job
 </code></pre>
 
 <p>Run the app again, and you should start to see some data.</p>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V09">https://github.com/wit-computing/jpamodel/releases/tag/V09</a></li>
+</ul>
   </div>
-  <div  class="ui tab segment lab" data-tab="11">
+  <div  class="ui tab segment lab" data-tab="10">
     <h1>Showing Division/Club/Player Relationships</h1>
 <p>Currently UI for the model if read only - and we can only see each model in isolation (we cant see relationships).</p>
 <p>First, we tackle the relationships. Update the <code>&lt;table&gt;</code> element of the following views with this version:</p>
@@ -1256,8 +1311,12 @@ public class Bootstrap extends Job
 </code></pre>
 
 <p>See if you can make sense of the above templates. Save everything and reload. You should be able to see what players belong to which clubs, and also what divisions the clubs are in.</p>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V10">https://github.com/wit-computing/jpamodel/releases/tag/V10</a></li>
+</ul>
   </div>
-  <div  class="ui tab segment lab" data-tab="12">
+  <div  class="ui tab segment lab" data-tab="11">
     <h1>Delete Player Feature</h1>
 <p>Introduce the following method into the controllers/Players:</p>
 <pre><code class="java">  public static void delete(Long id)
@@ -1300,6 +1359,10 @@ public class Bootstrap extends Job
 </code></pre>
 
 <p>And try again. You should be able to delete players.</p>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V11">https://github.com/wit-computing/jpamodel/releases/tag/V11</a></li>
+</ul>
   </div>
 <script>
 $('.ui.menu .item')

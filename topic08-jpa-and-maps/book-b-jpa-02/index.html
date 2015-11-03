@@ -124,35 +124,30 @@ h3
   </div>
   <div  class="ui tab segment lab" data-tab="01">
     <h1>Semantic UI</h1>
-<p>Using your project form the last lab, or this one here if you did'nt complete it:</p>
-<ul>
-<li><a href="archives/jpamodel-lab08.zip">jpamodel.zip</a></li>
-</ul>
 <p>We wish to incorporate the latest version of the semantic ui css framework into your application, and restyle all of the views to take advantage of the framework.</p>
-<p>Download the latest Semsntic UI archive here:</p>
 <ul>
 <li><a href="http://semantic-ui.com/">http://semantic-ui.com/</a></li>
 </ul>
-<p>Unzip the archvive. It contains subfolder called <code>packaged</code>. Rename this to <code>semantic</code>, and drag the newly renamed subfolder into the public folder of your project.</p>
-<p>We should also update the version of JQuery in the public/javascripts folder. It can be downloaded here:</p>
-<ul>
-<li><a href="http://jquery.com/download/">http://jquery.com/download/</a></li>
-</ul>
-<p>Select the 2.x 'compressed' version.</p>
-<p>We can now replace the <code>views/main.html</code> with this version:</p>
+<p>This simplest way if incorporating it is to link to it on a CDN (Content Delivery Network).</p>
 <pre><code class="html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;title&gt;#{get 'title' /}&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;@{'/public/semantic/css/semantic.min.css'}&quot;&gt;
-    &lt;script src=&quot;@{'/public/javascripts/jquery-2.1.0.min.js'}&quot;&gt;&lt;/script&gt; 
-    &lt;script src=&quot;@{'/public/semantic/javascript/semantic.min.js'}&quot;&gt;&lt;/script&gt;   
-  &lt;/head&gt;    
+    &lt;meta charset=&quot;${_response_encoding}&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot;href=&quot;https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css&quot;type=&quot;text/css&quot;&gt;
+     &lt;script type=&quot;text/javascript&quot; src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js&quot;&gt;&lt;/script&gt;
+     &lt;script type=&quot;text/javascript&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js&quot;&gt;&lt;/script&gt;    
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;@{'/public/stylesheets/main.css'}&quot;&gt;
+    #{get 'moreStyles' /}
+    &lt;link rel=&quot;shortcut icon&quot; type=&quot;image/png&quot; href=&quot;@{'/public/images/favicon.png'}&quot;&gt;
+  &lt;/head&gt;
   &lt;body&gt;
     #{doLayout /}
-  &lt;/body&gt;
+
+  #{get 'moreScripts' /}
+&lt;/body&gt;
 &lt;/html&gt;
+
 </code></pre>
 
 <p>To test out the UI, simply give each <code>&lt;nav&gt;</code> element this class <code>class="ui menu"</code> :</p>
@@ -165,7 +160,7 @@ h3
 </code></pre>
 
 <p>A light border should appear around each view.</p>
-<p>Finally, style all of the tables:</p>
+<p>Now style all of the tables:</p>
 <pre><code class="html">&lt;table class=&quot;ui table&quot;&gt;
 </code></pre>
 
@@ -182,6 +177,10 @@ h3
 </code></pre>
 
 <p>Try out these styles now.</p>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V12">https://github.com/wit-computing/jpamodel/releases/tag/V12</a></li>
+</ul>
   </div>
   <div  class="ui tab segment lab" data-tab="02">
     <h1>Delete Club</h1>
@@ -221,6 +220,10 @@ h3
 </code></pre>
 
 <p>Try deleting clubs now.</p>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V13">https://github.com/wit-computing/jpamodel/releases/tag/V13</a></li>
+</ul>
   </div>
   <div  class="ui tab segment lab" data-tab="03">
     <h1>Delete Divisions</h1>
@@ -247,6 +250,10 @@ h3
 
 <p>When you delete a division, pay close attention to the clubs and players tables. </p>
 <p>Can you explain what is happening?</p>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V14">https://github.com/wit-computing/jpamodel/releases/tag/V14</a></li>
+</ul>
   </div>
   <div  class="ui tab segment lab" data-tab="04">
     <h1>Show Sponsors</h1>
@@ -300,111 +307,11 @@ h3
   &lt;/table&gt;
 </code></pre>
 
-<p>However, of you run the app you will see that the sponsors table doesnt contain any clubs. This is because there are no sponsor-club relationships in our test data.</p>
-<p>To fix this takes a bit of work, because we have a <code>ManyToMany</code> relationship, which requires definition on both sides. </p>
-<p>Open the data.yaml file (the one in the <code>conf</code> directory), and copy the following in at the very top of the file (we already have these at the end, leave them there as well):</p>
-<pre><code>Sponsor(pub):
-    name: pub 
-
-Sponsor(newsagent):
-    name: newsagent    
-</code></pre>
-
-<p>Now adjust fenor and tramore to have some sponsors:</p>
-<pre><code>Club(tramore):
-    name: tramore
-    sponsors:
-          - pub
-          - newsagent
-
-Club(fenor):
-    name: fenor
-    sponsors:
-          - newsagent 
-</code></pre>
-
-<p>and finally, at the end of the yaml file, include the 'other side' of the relationship in the sponsors:</p>
-<pre><code>Sponsor(newsagent):
-    name: newsagent
-    support:
-         - tramore
-         - fenor
-
-Sponsor(pub):
-    name: pub 
-    support:
-         - tramore
-</code></pre>
-
-<p>Try this out now, and sponsors should show the clubs they support.</p>
-<p>Here is the complete yaml file:</p>
-<pre><code>
-Sponsor(pub):
-    name: pub 
-
-Sponsor(newsagent):
-    name: newsagent    
-
-Club(dunmore):
-    name: dunmore
-
-Club(tramore):
-    name: tramore
-    sponsors:
-          - pub
-          - newsagent
-
-Club(fenor):
-    name: fenor
-    sponsors:
-          - newsagent   
-
-Player(jim):
-    name: jim
-    club: dunmore
-
-Player(mary):
-    name: mary
-    club: dunmore
-
-Player(sam):
-    name: sam
-    club: tramore
-
-Player(john):
-    name: john
-    club: tramore
-
-Player(mike):
-    name: mike
-    club: fenor
-
-Player(linda):
-    name: linda
-    club: fenor    
-
-Division(senior):
-    name: senior
-    members:
-            - tramore
-            - dunmore
-
-Division(junior):
-    name: junior
-    members:
-            - fenor
-
-Sponsor(newsagent):
-    name: newsagent
-    support:
-         - tramore
-         - fenor
-
-Sponsor(pub):
-    name: pub 
-    support:
-         - tramore
-</code></pre>
+<p>Run the app now to see if this page renders as expected.</p>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V15">https://github.com/wit-computing/jpamodel/releases/tag/V15</a></li>
+</ul>
   </div>
   <div  class="ui tab segment lab" data-tab="05">
     <h1>Delete Sponsors</h1>
@@ -437,6 +344,10 @@ Sponsor(pub):
 </code></pre>
 
 <p>Look carefully at the delete method. Can you make sense of it?</p>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V16">https://github.com/wit-computing/jpamodel/releases/tag/V16</a></li>
+</ul>
   </div>
   <div  class="ui tab segment lab" data-tab="06">
     <h1>New Player</h1>
@@ -468,18 +379,7 @@ POST   /players/newplayer                       Players.newPlayer
 
 <p>We also need a form</p>
 <h2>views/Players/addplayer.html</h2>
-<pre><code class="html">#{extends 'main.html' /}
-#{set title:'Player Details' /}
-
-&lt;section class=&quot;ui raised form segment&quot;&gt;
-  &lt;form action=&quot;/players/newplayer&quot; method=&quot;POST&quot;&gt;
-    &lt;div class=&quot;field&quot;&gt;
-      &lt;label&gt; Player Name &lt;/label&gt;
-      &lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;
-    &lt;/div&gt;  
-    &lt;button class=&quot;ui blue submit button&quot;&gt;Add&lt;/button&gt;
-  &lt;/form&gt;
-&lt;/section&gt;
+<pre><code class="html">addplayer
 </code></pre>
 
 <p>Try this out now. </p>
@@ -494,12 +394,16 @@ POST   /players/newplayer                       Players.newPlayer
 
 <p>There is a very small difference. This is using a <code>null-safe</code> operator <code>?</code> when trying to access the clubs name. If the club is null (i.e. there is no club), we will not attempt to reach into the name field.</p>
 <p>Make sure this works now as expected.</p>
+<h2>Repository so far:</h2>
+<ul>
+<li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V17">https://github.com/wit-computing/jpamodel/releases/tag/V17</a></li>
+</ul>
   </div>
   <div  class="ui tab segment lab" data-tab="Exercises">
     <h1>Exercises</h1>
 <p>Archive of project so far:</p>
 <ul>
-<li><a href="archives/jpamodel.zip">jpamodel.zip</a></li>
+<li><a href="https://github.com/wit-computing/jpamodel">https://github.com/wit-computing/jpamodel</a></li>
 </ul>
 <h2>Exercise 1</h2>
 <p>On the clubs page, have the table display the sponsors.</p>
