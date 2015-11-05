@@ -379,7 +379,18 @@ POST   /players/newplayer                       Players.newPlayer
 
 <p>We also need a form</p>
 <h2>views/Players/addplayer.html</h2>
-<pre><code class="html">addplayer
+<pre><code class="html">#{extends 'main.html' /}
+#{set title:'Player Details' /}
+
+&lt;section class=&quot;ui raised form segment&quot;&gt;
+  &lt;form action=&quot;/players/newplayer&quot; method=&quot;POST&quot;&gt;
+    &lt;div class=&quot;field&quot;&gt;
+      &lt;label&gt; Player Name &lt;/label&gt;
+      &lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;
+    &lt;/div&gt;  
+    &lt;button class=&quot;ui blue submit button&quot;&gt;Add&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/section&gt;
 </code></pre>
 
 <p>Try this out now. </p>
