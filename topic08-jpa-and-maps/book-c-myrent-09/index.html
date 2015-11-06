@@ -181,6 +181,11 @@ h3
 </ul>
 <p><img alt="Figure 1: Camera button and thumbnail placeholder introduced" src="img/01.png"></p>
 <p><img alt="Figure 2: Camera button and thumbnail placeholder introduced" src="img/01a.png"></p>
+<p>First add 2 string resources:</p>
+<pre><code>  &lt;string name=&quot;take_photo&quot;&gt;Take Photo&lt;/string&gt;
+  &lt;string name=&quot;save_photo&quot;&gt;Save Photo&lt;/string&gt;
+</code></pre>
+
 <p>Here is the replacement code:</p>
 <pre><code>           &lt;!-- Show Map Button --&gt;          
            &lt;LinearLayout
@@ -747,7 +752,7 @@ private ImageView photoView;
         android:id=&quot;@+id/residenceGalleryImage&quot;
         android:layout_width=&quot;match_parent&quot;
         android:layout_height=&quot;426dp&quot;
-        android:src=&quot;@drawable/ic_launcher&quot; /&gt;
+        android:src=&quot;@mipmap/ic_launcher&quot; /&gt;
 
 &lt;/FrameLayout&gt;
 </code></pre>
