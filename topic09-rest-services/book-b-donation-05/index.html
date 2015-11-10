@@ -1,0 +1,555 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+      <style>
+
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+}
+
+figcaption
+{
+  margin-bottom: 20px;
+}
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+.credits
+{
+  min-height:20px;
+}
+    </style>
+
+  </head>
+
+  <body>
+
+  <div class="ui container">
+<style>
+
+
+code
+{
+  font-family: "Monaco";
+  font-size: 110%;
+}
+
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
+{
+  font-style:italic;
+  font-size:130%;
+  border-bottom: thin solid black;
+}
+h2
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+h3
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+</style>
+
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      9: APIs & Rest
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    <a class="active item" data-tab="Donation-05">
+        Donation-05
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="Exercises">
+        Exercises
+      </a>
+    </div>
+</div>
+
+<br><br>
+
+  <div  class="ui tab segment lab" data-tab="Donation-05">
+    <h1>Objectives</h1>
+<p>Create a new standard java project specifically to test the API we have developed in donation-service-play project.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="01">
+    <h1>donation-service-test</h1>
+<p>Create a new Java Project in eclipse - this time neither a play nor an Android app, just a simple Java Application. Call the Project donation-service-play-test"</p>
+<p><img alt="" src="./img/01.png"></p>
+<p>In the new project, select the project in Eclipse Package Explorer, right click, and select "Build Path-&gt;Configure Build Path"</p>
+<p><img alt="" src="./img/02.png"></p>
+<p>Under libraries, select "Add Library" and in subsequent select JUnit 4:</p>
+<p><img alt="" src="./img/03.png"></p>
+<p>This adds the JUnit library capability to our project.</p>
+<p>Now download this archive here:</p>
+<ul>
+<li><a href="archives/lib.zip">lib.zip</a></li>
+</ul>
+<p>Expand the archive and drag/drop the folder into your project. It should now look like this:</p>
+<p><img alt="" src="./img/04.png"></p>
+<p>Select all of the imported jar files, right-click, and select 'Build Path-&gt;Add to Build Path'</p>
+<p><img alt="" src="./img/05.png"></p>
+<p>The project should now be configured thus:</p>
+<p><img alt="" src="./img/06.png"></p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="02">
+    <h1>Model Classes</h1>
+<h2>app.donation.model</h2>
+<p>In donation-service-test, create a new package called 'app.donation.model'. Incorporate the following two classes into this package:</p>
+<h2>Donor</h2>
+<pre><code>package app.donation.model;
+
+import com.google.common.base.Objects;
+import static com.google.common.base.MoreObjects.toStringHelper;
+
+public class Donor
+{
+  public long   id;
+  public String firstName;
+  public String lastName;
+  public String email;
+  public String password;
+
+  public Donor(String firstName, String lastName, String email, String password)
+  {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.password = password;
+  }
+
+  public String toString()
+  {
+    return toStringHelper(this).addValue(id)
+                           .addValue(firstName)
+                               .addValue(lastName)
+                               .addValue(password)
+                               .addValue(email)                               
+                               .toString();
+  }
+
+  @Override
+  public boolean equals(final Object obj)
+  {
+    if (obj instanceof Donor)
+    {
+      final Donor other = (Donor) obj;
+      return Objects.equal(firstName,  other.firstName) 
+          &amp;&amp; Objects.equal(lastName,   other.lastName)
+          &amp;&amp; Objects.equal(email,      other.email)
+          &amp;&amp; Objects.equal(password,   other.password);                               
+    }
+    else
+    {
+      return false;
+    }
+  } 
+}
+</code></pre>
+
+<h3>Donation</h3>
+<pre><code>package app.donation.model;
+
+import static com.google.common.base.MoreObjects.toStringHelper;
+
+import com.google.common.base.Objects;
+
+public class Donation
+{
+  public long   id;
+  public int    amount;
+  public String method;
+
+  public Donation (int amount, String method)
+  {
+    this.amount = amount;
+    this.method = method;
+  }
+
+  public String toString()
+  {
+    return toStringHelper(this).addValue(id)
+                           .addValue(amount)
+                               .addValue(method)                               
+                               .toString();
+  }
+
+  @Override
+  public boolean equals(final Object obj)
+  {
+    if (obj instanceof Donation)
+    {
+      final Donation other = (Donation) obj;
+      return Objects.equal(amount ,  other.amount) 
+          &amp;&amp; Objects.equal(method,   other.method);                            
+    }
+    else
+    {
+      return false;
+    }
+  } 
+}
+</code></pre>
+
+<p>These are similar - but not identical to - the classes the play application we have just developed (compare them now)</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="03">
+    <h2>API Classes</h2>
+<p>In donation-service-test, create a new package called 'app.donation.main'. Incorporate the following two classes into this package:</p>
+<h2>DonationServiceProxy</h2>
+<pre><code>package app.donation.main;
+
+import java.util.List;
+import app.donation.model.Donor;
+import retrofit.Call;
+import retrofit.http.Body;
+import retrofit.http.DELETE;
+import retrofit.http.GET;
+import retrofit.http.POST;
+import retrofit.http.Path;
+
+public interface DonationServiceProxy
+{
+  @GET(&quot;/api/donors&quot;)
+  Call&lt;List&lt;Donor&gt;&gt; getAllDonors();
+
+  @GET(&quot;/api/donors/{id}&quot;)
+  Call&lt;Donor&gt; getDonor(@Path(&quot;id&quot;) Long id);
+
+  @POST(&quot;/api/donors&quot;)
+  Call&lt;Donor&gt; createDonor(@Body Donor Donor);
+
+  @DELETE(&quot;/api/donors/{id}&quot;)
+  Call&lt;Donor&gt; deleteDonor(@Path(&quot;id&quot;) Long id);
+
+  @DELETE(&quot;/api/donors&quot;)
+  Call&lt;String&gt; deleteAllDonors();
+}
+</code></pre>
+
+<h2>DonationServiceAPI</h2>
+<pre><code>package app.donation.main;
+
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import app.donation.model.Donor;
+import retrofit.Call;
+import retrofit.GsonConverterFactory;
+import retrofit.Response;
+import retrofit.Retrofit;
+
+public class DonationServiceAPI
+{
+  private String service_url = &quot;http://localhost:9000&quot;;
+  private DonationServiceProxy service;
+
+  public DonationServiceAPI()
+  {
+    Gson gson = new GsonBuilder().create();
+
+    Retrofit retrofit = new Retrofit.Builder()
+        .baseUrl(service_url)
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .build();
+    service = retrofit.create(DonationServiceProxy.class);
+  }
+
+  public List&lt;Donor&gt; getAllDonors() throws Exception
+  {
+    Call&lt;List&lt;Donor&gt;&gt; call = (Call&lt;List&lt;Donor&gt;&gt;) service.getAllDonors();
+    Response&lt;List&lt;Donor&gt;&gt; donors = call.execute();
+    return donors.body();
+  }
+
+  public Donor getDonor(Long id) throws Exception
+  {
+    Call&lt;Donor&gt; call = (Call&lt;Donor&gt;) service.getDonor(id);
+    Response&lt;Donor&gt; donors = call.execute();
+    return donors.body();
+  }
+
+  public int deleteDonor(Long id) throws Exception
+  {
+  Call&lt;Donor&gt; call =  service.deleteDonor(id);
+  Response&lt;Donor&gt; val  = call.execute();
+    return val.code();
+  }
+
+  public int deleteAllDonors() throws Exception
+  {
+  Call&lt;String&gt; call =  service.deleteAllDonors();
+  Response&lt;String&gt; val  = call.execute();
+    return val.code();
+  }
+
+  public Donor createDonor(Donor newDonor) throws Exception
+  {
+    Call&lt;Donor&gt; call = (Call&lt;Donor&gt;) service.createDonor(newDonor);
+    Response&lt;Donor&gt; returnedDonor = call.execute();
+    return returnedDonor.body();
+  }
+}
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="04">
+    <h1>Unit Tests</h1>
+<p>Create another package called 'app.donation.test', and incorporate this class:</p>
+<pre><code>package app.donation.test;
+
+import java.util.List;
+import org.junit.Test;
+
+import app.donation.main.DonationServiceAPI;
+import app.donation.model.Donor;
+
+public class DonorTest
+{
+  private DonationServiceAPI donationServiceAPI = new DonationServiceAPI();
+
+  @Test
+  public void testList() throws Exception
+  {
+    List&lt;Donor&gt; list = donationServiceAPI.getAllDonors();
+    System.out.println(list);
+  }
+}
+</code></pre>
+
+<p>Your project should now look like this:</p>
+<p><img alt="" src="img/07.png"></p>
+<p>The class we have just introduced is a simple unit test.</p>
+<p>Make sure the donation-service app is running, and run the above test. To run the test, right click on the DonorTest class and select 'Run as-&gt;JUnit Test'</p>
+<p>After perhaps a slight delay if this is the first time you have launched the app, you should see the test runner 'green bar':</p>
+<p><img alt="" src="img/08.png"></p>
+<p>And the console window might contain the users retrieved by the api call:</p>
+<p><img alt="" src="img/09.png"></p>
+<p>Think carefully about what we have just done.</p>
+<ul>
+<li>A standalone app - donation-play-service - is running on localhost:9000 exposing a simple API</li>
+<li>A separate app launches and issues a request to that API using '/users' url.</li>
+<li>The returned list is displayed on the console.</li>
+</ul>
+  </div>
+  <div  class="ui tab segment lab" data-tab="05">
+    <h1>User Tests</h1>
+<p>We can compose some additional tests now in DonorTest</p>
+<pre><code>package app.donation.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import app.donation.main.DonationServiceAPI;
+import app.donation.model.Donor;
+
+public class DonorTest
+{
+  private DonationServiceAPI donationServiceAPI = new DonationServiceAPI();
+
+  @Test
+  public void testCreate() throws Exception
+  {
+    Donor john = new Donor(&quot;john&quot;, &quot;doe&quot;, &quot;john@doe.com&quot;, &quot;secret&quot;);
+    Donor donor = donationServiceAPI.createDonor(john);
+    assertEquals(john, donor);
+  }
+
+  @Test
+  public void testGet() throws Exception
+  {
+    Donor homer = new Donor(&quot;Homer&quot;, &quot;Simpson&quot;, &quot;homer@simpson.com&quot;, &quot;secret&quot;);
+    Donor searchdonor = donationServiceAPI.getDonor(1l);
+    assertEquals(homer, searchdonor);
+  }
+}
+</code></pre>
+
+<p>Run this test - we would expect it to pass. Explore the API directly (or via postman)</p>
+<ul>
+<li><a href="http://localhost:9000/api/donors">http://localhost:9000/api/donors</a></li>
+</ul>
+<p>You should be able to see a new user created by the tests. You will also perhaps see duplicates if you run the test a few times.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="06">
+    <h1>Structured User Tests</h1>
+<p>In the play app, comment our or delete the Bootstrap task that loads the yml data. We would like the application to start with a blank database (otherwise the tests will be hard to manage)</p>
+<p>In our UserTest class, put some fixtures in the class we will use to exercise the API:</p>
+<pre><code>public class DonorTest
+{
+  static Donor donorArray [] = 
+  { 
+    new Donor (&quot;homer&quot;,  &quot;simpson&quot;, &quot;homer@simpson.com&quot;,  &quot;secret&quot;),
+    new Donor (&quot;lisa&quot;,   &quot;simpson&quot;, &quot;lisa@simpson.com&quot;,   &quot;secret&quot;),
+    new Donor (&quot;maggie&quot;, &quot;simpson&quot;, &quot;maggie@simpson.com&quot;, &quot;secret&quot;),
+    new Donor (&quot;bart&quot;,   &quot;simpson&quot;, &quot;bart@simpson.com&quot;,   &quot;secret&quot;),
+    new Donor (&quot;marge&quot;,  &quot;simpson&quot;, &quot;marge@simpson.com&quot;,  &quot;secret&quot;),
+  };
+  List &lt;Donor&gt; donorList = new ArrayList&lt;&gt;(); 
+</code></pre>
+
+<p>The introduce setup/teardown methods which will populate/depopulate the service using the above fixture</p>
+<pre><code>  @Before
+  public void setup() throws Exception
+  { 
+    for (Donor donor : donorArray)
+    {
+      Donor returned = donationServiceAPI.createDonor(donor);
+      donorList.add(returned);
+    }
+  }
+
+  @After
+  public void teardown() throws Exception
+  {
+    donationServiceAPI.deleteAllDonors();  
+  }  
+</code></pre>
+
+<p>Finally, bring in these unit tests:</p>
+<pre><code>  @Test
+  public void testCreate () throws Exception
+  {
+    assertEquals (donorArray.length, donorList.size());
+    for (int i=0; i&lt;donorArray.length; i++)
+    {
+      assertEquals(donorList.get(i), donorArray[i]);
+    }
+  }
+
+  @Test
+  public void testList() throws Exception
+  {
+    List&lt;Donor&gt; list = donationServiceAPI.getAllDonors();
+    assertTrue (list.containsAll(donorList));
+  }
+
+  @Test
+  public void testDelete () throws Exception
+  {
+    List&lt;Donor&gt; list1 = donationServiceAPI.getAllDonors();
+
+    Donor testdonor = new Donor(&quot;mark&quot;,  &quot;simpson&quot;, &quot;marge@simpson.com&quot;,  &quot;secret&quot;);
+    Donor returnedDonor = donationServiceAPI.createDonor(testdonor);
+
+    List&lt;Donor&gt; list2 = donationServiceAPI.getAllDonors();
+    assertEquals (list1.size()+1, list2.size());
+
+    int code = donationServiceAPI.deleteDonor(returnedDonor.id);
+    assertEquals (200, code);
+
+    List&lt;Donor&gt; list3 = donationServiceAPI.getAllDonors();
+    assertEquals (list1.size(), list3.size());
+  }
+</code></pre>
+
+<p>Theses tests should all pass.</p>
+<p>Examine closely the last test.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="Exercises">
+    <h1>Exercises</h1>
+<p>Archive of the two project so far:</p>
+<ul>
+<li><a href="https://github.com/wit-computing/donation-service-2015-01">https://github.com/wit-computing/donation-service-2015-01</a></li>
+</ul>
+<h2>Exercise 1:</h2>
+<p>Consider writing some more User tests. Look back at last weeks lab for inspiration of one or two more useful tests you might compose.</p>
+<h2>Exercise 2:</h2>
+<p>Look carefully at the UserTest and also the methods in DonationServiceAPI.</p>
+<p>Now consider how you might extent the DonationServiceAPI class to allow access to donations as well as users. The code changes are entirely restricted to the DonationServiceAPI class, there will be no need to change the play project.</p>
+<p>Now, build a new test class - DonationTest - to exercises the api. Use UserTest as a role model for writing these tests.</p>
+  </div>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
+
+
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>    <script>
+
+$(document).ready(function()
+{
+  $("img").addClass ("ui image");
+
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
+  });
+})    </script>
+
+  </body>
+ </html>
