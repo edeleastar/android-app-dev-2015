@@ -149,11 +149,11 @@ h3
 <p>If keys are present then the response should be something simiar to that shown in Figure 3:</p>
 <p><img alt="Figure 3: SSH Keys" src="img/heroku_002.png"></p>
 <p>If keys are not present then generate a set with this command:</p>
-<pre><code>ssh-keygen
+<pre><code> ssh-keygen -t rsa
 
 </code></pre>
 
-<p>Accept the default prompts and in particular when prompted for a password and to confirm the password simply hit the return key on both occasions but without typing any characters for the password.</p>
+<p>Accept the default prompts, providing a passphrase when prompted to secure your private key.</p>
 <ul>
 <li>That is: do <strong>not</strong> password protect the keys.</li>
 </ul>
@@ -174,6 +174,8 @@ h3
 <p>Once you have made a copy, delete your ssh private key. </p>
 <pre><code>rm id_rsa
 </code></pre>
+
+<p>On the next occasion that you will require the use of the key simply copy it to the .ssh folder from your memory key.</p>
   </div>
   <div  class="ui tab segment lab" data-tab="03">
     <h1>Local Repository</h1>
