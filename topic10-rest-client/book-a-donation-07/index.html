@@ -1,0 +1,848 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+      <style>
+
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+}
+
+figcaption
+{
+  margin-bottom: 20px;
+}
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+.credits
+{
+  min-height:20px;
+}
+    </style>
+
+  </head>
+
+  <body>
+
+  <div class="ui container">
+<style>
+
+
+code
+{
+  font-family: "Monaco";
+  font-size: 110%;
+}
+
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
+{
+  font-style:italic;
+  font-size:130%;
+  border-bottom: thin solid black;
+}
+h2
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+h3
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+</style>
+
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      10: REST & AsyncTasks
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    <a class="active item" data-tab="Donation-07">
+        Donation-07
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="Exercises">
+        Exercises
+      </a>
+    </div>
+</div>
+
+<br><br>
+
+  <div  class="ui tab segment lab" data-tab="Donation-07">
+    <h1>Objectives</h1>
+<p>Complete the donation-play-service application - to include a reworked API supporting Donor-&gt;Donation relationship.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="01">
+    <h1>Setup</h1>
+<p>In Donation Labs 05 and 06 you completed and deployed a version of the donation-service and the donation-service-test projects. If you completed the exercises, you should had donor and donation endpoints defined something like this:</p>
+<pre><code>GET     /api/donors                          DonationServiceAPI.getAllDonors
+GET     /api/donors/{id}                     DonationServiceAPI.getDonor
+POST    /api/donors                          DonationServiceAPI.createDonor
+DELETE  /api/donors/{id}                     DonationServiceAPI.deleteDonor
+DELETE  /api/donors                          DonationServiceAPI.deleteAllDonors
+
+
+GET     /api/donations                       DonationServiceAPI.getAllDonations
+GET     /api/donations/{id}                  DonationServiceAPI.getDonation
+POST    /api/donations                       DonationServiceAPI.createDonation
+DELETE  /api/donations/{id}                  DonationServiceAPI.deleteDonation
+DELETE  /api/donations                       DonationServiceAPI.deleteAllDonations
+</code></pre>
+
+<ul>
+<li>a suitable set of tests for all routes.</li>
+</ul>
+<p>If your tests are working successfully - something like this:</p>
+<p><img alt="" src="img/01x.png"></p>
+<p>Then you can continue with your own project. If you wish to start afresh, these are the repos at this stage:</p>
+<ul>
+<li>
+<p><a href="https://github.com/wit-computing/donation-service-2015">https://github.com/wit-computing/donation-service-2015</a></p>
+</li>
+<li>
+<p><a href="https://github.com/wit-computing/donation-service-test/tree/revision1">https://github.com/wit-computing/donation-service-test/tree/revision1</a></p>
+</li>
+</ul>
+<p>Just to be certain, perhaps clone these two repos, run the service and the the tests</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="02">
+    <h1>Refactor the Service</h1>
+<p>To simplify further work on the API, we can refactor the DonationsAPI into two classes:</p>
+<ul>
+<li>DonorsAPI</li>
+<li>DonationsAPI</li>
+</ul>
+<p>These contents are exactly the same as we will have had in DonationsAPI:</p>
+<h2>DonorsAPI</h2>
+<pre><code>package controllers;
+
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+
+import models.Donor;
+import play.mvc.Controller;
+
+public class DonorsAPI extends Controller
+{
+  static Gson gson = new Gson();
+
+  public static void getAllDonors()
+  {
+    List&lt;Donor&gt; Donors = Donor.findAll();
+    renderJSON(gson.toJson(Donors));
+  }
+
+  public static void getDonor(Long id)
+  {
+    Donor donor = Donor.findById(id);
+    if (donor == null)
+    {
+      notFound();
+    }
+    else
+    {
+      renderJSON(gson.toJson(donor));
+    }
+  }
+
+  public static void createDonor(JsonElement body)
+  {
+    Donor donor = gson.fromJson(body.toString(), Donor.class);
+    donor.id = null;
+    donor.save();
+    renderJSON(gson.toJson(donor));
+  }
+
+  public static void deleteDonor(Long id)
+  {
+    Donor donor = Donor.findById(id);
+    if (donor == null)
+    {
+      notFound(&quot;No Doner with ID&quot; + id);
+    }
+    else
+    {
+      donor.delete();
+      renderJSON(gson.toJson(donor));
+    }
+  }
+
+  public static void deleteAllDonors()
+  {
+    Donor.deleteAll();
+    renderText(&quot;success&quot;);
+  }
+}
+</code></pre>
+
+<h1>DonationsAPI</h1>
+<pre><code>package controllers;
+
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+
+import models.Donation;
+import play.mvc.Controller;
+
+public class DonationsAPI extends Controller
+{
+  static Gson gson = new Gson();
+
+  public static void getAllDonations()
+  {
+    List&lt;Donation&gt; donations = Donation.findAll();
+    renderJSON(gson.toJson(donations));
+  }
+
+  public static void getDonation (Long id)
+  {
+   Donation donation = Donation.findById(id);
+   renderJSON (gson.toJson(donation));
+  }
+
+  public static void createDonation(JsonElement body)
+  {
+    Donation donation = gson.fromJson(body.toString(), Donation.class);
+    Donation newDonation = new Donation (donation.amount, donation.method);
+    newDonation.id = null;
+    newDonation.save();
+    renderJSON (gson.toJson(newDonation));
+  }  
+
+  public static void deleteDonation(Long id)
+  {
+    Donation donation = Donation.findById(id);
+    if (donation == null)
+    {
+      notFound();
+    }
+    else
+    {
+      donation.delete();
+      renderJSON (gson.toJson(donation));
+    }
+  }  
+
+  public static void deleteAllDonations()
+  {
+    Donation.deleteAll();
+    renderText(&quot;success&quot;);
+  }
+}
+</code></pre>
+
+<p>This will require the Routes to be also modified:</p>
+<pre><code>GET     /api/donors                          DonorsAPI.getAllDonors
+GET     /api/donors/{id}                     DonorsAPI.getDonor
+POST    /api/donors                          DonorsAPI.createDonor
+DELETE  /api/donors/{id}                     DonorsAPI.deleteDonor
+DELETE  /api/donors                          DonorsAPI.deleteAllDonors
+
+
+GET     /api/donations                       DonationsAPI.getAllDonations
+GET     /api/donations/{id}                  DonationsAPI.getDonation
+POST    /api/donations                       DonationsAPI.createDonation
+DELETE  /api/donations/{id}                  DonationsAPI.deleteDonation
+DELETE  /api/donations                       DonationsAPI.deleteAllDonations
+</code></pre>
+
+<p>Restart the application - and make sure all the tests still run:</p>
+<p><img alt="" src="img/01x.png"></p>
+<p>Note that this refactoring had no effect on our DonationServiceProxy class:</p>
+<pre><code>public interface DonationServiceProxy
+{
+  @GET(&quot;/api/donors&quot;)
+  Call&lt;List&lt;Donor&gt;&gt; getAllDonors();
+
+  @GET(&quot;/api/donors/{id}&quot;)
+  Call&lt;Donor&gt; getDonor(@Path(&quot;id&quot;) Long id);
+
+  @POST(&quot;/api/donors&quot;)
+  Call&lt;Donor&gt; createDonor(@Body Donor Donor);
+
+  @DELETE(&quot;/api/donors/{id}&quot;)
+  Call&lt;Donor&gt; deleteDonor(@Path(&quot;id&quot;) Long id);
+
+  @DELETE(&quot;/api/donors&quot;)
+  Call&lt;String&gt; deleteAllDonors();
+
+  @GET(&quot;/api/donations&quot;)
+  Call&lt;List&lt;Donation&gt;&gt; getAllDonations();
+
+  @DELETE(&quot;/api/donations&quot;)
+  Call&lt;String&gt; deleteAllDonations();
+
+  @GET(&quot;/api/donations/{id}&quot;)
+  Call&lt;List&lt;Donation&gt;&gt; getDonation(@Path(&quot;id&quot;) Long id);
+
+  @POST(&quot;/api/donations&quot;)
+  Call&lt;Donation&gt; createDonation(@Body Donation donation);
+
+  @DELETE(&quot;/api/donations/{id}&quot;)
+  Call&lt;Donation&gt; deleteDonation(@Path(&quot;id&quot;) Long id);
+}
+</code></pre>
+
+<p>which retains the original routes.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="03">
+    <h2>Donor / Donation Relationship</h2>
+<p>We can now introduce the OneToMany relationship in Donor:</p>
+<pre><code>package models;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import play.db.jpa.Model;
+
+@Entity
+public class Donor extends Model
+{
+  public String firstName;
+  public String lastName;
+  public String email;
+  public String password;
+
+  @OneToMany(cascade = CascadeType.ALL)
+  public List&lt;Donation&gt; donations = new ArrayList&lt;Donation&gt;();
+
+  public Donor(String firstName, String lastName, String email, String password)
+  {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.password = password;
+  } 
+}
+</code></pre>
+
+<p>To verify that this works, we can change the <code>data.yml</code> file to reflect the relationship:</p>
+<pre><code>Donation(a):
+    amount : 210
+    method : paypal
+
+Donation(b):
+    amount : 20
+    method : cash
+
+Donation(c):
+    amount : 330
+    method : cash
+
+Donation(d):
+    amount : 10
+    method : paypal 
+
+
+Donor(homer):
+    usaCitizen: true
+    firstName: Homer
+    lastName: Simpson
+    email: homer@simpson.com
+    password: secret
+
+Donor(marge):
+    usaCitizen: true
+    firstName: Marge
+    lastName: Simpson
+    email: marge@simpson.com
+    password: secret
+    donations:
+        - a
+        - b
+        - c
+
+Donor(lisa):
+    usaCitizen: true
+    firstName: Lisa
+    lastName: Simpson
+    email: lisa@simpson.com
+    password: secret
+    donations:
+        - d
+
+Donor(bart):
+    usaCitizen: true
+    firstName: Bart
+    lastName: Simpson
+    email: bart@simpson.com
+    password: secret
+
+Donor(maggie):
+    usaCitizen: true
+    firstName: Maggie
+    lastName: Simpson
+    email: maggie@simpson.com
+    password: secret
+</code></pre>
+
+<p>Restart the app now - and explore the database directly to see if it has been set up as expected.</p>
+<p>Don't run the tests yet - as they will no longer work.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="04">
+    <h1>Routes + Controllers</h1>
+<p>To reflect the new relationship between donor and donation, we need to rework the routes:</p>
+<pre><code>GET     /api/donors                              DonorsAPI.getAllDonors
+GET     /api/donors/{id}                         DonorsAPI.getDonor
+POST    /api/donors                              DonorsAPI.createDonor
+DELETE  /api/donors/{id}                         DonorsAPI.deleteDonor
+DELETE  /api/donors                              DonorsAPI.deleteAllDonors
+
+GET     /api/donations                           DonationsAPI.getAllDonations
+DELETE  /api/donations                           DonationsAPI.deleteAllDonations
+GET     /api/donors/{id}/donations               DonationsAPI.getDonations
+GET     /api/donors/{id}/donations/{donationId}  DonationsAPI.getDonation
+POST    /api/donors/{id}/donations               DonationsAPI.createDonation
+DELETE  /api/donors/{id}/donations/{donationId}  DonationsAPI.deleteDonation
+</code></pre>
+
+<p>The donors remain the same, but look carefully at how the donations are accessed.</p>
+<p>DonorsAPI controller can remain as is, but we need to change the DonationsAPI. Replace the current one with this version:</p>
+<h1>DonationsAPI</h1>
+<pre><code>package controllers;
+
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+
+import models.Donation;
+import models.Donor;
+import play.mvc.Controller;
+
+public class DonationsAPI extends Controller
+{
+  static Gson gson = new Gson();
+
+  public static void getAllDonations()
+  {
+    List&lt;Donation&gt; donations = Donation.findAll();
+    renderJSON(gson.toJson(donations));
+  }
+
+  public static void deleteAllDonations()
+  {
+    Donation.deleteAll();
+    renderText(&quot;success&quot;);
+  }
+
+  public static void getDonations (Long id)
+  {
+    Donor donor = Donor.findById(id);
+    renderJSON (gson.toJson(donor.donations));
+  }
+
+  public static void getDonation (Long id, Long donationId)
+  {
+   Donation donation = Donation.findById(donationId);
+   renderJSON (gson.toJson(donation));
+  }
+
+  public static void createDonation(Long id, JsonElement body)
+  {
+    Donor donor = Donor.findById(id);
+    Donation donation = gson.fromJson(body.toString(), Donation.class);
+    donation.id = null;
+    donor.donations.add(donation);
+    donor.save();
+    renderJSON (gson.toJson(donation));
+  }  
+
+  public static void deleteDonation(Long id, Long donationId)
+  {
+    Donation donation = Donation.findById(donationId);
+    if (donation == null)
+    {
+      notFound();
+    }
+    else
+    {
+      donation.delete();
+      renderJSON (gson.toJson(donation));
+    }
+  }  
+}
+</code></pre>
+
+<p>Some of the methods had additional parameters - look at <code>createDonation</code> for instance...</p>
+<p>This is the project at this stage:</p>
+<ul>
+<li><a href="https://github.com/wit-computing/donation-service-test/tree/revision2">https://github.com/wit-computing/donation-service-test/tree/revision2</a></li>
+</ul>
+<p>and its API is more or less complete.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="05">
+    <h1>donation-service-test</h1>
+<p>We now switch our attention to the donation-service-test project.</p>
+<p>The Proxy needs to be converted to use the new routes:</p>
+<h1>DonationServiceProxy</h1>
+<pre><code>package app.donation.main;
+
+import java.util.List;
+
+import app.donation.model.Donation;
+import app.donation.model.Donor;
+import retrofit.Call;
+import retrofit.http.Body;
+import retrofit.http.DELETE;
+import retrofit.http.GET;
+import retrofit.http.POST;
+import retrofit.http.Path;
+
+public interface DonationServiceProxy
+{
+  @GET(&quot;/api/donors&quot;)
+  Call&lt;List&lt;Donor&gt;&gt; getAllDonors();
+
+  @GET(&quot;/api/donors/{id}&quot;)
+  Call&lt;Donor&gt; getDonor(@Path(&quot;id&quot;) Long id);
+
+  @POST(&quot;/api/donors&quot;)
+  Call&lt;Donor&gt; createDonor(@Body Donor Donor);
+
+  @DELETE(&quot;/api/donors/{id}&quot;)
+  Call&lt;Donor&gt; deleteDonor(@Path(&quot;id&quot;) Long id);
+
+  @DELETE(&quot;/api/donors&quot;)
+  Call&lt;String&gt; deleteAllDonors();
+
+  @GET(&quot;/api/donations&quot;)
+  Call&lt;List&lt;Donation&gt;&gt; getAllDonations();
+
+  @DELETE(&quot;/api/donations&quot;)
+  Call&lt;String&gt; deleteAllDonations();
+
+  @GET(&quot;/api/donors/{id}/donations&quot;)
+  Call&lt;List&lt;Donation&gt;&gt; getDonations(@Path(&quot;id&quot;) Long id);
+
+  @GET(&quot;/api/donors/{id}/donations/{donationId}&quot;)
+  Call&lt;Donation&gt; getDonation(@Path(&quot;id&quot;) Long id, @Path(&quot;id&quot;) Long donationId);
+
+  @POST(&quot;/api/donors/{id}/donations&quot;)
+  Call&lt;Donation&gt; createDonation(@Path(&quot;id&quot;) Long id, @Body Donation donation);
+
+  @DELETE(&quot;/api/donors/{id}/donatinos/{donationId}&quot;)
+  Call&lt;Donation&gt; deleteDonation(@Path(&quot;id&quot;) Long id, @Path(&quot;id&quot;) Long donationId);
+}
+</code></pre>
+
+<p>And the DonationServiceAPI needs to be reworked to accommodate the new routes:</p>
+<h2>DonationServiceAPI</h2>
+<pre><code>package app.donation.main;
+
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import app.donation.model.Donation;
+import app.donation.model.Donor;
+import retrofit.Call;
+import retrofit.GsonConverterFactory;
+import retrofit.Response;
+import retrofit.Retrofit;
+
+public class DonationServiceAPI
+{
+  private String service_url = &quot;http://localhost:9000&quot;;
+  private DonationServiceProxy service;
+
+  public DonationServiceAPI()
+  {
+    Gson gson = new GsonBuilder().create();
+
+    Retrofit retrofit = new Retrofit.Builder().baseUrl(service_url)
+                             .addConverterFactory(GsonConverterFactory
+                             .create(gson))
+                             .build();
+    service = retrofit.create(DonationServiceProxy.class);
+  }
+
+  public List&lt;Donor&gt; getAllDonors() throws Exception
+  {
+    Call&lt;List&lt;Donor&gt;&gt; call = (Call&lt;List&lt;Donor&gt;&gt;) service.getAllDonors();
+    Response&lt;List&lt;Donor&gt;&gt; donors = call.execute();
+    return donors.body();
+  }
+
+  public Donor getDonor(Long id) throws Exception
+  {
+    Call&lt;Donor&gt; call = (Call&lt;Donor&gt;) service.getDonor(id);
+    Response&lt;Donor&gt; donors = call.execute();
+    return donors.body();
+  }
+
+  public int deleteDonor(Long id) throws Exception
+  {
+    Call&lt;Donor&gt; call = service.deleteDonor(id);
+    Response&lt;Donor&gt; val = call.execute();
+    return val.code();
+  }
+
+  public int deleteAllDonors() throws Exception
+  {
+    Call&lt;String&gt; call = service.deleteAllDonors();
+    Response&lt;String&gt; val = call.execute();
+    return val.code();
+  }
+
+  public Donor createDonor(Donor newDonor) throws Exception
+  {
+    Call&lt;Donor&gt; call = (Call&lt;Donor&gt;) service.createDonor(newDonor);
+    Response&lt;Donor&gt; returnedDonor = call.execute();
+    return returnedDonor.body();
+  }
+
+  public List&lt;Donation&gt; getAllDonations() throws Exception
+  {
+    Call&lt;List&lt;Donation&gt;&gt; call = (Call&lt;List&lt;Donation&gt;&gt;) service.getAllDonations();
+    Response&lt;List&lt;Donation&gt;&gt; donations = call.execute();
+    return donations.body();
+  }
+
+  public List&lt;Donation&gt; getDonations(Long id) throws Exception
+  {
+    Call&lt;List&lt;Donation&gt;&gt; call = (Call&lt;List&lt;Donation&gt;&gt;) service.getDonations(id);
+    Response&lt;List&lt;Donation&gt;&gt; donations = call.execute();
+    return donations.body();
+  }
+
+  public Donation createDonation(Long id, Donation newDonation) throws Exception
+  {
+    Call&lt;Donation&gt; call = (Call&lt;Donation&gt;) service.createDonation(id, newDonation);
+    Response&lt;Donation&gt; returnedDonation = call.execute();
+    return returnedDonation.body();
+  }
+
+  public int deleteDonation(Long id, Long donationId) throws Exception
+  {
+    Call&lt;Donation&gt; call = service.deleteDonation(id, donationId);
+    Response&lt;Donation&gt; val = call.execute();
+    return val.code();
+  }
+
+  public int deleteAllDonations() throws Exception
+  {
+    Call&lt;String&gt; call = service.deleteAllDonations();
+    Response&lt;String&gt; val = call.execute();
+    return val.code();
+  }
+}
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="06">
+    <h1>Tests</h1>
+<p>The DonorTest class should require no further changes. However, DonationTest will need to be adapted:</p>
+<h1>DonationTest</h1>
+<pre><code>package app.donation.test;
+
+import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import app.donation.main.DonationServiceAPI;
+import app.donation.model.Donation;
+import app.donation.model.Donor;
+
+public class DonationTest
+{
+  private Donor marge =  new Donor (&quot;marge&quot;,  &quot;simpson&quot;, &quot;homer@simpson.com&quot;,  &quot;secret&quot;);
+
+  private DonationServiceAPI donationServiceAPI = new DonationServiceAPI();
+
+  @Before
+  public void setup() throws Exception
+  { 
+    marge = donationServiceAPI.createDonor(marge);
+  }
+
+  @After
+  public void teardown() throws Exception
+  {
+    donationServiceAPI.deleteDonor(marge.id);
+  }
+
+  @Test
+  public void testCreateDonation () throws Exception
+  {
+    Donation donation = new Donation (123, &quot;cash&quot;);
+    Donation returnedDonation = donationServiceAPI.createDonation(marge.id, donation);
+    assertEquals (donation, returnedDonation);
+
+    donationServiceAPI.deleteDonation(marge.id, returnedDonation.id);
+  }
+
+  @Test
+  public void testCreateDonations () throws Exception
+  {
+    Donation donation1 = new Donation (123, &quot;cash&quot;);
+    Donation donation2 = new Donation (450, &quot;cash&quot;);
+    Donation donation3 = new Donation (43,  &quot;paypal&quot;);
+
+    Donation returnedDonation1 = donationServiceAPI.createDonation(marge.id, donation1);
+    Donation returnedDonation2 = donationServiceAPI.createDonation(marge.id, donation2);
+    Donation returnedDonation3 = donationServiceAPI.createDonation(marge.id, donation3);
+
+    assertEquals(donation1, returnedDonation1);
+    assertEquals(donation2, returnedDonation2);
+    assertEquals(donation3, returnedDonation3);
+
+    donationServiceAPI.deleteDonation(marge.id, returnedDonation1.id);
+    donationServiceAPI.deleteDonation(marge.id, returnedDonation2.id);    
+    donationServiceAPI.deleteDonation(marge.id, returnedDonation3.id);
+  }
+
+  @Test
+  public void testListDonations () throws Exception
+  {
+    Donation donation1 = new Donation (123, &quot;cash&quot;);
+    Donation donation2 = new Donation (450, &quot;cash&quot;);
+    Donation donation3 = new Donation (43,  &quot;paypal&quot;);
+
+    donationServiceAPI.createDonation(marge.id, donation1);
+    donationServiceAPI.createDonation(marge.id, donation2);
+    donationServiceAPI.createDonation(marge.id, donation3);
+
+    List&lt;Donation&gt; donations = donationServiceAPI.getDonations(marge.id);
+    assertEquals (3, donations.size());
+
+    assertTrue(donations.contains(donation1));
+    assertTrue(donations.contains(donation2));
+    assertTrue(donations.contains(donation3));
+
+    donationServiceAPI.deleteDonation(marge.id, donations.get(0).id);
+    donationServiceAPI.deleteDonation(marge.id, donations.get(1).id);    
+    donationServiceAPI.deleteDonation(marge.id, donations.get(2).id);
+  }
+}
+</code></pre>
+
+<p>This is the final version of donation-service-test:</p>
+<ul>
+<li><a href="https://github.com/wit-computing/donation-service-test/tree/revision2">https://github.com/wit-computing/donation-service-test/tree/revision2</a></li>
+</ul>
+<p>All test should now pass.</p>
+<p>If you have been cloning the repos - make sure both repos are on branch 'revision2'.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="Exercises">
+    <h1>Archives</h1>
+<p>Branch 'revision2' on each of these repos:</p>
+<ul>
+<li><a href="https://github.com/wit-computing/donation-service-2015">https://github.com/wit-computing/donation-service-2015</a></li>
+<li><a href="https://github.com/wit-computing/donation-service-test">https://github.com/wit-computing/donation-service-test</a></li>
+</ul>
+<h1>Exercise:</h1>
+<p>Deploy donation-service to heroku - and adjust donation-service-test so that is tests the deployed version.</p>
+<p>The url in DonationServiceAPI will need to be changed to your heroku app:</p>
+<pre><code>public class DonationServiceAPI
+{
+  private String service_url = &quot;http://localhost:9000&quot;;
+  private DonationServiceProxy service;
+...
+</code></pre>
+  </div>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
+
+
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>    <script>
+
+$(document).ready(function()
+{
+  $("img").addClass ("ui image");
+
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
+  });
+})    </script>
+
+  </body>
+ </html>

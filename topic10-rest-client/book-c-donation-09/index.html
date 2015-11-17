@@ -1,0 +1,509 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+      <style>
+
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+}
+
+figcaption
+{
+  margin-bottom: 20px;
+}
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+.credits
+{
+  min-height:20px;
+}
+    </style>
+
+  </head>
+
+  <body>
+
+  <div class="ui container">
+<style>
+
+
+code
+{
+  font-family: "Monaco";
+  font-size: 110%;
+}
+
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
+{
+  font-style:italic;
+  font-size:130%;
+  border-bottom: thin solid black;
+}
+h2
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+h3
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+</style>
+
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      10: REST & AsyncTasks
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    <a class="active item" data-tab="Donation-09">
+        Donation-09
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="Exercises">
+        Exercises
+      </a>
+    </div>
+</div>
+
+<br><br>
+
+  <div  class="ui tab segment lab" data-tab="Donation-09">
+    <h1>Objectives</h1>
+<p>Rework the Donation-android activities to support signup and donate activities using the REST service.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="01">
+    <h1>Welcome</h1>
+<p>First introduce a new  attribute in the DonationApp class:</p>
+<pre><code class="java">  public boolean         donationServiceAvailable = false;
+</code></pre>
+
+<p>Every time we connect, we will set the last know status of our connection to the service here:/</p>
+<p>Currently, the app loads the users from the service in the Login activity. This might not bee such a good idea. Lets move it to the welcome screen, so we will have preloaded the user list before starting the login activity</p>
+<p>Here is an alternative version of the Welcome Activity to do this:</p>
+<pre><code class="java">package app.donation.activity;
+
+import app.donation.R;
+import app.donation.activity.Login;
+import app.donation.activity.Signup;
+import app.donation.api.GetUsers;
+import app.donation.api.Response;
+import app.donation.main.DonationApp;
+import app.donation.model.User;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Toast;
+
+import java.util.List;
+
+public class Welcome extends AppCompatActivity implements Response&lt;User&gt;
+{
+  private DonationApp app;
+
+  @Override
+  public void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_welcome);
+
+    app = (DonationApp) getApplication();
+    new GetUsers(app.donationServiceAPI, this, this, &quot;Retrieving list of users&quot;).execute();
+  }
+
+  void serviceUnavailableMessage()
+  {
+    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
+    toast.show();
+  }
+
+  public void loginPressed (View view)
+  {
+    if (app.donationServiceAvailable)
+    {
+      startActivity (new Intent(this, Login.class));
+    }
+    else
+    {
+      serviceUnavailableMessage();
+    }
+  }
+
+  public void signupPressed (View view)
+  {
+    if (app.donationServiceAvailable)
+    {
+      startActivity (new Intent(this, Signup.class));
+    }
+    else
+    {
+      serviceUnavailableMessage();
+    }
+  }
+
+  @Override
+  public void setResponse(List&lt;User&gt; aList)
+  {
+    app.users = aList;
+    app.donationServiceAvailable = true;
+  }
+
+  @Override
+  public void setResponse(User anObject)
+  {}
+
+  @Override
+  public void errorOccurred(Exception e)
+  {
+    app.donationServiceAvailable = false;
+    serviceUnavailableMessage();
+  }
+}
+</code></pre>
+
+<p>Read the above class carefully - and note how we make use of the `donationServiceAvailable' flag in DonationApp.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="02">
+    <h1>Login</h1>
+<p>Login can now be simplified to its original form:</p>
+<pre><code class="java">package app.donation.activity;
+
+import java.util.List;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+import app.donation.R;
+import app.donation.api.GetUsers;
+import app.donation.api.Response;
+import app.donation.model.User;
+import app.donation.main.DonationApp;
+
+
+public class Login extends Activity
+{
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_login);
+  }
+
+  public void signinPressed (View view)
+  {
+    DonationApp app = (DonationApp) getApplication();
+
+    TextView email     = (TextView)  findViewById(R.id.loginEmail);
+    TextView password  = (TextView)  findViewById(R.id.loginPassword);
+
+    if (app.validUser(email.getText().toString(), password.getText().toString()))
+    {
+      startActivity (new Intent(this, Donate.class));
+    }
+    else
+    {
+      Toast toast = Toast.makeText(this, &quot;Invalid Credentials&quot;, Toast.LENGTH_SHORT);
+      toast.show();
+    }
+  }
+}
+</code></pre>
+
+<p>We will only be reaching this activity if we have successfully connected to the service.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="03">
+    <h1>Signup</h1>
+<p>This is a revised version of Signup, which makes use of the service:</p>
+<pre><code class="java">package app.donation.activity;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
+
+import app.donation.R;
+import app.donation.api.CreateUser;
+import app.donation.api.Response;
+import app.donation.main.DonationApp;
+import app.donation.model.User;
+
+public class Signup extends AppCompatActivity implements Response&lt;User&gt;
+{
+  private DonationApp app;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_signup);
+    app = (DonationApp) getApplication();
+  }
+
+  public void registerPressed (View view)
+  {
+    TextView firstName = (TextView)  findViewById(R.id.firstName);
+    TextView lastName  = (TextView)  findViewById(R.id.lastName);
+    TextView email     = (TextView)  findViewById(R.id.Email);
+    TextView password  = (TextView)  findViewById(R.id.Password);
+
+    User user = new User (firstName.getText().toString(), lastName.getText().toString(), email.getText().toString(), password.getText().toString());
+
+    DonationApp app = (DonationApp) getApplication();
+
+    new CreateUser(user, app.donationServiceAPI, this, this, &quot;Creating new User Account&quot;).execute();
+
+    startActivity (new Intent(this, Welcome.class));
+  }
+
+  @Override
+  public void setResponse(List&lt;User&gt; aList)
+  {}
+
+  @Override
+  public void setResponse(User user)
+  {
+    app.users.add(user);
+    startActivity (new Intent(this, Welcome.class));
+  }
+
+  @Override
+  public void errorOccurred(Exception e)
+  {
+    app.donationServiceAvailable = false;
+    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
+    toast.show();
+    startActivity (new Intent(this, Welcome.class));
+  }
+}
+
+</code></pre>
+
+<p>Check now that you can sign up for the donation service - and that a new user is in fact created. This is most easily checked using postman, or just browse to:</p>
+<p>http://localhost:9000/api/users</p>
+<p>If you are running the app locally.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="04">
+    <h1>Donate Support</h1>
+<p>This takes a bit more work, and involved refactoring the donate button handler to only make the donation in the callback method.</p>
+<p>Look carefully at the following - and compare it with the current version. In particular, examine the role of the setResponse method.</p>
+<pre><code class="java">package app.activities;
+
+import java.util.List;
+import app.donation.R;
+import app.http.Response;
+import app.main.DonationApp;
+import app.models.Donation;
+import app.models.DonationServiceAPI;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.RadioGroup;
+import android.widget.NumberPicker;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class Donate extends Activity implements Response&lt;Donation&gt;
+{
+  private RadioGroup   paymentMethod;
+  private ProgressBar  progressBar;
+  private NumberPicker amountPicker;
+  private TextView     amountText;
+  private TextView     amountTotal;
+  private DonationApp  app;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_donate);
+
+    app = (DonationApp) getApplication();
+
+    paymentMethod = (RadioGroup)   findViewById(R.id.paymentMethod);
+    progressBar   = (ProgressBar)  findViewById(R.id.progressBar);
+    amountPicker  = (NumberPicker) findViewById(R.id.amountPicker);
+    amountText    = (TextView)     findViewById(R.id.amountText);
+    amountTotal   = (TextView)     findViewById(R.id.amountTotal);
+
+    amountPicker.setMinValue(0);
+    amountPicker.setMaxValue(1000);
+    progressBar.setMax(app.target);
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu)
+  {
+    getMenuInflater().inflate(R.menu.donate, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    switch (item.getItemId())
+    {
+      case R.id.menuReport : startActivity (new Intent(this, Report.class));
+                             break;
+      case R.id.menuLogout : startActivity (new Intent(this, Welcome.class));
+                             break;                             
+    }
+    return true;
+  }
+
+  public void donateButtonPressed (View view) 
+  {
+    String method = paymentMethod.getCheckedRadioButtonId() == R.id.PayPal ? &quot;PayPal&quot; : &quot;Direct&quot;;
+    int donatedAmount =  amountPicker.getValue();
+    if (donatedAmount == 0)
+    {
+      String text = amountText.getText().toString();
+      if (!text.equals(&quot;&quot;))
+        donatedAmount = Integer.parseInt(text);
+    }
+    if (donatedAmount &gt; 0)
+    {
+      DonationServiceAPI.createDonation(this, this, &quot;Registering new donation...&quot;, new Donation(donatedAmount, method));
+    }
+   }
+
+  @Override
+  public void setResponse(Donation acceptedDonation)
+  {
+    Toast toast = Toast.makeText(this, &quot;Donation Accepteed&quot;, Toast.LENGTH_SHORT);
+    toast.show();
+    app.newDonation(acceptedDonation);
+    progressBar.setProgress(app.totalDonated);
+    String totalDonatedStr = &quot;$&quot; + app.totalDonated;
+    amountTotal.setText(totalDonatedStr);
+    amountText.setText(&quot;&quot;);
+    amountPicker.setValue(0);
+  }
+
+  @Override
+  public void errorOccurred(Exception e)
+  {
+    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
+    toast.show();
+  }
+
+  @Override
+  public void setResponse(List&lt;Donation&gt; aList)
+  {}
+}
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="Exercises">
+    <h1>Exercises</h1>
+<p>Archive of the lab so far:</p>
+<ul>
+<li><a href="archives/donation-android-v5.zip">donation-android-v5.zip</a></li>
+</ul>
+<h2>Exercise 1</h2>
+<p>Does it make sense to download the full list of users when we load the Welcome activity? Perhaps it might be better if we just attempted to reach donation-service, and indicate to the user if it is available or not.</p>
+<p>Consider how you might do this.</p>
+<h2>Exercise 2</h2>
+<p>When Login is launched, it might be better to just check that the user supplied credentials are valid - with the donation-service app, and not by inspecting our local list of users.</p>
+<p>How would this be done?</p>
+<h2>Exercise 3</h2>
+<p>In the Singup activity - we should really check to see if the new user email is not already taken.</p>
+<p>How would we do this?</p>
+  </div>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
+
+
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>    <script>
+
+$(document).ready(function()
+{
+  $("img").addClass ("ui image");
+
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
+  });
+})    </script>
+
+  </body>
+ </html>

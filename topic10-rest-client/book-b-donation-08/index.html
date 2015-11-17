@@ -1,0 +1,1035 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+      <style>
+
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+}
+
+figcaption
+{
+  margin-bottom: 20px;
+}
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+.credits
+{
+  min-height:20px;
+}
+    </style>
+
+  </head>
+
+  <body>
+
+  <div class="ui container">
+<style>
+
+
+code
+{
+  font-family: "Monaco";
+  font-size: 110%;
+}
+
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
+{
+  font-style:italic;
+  font-size:130%;
+  border-bottom: thin solid black;
+}
+h2
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+h3
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+</style>
+
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      10: REST & AsyncTasks
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    <a class="active item" data-tab="Donation-08">
+        Donation-08
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
+      <a class="item" data-tab="08">
+        08
+      </a>
+      <a class="item" data-tab="Exercises">
+        Exercises
+      </a>
+    </div>
+</div>
+
+<br><br>
+
+  <div  class="ui tab segment lab" data-tab="Donation-08">
+    <h1>Objectives</h1>
+<p>Reintroduce the Donation Android app, refactor it to interact with the donation-play-service</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="01">
+    <h1>Donation-android app</h1>
+<p>This is the donation android app as we left it with Donation-03 lab:</p>
+<ul>
+<li><a href="https://github.com/wit-computing/donation-android-2015-03/releases/tag/V03">https://github.com/wit-computing/donation-android-2015-03/releases/tag/V03</a></li>
+</ul>
+<p>If you have completed the last donation android lab, then you can use your own project. If not, use the above archive.</p>
+<h2>Libraries</h2>
+<p>Open the Build.Gradle file - there are two, so make sure it is the one into the 'app' folder:</p>
+<pre><code>apply plugin: 'com.android.application'
+
+android {
+  compileSdkVersion 23
+  buildToolsVersion &quot;23.0.1&quot;
+
+  defaultConfig {
+    applicationId &quot;app.donation&quot;
+    minSdkVersion 16
+    targetSdkVersion 23
+    versionCode 1
+    versionName &quot;1.0&quot;
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile 'com.android.support:appcompat-v7:23.0.0'
+}
+
+</code></pre>
+
+<p>Then modify the <code>dependencies</code> section to include extra entries:</p>
+<pre><code>dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile 'com.android.support:appcompat-v7:23.0.0'
+  compile 'com.google.code.gson:gson:2.4'
+  compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+  compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+}
+</code></pre>
+
+<p>Now open the <code>androidManifext.xml</code> file - and insert this new permission entry:</p>
+<pre><code>    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+</code></pre>
+
+<p>This should be entered before the <code>&lt;application&gt;</code> element as shown here:</p>
+<pre><code>&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;app.donation&quot; &gt;
+
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+
+    &lt;application
+      ....
+      ....
+      ....
+&lt;/manifest&gt;
+</code></pre>
+
+<p>You may be offered the 'Sync Now' button - press it. If not, locate it and press it (it is on the toolbar)</p>
+<p>The project should sync successfully.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="02">
+    <h1>Models - User &amp; Donation</h1>
+<p>The current User and Donation classes need some minor adjustments. Specifically, we need to include an id</p>
+<h2>Donation</h2>
+<pre><code>package app.donation.model;
+
+public class Donation
+{
+  public Long   id;
+  public int    amount;
+  public String method;
+
+  public Donation (int amount, String method)
+  {
+    this.amount = amount;
+    this.method = method;
+  }
+}
+</code></pre>
+
+<p>We will rename User to Donor:</p>
+<h2>Donor</h2>
+<pre><code>package app.donation.model;
+
+public class Donor
+{
+  public Long   id;
+  public String firstName;
+  public String lastName;
+  public String email;
+  public String password;
+
+  public Donor(String firstName, String lastName, String email, String password)
+  {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.password = password;
+  }
+}
+</code></pre>
+
+<p>Be sure to us the 'refactor' menu to make the above change - as User is used in a few locations.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="03">
+    <h1>Proxy</h1>
+<p>In main package, introduce the DonationServiceProxy interface from donation-service-test</p>
+<h1>DonationServiceProxy</h1>
+<pre><code class="java">package app.donation.main;
+
+import java.util.List;
+
+import app.donation.model.Donation;
+import app.donation.model.Donor;
+import retrofit.Call;
+import retrofit.http.Body;
+import retrofit.http.DELETE;
+import retrofit.http.GET;
+import retrofit.http.POST;
+import retrofit.http.Path;
+
+public interface DonationServiceProxy
+{
+  @GET(&quot;/api/donors&quot;)
+  Call&lt;List&lt;Donor&gt;&gt; getAllDonors();
+
+  @GET(&quot;/api/donors/{id}&quot;)
+  Call&lt;Donor&gt; getDonor(@Path(&quot;id&quot;) Long id);
+
+  @POST(&quot;/api/donors&quot;)
+  Call&lt;Donor&gt; createDonor(@Body Donor Donor);
+
+  @DELETE(&quot;/api/donors/{id}&quot;)
+  Call&lt;Donor&gt; deleteDonor(@Path(&quot;id&quot;) Long id);
+
+  @DELETE(&quot;/api/donors&quot;)
+  Call&lt;String&gt; deleteAllDonors();
+
+  @GET(&quot;/api/donations&quot;)
+  Call&lt;List&lt;Donation&gt;&gt; getAllDonations();
+
+  @DELETE(&quot;/api/donations&quot;)
+  Call&lt;String&gt; deleteAllDonations();
+
+  @GET(&quot;/api/donors/{id}/donations&quot;)
+  Call&lt;List&lt;Donation&gt;&gt; getDonations(@Path(&quot;id&quot;) Long id);
+
+  @GET(&quot;/api/donors/{id}/donations/{donationId}&quot;)
+  Call&lt;Donation&gt; getDonation(@Path(&quot;id&quot;) Long id, @Path(&quot;id&quot;) Long donationId);
+
+  @POST(&quot;/api/donors/{id}/donations&quot;)
+  Call&lt;Donation&gt; createDonation(@Path(&quot;id&quot;) Long id, @Body Donation donation);
+
+  @DELETE(&quot;/api/donors/{id}/donatinos/{donationId}&quot;)
+  Call&lt;Donation&gt; deleteDonation(@Path(&quot;id&quot;) Long id, @Path(&quot;id&quot;) Long donationId);
+}
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="04">
+    <h1>DontionApp</h1>
+<p>This class will require substantial additions. Here is a new version:</p>
+<pre><code>package app.donation.main;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.Application;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import app.donation.model.Donation;
+import app.donation.model.Donor;
+import retrofit.GsonConverterFactory;
+import retrofit.Retrofit;
+
+public class DonationApp extends Application
+{
+  public String               service_url  = &quot;http://10.0.2.2:9000&quot;;   // Standard Emulator IP Address
+  //public String               service_url  = &quot;http://10.0.3.2:9000&quot;; // Genymotion IP address
+
+  public DonationServiceProxy donationService;
+  public boolean              donationServiceAvailable = false;
+
+  public Donor                currentUser;
+  public List &lt;Donor&gt;         donors       = new ArrayList&lt;Donor&gt;();
+  public List &lt;Donation&gt;      donations    = new ArrayList&lt;Donation&gt;();
+
+  public final int            target       = 10000;
+  public int                  totalDonated = 0;
+
+
+  public boolean newDonation(Donation donation)
+  {
+    boolean targetAchieved = totalDonated &gt; target;
+    if (!targetAchieved)
+    {
+      donations.add(donation);
+      totalDonated += donation.amount;
+    }
+    else
+    {
+      Toast toast = Toast.makeText(this, &quot;Target Exceeded!&quot;, Toast.LENGTH_SHORT);
+      toast.show();
+    }
+    return targetAchieved;
+  }
+
+  public void newUser(Donor user)
+  {
+    donors.add(user);
+  }
+
+  public boolean validUser (String email, String password)
+  {
+    for (Donor user : donors)
+    {
+      if (user.email.equals(email) &amp;&amp; user.password.equals(password))
+      {
+        currentUser = user;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @Override
+  public void onCreate()
+  {
+    super.onCreate();
+    Gson gson = new GsonBuilder().create();
+
+    Retrofit retrofit = new Retrofit.Builder()
+        .baseUrl(service_url)
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .build();
+    donationService = retrofit.create(DonationServiceProxy.class);
+    Log.v(&quot;Donation&quot;, &quot;Donation App Started&quot;);
+  }
+}
+</code></pre>
+
+<p>This version sets up a DonationServiceProxy object - much like the donation-service-test did, and makes this service object available for the activities. We will explore how it is used in the next few steps.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="05">
+    <h1>Welcome</h1>
+<p>This is a new version of the Welcome Activity class</p>
+<pre><code>package app.donation.activity;
+
+import app.donation.R;
+import app.donation.main.DonationApp;
+import app.donation.model.Donor;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Toast;
+
+import java.util.List;
+
+public class Welcome extends AppCompatActivity implements Callback&lt;List&lt;Donor&gt;&gt;
+{
+  private DonationApp app;
+
+  @Override
+  public void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_welcome);
+
+    app = (DonationApp) getApplication();
+  }
+
+  @Override
+  public void onResume()
+  {
+    super.onResume();
+    app.currentUser = null;
+    Call&lt;List&lt;Donor&gt;&gt; call = (Call&lt;List&lt;Donor&gt;&gt;) app.donationService.getAllDonors();
+    call.enqueue(this);
+  }
+
+  @Override
+  public void onResponse(Response&lt;List&lt;Donor&gt;&gt; response, Retrofit retrofit)
+  {
+    serviceAvailableMessage();
+    app.donors = response.body();
+    app.donationServiceAvailable = true;
+  }
+
+  @Override
+  public void onFailure(Throwable t)
+  {
+    app.donationServiceAvailable = false;
+    serviceUnavailableMessage();
+  }
+
+  public void loginPressed (View view)
+  {
+    if (app.donationServiceAvailable)
+    {
+      startActivity (new Intent(this, Login.class));
+    }
+    else
+    {
+      serviceUnavailableMessage();
+    }
+  }
+
+  public void signupPressed (View view)
+  {
+    if (app.donationServiceAvailable)
+    {
+      startActivity (new Intent(this, Signup.class));
+    }
+    else
+    {
+      serviceUnavailableMessage();
+    }
+  }
+
+  void serviceUnavailableMessage()
+  {
+    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
+    toast.show();
+  }
+
+  void serviceAvailableMessage()
+  {
+    Toast toast = Toast.makeText(this, &quot;Donation Contacted Successfully&quot;, Toast.LENGTH_LONG);
+    toast.show();
+  }
+}
+</code></pre>
+
+<p>onResume is issuing a request to the API for the list of all donors...</p>
+<pre><code>    Call&lt;List&lt;Donor&gt;&gt; call = (Call&lt;List&lt;Donor&gt;&gt;) app.donationService.getAllDonors();
+    call.enqueue(this);
+</code></pre>
+
+<p>the response to this request is delivered into one of these two methods:</p>
+<pre><code>  @Override
+  public void onResponse(Response&lt;List&lt;Donor&gt;&gt; response, Retrofit retrofit)
+  {
+    serviceAvailableMessage();
+    app.donors = response.body();
+    app.donationServiceAvailable = true;
+  }
+
+  @Override
+  public void onFailure(Throwable t)
+  {
+    app.donationServiceAvailable = false;
+    serviceUnavailableMessage();
+  }
+</code></pre>
+
+<p>onResponse indicates success - so we store the donors in the app objects. onFailure sets a flag in app, and displays an error message.</p>
+<p>Run the app now (make sure the donation-service is running). You should get the 'Donation Contacted Successfully' messages. If not, we will need to discover why before proceeding to next steps...</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="06">
+    <h1>Signup Activity</h1>
+<p>We can rework the Signup Activity in a similar fashion:</p>
+<pre><code>package app.donation.activity;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import app.donation.R;
+import app.donation.main.DonationApp;
+import app.donation.model.Donor;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
+
+public class Signup extends AppCompatActivity implements Callback&lt;Donor&gt;
+{
+  private DonationApp app;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_signup);
+    app = (DonationApp) getApplication();
+  }
+
+  public void registerPressed (View view)
+  {
+    TextView firstName = (TextView)  findViewById(R.id.firstName);
+    TextView lastName  = (TextView)  findViewById(R.id.lastName);
+    TextView email     = (TextView)  findViewById(R.id.Email);
+    TextView password  = (TextView)  findViewById(R.id.Password);
+
+    Donor donor = new Donor(firstName.getText().toString(), lastName.getText().toString(), email.getText().toString(), password.getText().toString());
+
+    DonationApp app = (DonationApp) getApplication();
+    Call&lt;Donor&gt; call = (Call&lt;Donor&gt;) app.donationService.createDonor(donor);
+    call.enqueue(this);
+  }
+
+  @Override
+  public void onResponse(Response&lt;Donor&gt; response, Retrofit retrofit)
+  {
+    app.donors.add(response.body());
+    startActivity(new Intent(this, Welcome.class));
+  }
+
+  @Override
+  public void onFailure(Throwable t)
+  {
+    app.donationServiceAvailable = false;
+    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
+    toast.show();
+    startActivity (new Intent(this, Welcome.class));
+  }
+}
+</code></pre>
+
+<p>Run the app now - and sign up a new user. It should work successfully. The significant changes are here:</p>
+<p>We send a new donors details to the service here"</p>
+<pre><code>    Call&lt;Donor&gt; call = (Call&lt;Donor&gt;) app.donationService.createDonor(donor);
+    call.enqueue(this);
+</code></pre>
+
+<p>.. and we deal with the responses here:</p>
+<pre><code>  @Override
+  public void onResponse(Response&lt;Donor&gt; response, Retrofit retrofit)
+  {
+    app.donors.add(response.body());
+    startActivity(new Intent(this, Welcome.class));
+  }
+
+  @Override
+  public void onFailure(Throwable t)
+  {
+    app.donationServiceAvailable = false;
+    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
+    toast.show();
+    startActivity (new Intent(this, Welcome.class));
+  }
+</code></pre>
+
+<p>To verify that is has worked, check the api for the new donor:</p>
+<ul>
+<li><a href="http://localhost:9000/api/donors">http://localhost:9000/api/donors</a></li>
+</ul>
+<p>If it is not working correctly at this stage - you will need to discover why before moving on to the next steps.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="07">
+    <h1>Donate</h1>
+<p>We will take Donate step by step this time to gain a better understanding of how the service is accessed.</p>
+<p>First, in Donate Activity, bring in these imports:</p>
+<pre><code>import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
+</code></pre>
+
+<p>The implement the following interface in the class:</p>
+<pre><code>public class Donate extends AppCompatActivity implements Callback&lt;Donation&gt;
+</code></pre>
+
+<p>This will cause an error - and android studio may be able to suggest fixes via the following menu:</p>
+<p><img alt="" src="img/01x.png"></p>
+<p>Which will generate these methods:</p>
+<pre><code>  @Override
+  public void onResponse(Response&lt;Donation&gt; response, Retrofit retrofit)
+  {
+
+  }
+
+  @Override
+  public void onFailure(Throwable t)
+  {
+
+  }
+</code></pre>
+
+<p>We now change part of our donateButtonPressed method to make the call to the service:</p>
+<pre><code>  ...
+    if (donatedAmount &gt; 0)
+    {
+      Donation donation = new Donation(donatedAmount, method);
+      Call&lt;Donation&gt; call = (Call&lt;Donation&gt;) app.donationService.createDonation(app.currentUser.id, donation);
+      call.enqueue(this);
+    }
+  ...
+</code></pre>
+
+<p>... and finally, the response/error methods can be implemented:</p>
+<pre><code>  @Override
+  public void onResponse(Response&lt;Donation&gt; response, Retrofit retrofit)
+  {
+    Toast toast = Toast.makeText(this, &quot;Donation Accepteed&quot;, Toast.LENGTH_SHORT);
+    toast.show();
+    app.newDonation(response.body());
+    progressBar.setProgress(app.totalDonated);
+    String totalDonatedStr = &quot;$&quot; + app.totalDonated;
+    amountTotal.setText(totalDonatedStr);
+    amountText.setText(&quot;&quot;);
+    amountPicker.setValue(0);
+  }
+
+  @Override
+  public void onFailure(Throwable t)
+  {
+    Toast toast = Toast.makeText(this, &quot;Error making donation&quot;, Toast.LENGTH_LONG);
+    toast.show();
+  }
+</code></pre>
+
+<p>Run this now - and you should see 'donation accepted' message.</p>
+<p>Check the api to see if it is there:</p>
+<ul>
+<li><a href="http://localhost:9000/api/donations">http://localhost:9000/api/donations</a></li>
+</ul>
+<p>Also check the specific donors donations:</p>
+<ul>
+<li><a href="http://localhost:9000/api/donors/2/donations">http://localhost:9000/api/donors/2/donations</a></li>
+</ul>
+<p>(id 2 in the above)</p>
+<p>Complete Version of the Donation Class at this stage:</p>
+<pre><code>package app.donation.activity;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.NumberPicker;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import app.donation.model.Donation;
+import app.donation.main.DonationApp;
+import app.donation.R;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
+
+public class Donate extends AppCompatActivity implements Callback&lt;Donation&gt;
+{
+  private Button       donateButton;
+  private RadioGroup   paymentMethod;
+  private ProgressBar  progressBar;
+  private NumberPicker amountPicker;
+  private int          totalDonated;
+  private int          target;
+
+  private TextView     amountText;
+  private TextView     amountTotal;
+
+  private DonationApp app;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_donate);
+
+    app = (DonationApp) getApplication();
+
+    donateButton  = (Button) findViewById(R.id.donateButton);
+    paymentMethod = (RadioGroup)   findViewById(R.id.paymentMethod);
+    progressBar   = (ProgressBar)  findViewById(R.id.progressBar);
+    amountPicker  = (NumberPicker) findViewById(R.id.amountPicker);
+    amountTotal   = (TextView)     findViewById(R.id.amountTotal);
+    amountText    = (EditText)     findViewById(R.id.amountText);
+
+    amountPicker.setMinValue(0);
+    amountPicker.setMaxValue(1000);
+    progressBar.setMax(10000);
+
+    totalDonated = 0;
+    target = 10000;
+
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu)
+  {
+    // Inflate the menu; this adds items to the action bar if it is present.
+    getMenuInflater().inflate(R.menu.menu_donate, menu);
+    return true;
+  }
+
+
+  public void donateButtonPressed (View view)
+  {
+    String method = paymentMethod.getCheckedRadioButtonId() == R.id.PayPal ? &quot;PayPal&quot; : &quot;Direct&quot;;
+    int donatedAmount =  amountPicker.getValue();
+    if (donatedAmount == 0)
+    {
+      String text = amountText.getText().toString();
+      if (!text.equals(&quot;&quot;))
+        donatedAmount = Integer.parseInt(text);
+    }
+    if (donatedAmount &gt; 0)
+    {
+      Donation donation = new Donation(donatedAmount, method);
+      Call&lt;Donation&gt; call = (Call&lt;Donation&gt;) app.donationService.createDonation(app.currentUser.id, donation);
+      call.enqueue(this);
+    }
+    amountText.setText(&quot;&quot;);
+    amountPicker.setValue(0);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    switch (item.getItemId())
+    {
+      case R.id.menuReport : startActivity (new Intent(this, Report.class));
+        break;
+      case R.id.menuLogout : startActivity (new Intent(this, Welcome.class));
+        break;
+    }
+    return true;
+  }
+
+  @Override
+  public void onResponse(Response&lt;Donation&gt; response, Retrofit retrofit)
+  {
+    Toast toast = Toast.makeText(this, &quot;Donation Accepteed&quot;, Toast.LENGTH_SHORT);
+    toast.show();
+    app.newDonation(response.body());
+    progressBar.setProgress(app.totalDonated);
+    String totalDonatedStr = &quot;$&quot; + app.totalDonated;
+    amountTotal.setText(totalDonatedStr);
+    amountText.setText(&quot;&quot;);
+    amountPicker.setValue(0);
+  }
+
+  @Override
+  public void onFailure(Throwable t)
+  {
+    Toast toast = Toast.makeText(this, &quot;Error making donation&quot;, Toast.LENGTH_LONG);
+    toast.show();
+  }
+}
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="08">
+    <h1>Report</h1>
+<p>Try the report now before making any changes.</p>
+<p>You will notice that it seems to list the donations. Where are these coming from? We havent made any changes to the Report activity yet...</p>
+<p>We can now adjust this - and have the report display ALL donations (not just the donations made on this device).</p>
+<p>Before we start, make the following changes to the Report class:</p>
+<p>Introduce a new private member:</p>
+<pre><code>  private DonationAdapter adapter;
+</code></pre>
+
+<p>.. and change the onCreate method to initialise this member:</p>
+<pre><code>  public void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_report);
+
+    app = (DonationApp) getApplication();
+
+    listView = (ListView) findViewById(R.id.reportList);
+    adapter = new DonationAdapter (this, app.donations);
+    listView.setAdapter(adapter);
+  }
+</code></pre>
+
+<p>(we are just making the adapter a class member, previously it was local)</p>
+<p>Now, import the libraries we need:</p>
+<pre><code>import android.widget.Toast;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
+</code></pre>
+
+<p>Then implement the callback:</p>
+<pre><code>public class Donate extends AppCompatActivity implements Callback&lt;Donation&gt;
+</code></pre>
+
+<p>... and these are the required method overrides:</p>
+<pre><code>  @Override
+  public void onResponse(Response&lt;List&lt;Donation&gt;&gt; response, Retrofit retrofit)
+  {
+    adapter.donations = response.body();
+    adapter.notifyDataSetChanged();
+  }
+
+  @Override
+  public void onFailure(Throwable t)
+  {
+    Toast toast = Toast.makeText(this, &quot;Error retrieving donations&quot;, Toast.LENGTH_LONG);
+    toast.show();
+  }
+</code></pre>
+
+<p>and finally, in onCreate - make the call to retrieve the donations:</p>
+<pre><code>    Call&lt;List&lt;Donation&gt;&gt; call = (Call&lt;List&lt;Donation&gt;&gt;) app.donationService.getAllDonations();
+    call.enqueue(this);
+</code></pre>
+
+<p>Try this now - you should see a list of all dontations.</p>
+<p>Complete version of Report class at this stage:</p>
+<pre><code>package app.donation.activity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.List;
+
+import app.donation.main.DonationApp;
+import app.donation.R;
+import app.donation.model.Donation;
+
+import android.widget.Toast;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
+
+public class Report extends AppCompatActivity implements Callback&lt;List&lt;Donation&gt;&gt;
+{
+  private ListView        listView;
+  private DonationApp     app;
+  private DonationAdapter adapter;
+
+  @Override
+  public void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_report);
+
+    app = (DonationApp) getApplication();
+
+    listView = (ListView) findViewById(R.id.reportList);
+    adapter = new DonationAdapter (this, app.donations);
+    listView.setAdapter(adapter);
+
+    Call&lt;List&lt;Donation&gt;&gt; call = (Call&lt;List&lt;Donation&gt;&gt;) app.donationService.getAllDonations();
+    call.enqueue(this);
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu)
+  {
+    getMenuInflater().inflate(R.menu.menu_report, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    switch (item.getItemId())
+    {
+      case R.id.menuDonate : startActivity (new Intent(this, Donate.class));
+        break;
+      case R.id.menuLogout : startActivity (new Intent(this, Welcome.class));
+        break;
+    }
+    return true;
+  }
+
+  @Override
+  public void onResponse(Response&lt;List&lt;Donation&gt;&gt; response, Retrofit retrofit)
+  {
+    adapter.donations = response.body();
+    adapter.notifyDataSetChanged();
+  }
+
+  @Override
+  public void onFailure(Throwable t)
+  {
+    Toast toast = Toast.makeText(this, &quot;Error retrieving donations&quot;, Toast.LENGTH_LONG);
+    toast.show();
+  }
+}
+
+class DonationAdapter extends ArrayAdapter&lt;Donation&gt;
+{
+  private Context context;
+  public List&lt;Donation&gt; donations;
+
+  public DonationAdapter(Context context, List&lt;Donation&gt; donations)
+  {
+    super(context, R.layout.row_layout, donations);
+    this.context   = context;
+    this.donations = donations;
+  }
+
+  @Override
+  public View getView(int position, View convertView, ViewGroup parent)
+  {
+    LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+    View     view       = inflater.inflate(R.layout.row_layout, parent, false);
+    Donation donation   = donations.get(position);
+    TextView amountView = (TextView) view.findViewById(R.id.row_amount);
+    TextView methodView = (TextView) view.findViewById(R.id.row_method);
+
+    amountView.setText(&quot;&quot; + donation.amount);
+    methodView.setText(donation.method);
+
+    return view;
+  }
+
+  @Override
+  public int getCount()
+  {
+    return donations.size();
+  }
+}
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="Exercises">
+    <h1>Exercises</h1>
+<p>Archive of project so far:</p>
+<ul>
+<li><a href="https://github.com/wit-computing/donation-android-2015-03/releases/tag/V04">https://github.com/wit-computing/donation-android-2015-03/releases/tag/V04</a></li>
+</ul>
+<h2>Exercise 1: Heroku</h2>
+<p>Test the android application against the the heroku deployed service.</p>
+<p>You will need to insert the appropriate url into the DonationApp:</p>
+<pre><code>  public String               service_url  = &quot;http://10.0.2.2:9000&quot;;   // Standard Emulator IP Address
+  //public String               service_url  = &quot;http://10.0.3.2:9000&quot;; // Genymotion IP address
+</code></pre>
+  </div>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
+
+
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>    <script>
+
+$(document).ready(function()
+{
+  $("img").addClass ("ui image");
+
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
+  });
+})    </script>
+
+  </body>
+ </html>
