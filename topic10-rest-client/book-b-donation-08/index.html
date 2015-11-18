@@ -283,13 +283,13 @@ public interface DonationServiceProxy
   Call&lt;List&lt;Donation&gt;&gt; getDonations(@Path(&quot;id&quot;) Long id);
 
   @GET(&quot;/api/donors/{id}/donations/{donationId}&quot;)
-  Call&lt;Donation&gt; getDonation(@Path(&quot;id&quot;) Long id, @Path(&quot;id&quot;) Long donationId);
+  Call&lt;Donation&gt; getDonation(@Path(&quot;id&quot;) Long id, @Path(&quot;donationId&quot;) Long donationId);
 
   @POST(&quot;/api/donors/{id}/donations&quot;)
   Call&lt;Donation&gt; createDonation(@Path(&quot;id&quot;) Long id, @Body Donation donation);
 
   @DELETE(&quot;/api/donors/{id}/donatinos/{donationId}&quot;)
-  Call&lt;Donation&gt; deleteDonation(@Path(&quot;id&quot;) Long id, @Path(&quot;id&quot;) Long donationId);
+  Call&lt;Donation&gt; deleteDonation(@Path(&quot;id&quot;) Long id, @Path(&quot;donationId&quot;) Long donationId);
 }
 </code></pre>
   </div>
