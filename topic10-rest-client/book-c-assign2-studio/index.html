@@ -119,6 +119,9 @@ h3
       <a class="item" data-tab="09">
         09
       </a>
+      <a class="item" data-tab="10">
+        10
+      </a>
     </div>
 </div>
 
@@ -275,6 +278,41 @@ h3
 <li>utils folder containing file GsonBinder.java</li>
 <li>controllers: TweetsAPI.java</li>
 </ul>
+<p>It will be necessary to refactor the default routes file. Here is a sample for you to modify as necessary.</p>
+<pre><code>
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+
+# Tweeter (the user)
+GET     /api/tweeters                              TweetersAPI.getAllTweeters
+GET     /api/tweeters/{id}                         TweetersAPI.getTweeter
+POST    /api/tweeters                              TweetersAPI.createTweeter
+DELETE  /api/tweeters/{id}                         TweetersAPI.deleteTweeter
+DELETE  /api/tweeters                              TweetersAPI.deleteAllTweeters
+
+# Tweet
+GET     /api/tweets                                TweetsAPI.getAllTweets
+DELETE  /api/tweets                                TweetsAPI.deleteAllTweets
+GET     /api/tweeters/{id}/tweets                  TweetsAPI.getTweets
+GET     /api/tweeters/{id}/tweets/{tweetId}        TweetsAPI.getTweet
+POST    /api/tweeters/{id}/tweets                  TweetsAPI.createTweet
+DELETE  /api/tweeters/{id}/tweets/{tweetId}        TweetsAPI.deleteTweet
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}
+
+</code></pre>
+
 <p>Here is the GsonBinder class:</p>
 <pre><code>package utils;
 
@@ -714,9 +752,15 @@ public class TweetFragment extends Fragment implements TextWatcher,
                                                        Callback&lt;Tweet&gt;
 
 {
-  Tweet tweet;
+  ...
   ...
 }
+</code></pre>
+
+<pre><code>  // Make the API call once the tweet has been fully formed.
+  Call&lt;Tweet&gt; call = app.tweetService.createTweet(tweet.id, tweet);
+  call.enqueue(this);
+
 </code></pre>
 
 <pre><code>  // Implement the Callback methods
@@ -740,13 +784,6 @@ public class TweetFragment extends Fragment implements TextWatcher,
   {
     Toast.makeText(getActivity(), &quot;Failed to create tweet due to unknown network issue&quot;, Toast.LENGTH_LONG).show();
   }
-</code></pre>
-
-<pre><code>  // Make the API call once the tweet has been fully formed.
-  tweet = new Tweet(...);
-  Call&lt;Tweet&gt; call = app.tweetService.createTweet(tweet.id, tweet);
-  call.enqueue(this);
-
 </code></pre>
 
 <p>Once the above has been completed successfully you could proceed by adding log in and sign up screens.</p>
@@ -931,6 +968,10 @@ public class Tweet extends GenericModel
 
 }
 </code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="10">
+    <h1>Resources</h1>
+<p>A draft development timeline is available <a href="archives/development-timeline.pdf">here</a></p>
   </div>
 <script>
 $('.ui.menu .item')
