@@ -1,0 +1,839 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+      <style>
+
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+}
+
+figcaption
+{
+  margin-bottom: 20px;
+}
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+.credits
+{
+  min-height:20px;
+}
+    </style>
+
+  </head>
+
+  <body>
+
+  <div class="ui container">
+<style>
+
+
+code
+{
+  font-family: "Monaco";
+  font-size: 110%;
+}
+
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
+{
+  font-style:italic;
+  font-size:130%;
+  border-bottom: thin solid black;
+}
+h2
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+h3
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+</style>
+
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      Android Services
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    <a class="active item" data-tab="Donation-10">
+        Donation-10
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
+      <a class="item" data-tab="08">
+        08
+      </a>
+      <a class="item" data-tab="09">
+        09
+      </a>
+    </div>
+</div>
+
+<br><br>
+
+  <div  class="ui tab segment lab" data-tab="Donation-10">
+    <h1>Donation</h1>
+<p>Here we refactor Donation Android client to update the donations list from the service. Two methods are explored. One technique handles a menu-generated event. The other makes use of an Android service.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="01">
+    <h1>Preview</h1>
+<p>We shall introduce two further Android building blocks in this lab:</p>
+<ul>
+<li>
+<p>Services</p>
+<ul>
+<li>run in background without a user interface.</li>
+<li>used to retrieve list donations (update the Report view).</li>
+<li>list may be updated by user intervention or automatically by timer.</li>
+</ul>
+</li>
+<li>
+<p>Broadcast Receivers</p>
+<ul>
+<li>receiver is dormant code activated by specific event.</li>
+<li>activated on device boot and run at regular pre-determined intervals.</li>
+<li>causes list to be refreshed without user intervention.</li>
+</ul>
+</li>
+</ul>
+  </div>
+  <div  class="ui tab segment lab" data-tab="02">
+    <h1>Introduction</h1>
+<p>Your Android Donation app starter code is available at this url:</p>
+<pre><code>https://github.com/wit-computing/donation-android-2015-03
+</code></pre>
+
+<p>A locally archived copy is also available:</p>
+<ul>
+<li><a href="archives/donation-android-2015-03.zip">donation-android-2015-03</a>. </li>
+</ul>
+<p>Use the service completed at the end of donation-08.</p>
+<p>To update build paths run the eclipsify command before you run the service.</p>
+<pre><code>play eclipsify
+</code></pre>
+
+<h2>Lab summary</h2>
+<ul>
+<li>Manual refresh of donations list using a Retrofit call to the server.</li>
+<li>Extend Android's IntentService. Explore two methods of running this service:<ul>
+<li>A time</li>
+<li>An Android BroadcastReceiver to control an alarm system that runs the IntentService at specified intervals.</li>
+</ul>
+</li>
+<li>Prefereces: allow a user to input the time between donation list updates.</li>
+</ul>
+  </div>
+  <div  class="ui tab segment lab" data-tab="03">
+    <h1>Manual Refresh</h1>
+<p>We now describe how to implement a manual (menu-driven) refresh facility in the Report activity.</p>
+<p>The steps required are as follows: </p>
+<ul>
+<li>Introduce a menu icon as shown in Figure 1.</li>
+<li>Provide a menu handler in Report to retrieve the latest Donation list from the service.</li>
+<li>Update the view. </li>
+</ul>
+<p><img alt="Figure 1: Menu item facilitates Report refresh" src="img/01.png"></p>
+<p>Add the following menu item to <em>res/menu/menu_report.xml</em>. This will introduce the <em>rotate</em> icon as shown in Figure 1.</p>
+<pre><code>    &lt;item
+        android:id=&quot;@+id/action_refresh&quot;
+        android:icon=&quot;@android:drawable/ic_menu_rotate&quot;
+        app:showAsAction=&quot;always&quot;
+        android:title=&quot;@string/refresh&quot;/&gt;
+</code></pre>
+
+<p>Refactor Report activity as follows:</p>
+<ul>
+<li>Move the following existing code from <em>onCreate</em> to a new method <em>refreshDonationList</em>. Presently, the report is refreshed in the onCreate method.</li>
+</ul>
+<p><img alt="" src="img/05.png"></p>
+<p>Here is the new method.</p>
+<pre><code>  private void refreshDonationList()
+  {
+    Call&lt;List&lt;Donation&gt;&gt; call = (Call&lt;List&lt;Donation&gt;&gt;) app.donationService.getAllDonations();
+    call.enqueue(this);
+  }
+</code></pre>
+
+<p>Add a refresh menu handler in <em>onOptionsItemSelected</em>. This will initiate a network call to retrieve the current list of donations.</p>
+<pre><code>  @Override
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    ...
+      case R.id.action_refresh:
+        refreshDonationList();
+        return true;
+  }
+</code></pre>
+
+<p><img alt="Figure 2: Refresh menu item and its handler" src="img/02.png"></p>
+<p>The code to update the view is already in place in <em>onResponse</em>:</p>
+<pre><code>    adapter.notifyDataSetChanged();
+</code></pre>
+
+<p>Add some donations, switch to Report and refresh. The newly added donations should appear in the list.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="04">
+    <h1>Helpers</h1>
+<p>We will require some helper code with which we are already familiar.</p>
+<p>Create a package app.android.helpers and add these classes. You have already used supersets of these classes in MyRent and MyTweet.</p>
+<pre><code>package android.helpers;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.support.v4.app.NavUtils;
+
+public class IntentHelper
+{
+
+  public static void navigateUp(Activity parent)
+  {
+    Intent upIntent = NavUtils.getParentActivityIntent(parent);
+    NavUtils.navigateUpTo(parent, upIntent);
+  }
+
+}
+</code></pre>
+
+<pre><code>package android.helpers;
+
+import android.util.Log;
+
+public class LogHelpers
+{
+  public static void info(Object parent, String message)
+  {
+    Log.i(parent.getClass().getSimpleName(), message);
+  }
+}
+
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="05">
+    <h1>RefreshService</h1>
+<p>Here we shall create RefreshService, a subclass of Android's <a href="http://developer.android.com/reference/android/app/IntentService.html">IntentService</a>.</p>
+<p>Create a package <em>app.donation.services</em>.</p>
+<p>In this package create a new class, RefreshService that subclasses IntentService:</p>
+<pre><code>package app.donation.services;
+
+public class RefreshService extends IntentService
+{
+  private String tag = &quot;Donation&quot;;
+  DonationApp app;
+
+  public RefeshService()
+  {
+    super(&quot;RefreshService&quot;);
+
+  }
+}
+</code></pre>
+
+<p>Add an import statement for IntentService:</p>
+<pre><code>import android.app.IntentService;
+</code></pre>
+
+<p>Add unimplemented method:</p>
+<pre><code>  @Override
+  protected void onHandleIntent(Intent intent)
+  {
+    // TODO Auto-generated method stub
+
+  }
+</code></pre>
+
+<p>An import for Intent is required:</p>
+<pre><code>import android.content.Intent;
+</code></pre>
+
+<p>The code should now be error free.</p>
+<p>The method <em>onHandleIntent</em> runs on a worker thread once an instance of RefreshService is started. </p>
+<ul>
+<li>when the method has been executed the service automatically stops.</li>
+</ul>
+<p>In onHandleIntent we shall:</p>
+<ul>
+<li>Obtain a reference to DonationApp,</li>
+<li>Create an Intent for broadcast,</li>
+<li>Make a synchonous network call to retrieve the list of donations,</li>
+<li>Save the list to DonationApp,</li>
+<li>Broadcast the intent.</li>
+</ul>
+<pre><code>  @Override
+  protected void onHandleIntent(Intent intent)
+  {
+    app = (DonationApp) getApplication();
+    Intent localIntent = new Intent(Report.BROADCAST_ACTION);
+    Call&lt;List&lt;Donation&gt;&gt; call = (Call&lt;List&lt;Donation&gt;&gt;) app.donationService.getAllDonations();
+    try
+    {
+      Response&lt;List&lt;Donation&gt;&gt; response = call.execute();
+      app.donations = response.body();
+      LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
+    }
+    catch (IOException e)
+    {
+      LogHelpers.info(tag, &quot;Failed to retrieve donations list - network error&quot;);
+    }
+  }
+</code></pre>
+
+<p>Add an onDestroy method, soley for the purpose of creating a log entry:</p>
+<pre><code>  @Override
+  public void onDestroy()
+  {
+    super.onDestroy();
+    LogHelpers.info(this, &quot;onDestroyed&quot;);
+  }
+</code></pre>
+
+<p>For reference, here is the complete class:</p>
+<pre><code>package app.donation.services;
+
+import android.app.IntentService;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
+
+import java.io.IOException;
+import java.util.List;
+
+import app.android.helpers.LogHelpers;
+import app.donation.activity.Report;
+import app.donation.main.DonationApp;
+import app.donation.model.Donation;
+import retrofit.Call;
+import retrofit.Response;
+
+public class RefreshService extends IntentService
+{
+  private String tag = &quot;Donation&quot;;
+  DonationApp app;
+  public RefreshService()
+  {
+    super(&quot;RefreshService&quot;);
+  }
+
+  @Override
+  protected void onHandleIntent(Intent intent)
+  {
+    app = (DonationApp) getApplication();
+    Intent localIntent = new Intent(Report.BROADCAST_ACTION);
+    Call&lt;List&lt;Donation&gt;&gt; call = (Call&lt;List&lt;Donation&gt;&gt;) app.donationService.getAllDonations();
+    try
+    {
+      Response&lt;List&lt;Donation&gt;&gt; response = call.execute();
+      app.donations = response.body();
+      LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
+    }
+    catch (IOException e)
+    {
+      LogHelpers.info(tag, &quot;Failed to retrieve donations list - network error&quot;);
+    }
+  }
+
+  @Override
+  public void onDestroy()
+  {
+    super.onDestroy();
+    LogHelpers.info(tag, &quot;RefreshService instance destroyed&quot;);
+  }
+
+}
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="06">
+    <h1>Receiver</h1>
+<p>In this step we shall configure Report activity to receive and respond to an Intent broadcast from the RefreshService implemented in the previous step.</p>
+<p>The steps required are:</p>
+<ul>
+<li>Declare the string variable BROADCAST_ACTION, referenced in the broadcasted Intent.</li>
+<li>Register the broadcast receiver.</li>
+<li>Define an inner class, <em>ResponseReceiver</em> whose parent is <a href="http://developer.android.com/reference/android/content/BroadcastReceiver.html">BroadCastReceiver</a> and implement its <em>onReceive</em> method.</li>
+</ul>
+<p>Here is the code related to above that should be inserted in the appropriate locations in Report.java.</p>
+<pre><code>  public static final String BROADCAST_ACTION = &quot;app.donation.activity.Report&quot;;
+
+</code></pre>
+
+<p>Register broadcast receiver:</p>
+<pre><code>  private IntentFilter intentFilter;
+</code></pre>
+
+<p>In onCreate:</p>
+<pre><code>    intentFilter = new IntentFilter(BROADCAST_ACTION);
+    registerBroadcastReceiver(intentFilter);
+</code></pre>
+
+<pre><code>  private void registerBroadcastReceiver(IntentFilter intentFilter)
+  {
+    ResponseReceiver responseReceiver = new ResponseReceiver();
+    LocalBroadcastManager.getInstance(this).registerReceiver(responseReceiver, intentFilter);
+  }
+</code></pre>
+
+<p>Inner class:</p>
+<pre><code>  //Broadcast receiver for receiving status updates from the IntentService
+  private class ResponseReceiver extends BroadcastReceiver
+  {
+    // Called when the BroadcastReceiver gets an Intent it's registered to receive
+    @Override
+    public void onReceive(Context context, Intent intent)
+    {
+      adapter.donations = app.donations;
+      adapter.notifyDataSetChanged();
+    }
+  }
+</code></pre>
+
+<p>Report activity is now receptive to in coming intents broadcasted by the RefreshService.</p>
+<p>However, we still have not taken steps to start the RefreshService. This we shall do in the following step.</p>
+<p><img alt="Figure 1: Inner ResponseReceiver class" src="img/03.png"></p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="07">
+    <h1>Preferences</h1>
+<p>Here we shall add a Preferences module and use it to store a refresh interval. </p>
+<ul>
+<li>we shall enable the user to input the refresh frequency - the time between network calls to update the donation list.</li>
+</ul>
+<p>Create a new folder res/xml and add a file: settings.xml. If the folder (directory) already exists then simply add the following EditTextPreference node.</p>
+<p>File: settings.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;PreferenceScreen xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; &gt;
+
+    &lt;EditTextPreference
+        android:key=&quot;refresh_interval&quot;
+        android:summary=&quot;@string/refresh_subtitle&quot;
+        android:title=&quot;@string/refresh&quot; /&gt;
+
+&lt;/PreferenceScreen&gt;
+</code></pre>
+
+<p>Add a new string element to res/values/strings.xml</p>
+<pre><code>  &lt;string name=&quot;refresh_subtitle&quot;&gt;Enter refresh interval (minutes)&lt;/string&gt;
+</code></pre>
+
+<p>Add a new package <em>app.donation.settings</em> in which the follows files should be located:</p>
+<p>SettingsActivity.java</p>
+<pre><code>package app.settings;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class SettingsActivity extends Activity
+{
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+
+    if (savedInstanceState == null)
+    {
+      SettingsFragment fragment = new SettingsFragment();
+      getFragmentManager().beginTransaction().add(android.R.id.content, fragment, fragment.getClass().getSimpleName())
+          .commit();
+    }
+    ;
+  }
+
+}
+
+</code></pre>
+
+<p>SettingsFragment.java</p>
+<pre><code>package app.settings;
+
+import static android.helpers.IntentHelper.navigateUp;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.os.Bundle;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import app.donation.R;
+import app.donation.services.RefreshService;
+
+
+public class SettingsFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener
+{
+  private SharedPreferences settings;
+
+  @Override
+  public void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setHasOptionsMenu(true);
+    addPreferencesFromResource(R.xml.settings);
+  }
+
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+  {
+    getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+    return super.onCreateView(inflater, container, savedInstanceState);
+  }
+  @Override
+  public void onStart()
+  {
+    super.onStart();
+    settings = PreferenceManager.getDefaultSharedPreferences(getActivity());
+    settings.registerOnSharedPreferenceChangeListener(this);
+  }
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    switch (item.getItemId())
+    {
+    case android.R.id.home:
+      navigateUp(getActivity());
+      return true;
+    default:
+      return super.onOptionsItemSelected(item);
+    }
+  }
+
+  @Override
+  public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
+  {
+  }
+}
+
+</code></pre>
+
+<p>Register the new activity in the manifest file. </p>
+<pre><code>        &lt;activity
+          android:name=&quot;app.settings.SettingsActivity&quot;
+          android:label=&quot;@string/action_settings&quot; &gt;
+          &lt;meta-data  
+              android:name=&quot;android.support.PARENT_ACTIVITY&quot;
+              android:value=&quot;.activities.ReportActivity&quot;/&gt;
+        &lt;/activity&gt;
+</code></pre>
+
+<p>Note that we are making provision for using the <em>Up</em> button to navigate to the Report activity once done in Settings.</p>
+<p>In Report introduce a menu handler in <em>onOptionsItemSelected</em>:</p>
+<pre><code>      case R.id.action_settings:
+                               startActivity(new Intent(this, SettingsActivity.class));
+                               return true;
+
+</code></pre>
+
+<p>This import statment is required:</p>
+<pre><code>import app.settings.SettingsActivity;
+</code></pre>
+
+<p>You may wish to repeat for the Donation view. At the moment, the menu settings item is now wired up in this view (Report).</p>
+<p>A sample Android project archive demonstrating the use of Shared Preferences to set the refresh interval is available to download: <a href="archives/shared-prefs-2015.zip">shared-prefs-2015</a>.</p>
+<ul>
+<li><em>git diff t1 t2</em> shows the code added to the baseline app.</li>
+<li>Easier still: use SourceTree to view added code.</li>
+</ul>
+  </div>
+  <div  class="ui tab segment lab" data-tab="08">
+    <h1>Timer</h1>
+<p>We can use a timer to start our RefreshService. This is facilitated by the fact that the service is stopped once its <em>onHandleIntent</em> method has been exited. We have included a log entry in the <em>onDestroy</em> method to help illustrate this.</p>
+<p>We will locate the timer code in DonationApp and invoke it in DonationApp.onCreate.</p>
+<p>Declare a Timer:</p>
+<pre><code>  private Timer timer;
+</code></pre>
+
+<p>Instantiate the timer in onCreate:</p>
+<pre><code>    timer = new Timer();
+</code></pre>
+
+<p>Write the method <em>refreshDonationList</em>:</p>
+<pre><code>  public void refreshDonationList()
+  {
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+    String refreshInterval = prefs.getString(&quot;refresh_interval&quot;, &quot;5000&quot;); // parm 2 is default val in milli secs
+    int refreshFrequency = Integer.parseInt(refreshInterval) * 60 * 1000;
+    int initialDelay = 1000;
+
+    timer.schedule(new TimerTask()
+    {
+      @Override
+      public void run()
+      {
+        startService(new Intent(getBaseContext(), RefreshService.class));
+      }
+    }, initialDelay, refreshFrequency  ); // Example 2*60*1000 == 2 x 60 secs x 1000 : 2 minutes -&gt; milliseconds
+  }
+</code></pre>
+
+<p>Observe that we are using the user-input refresh interval. This may be set in the preferences menu.</p>
+<p>Invoke the method in onCreate once the timer has been instantiated.</p>
+<pre><code>  refreshDonationList();
+</code></pre>
+
+<p>Test launching Donation and switching to Report. After a short delay the donation list should be refreshed.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="09">
+    <h1>Receiver</h1>
+<p>We shall now add a BroadcastReceiver subclass that will:</p>
+<ul>
+<li>start RefreshService when the device is started</li>
+<li>re-start the service to refresh the donation list at pre-set intervals thereafter</li>
+</ul>
+<p>We have already introduced preferences and a facility for the user to input a refresh interval.</p>
+<p>Create a new package <em>app.donation.receivers</em></p>
+<ul>
+<li>In the package create a class <em>BootReceiver</em> that subclasses the Android class BroadcastReceiver.</li>
+</ul>
+<pre><code>package app.donation.receivers;
+import android.content.BroadcastReceiver;
+
+public class BootReceiver extends BroadcastReceiver
+{
+  private String tag = &quot;Donation&quot;;
+
+
+}
+</code></pre>
+
+<p>Override the BroadcastReceiver method <em>onReceive</em>:</p>
+<pre><code>  @Override
+  public void onReceive(Context context, Intent intent)
+  {
+    // TODO Auto-generated method stub
+
+  }
+</code></pre>
+
+<p>The completed class (in which onReceive is fully implemented) is provided below.</p>
+<p><em>Within onReceive</em>,  an AlarmManager object is instantiated that is used in starting the RefreshService at the specified refresh interval.</p>
+<ul>
+<li>If the user does not provide an interval, a default value is used.</li>
+</ul>
+<p>Add permission to the manifest file:</p>
+<pre><code>  &lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot; /&gt;
+</code></pre>
+
+<p>Also in the manifest, register the receiver:</p>
+<pre><code>        &lt;receiver android:name=&quot;.receivers.BootReceiver&quot;
+                  android:enabled=&quot;true&quot;&gt;
+            &lt;intent-filter &gt;
+                &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot;/&gt;
+            &lt;/intent-filter&gt;
+        &lt;/receiver&gt;
+</code></pre>
+
+<p>The refresh service will start when the Android device boots and re-start indefinitely at specified intervals thereafter.</p>
+<p>Good alarm system design is essential to efficient running of an app and use of resources. Some official documentation may be accessed <a href="https://developer.android.com/training/scheduling/alarms.html">here</a>. </p>
+<p>Here we make use of Preferences and the refresh frequency input by the user:</p>
+<p>Refactor BootReceiver.onReceive to use the value input in preferences for the refresh interval. </p>
+<ul>
+<li>We are not required to input this value as the default 15 minutes would then be used.</li>
+<li>In reality 15 minutes would, perhaps, be much too small an interval. Remember that network traffic is expensive not only on the client but generally more so on the server. See, for example, this Wikipedia article on <a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">Denial-of-service attacks</a>.</li>
+<li>The input value should be in minutes: this is converted to milliseconds in the onReceive method which is the unit of time specified as argument in AlarmManager.setInexactRepeating.</li>
+</ul>
+<pre><code>package app.donation.receivers;
+import app.donation.services.RefreshService;
+import app.donation.utils.NumUtil;
+
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.util.Log;
+
+
+/**
+ * If permission set and BootReceiver registered in manifest file ...
+ * and application manually launched, then...
+ * then BootReceiver.onReceive method will be invoked by system when device started.
+ * In this method we set the interval at which the alarm should trigger. 
+ * This will be either a default or a value input by user in preference settings.
+ */
+public class BootReceiver extends BroadcastReceiver
+{
+  private static final long DEFAULT_INTERVAL = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
+  public static int REQUESTCODE = -1;
+  private String tag = &quot;Donation &quot;;
+
+  @Override
+  public void onReceive(Context context, Intent intent)
+  {
+    Log.i(tag, &quot;In BootReceiver.onReceive&quot;);
+
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+    // This key introduced in res/xml/settings.xml
+    String key = &quot;refresh_interval&quot;;
+    long interval = DEFAULT_INTERVAL;
+    // We check for a valid user inputted interval and use it if it exists
+    // Otherwise use DEFAULT_INTERVAL
+    String value = prefs.getString(key, Long.toString(DEFAULT_INTERVAL));
+    if (NumUtil.isPositiveNumber(value))
+    {
+      interval = Long.parseLong(value);
+    }
+    // Convert interval from minutes to milliseconds
+    interval *= 60000;//here we convert minutes to milliseconds since input at settings menu is specified in minutes
+    // Set an arbitrary minimum interval value of 60 seconds to avoid overloading service.
+    interval = interval &lt; 60000 ? 60000 : interval; 
+
+    // Prepare an PendingIntent with a view to triggering RefreshService
+    PendingIntent operation = PendingIntent.getService(
+        context,
+        REQUESTCODE,
+        new Intent(context, RefreshService.class),
+        PendingIntent.FLAG_UPDATE_CURRENT
+    );
+
+    AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+    alarmManager.cancel(operation);//cancel any existing alarms with matching intent
+    alarmManager.setInexactRepeating(AlarmManager.RTC, System.currentTimeMillis(), interval, operation);
+
+    long appliedInterval = interval/60000;
+    Log.i(tag, &quot;Boot receiver alarm repeats every: &quot; + appliedInterval + &quot; minutes.&quot;);
+  }
+}
+</code></pre>
+
+<p>Here is the validation code:</p>
+<pre><code>package app.donation.utils;
+
+public class NumUtil
+{
+
+  /**
+   * Verifies that a string parses to a positive number
+   * @param str The string to be verified
+   * @return If string comprises digits 0 to 9 only, returns true, else false.
+   */
+  public static boolean isPositiveNumber(String str)
+  {
+    // check for empty string
+    if (str.compareTo(&quot;&quot;) == 0)
+      return false;
+
+    // if any non-digit char found return false
+    for (char c : str.toCharArray())
+    {
+      if (!Character.isDigit(c))
+        return false;
+    }
+    return true;
+  }
+
+}
+</code></pre>
+
+<p>Observe RefreshService intent argument in <a href="http://developer.android.com/reference/android/app/PendingIntent.html#getService%28android.content.Context,%20int,%20android.content.Intent,%20int%29">PendingIntent.getService</a>:</p>
+<p><img alt="Figure 1: PendingIntent contains as an argument the RefreshService class we developed earlier" src="img/04.png"></p>
+<p>You can now test this code as follows:</p>
+<ul>
+<li>Comment out the invocation of the refreshDonationList() method in DonationApp.</li>
+<li>Set the LogCat filter to Donation (matching the tag defined above).</li>
+<li>Build and install Donation on a device (emulator).</li>
+<li>Shut down and reboot the device (phone or emulator).</li>
+<li>Manually start the already installed Donation app.</li>
+<li>Authenticate and navigate to Report view. </li>
+<li>Set the refresh interval to 1 (minute) in the settings.</li>
+<li>Wait. After a short period of time the blank Report view should be populated with the updated list of donations.</li>
+<li>The LogCat view should show a message something like this:
+<img alt="Figure 2: BootReceiver alarm configured to start RefreshService at 1 minute intervals" src="img/06.png"></li>
+</ul>
+  </div>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
+
+
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>    <script>
+
+$(document).ready(function()
+{
+  $("img").addClass ("ui image");
+
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
+  });
+})    </script>
+
+  </body>
+ </html>

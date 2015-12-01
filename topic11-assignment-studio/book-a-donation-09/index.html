@@ -1,0 +1,724 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+      <style>
+
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+}
+
+figcaption
+{
+  margin-bottom: 20px;
+}
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+.credits
+{
+  min-height:20px;
+}
+    </style>
+
+  </head>
+
+  <body>
+
+  <div class="ui container">
+<style>
+
+
+code
+{
+  font-family: "Monaco";
+  font-size: 110%;
+}
+
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
+{
+  font-style:italic;
+  font-size:130%;
+  border-bottom: thin solid black;
+}
+h2
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+h3
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+</style>
+
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      Assignment Studio
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    <a class="active item" data-tab="Donation-08">
+        Donation-08
+    </a>
+      <a class="item" data-tab="Donation-09">
+        Donation-09
+      </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
+      <a class="item" data-tab="Exercises">
+        Exercises
+      </a>
+    </div>
+</div>
+
+<br><br>
+
+  <div  class="ui tab segment lab" data-tab="Donation-08">
+    <h1>Donation UI</h1>
+<p>Using the latest Semantic UI, introduce a simple but well structured User Interface into the donation-service-play application.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="Donation-09">
+    <h1>Donation UI</h1>
+<p>Using the latest Semantic UI, introduce a simple but well structured User Interface into the donation-service-play application.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="01">
+    <h1>donation-service</h1>
+<p>For this lab, you should be able to continue using the <code>donation-service</code> play project you already have running.</p>
+<ul>
+<li><a href="https://github.com/wit-computing/donation-service-2015/tree/revision2">https://github.com/wit-computing/donation-service-2015/tree/revision2</a></li>
+</ul>
+<p>This app hosts the API for our donation service, but as yet it has no UX. This lab will build a sample UX.</p>
+<h2>Semantic UI</h2>
+<p>Instead do downloading and incorporating the Semantic UI libraries into our application - as we may have done heretofore - it may be more effective to load the semantic assets from a content delivery network. This one is popular:</p>
+<ul>
+<li><a href="https://cdnjs.com/about">https://cdnjs.com/about</a></li>
+</ul>
+<p>and it hosts the semantic libraries:</p>
+<ul>
+<li><a href="http://cdnjs.com/libraries/semantic-ui">http://cdnjs.com/libraries/semantic-ui</a></li>
+</ul>
+<p>These is the latest version we need:</p>
+<pre><code>//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css
+//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js
+</code></pre>
+
+<p>In the donation-service project, these links will need to be introduced into main.html (note we are including jquery as well, which must appear before the semantic includes). Semantic UI needs some javascript to initialise the controls you may uses. We will need radio buttons, dropdown and a progress bar. This fragment can be included at the end of the main.html file:</p>
+<pre><code>     &lt;script&gt;
+       $(document).ready(function()
+       {
+         $('.ui.dropdown').dropdown({on: 'hover' });
+         $('.progress').progress();
+       });
+     &lt;/script&gt; 
+</code></pre>
+
+<p>We will also introduce a footer:</p>
+<h2>views/footer.html</h2>
+<pre><code>&lt;div class=&quot;ui divider&quot;&gt;&lt;/div&gt;
+
+&lt;footer class=&quot;ui divided horizontal footer link list&quot;&gt;
+  &lt;div class=&quot;item&quot;&gt;Donation Studios 2015&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;
+    Built using  &lt;a href=&quot;http://www.semantic-ui.com&quot; target=&quot;_blank&quot;&gt;Semantic ui&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;
+    and the  &lt;a href=&quot;http://www.playframework.com&quot; target=&quot;_blank&quot;&gt;Play Framework&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+</code></pre>
+
+<p>This leads us to the complete views/main.html, replacing the existing one:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;#{get 'title' /}&lt;/title&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;script type=&quot;text/javascript&quot;src=&quot;//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;@{'/public/stylesheets/main.css'}&quot;&gt;
+    &lt;link rel=&quot;shortcut icon&quot; type=&quot;image/png&quot; href=&quot;@{'/public/images/favicon.png'}&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;section class=&quot;ui container&quot;&gt;
+      #{doLayout /}
+      #{include &quot;footer.html&quot; /}    
+    &lt;/section&gt;
+    &lt;script&gt;
+      $(document).ready(function()
+      {
+        $('.ui.dropdown').dropdown({on: 'hover' });
+        $('.progress').progress();
+      });
+    &lt;/script&gt; 
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="02">
+    <h1>Routes</h1>
+<p>We already have out REST routes in place:</p>
+<pre><code># Home page
+GET     /                                        Application.index
+
+GET     /api/donors                              DonorsAPI.getAllDonors
+GET     /api/donors/{id}                         DonorsAPI.getDonor
+POST    /api/donors                              DonorsAPI.createDonor
+DELETE  /api/donors/{id}                         DonorsAPI.deleteDonor
+DELETE  /api/donors                              DonorsAPI.deleteAllDonors
+
+GET     /api/donations                           DonationsAPI.getAllDonations
+DELETE  /api/donations                           DonationsAPI.deleteAllDonations
+GET     /api/donors/{id}/donations               DonationsAPI.getDonations
+GET     /api/donors/{id}/donations/{donationId}  DonationsAPI.getDonation
+POST    /api/donors/{id}/donations               DonationsAPI.createDonation
+DELETE  /api/donors/{id}/donations/{donationId}  DonationsAPI.deleteDonation
+</code></pre>
+
+<p>We will leave these in place.</p>
+<p>Delete the first <code>/</code> route:</p>
+<pre><code>GET     /                                        Application.index
+</code></pre>
+
+<p>Replacing with a new home page + set of routes for the UI</p>
+<pre><code># Home page
+GET      /                                       Accounts.index
+
+# Accounts page
+GET     /signup                                  Accounts.signup
+GET     /login                                   Accounts.login
+GET     /logout                                  Accounts.logout
+POST    /authenticate                            Accounts.authenticate
+POST    /register                                Accounts.register
+
+# Donation pages
+GET     /donation                                Donations.index
+POST    /donation/donate                         Donations.donate
+GET     /donation/report                         Donations.renderreport
+</code></pre>
+
+<p>We will need some convenience methods in the Donor model class:</p>
+<h2>User</h2>
+<pre><code>  public static Donor findByEmail(String email)
+  {
+    return find(&quot;email&quot;, email).first();
+  }  
+
+  public boolean checkPassword(String password)
+  {
+    return this.password.equals(password);
+  } 
+</code></pre>
+
+<h2>Imagery</h2>
+<p>Our UI will make use of some imagery - these images should be saved to the public/images folder:</p>
+<p><img alt="" src="img/homer.png">
+<img alt="" src="img/homer2.png">
+<img alt="" src="img/homer3.png">
+<img alt="" src="img/homer4.jpeg">
+<img alt="" src="img/homer5.jpg"></p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="03">
+    <h1>Controllers</h1>
+<p>We have controllers to service the API. These two controllers will service the conventional web UI:</p>
+<h2>controllers/Donations</h2>
+<pre><code>package controllers;
+
+import play.*;
+import play.mvc.*;
+import java.util.*;
+import models.*;
+
+public class Donations extends Controller
+{
+  public static void index()
+  {
+    Donor donor = Accounts.getCurrentUser();
+    String prog = getPercentTargetAchieved();
+    String progress = prog;
+    Logger.info(&quot;Donation ctrler : user is &quot; + donor.email);
+    Logger.info(&quot;Donation ctrler : percent target achieved &quot; + progress);
+    List&lt;Donation&gt; donations = donor.donations;
+    render(donor, progress, donations);
+  }
+
+  public static void donate(int amountDonated, String methodDonated)
+  {
+    Donor donor = Accounts.getCurrentUser();
+    Logger.info(&quot;amount donated &quot; + amountDonated + &quot; &quot; + &quot;method donated &quot; + methodDonated);
+    Donation donation = new Donation(amountDonated, methodDonated);
+    donor.donations.add(donation);
+    donor.save();
+    index();
+  }
+
+  private static long getDonationTarget()
+  {
+    return 20000;
+  }
+
+  public static String getPercentTargetAchieved()
+  {
+    List&lt;Donation&gt; allDonations = Donation.findAll();
+    long total = 0;
+    for (Donation donation : allDonations)
+    {
+      total += donation.amount;
+    }
+    long target = getDonationTarget();
+    long percentachieved = (total * 100 / target);
+    String progress = String.valueOf(percentachieved);
+    Logger.info(&quot;Percent of target achieved (string) &quot; + progress + &quot; percentachieved (long)= &quot; + percentachieved);
+    return progress;
+  }
+
+  public static void renderreport()
+  {
+    Donor donor = Accounts.getCurrentUser();
+    List&lt;Donation&gt; donations = donor.donations;
+    render(donations);
+  }
+}
+</code></pre>
+
+<h2>controllers/Accounts</h2>
+<pre><code>package controllers;
+
+import play.*;
+import play.mvc.*;
+import models.*;
+
+public class Accounts extends Controller
+{
+  public static void index()
+  {
+    render();
+  }
+
+  public static void signup()
+  {
+    render();
+  }
+
+  public static void register(boolean usCitizen, String firstName, String lastName, String email, String password)
+  {
+    Logger.info( firstName + &quot; &quot; + lastName + &quot; &quot; + email + &quot; &quot; + password);
+    Donor user = new Donor(firstName, lastName, email, password);
+    user.save();
+    index();
+  }
+
+  public static void login()
+  {
+    render();
+  }
+
+  public static void logout()
+  {
+    session.clear();
+    index();
+  }
+
+  public static void authenticate(String email, String password)
+  {
+    Logger.info(&quot;Attempting to authenticate with &quot; + email + &quot;:&quot; + password);
+
+    Donor user = Donor.findByEmail(email);
+    if ((user != null) &amp;&amp; (user.checkPassword(password) == true))
+    {
+      Logger.info(&quot;Successfull authentication of  &quot; + user.firstName + &quot; &quot; + user.lastName);
+      session.put(&quot;logged_in_userid&quot;, user.id);
+      DonationController.index();
+    }
+    else
+    {
+      Logger.info(&quot;Authentication failed&quot;);
+      login();
+    }
+  }
+
+  public static Donor getCurrentUser()
+  {
+    String userId = session.get(&quot;logged_in_userid&quot;);
+    if (userId == null)
+    {
+      index();
+    }
+    Donor logged_in_user = Donor.findById(Long.parseLong(userId));
+    Logger.info(&quot;In Accounts controller: Logged in user is &quot; + logged_in_user.firstName);
+    return logged_in_user;
+  }
+}
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="04">
+    <h1>Account Segment Views</h1>
+<p>We will break up the UI into more fine grained components. In the App/views folder, create a new folder called 'segments' and introduce these files:</p>
+<ul>
+<li>login.html</li>
+<li>signup.html</li>
+<li>welcome.html</li>
+<li>welcomemenu.html</li>
+</ul>
+<p>The project looks like this now:</p>
+<p><img alt="" src="img/02.png"></p>
+<p>These are the contents:</p>
+<h1>views/segments/welcome.html</h1>
+<pre><code>&lt;section class=&quot;ui stacked segment&quot;&gt;
+  &lt;div class=&quot;ui grid&quot;&gt;
+    &lt;aside class=&quot;six wide column&quot;&gt;
+      &lt;img src=&quot;/public/images/homer.png&quot; class=&quot;ui medium image&quot;&gt;
+    &lt;/aside&gt;
+    &lt;article class=&quot;ten wide column&quot;&gt;
+      &lt;header class=&quot;ui  header&quot;&gt; Help Me Run Springfield  &lt;/header&gt;
+      &lt;p&gt; Donate what you can now - No Bitcoins accepted! &lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+
+<h1>views/segments/signup.html</h1>
+<pre><code>&lt;section class=&quot;ui raised segment&quot;&gt;
+  &lt;div class=&quot;ui grid&quot;&gt;
+    &lt;div class=&quot;ui ten wide column&quot;&gt;
+      &lt;div class=&quot;ui stacked fluid form segment&quot;&gt;
+          &lt;form action=&quot;/register&quot; method=&quot;POST&quot;&gt;
+            &lt;h3 class=&quot;ui header&quot;&gt;Register&lt;/h3&gt;
+            &lt;div class=&quot;two fields&quot;&gt;
+              &lt;div class=&quot;field&quot;&gt;
+                &lt;label&gt;First Name&lt;/label&gt;
+                &lt;input placeholder=&quot;First Name&quot; type=&quot;text&quot; name=&quot;firstName&quot;&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;field&quot;&gt;
+                &lt;label&gt;Last Name&lt;/label&gt;
+                &lt;input placeholder=&quot;Last Name&quot; type=&quot;text&quot; name=&quot;lastName&quot;&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;Email&lt;/label&gt;
+              &lt;input placeholder=&quot;Email&quot; type=&quot;text&quot; name=&quot;email&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;Password&lt;/label&gt;
+              &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;
+            &lt;/div&gt;
+            &lt;button class=&quot;ui blue submit button&quot;&gt;Submit&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;  
+      &lt;/div&gt;
+      &lt;aside class=&quot;ui five wide column&quot;&gt;
+        &lt;img src=&quot;/public/images/homer3.png&quot; class=&quot;ui medium image&quot;&gt;
+      &lt;/aside&gt;
+    &lt;/div&gt;  
+&lt;/section&gt;
+</code></pre>
+
+<h1>views/segments/login.html</h1>
+<pre><code>&lt;section class=&quot;ui raised segment&quot;&gt;
+  &lt;div class=&quot;ui grid&quot;&gt;
+    &lt;aside class=&quot;ui six wide column&quot;&gt;
+      &lt;img src=&quot;/public/images/homer2.png&quot; class=&quot;ui medium image&quot;&gt;
+    &lt;/aside&gt;
+    &lt;div class=&quot;ui ten wide column fluid form&quot;&gt;
+      &lt;div class=&quot;ui stacked segment&quot;&gt;
+        &lt;form action=&quot;/authenticate&quot; method=&quot;POST&quot;&gt;
+          &lt;h3 class=&quot;ui header&quot;&gt;Log-in&lt;/h3&gt;
+          &lt;div class=&quot;field&quot;&gt;
+            &lt;label&gt;Email&lt;/label&gt; &lt;input placeholder=&quot;Email&quot; type=&quot;text&quot;
+              name=&quot;email&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;field&quot;&gt;
+            &lt;label&gt;Password&lt;/label&gt; &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;
+          &lt;/div&gt;
+          &lt;button class=&quot;ui blue submit button&quot;&gt;Login&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+
+<h1>views/segments/welcomemenu.html</h1>
+<pre><code>&lt;nav class=&quot;ui inverted menu&quot;&gt;
+  &lt;header class=&quot;header item&quot;&gt; &lt;a href=&quot;/&quot;&gt; Donation &lt;/a&gt; &lt;/header&gt;
+  &lt;div class=&quot;right menu&quot;&gt;
+    &lt;a class=&quot;item&quot; href=&quot;/signup&quot;&gt; Signup&lt;/a&gt;
+    &lt;a class=&quot;item&quot; href=&quot;/login&quot;&gt;  Login&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;    
+</code></pre>
+
+<p>These are all Html 5 semantic elements that we will build the Accounts UX from.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="05">
+    <h1>Donation Segment Views</h1>
+<p>Here are templates to service the Donation Controller's views:</p>
+<h2>Views/segments/donate.html</h2>
+<pre><code>&lt;section class=&quot;ui raised segment&quot;&gt;
+  &lt;div class=&quot;ui grid &quot;&gt;
+    &lt;div class=&quot;ui form six wide column&quot;&gt;
+      &lt;div class=&quot;ui stacked segment&quot;&gt;
+        &lt;form action=&quot;/donation/donate&quot; method=&quot;POST&quot;&gt;
+          &lt;div class=&quot;ui dropdown&quot; name=&quot;amount&quot;&gt;
+            &lt;input type=&quot;hidden&quot; name=&quot;amountDonated&quot;&gt;
+            &lt;div class=&quot;text&quot;&gt;Select Amount&lt;/div&gt;
+            &lt;i class=&quot;dropdown icon&quot;&gt;&lt;/i&gt;
+            &lt;div class=&quot;menu&quot;&gt;
+              &lt;div class=&quot;item&quot;&gt;50&lt;/div&gt;
+              &lt;div class=&quot;item&quot;&gt;100&lt;/div&gt;
+              &lt;div class=&quot;item&quot;&gt;1000&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;grouped inline fields&quot;&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;div class=&quot;ui radio checkbox&quot;&gt;
+                &lt;input type=&quot;radio&quot; name=&quot;methodDonated&quot; value=&quot;paypal&quot;&gt;
+                &lt;label&gt;Paypal&lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;div class=&quot;ui radio checkbox&quot;&gt;
+                &lt;input type=&quot;radio&quot; name=&quot;methodDonated&quot; value=&quot;direct&quot;&gt;
+                &lt;label&gt;Direct&lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;button class=&quot;ui blue submit button&quot;&gt;Donate&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;aside class=&quot;six wide column&quot;&gt;
+      &lt;img src=&quot;/public/images/homer4.jpeg&quot; class=&quot;ui medium image&quot;&gt;
+    &lt;/aside&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+
+<h2>Views/segments/report.html</h2>
+<pre><code>&lt;section class=&quot;ui raised segment&quot;&gt;
+  &lt;div class=&quot;ui grid&quot;&gt;
+    &lt;aside class=&quot;six wide column&quot;&gt;
+      &lt;img src=&quot;/public/images/homer5.jpg&quot; class=&quot;ui medium image&quot;&gt;
+    &lt;/aside&gt;
+    &lt;article class=&quot;eight wide column&quot;&gt;
+      &lt;table class=&quot;ui celled table segment&quot;&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Amount&lt;/th&gt;
+            &lt;th&gt;Method donated&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          #{list items:donations, as:'donation'}
+          &lt;tr&gt;
+            &lt;td&gt;${donation.amount}&lt;/td&gt;
+            &lt;td&gt;${donation.method}&lt;/td&gt;
+          &lt;/tr&gt;
+          #{/list}
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/article&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="06">
+    <h1>Accounts Views</h1>
+<p>With the segment building blocks in place, we can switch our attention to the Controllers - and the views they will be rendering.</p>
+<p>We need three new views to service Accounts:</p>
+<p><img alt="" src="img/03.png"></p>
+<p>Here are the view contents</p>
+<h2>views/Accounts/index.html</h2>
+<pre><code>#{extends 'main.html' /} 
+#{set title:'Donations' /} 
+
+#{include &quot;segments/welcomemenu.html&quot; /}
+#{include &quot;segments/welcome.html&quot; /}
+</code></pre>
+
+<h2>views/Accounts/login.html</h2>
+<pre><code>#{extends 'main.html' /}
+#{set title:'Login to Donation' /}
+
+#{include &quot;segments/welcomemenu.html&quot; /}
+#{include &quot;segments/login.html&quot; /} 
+</code></pre>
+
+<h2>views/Accounts/signup.html</h2>
+<pre><code>#{extends 'main.html' /}
+#{set title:'Signup for Donation' /}
+
+#{include &quot;segments/welcomemenu.html&quot; /}
+#{include &quot;segments/signup.html&quot; /} 
+</code></pre>
+
+<p>Note that these view load the appropriate segments.</p>
+<p>You should be able to power up the play app now and test our the three Accounts screens:</p>
+<ul>
+<li><a href="http://localhost:9000/">http://localhost:9000/</a></li>
+<li><a href="http://localhost:9000/signup">http://localhost:9000/signup</a></li>
+<li><a href="http://localhost:9000/login">http://localhost:9000/login</a></li>
+</ul>
+<p>You should see:</p>
+<p><a href="img/04.png"></a>
+<a href="img/05.png"></a>
+<a href="img/06.png"></a></p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="07">
+    <h1>DonationController Views</h1>
+<p>And the final pieces - the templates for the Donations controller</p>
+<h2>views/Donations/index.html</h2>
+<pre><code>#{extends 'main.html' /}
+#{set title:'Donation Request' /} 
+
+&lt;nav class=&quot;ui inverted menu&quot;&gt;
+  &lt;header class=&quot;header item&quot;&gt; &lt;a href=&quot;/&quot;&gt; Donation &lt;/a&gt; &lt;/header&gt;
+  &lt;div class=&quot;right menu&quot;&gt;
+    &lt;a class=&quot;active item&quot; href=&quot;/donation&quot;&gt; Donate&lt;/a&gt;
+    &lt;a class=&quot;item&quot; href=&quot;/donation/report&quot;&gt;  Report&lt;/a&gt;
+    &lt;a class=&quot;item&quot; href=&quot;/logout&quot;&gt;  Logout&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;    
+
+&lt;section class=&quot;ui raised segment&quot;&gt;
+
+  #{include &quot;segments/donate.html&quot; /} 
+
+  &lt;div class=&quot;ui  divider&quot;&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;ui teal progress&quot;  data-percent=&quot;${progress}&quot; id=&quot;mainprogress&quot;&gt;
+    &lt;div class=&quot;bar&quot;&gt; &lt;/div&gt;
+  &lt;/div&gt;  
+
+&lt;/section&gt;
+</code></pre>
+
+<h2>views/Donations/renderreport.html</h2>
+<pre><code>#{extends 'main.html' /} 
+#{set title:'Report' /} 
+
+&lt;nav class=&quot;ui inverted menu&quot;&gt;
+  &lt;header class=&quot;header item&quot;&gt; &lt;a href=&quot;/&quot;&gt; Donation &lt;/a&gt; &lt;/header&gt;
+  &lt;div class=&quot;right menu&quot;&gt;
+    &lt;a class=&quot;item&quot; href=&quot;/donation&quot;&gt; Donate&lt;/a&gt;
+    &lt;a class=&quot;active item&quot; href=&quot;/donation/report&quot;&gt;  Report&lt;/a&gt;
+    &lt;a class=&quot;item&quot; href=&quot;/logout&quot;&gt;  Logout&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;    
+
+#{include &quot;segments/report.html&quot; /} 
+
+</code></pre>
+
+<p>Again, note how we are including the segments we need.</p>
+<p>The app should run now as expected. Make sure the progress bar behaves correctly.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="Exercises">
+    <h1>Exercises</h1>
+<p>Archive of the completed project:</p>
+<ul>
+<li><a href="https://github.com/wit-computing/donation-service-2015/tree/revision3">https://github.com/wit-computing/donation-service-2015/tree/revision3</a></li>
+</ul>
+<h2>Exercise 1</h2>
+<p>The donation-service-play application can service the REST API and the Web UI simultaneously. Launch the app and also the donation-android from last week. See if you can inspect donations registered from the android app using the web ui and vice versa</p>
+<h2>Exercise 2</h2>
+<p>Deploy the application to the Heroku - and verify that the UI and the Android client operate as expected using Heroku</p>
+<h2>Exercise 3</h2>
+<p>This is a revised 'dashboard' style interface for the Donation play service:</p>
+<p><img alt="" src="img/01.png"></p>
+<p>It doesnt make much sense. However, as we have 'segmented' the UI, you should be able to build this UX by just introducing a single new view. (Hint - the html template is in the slides!)</p>
+  </div>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
+
+
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>    <script>
+
+$(document).ready(function()
+{
+  $("img").addClass ("ui image");
+
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
+  });
+})    </script>
+
+  </body>
+ </html>

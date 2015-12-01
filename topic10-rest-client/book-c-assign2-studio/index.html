@@ -122,6 +122,9 @@ h3
       <a class="item" data-tab="10">
         10
       </a>
+      <a class="item" data-tab="11">
+        11
+      </a>
     </div>
 </div>
 
@@ -900,7 +903,7 @@ public class Tweet
 </code></pre>
   </div>
   <div  class="ui tab segment lab" data-tab="09">
-    <h1>Miscellaneous</h1>
+    <h1>Primary key</h1>
 <h2>Generating the Tweet database table <strong>id</strong> in the client</h2>
 <p>Default Play framework behaviour is to generate a default Long id primary key.</p>
 <p>Let's explore why this would be problematical for us.</p>
@@ -947,7 +950,7 @@ public class Tweet extends Model
 <ul>
 <li>The class is now derived from GenericModel.</li>
 <li>the @Id annotation is introduced.</li>
-<li>The id type is String since to accommodate the 128-bit UUID. Long has 64 bits.</li>
+<li>The id type is String to accommodate the 128-bit UUID. Long has 64 bits.</li>
 </ul>
 <pre><code>@Entity
 public class Tweet extends GenericModel
@@ -959,8 +962,55 @@ public class Tweet extends GenericModel
 </code></pre>
   </div>
   <div  class="ui tab segment lab" data-tab="10">
+    <h1>Date field</h1>
+<p>For the sake of simplicity, all the sample model fields used earlier in this lab are <em>String</em> type.</p>
+<p><img alt="Figure 1: Model Tweet class" src="img/23.png"></p>
+<p>The choice will prove problematic for those who require to sort tweets with reference to their timestamps.</p>
+<p>An obvious choice of type where we require to sort tweets would be java.util.Date.</p>
+<p>This, however, poses a problem in testing. For reasons that we have not fully researched, if Date is used as the datestamp type then the JUnit test fails. An examination of underlying date values of the outgoing and returned tweet dates reveal differences. See Figure 2.</p>
+<p><img alt="Figure 2: Date objects fail test" src="img/29.png"></p>
+<p>A Date object represents the number of milliseconds since January 1 1970. See documentation <a href="https://docs.oracle.com/javase/7/docs/api/java/util/Date.html">here</a>. This number, a long type, is returned by Date.getTime(). </p>
+<p>Using the Java type Long avoids the problem described above.</p>
+<p>Tweet.datestamp can be declared and initialized thus:</p>
+<pre><code>  public Long datestamp;
+
+  public Tweet()
+  {
+    ...
+    this.datestamp = new Date().getTime();
+  }
+</code></pre>
+
+<p>The datestamp is easily formatted so as to comply with one's display requirements. Here is some sample code that could be used as a template:</p>
+<pre><code>  /**
+   * Formats the datestamp field by first converting
+   * to a Date object and then using the private
+   * helper method formattedDate.
+   */
+  public String getDateString()
+  {
+    return formattedDate(new Date(datestamp));
+  }
+
+  /**
+   * @param date A java.util.Date object
+   * @see &lt;a href=&quot;http://docs.oracle.com/javase/tutorial/i18n/format/simpleDateFormat.html&quot;&gt;Date Format&lt;/a&gt;
+   * @see &lt;a href=&quot;http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html&quot;&gt;Simple Date Format&lt;/a&gt;
+   * @return A formatted date string
+   */
+  private String formattedDate(Date date)
+  {
+    DateFormat sdf = new SimpleDateFormat(&quot;EEE d MMM yyyy H:mm&quot;);
+    sdf.setTimeZone(TimeZone.getTimeZone(&quot;GMT&quot;));
+    return sdf.format(datestamp);
+  }
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="11">
     <h1>Resources</h1>
-<p>A draft development timeline is available <a href="archives/development-timeline.pdf">here</a></p>
+<ul>
+<li>A draft development timeline is available <a href="archives/development-timeline.pdf">here</a></li>
+</ul>
   </div>
 <script>
 $('.ui.menu .item')
