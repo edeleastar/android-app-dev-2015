@@ -1,0 +1,1032 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+      <style>
+
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+}
+
+figcaption
+{
+  margin-bottom: 20px;
+}
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+.credits
+{
+  min-height:20px;
+}
+    </style>
+
+  </head>
+
+  <body>
+
+  <div class="ui container">
+<style>
+
+
+code
+{
+  font-family: "Monaco";
+  font-size: 110%;
+}
+
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
+{
+  font-style:italic;
+  font-size:130%;
+  border-bottom: thin solid black;
+}
+h2
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+h3
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+</style>
+
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      12: Android Services
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    <a class="active item" data-tab="MyTweet-Assignment-Studio-02">
+        MyTweet-Assignment-Studio-02
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
+      <a class="item" data-tab="08">
+        08
+      </a>
+      <a class="item" data-tab="09">
+        09
+      </a>
+      <a class="item" data-tab="Cutting room bin">
+        Cutting room bin
+      </a>
+    </div>
+</div>
+
+<br><br>
+
+  <div  class="ui tab segment lab" data-tab="MyTweet-Assignment-Studio-02">
+    <h1>Introduction</h1>
+<p>This is a follow-on lab to MyTweet-Assignment-Studio-01. The lab provides guidance but <span style="color:red">not comprehensive instructions</span> (which is reasonable given that it relates to an assignment). The guidance addesses issues that might otherwise prove quite difficult to resolve.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="01">
+    <h1>Preview</h1>
+<p>The aim of the previous lab was to facilitate the creation of a walking skeleton of the baseline Android MyTweet app, the subject of the second and final Mobile Application Development assignment.</p>
+<p>In this lab we further develop MyTweet Android client and Play service by introducing a Tweeter model and establishing a many-to-one bi-directional relationship between Tweeter and Tweet models.</p>
+<ul>
+<li>Introduce a Tweeter model</li>
+<li>Modify the existing Tweet model</li>
+<li>Introduce authentication following the example in the Donation labs.</li>
+</ul>
+<p>In this lab we will work with three applications:</p>
+<ul>
+<li>mytweet-2015 (Android client)</li>
+<li>mytweet-service-2015 (Play service)</li>
+<li>mytweet-service-test-2015 (JUnit Tester)</li>
+</ul>
+  </div>
+  <div  class="ui tab segment lab" data-tab="02">
+    <h1>MyTweetService (Tweeter)</h1>
+<p>Figure 1 shows a typical project structure for the service.</p>
+<p><img alt="Figure 1: MyTweet service project structure" src="img/01.png"></p>
+<p>In particular note the presence of a new class GsonStrategy. This is required as a result of introducing the entity relationship between Tweet and Tweeter classes.</p>
+<p>In the Tweeter model class we establish a relationship with the Tweet model as follows:</p>
+<pre><code>  @OneToMany(mappedBy=&quot;tweeter&quot;, cascade = CascadeType.ALL)
+  public List&lt;Tweet&gt; tweets = new ArrayList&lt;Tweet&gt;();
+</code></pre>
+
+<p>What this is expressing is that:</p>
+<ul>
+<li>a single tweeter may own many tweets</li>
+<li>Tweeter stores the tweets in a list named <em>tweets</em></li>
+<li>any particular tweet will have a reference to its owner tweeter<ul>
+<li>this will be represented as <em>Tweeter tweeter</em> field in Tweet class which we shall see shortly.</li>
+</ul>
+</li>
+</ul>
+<p>Here is the new Tweeter model code including the above snippet. We are familiar with most aspects of this Tweeter class from previous labs such as, for example, Donation.</p>
+<p>Note that we are generating the id (uuid) in the client as we did with the Tweet model.</p>
+<p>File: Tweeter.java</p>
+<pre><code>package models;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import play.db.jpa.GenericModel;
+
+@Entity
+public class Tweeter extends GenericModel
+{
+  @Id
+  public String id;
+  public String firstName;
+  public String lastName;
+  public String email;
+  public String password;
+
+
+  @OneToMany(mappedBy=&quot;tweeter&quot;, cascade = CascadeType.ALL)
+  public List&lt;Tweet&gt; tweets = new ArrayList&lt;Tweet&gt;();
+
+  public static Tweeter findByEmail(String email)
+  {
+    return find(&quot;email&quot;, email).first();
+  }
+
+  public boolean checkPassword(String password)
+  {
+    return this.password.equals(password);
+  }
+
+  public String getFullName()
+  {
+    return firstName + &quot; &quot; + lastName;
+  }
+
+}
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="03">
+    <h1>MyTweetService (Tweet)</h1>
+<p>The only change to the Tweet model is the addition of the other side of the relationship introduced in Tweeter:</p>
+<pre><code>  @ManyToOne
+  public Tweeter tweeter;
+</code></pre>
+
+<p>A tweeter may own (create) many tweets but a tweet will always have been created by a single tweeter.</p>
+<p>Here is the complete class:</p>
+<pre><code>package models;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import play.db.jpa.GenericModel;
+
+@Entity
+public class Tweet extends GenericModel
+{
+  @Id
+  public String   id;
+  public String   message;
+  public Long     datestamp;
+
+  @ManyToOne
+  public Tweeter tweeter;
+} 
+</code></pre>
+
+<p>Ensure the routes file accommodates the new Tweeter model:</p>
+<pre><code># Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+
+# Tweeter (the user)
+GET     /api/tweeters                              TweetersAPI.getAllTweeters
+GET     /api/tweeters/{id}                         TweetersAPI.getTweeter
+POST    /api/tweeters                              TweetersAPI.createTweeter
+DELETE  /api/tweeters/{id}                         TweetersAPI.deleteTweeter
+DELETE  /api/tweeters                              TweetersAPI.deleteAllTweeters
+
+# Tweet
+GET     /api/tweets                                TweetsAPI.getAllTweets
+DELETE  /api/tweets                                TweetsAPI.deleteAllTweets
+GET     /api/tweeters/{id}/tweets                  TweetsAPI.getTweets
+GET     /api/tweeters/{id}/tweets/{tweetId}        TweetsAPI.getTweet
+POST    /api/tweeters/{id}/tweets                  TweetsAPI.createTweet
+DELETE  /api/tweeters/{id}/tweets/{tweetId}        TweetsAPI.deleteTweet
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}
+
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="04">
+    <h1>MyTweetService(APIs)</h1>
+<p>Here is the GsonStrategy class. Locate it in Utils.</p>
+<pre><code>package utils;
+
+import models.Tweet;
+
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
+
+public class GsonStrategy implements ExclusionStrategy
+{
+
+  public boolean shouldSkipClass(Class&lt;?&gt; arg0)
+  {
+    return false;
+  }
+
+  public boolean shouldSkipField(FieldAttributes f)
+  {
+    return (f.getDeclaringClass() == Tweet.class &amp;&amp; f.getName().equals(&quot;tweeter&quot;));
+  }
+}
+</code></pre>
+
+<p>Both API files are presented here. Mostly they match those you have already encountered in the Donation labs. But some additional functionality is introduced to cater for the entity relationship between Tweet and Tweeter.</p>
+<p>Filename: TweetersAPI.java</p>
+<pre><code>package controllers;
+
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+
+import models.Tweet;
+import models.Tweeter;
+import play.mvc.Controller;
+import utils.GsonStrategy;
+
+public class TweetersAPI extends Controller
+{
+  static Gson gson = new GsonBuilder()
+  .setExclusionStrategies(new GsonStrategy())
+  .create();
+
+  public static void getAllTweeters()
+  {
+    List&lt;Tweeter&gt; Tweeters = Tweeter.findAll();
+    renderJSON(gson.toJson(Tweeters));
+  }
+
+  public static void getTweeter(String id)
+  {
+    Tweeter tweeter = Tweeter.findById(id);
+    if (tweeter == null)
+    {
+      notFound();
+    }
+    else
+    {
+      renderJSON(gson.toJson(tweeter));
+    }
+  }
+
+  public static void createTweeter(JsonElement body)
+  {
+    Tweeter tweeter = gson.fromJson(body.toString(), Tweeter.class);
+    tweeter.save();
+    renderJSON(gson.toJson(tweeter));
+  }
+
+  public static void deleteTweeter(String id)
+  {
+    Tweeter tweeter = Tweeter.findById(id);
+    if (tweeter == null)
+    {
+      notFound(&quot;No Tweeter with ID&quot; + id);
+    }
+    else
+    {
+      tweeter.delete();
+      renderJSON(gson.toJson(tweeter));
+    }
+  }
+
+  /**
+   * This method deletes all tweeters and tweets.
+   */
+  public static void deleteAllTweeters()
+  {
+    List&lt;Tweeter&gt; tweeters = Tweeter.findAll();
+    int numberTweeters = tweeters.size();
+    for(int i = 0; i &lt; numberTweeters; i += 1)
+    {
+      Tweeter tweeter = tweeters.get(i);
+      List&lt;Tweet&gt; tweets = tweeter.tweets;
+      for(int j = 0; j &lt; tweets.size(); j += 1)
+      {
+        Tweet tweet = Tweet.findById(tweets.get(j).id);
+        tweeter.tweets.remove(tweet);
+        tweeter.save();
+        tweet.delete();   
+      }
+      tweeter.delete();
+    }
+    renderText(&quot;success&quot;);
+  }
+}
+</code></pre>
+
+<p>Filename: TweetsAPI.java</p>
+<pre><code>  package controllers;
+
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+
+import models.Tweet;
+import models.Tweeter;
+import play.mvc.Controller;
+import utils.GsonStrategy;
+
+public class TweetsAPI extends Controller
+{
+
+  static Gson gson = new GsonBuilder()
+      .setExclusionStrategies(new GsonStrategy())
+      .create();
+
+  /**
+   * 
+   * @param id : The tweeter id (tweet owner)
+   * @param body : The tweet to be persisted
+   */
+  public static void createTweet(String id, JsonElement body)
+  {
+    Tweet tweet = gson.fromJson(body.toString(), Tweet.class);
+    Tweeter tweeter = Tweeter.findById(id);
+    tweeter.tweets.add(tweet);
+    tweet.tweeter = tweeter;
+    tweet.save();
+    renderJSON(gson.toJson(tweet)); 
+  }
+
+  public static void getAllTweets()
+  {
+    List&lt;Tweet&gt; tweets = Tweet.findAll();
+    renderJSON(gson.toJson(tweets));
+  }
+
+  /**
+   * 
+   * @param id : The id of the tweeter (the tweet list owner)
+   */
+  public static void getTweets(String id)
+  {
+    Tweeter tweeter = Tweeter.findById(id);
+    if (tweeter == null)
+    {
+      notFound();
+    }
+    renderJSON(gson.toJson(tweeter.tweets));
+  }
+
+  /**
+   * 
+   * @param id : The tweeter id. This is redundant here since 
+   *             tweet id a uuid and so unique.
+   * @param tweetId : The id of tweet sought.
+   */
+  public static void getTweet (String id, String tweetId)
+  {
+   Tweet tweet = Tweet.findById(tweetId);
+   if (tweet == null)
+   {
+     notFound();
+   }
+   else
+   {
+     renderJSON(gson.toJson(tweet));
+   }
+  }
+  /**
+   * 
+   * @param id : The tweeter id. This is redundant here since 
+   *             tweet id a uuid and so unique.
+   * @param tweetId : The id of tweet for deletion.
+   */ 
+  public static void deleteTweet(String id, String tweetId)
+  {
+    Tweet tweet = Tweet.findById(tweetId);
+    if (tweet == null)
+    {
+      notFound();
+    }
+    else
+    {
+      tweet.delete();
+      renderText(&quot;success&quot;);
+    }
+  }
+
+  public static void deleteAllTweets()
+  {
+    Tweet.deleteAll();
+    renderText(&quot;success&quot;);
+  }  
+}
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="05">
+    <h1>MyTweet (Model)</h1>
+<p>The model classes used in the Android client, are introduced in this step.</p>
+<p>The Tweet model class remains unchanged (excepting the change of datestamp type). No relationship between Tweet and Tweeter will exist in the client. </p>
+<ul>
+<li>Such a relationship does, however, exist on the Play service app.</li>
+</ul>
+<pre><code>package org.wit.mytweet.model;
+
+import java.util.Date;
+import java.util.UUID;
+
+public class Tweet
+{
+  public   String id;
+  public   String message;
+  public   Long   datestamp;
+
+
+  public Tweet(String message)
+  {
+    id = UUID.randomUUID().toString();
+    datestamp = new Date().getTime();
+    this.message = message;
+  }
+
+}
+</code></pre>
+
+<p>Here is the new Tweeter model class. Observe that the <em>id</em> is generated here rather than in the Play app on the server as discussed at the end of the previous assignment studio lab.</p>
+<p>Also note that an entity relationship with Tweet is not defined. Again, this is a role of the service.</p>
+<pre><code>package org.wit.ictskills.models;
+
+import java.util.UUID;
+
+public class Tweeter
+{
+  public String id;
+  public String firstName;
+  public String lastName;
+  public String email;
+  public String password;
+
+
+  public Tweeter(String firstName, String lastName, String email, String password)
+  {
+    this.id = UUID.randomUUID().toString();
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.password = password;
+  }
+
+}
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="06">
+    <h1>MyTweetServiceProxy</h1>
+<p>The core of this file matches that developed and tested in the JUnit tester.</p>
+<ul>
+<li>Locate in package <em>main</em>.</li>
+</ul>
+<p>Filename: MyTweetProxy.java</p>
+<pre><code>package org.wit.ictskills.main;
+
+import org.wit.ictskills.models.Tweet;
+import org.wit.ictskills.models.Tweeter;
+
+import java.util.List;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.http.Body;
+import retrofit.http.DELETE;
+import retrofit.http.GET;
+import retrofit.http.POST;
+import retrofit.http.Path;
+
+public interface MyTweetServiceProxy
+{
+  @GET(&quot;/api/tweeters&quot;)
+  Call&lt;List&lt;Tweeter&gt;&gt; getAllTweeters();
+
+  @GET(&quot;/api/tweeters/{id}&quot;)
+  Call&lt;Tweeter&gt; getTweeter(@Path(&quot;id&quot;) String id);
+
+  @POST(&quot;/api/tweeters&quot;)
+  Call&lt;Tweeter&gt; createTweeter(@Body Tweeter tweeter);
+
+  @DELETE(&quot;/api/tweeters/{id}&quot;)
+  Call&lt;Tweeter&gt; deleteTweeter(@Path(&quot;id&quot;) String id);
+
+  @DELETE(&quot;/api/tweeters&quot;)
+  Call&lt;String&gt; deleteAllTweeters();
+
+  @GET(&quot;/api/tweets&quot;)
+  Call&lt;List&lt;Tweet&gt;&gt; getAllTweets();
+
+  @DELETE(&quot;/api/tweets&quot;)
+  Call&lt;String&gt; deleteAllTweets();
+
+  @GET(&quot;/api/tweeters/{id}/tweets&quot;)
+  Call&lt;List&lt;Tweet&gt;&gt; getTweets(@Path(&quot;id&quot;) String id);
+
+  @GET(&quot;/api/tweeters/{id}/tweets/{tweetId}&quot;)
+  Call&lt;Tweet&gt; getTweet(@Path(&quot;id&quot;) String id, @Path(&quot;tweetId&quot;) String tweetId);
+
+  @POST(&quot;/api/tweeters/{id}/tweets&quot;)
+  Call&lt;Tweet&gt; createTweet(@Path(&quot;id&quot;) String id, @Body Tweet tweet);
+
+  @DELETE(&quot;/api/tweeters/{id}/tweets/{tweetId}&quot;)
+  Call&lt;String&gt; deleteTweet(@Path(&quot;id&quot;) String id, @Path(&quot;tweetId&quot;) String tweetId);
+}
+
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="07">
+    <h1>MyTweet (Integration)</h1>
+<p>Some changes are required to accomodate the new Tweeter class and its relationship with Tweet. Following are some suggestions.</p>
+<p><strong>Signup</strong> and <strong>Login</strong></p>
+<p>It is assumed you have already introduced and fully implemented these activities. Implementation of this functionality has been covered in the Donation labs.</p>
+<p><strong>MyTweetApp</strong></p>
+<ul>
+<li>Consider introducing a field here to store the current tweeter.</li>
+<li>This field should be initialized from the Login activity (once a tweeter has been authenticated).</li>
+</ul>
+<pre><code>public Tweeter logged_in_tweeter;
+</code></pre>
+
+<p>Also required is a field for the current list of tweeters:</p>
+<pre><code>  public List &lt;Tweeter&gt; tweeters = new ArrayList&lt;Tweeter&gt;();  
+</code></pre>
+
+<p>And a method to authenticate:</p>
+<pre><code>  public Tweeter validUser (String email, String password)
+  {
+    for (Tweeter tweeter : tweeters)
+    {
+      if (tweeter.email.equals(email) &amp;&amp; tweeter.password.equals(password))
+      {
+        logged_in_tweeter = tweeter;
+        return tweeter;
+      }
+    }
+    return null;
+  }
+</code></pre>
+
+<p><strong>TimeLineFragment</strong></p>
+<p>Add Tweeter &amp; MyTweetApp fields:</p>
+<pre><code>private Tweeter tweeter;
+private MyTweetApp app;
+</code></pre>
+
+<p>Initialize <em>tweeter</em> in onCreate:</p>
+<pre><code>@Override
+  public void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    ...
+    app = (MyTweetApp) getActivity().getApplication();
+    tweeter   = app.logged_in_tweeter;
+    ...
+  }
+</code></pre>
+
+<p>In the first assignment studio we demonstrated how to save a tweet to the service. In that situation the Tweeter model did not exist. Here is a code snippet to reflect the presence of a Tweeter and an entity relationship with its Tweet list. </p>
+<ul>
+<li>We simply replace the placeholder id parameter used previously with the id of the logged-in Tweeter.</li>
+</ul>
+<pre><code>  public void transmitTweet()
+  {
+    Call&lt;Tweet&gt; call = app.tweetService.createTweet(app.logged_in_tweeter.id, tweet);
+    call.enqueue(this);
+  }
+</code></pre>
+
+<p>At this stage of development you should have implemented the following:</p>
+<ul>
+<li>Welcome <ul>
+<li>Presents log in and sign up buttons.</li>
+<li>Downloads all tweeters in background call.</li>
+</ul>
+</li>
+<li>Sign up<ul>
+<li>Registers a new tweeter.</li>
+</ul>
+</li>
+<li>Log in<ul>
+<li>Logs in a registered tweeter.</li>
+</ul>
+</li>
+<li>Compose and transmit a tweet to the service.<ul>
+<li>Viewable in Postman, H2 Console or the like.</li>
+</ul>
+</li>
+</ul>
+  </div>
+  <div  class="ui tab segment lab" data-tab="08">
+    <h1>Test</h1>
+<p>As part of the assignment you will be writing and executing comprehensive JUnit tests. </p>
+<p>Here is sample output generated in <a href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop/related?hl=en">Postman</a>.</p>
+<p><img alt="Figure 1: A logged on tweeter" src="img/02.png"></p>
+<p><img alt="Figure 2: Tweets added" src="img/03.png"></p>
+<p><img alt="Figure 3: Tweets api used to view list of tweets" src="img/04.png"></p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="09">
+    <h1>Callback</h1>
+<p>Consider the TweetListFragment class, also referred to by some as TimeLineFragment.</p>
+<p>Here we show the parts of the class responsible for fetching a list of tweets from the service.</p>
+<ul>
+<li>The class implements the Callback interface using List<Tweet> as a parameter.</li>
+<li>It then implements the Callback methods:<ul>
+<li>onResponse</li>
+<li>onFailure</li>
+</ul>
+</li>
+</ul>
+<pre><code>public class TweetListFragment extends ListFragment implements
+    OnItemClickListener,
+    AbsListView.MultiChoiceModeListener,
+    Callback&lt;List&lt;Tweet&gt;&gt;
+{
+
+  ...
+
+  /**
+   * Retrofit used to refresh tweet list
+   */
+  private void refreshTweetList()
+  {
+    Call&lt;List&lt;Tweet&gt;&gt; call = app.tweetService.getAllTweets();
+    call.enqueue(this);
+  }
+
+  @Override
+  public void onResponse(Response&lt;List&lt;Tweet&gt;&gt; response, Retrofit retrofit)
+  {
+    //deleteAllLocalTweets();
+    List&lt;Tweet&gt; list = response.body();
+    app.collection.updateTweets(list);
+    ((TweetAdapter) getListAdapter()).notifyDataSetChanged();
+    Toast.makeText(getActivity(), &quot;Retrieved &quot; + list.size() + &quot; tweets&quot;, Toast.LENGTH_LONG).show();
+  }
+
+  @Override
+  public void onFailure(Throwable t)
+  {
+    Toast.makeText(getActivity(), &quot;Failed to retrieve tweet list&quot;, Toast.LENGTH_LONG).show();
+  }
+
+}
+</code></pre>
+
+<p>Now, still in class TweetListFragment, we wish to make a call to delete all tweets - something like this:</p>
+<pre><code>Call&lt;String&gt; call = app.tweetService.deleteAllTweets();
+call.enqueue(this);
+</code></pre>
+
+<p>However, this will fail because the <strong>this</strong> in this instance does not match the typed requirements of <em>enqueue</em> parameter which must be of type Call &lt;String&gt;.</p>
+<p><strong>this</strong> may be considered type Call &lt;List&lt;Tweet&gt;&gt; because TweetListFragment implements Callback&lt;List&lt;Tweet&gt;&gt; as shown above and again here:</p>
+<pre><code>public class TweetListFragment extends ListFragment implements
+    OnItemClickListener,
+    AbsListView.MultiChoiceModeListener,
+    Callback&lt;List&lt;Tweet&gt;&gt; // &lt;---------------------------- TweetListFragment implements Callback&lt;List&lt;Tweet&gt;&gt;
+</code></pre>
+
+<p>It would be convenient were it permissible to add on another interface, Callback&lt;String&gt;. But it is not permitted that TweetListFragment implement more than one Callback interface even were the parameters to differ. </p>
+<p>Here is one alternative approach that does work. There are others that are more succinct but perhaps less easy to read.</p>
+<ul>
+<li>Create an inner class that we shall name DeleteAllTweets.</li>
+<li>Have this class implement Callback &lt;String&gt;.</li>
+<li>Implement the Callback interface methods, onResponse and onFailure within this class.</li>
+<li>Instantiate the class:     <em>DeleteAllTweets delTweets = new DeleteAllTweets();</em></li>
+<li>Invoke the api method deleteAllTweets:     Call&lt;String&gt; call = app.tweetService.deleteAllTweets();</li>
+<li>Invoke enqueue on the call object, passing the DeleteAllTweets object as a parameter.</li>
+</ul>
+<p>Here is the complete code pattern that you should add at a convenient location within TweetListFragment:</p>
+<pre><code>  private void deleteAllRemoteTweets()
+  {
+    DeleteAllTweets delTweets = new DeleteAllTweets();
+    Call&lt;String&gt; call = app.tweetService.deleteAllTweets();
+    call.enqueue(delTweets);
+
+  }
+
+  class DeleteAllTweets implements Callback&lt;String&gt;
+  {
+
+    @Override
+    public void onResponse(Response&lt;String&gt; response, Retrofit retrofit)
+    {
+      Toast.makeText(getActivity(), &quot;All Tweets deleted&quot;, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onFailure(Throwable t)
+    {
+      Toast.makeText(getActivity(), &quot;Failed to delete all tweets&quot;, Toast.LENGTH_SHORT).show();
+    }
+  }
+</code></pre>
+
+<p>Then at the point where you wish to delete all tweets you simple invoke the method:</p>
+<pre><code>deleteAllRemoteTweets();
+</code></pre>
+
+<p>This pattern, using the appropriate type, could be applied elsewhere in the application should the need arise.</p>
+  </div>
+  <div  class="ui tab segment lab" data-tab="Cutting room bin">
+    <h1>Miscellaneous</h1>
+<h2>data.yml</h2>
+<p>Sample yml file in which a many to one relationship configured as described in this lab.</p>
+<ul>
+<li>Observe that tweeter1 owns two tweets, tweet_1 and tweet_2.</li>
+<li>The Tweet objects contain references to their owners. Example in the case of tweet_1 this is represented by:<ul>
+<li>tweeter: tweeter1</li>
+</ul>
+</li>
+</ul>
+<pre><code>Tweeter(tweeter1):
+  id: 0a721931-74a2-4d8e-b0a5-954b62437bd8
+  firstName: Marge
+  lastName: Simpson
+  email: marge@simpson.com
+  password: secret
+  tweets: [tweet_1, tweet_2]
+
+Tweet(tweet_1):
+  id: 39f5b200-898f-11e5-b435-0002a5d5c51b
+  message: tweet_1
+  count: 1
+  datestamp: 1448196498688
+  tweeter: tweeter1
+
+
+Tweet(tweet_2):
+  id: 29fd10fd-76e8-4b12-9286-e9f2d6ae1e24
+  message: tweet_2
+  count: 2
+  datestamp: 1448196498666
+  tweeter: tweeter1
+
+</code></pre>
+
+<h2>JUnit test code skeleton</h2>
+<pre><code>package app.test;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import app.main.TweetServiceAPI;
+import app.models.Tweet;
+import app.models.Tweeter;
+
+
+/**
+Complete list api methods tested
+# Tweeter (the user)
+GET     /api/tweeters                              TweetersAPI.getAllTweeters     
+GET     /api/tweeters/{id}                         TweetersAPI.getTweeter         
+POST    /api/tweeters                              TweetersAPI.createTweeter      
+DELETE  /api/tweeters/{id}                         TweetersAPI.deleteTweeter      
+DELETE  /api/tweeters                              TweetersAPI.deleteAllTweeters  
+
+# Tweet
+GET     /api/tweets                                TweetsAPI.getAllTweets         
+DELETE  /api/tweets                                TweetsAPI.deleteAllTweets      
+GET     /api/tweeters/{id}/tweets                  TweetsAPI.getTweets            
+GET     /api/tweeters/{id}/tweets/{tweetId}        TweetsAPI.getTweet             
+POST    /api/tweeters/{id}/tweets                  TweetsAPI.createTweet          
+DELETE  /api/tweeters/{id}/tweets/{tweetId}        TweetsAPI.deleteTweet          
+*/
+
+public class TweetTest
+{
+  private static TweetServiceAPI service = new TweetServiceAPI();
+
+  private int NUMBER_TWEETS   = ;
+  private int NUMBER_TWEETERS = ;
+
+  static Tweeter tweeters[] =
+  {
+    new Tweeter(&quot;Homer&quot;, &quot;Simpson&quot;, &quot;homer@simpson.com&quot;, &quot;secret&quot;),
+    ...
+
+  };
+
+  static Tweet tweets[] = 
+  {
+    new Tweet(&quot;tweet 0&quot;),
+    ....
+
+  };
+
+  /**
+   * POST /api/tweeters TweetersAPI.createTweeter POST /api/tweets
+   * TweetersAPI.createTweet
+   */
+  @Before
+  public void setup() throws Exception
+  {
+    for (Tweeter tweeter : tweeters)
+    {
+      service.createTweeter(tweeter);
+    }
+
+    service.createTweet(tweeters[0].id, tweets[0]);
+    service.createTweet(tweeters[0].id, tweets[1]);
+    ...
+    ...
+    ...
+
+  }
+
+  /**
+   * DELETE /api/tweets TweetsAPI.deleteAllTweets DELETE /api/tweeters
+   * TweetsAPI.deleteAllTweeterss
+   */
+  @After
+  public void teardown() throws Exception
+  {
+    // TODO delete all tweets and tweeters
+  }
+
+  /**
+   * GET /api/tweeters TweetersAPI.getAllTweeters
+   */
+  @Test
+  public void getAllTweeters() throws Exception
+  {
+    // TODO Get list tweeters and assert size list correct.
+  }
+
+  /**
+   * GET /api/tweets TweetsAPI.getAllTweets
+   */
+  @Test
+  public void getAllTweets() throws Exception
+  {
+    // TODO Get list tweets and assert size list correct.
+  }
+
+  /**
+   * DELETE /api/tweeters/{id} TweetersAPI.deleteTweeter
+   */
+  @Test
+  public void deleteTweet() throws Exception
+  {
+    // TODO Delete a specific tweet and check return code as expected.
+  }
+
+  /**
+   * DELETE /api/tweeters/{id} TweetersAPI.deleteTweeter
+   */
+  @Test
+  public void deleteTweeter() throws Exception
+  {
+    // TODO Delete a specific tweeter and check return code as expected.
+  }
+
+  /**
+   * GET /api/tweeters/{id} TweetersAPI.getTweeter
+   */
+  @Test
+  public void getTweeter() throws Exception
+  {
+    // TODO Get a specific tweeter based on its id and check result.
+  }
+
+  /**
+   * GET /api/tweeters/{id}/tweets TweetsAPI.getTweets
+   */
+  @Test
+  public void getTweets() throws Exception
+  {
+    // TODO Get all tweets owned by specified tweeter and check results.
+  }
+
+  /**
+   * GET /api/tweeters/{id}/tweets/{tweetId} TweetsAPI.getTweet
+   */
+  @Test
+  public void getTweet() throws Exception
+  {
+    // TODO GET a tweet identified by its owner and its id and check result.
+  }
+
+}
+</code></pre>
+  </div>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
+
+
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>    <script>
+
+$(document).ready(function()
+{
+  $("img").addClass ("ui image");
+
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
+  });
+})    </script>
+
+  </body>
+ </html>
