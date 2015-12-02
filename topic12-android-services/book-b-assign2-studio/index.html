@@ -701,7 +701,7 @@ private MyTweetApp app;
 <p>Consider the TweetListFragment class, also referred to by some as TimeLineFragment.</p>
 <p>Here we show the parts of the class responsible for fetching a list of tweets from the service.</p>
 <ul>
-<li>The class implements the Callback interface using List<Tweet> as a parameter.</li>
+<li>The class implements the Callback interface using List &lt;Tweet&gt;&gt;as a parameter.</li>
 <li>It then implements the Callback methods:<ul>
 <li>onResponse</li>
 <li>onFailure</li>
@@ -791,6 +791,26 @@ call.enqueue(this);
       Toast.makeText(getActivity(), &quot;Failed to delete all tweets&quot;, Toast.LENGTH_SHORT).show();
     }
   }
+</code></pre>
+
+<p>Alternatively, you may use an anonymous class. This code would then replace the entire block immediately above.</p>
+<pre><code>  private void deleteAllRemoteTweets()
+  {
+    Call&lt;String&gt; call = app.tweetService.deleteAllTweets();
+    call.enqueue(new Callback&lt;String&gt;() {
+
+      @Override
+      public void onResponse(Response&lt;String&gt; response, Retrofit retrofit)
+      {
+        Toast.makeText(getActivity(), &quot;All Tweets deleted: &quot;+response.body(), Toast.LENGTH_SHORT).show();
+      }
+
+      @Override
+      public void onFailure(Throwable t)
+      {
+        Toast.makeText(getActivity(), &quot;Failed to delete all tweets&quot;, Toast.LENGTH_SHORT).show();
+      }
+    });
 </code></pre>
 
 <p>Then at the point where you wish to delete all tweets you simple invoke the method:</p>
