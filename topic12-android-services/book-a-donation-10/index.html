@@ -164,6 +164,9 @@ h3
 <li><a href="archives/donation-android-2015-03.zip">donation-android-2015-03</a>. </li>
 </ul>
 <p>Use the service completed at the end of donation-08.</p>
+<ul>
+<li>https://github.com/wit-computing/donation-service-2015/tree/revision3</li>
+</ul>
 <p>To update build paths run the eclipsify command before you run the service.</p>
 <pre><code>play eclipsify
 </code></pre>
@@ -604,9 +607,13 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
   {
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-    String refreshInterval = prefs.getString(&quot;refresh_interval&quot;, &quot;5000&quot;); // parm 2 is default val in milli secs
+    // Parmeter 2 is default val in minutes set at 1 minute here for test purposes.
+    // The preference key *refresh_interval* is defined in *res/xml/settings.xml*.
+    String refreshInterval = prefs.getString(&quot;refresh_interval&quot;, &quot;1&quot;); 
+    // Precondition: user-input refresh frequency units are minutes.
+    // Convert refreshFrequency minutes to milliseconds.
     int refreshFrequency = Integer.parseInt(refreshInterval) * 60 * 1000;
-    int initialDelay = 1000;
+    int initialDelay = 1000; // Set an initial delay of 1 second
 
     timer.schedule(new TimerTask()
     {
@@ -615,7 +622,7 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
       {
         startService(new Intent(getBaseContext(), RefreshService.class));
       }
-    }, initialDelay, refreshFrequency  ); // Example 2*60*1000 == 2 x 60 secs x 1000 : 2 minutes -&gt; milliseconds
+    }, initialDelay, refreshFrequency); 
   }
 </code></pre>
 
