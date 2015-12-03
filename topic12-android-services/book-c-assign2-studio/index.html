@@ -351,8 +351,10 @@ public class MapHelper
 <p>In this lab it is assumed we are working with a TweetFragment (or similarly named) class. This manages the tweet composition and dispatch. The map will be embedded in this view. See Figure 1 here for a representation of the view.</p>
 <p><img alt="Figure 1: Tweet view with embedded map" src="img/02.png"></p>
 <p>Here is a list of import statements required:</p>
-<pre><code>import java.util.Iterator;
+<pre><code>import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import org.wit.android.helpers.MapHelper;
 import org.wit.ictskills.models.Tweeter;
 import android.support.v4.app.FragmentManager;
@@ -389,55 +391,29 @@ import com.google.android.gms.maps.model.MarkerOptions;
   GoogleMap gmap;
   Marker marker;
   LatLng markerPosition;
-  boolean markerDragged = false;   
-  boolean dragFlag = true; //indicates if the markers may be dragged.
-  String currentGeolocation;// Example: &quot;52.253456,-7.187162&quot;
+  String currentGeolocation;// = &quot;52.253456,-7.187162&quot;
+  public HashMap&lt;Marker, String&gt; markers = new HashMap&lt;&gt;();
 </code></pre>
 
 <p>Here is the remaining code. The end of the class, just before the closing curly brace, would be a good location.</p>
-<pre><code>  //-------------------------Google Map------------------------------------------//
+<pre><code>    //-------------------------Google Map------------------------------------------//
     /*
    * This Camera refers to Google map camera, not device camera.
    * When camera changes, this equivalent to changed map position here.
    * For example by panning map to new position:
-   * Method does the following:
-   *      saves zoom position to model layer,
-   *      removes existing non-null marker,
-   *      creates and positions new marker to tweeter geolocation.
-   * Marker draggable attribute set by flag dragFlag.
    */
   @Override
   public void onCameraChange(CameraPosition cameraPosition)
   {
     app.logged_in_tweeter.zoom = cameraPosition.zoom;
-    markerPosition = MapHelper.latLng(getActivity(), currentGeolocation);
-    if (marker != null)
-    {
-      marker.remove();
-    }
-
-    marker = gmap.addMarker(new MarkerOptions()
-        .position(markerPosition)
-        .draggable(dragFlag)
-        .visible(true)
-        .title(&quot;tweeter origin&quot;)
-        .alpha(0.7f)
-        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
-        .snippet(&quot;GPS : &quot; + markerPosition.toString()));
     addVisibleRegionMarkers();
   }
 
   @Override
-  public void onMarkerDragStart(Marker marker)
-  {
-
-  }
+  public void onMarkerDragStart(Marker marker) {}
 
   @Override
-  public void onMarkerDrag(Marker marker)
-  {
-
-  }
+  public void onMarkerDrag(Marker marker) {}
 
   @Override
   public void onMarkerDragEnd(Marker marker)
@@ -446,7 +422,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
     getActivity().setTitle(currentGeolocation);
     app.logged_in_tweeter.geolocation = currentGeolocation;
     gmap.animateCamera(CameraUpdateFactory.newLatLng(marker.getPosition()));
-    markerDragged = true;
   }
 
   private void initializeMapFragment()
@@ -461,42 +436,27 @@ import com.google.android.gms.maps.model.MarkerOptions;
   }
 
   /**
-   * Add markers within visible region (that is the visible screen)
+   * Make markers visible that are present within visible map region
    */
   public void addVisibleRegionMarkers()
   {
+    // Obtain the bounds of the visible map
     LatLngBounds bounds = gmap.getProjection().getVisibleRegion().latLngBounds;
 
-    List&lt;Tweeter&gt; tweeters = app.tweetersList;
-    Iterator&lt;Tweeter&gt; it = tweeters.iterator();
+    Set keys = markers.keySet();
+    Iterator it = keys.iterator();
     while(it.hasNext())
     {
-      Tweeter r = it.next();
-      LatLng markerPoint = MapHelper.latLng(getActivity(), r.geolocation);
-      //include points within visible region not including current tweeter
-      if(bounds.contains(markerPoint) &amp;&amp; !r.id.equals(app.logged_in_tweeter.id))
+      Marker marker = (Marker)it.next();
+      if(bounds.contains(marker.getPosition()))
       {
-        addMarker(r);
+        marker.setVisible(true);
+      }
+      else
+      {
+        marker.setVisible(false);
       }
     }
-  }
-
-  /**
-   * Add a marker to map corresponding to location of arg res
-   * Markers set non-draggable.
-   * @param : The Tweeter object for which marker added to map.
-   */
-  public void addMarker(Tweeter tweeter)
-  {
-    LatLng pos = MapHelper.latLng(getActivity(), tweeter.geolocation);
-    MarkerOptions options = new MarkerOptions().position(pos)
-        .draggable(false)
-        .visible(true)
-        .alpha(0.7f)
-        .title(&quot;Tweeter Location&quot;)
-        .snippet(&quot;GPS : &quot; + tweeter.geolocation);
-    gmap.addMarker(options);
-
   }
 
   /*
@@ -516,15 +476,53 @@ import com.google.android.gms.maps.model.MarkerOptions;
         gmap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         gmap.setOnMarkerDragListener(this);
         gmap.setOnCameraChangeListener(this);//this Camera refers to Google map, not device camera
+        createMarkersWeakHashMap();
       }
+    }
+  }
+
+  /*
+  * Create hash map of markers representing all tweeter locations.
+  * None of markers is draggable except that of logged in tweeter.
+  * Logged in tweeter marker coloured blue.
+  * Remaining markers default red.
+  * Set all markers invisible here.
+  */
+  public void createMarkersWeakHashMap()
+  {
+    List&lt;Tweeter&gt; tweeters = app.tweetersList;
+    Iterator&lt;Tweeter&gt; it = tweeters.iterator();
+    boolean isDraggable = false;
+
+    while(it.hasNext())
+    {
+      Tweeter tweeter = it.next();
+      boolean isLoggedInTweeter = tweeter.id.equals(app.logged_in_tweeter.id);
+      // only logged in tweeter marker draggable
+      isDraggable = isLoggedInTweeter == true ? true : false;
+      LatLng geolocation = MapHelper.latLng(getActivity(), tweeter.geolocation);
+
+      MarkerOptions options = new MarkerOptions()
+          .position(geolocation)
+          .draggable(isDraggable)
+          .visible(false)
+          .alpha(0.7f)
+          .title(&quot;Tweeter Location&quot;)
+          .snippet(&quot;GPS : &quot; + tweeter.geolocation);
+      Marker marker = gmap.addMarker(options);
+
+      // Logged in tweeter marker coloured differently
+      if (isLoggedInTweeter)
+        marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+
+      markers.put(marker, tweeter.id);
     }
   }
 
   /* @see http://stackoverflow.com/questions/18206615/how-to-use-google-map-v2-inside-fragment
    * Necessary to wait until MapFragment created before initializing map fragment
-   * Note that map fragment is nested within tweet fragment. See the xml layout file for tweet frag
+   * Note that map fragment is nested within residence fragment. See the xml layout file for residence frag
   */
-
   @Override
   public void onActivityCreated(Bundle savedInstanceState)
   {
