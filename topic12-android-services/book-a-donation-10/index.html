@@ -690,9 +690,7 @@ public class BootReceiver extends BroadcastReceiver
 <li>In reality 15 minutes would, perhaps, be much too small an interval. Remember that network traffic is expensive not only on the client but generally more so on the server. See, for example, this Wikipedia article on <a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">Denial-of-service attacks</a>.</li>
 <li>The input value should be in minutes: this is converted to milliseconds in the onReceive method which is the unit of time specified as argument in AlarmManager.setInexactRepeating.</li>
 </ul>
-<pre><code>package app.donation.receivers;
-import app.donation.services.RefreshService;
-import app.donation.utils.NumUtil;
+<pre><code>package org.wit.ictskills.receivers;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -703,41 +701,43 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import org.wit.ictskills.services.RefreshService;
+import org.wit.utils.NumUtil;
+
 
 /**
  * If permission set and BootReceiver registered in manifest file ...
  * and application manually launched, then...
  * then BootReceiver.onReceive method will be invoked by system when device started.
- * In this method we set the interval at which the alarm should trigger. 
- * This will be either a default or a value input by user in preference settings.
+ * In this method we set the interval at which the alarm should trigger.
+ * This will be either default 15 minutes or a value input by user in preference settings.
  */
 public class BootReceiver extends BroadcastReceiver
 {
-  private static final long DEFAULT_INTERVAL = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
+  // Set default interval to 15 minutes
+  private static final long DEFAULT_INTERVAL = AlarmManager.INTERVAL_FIFTEEN_MINUTES/60000;
   public static int REQUESTCODE = -1;
-  private String tag = &quot;Donation &quot;;
+  private String tag = &quot;MyTweet&quot;;
 
   @Override
   public void onReceive(Context context, Intent intent)
   {
     Log.i(tag, &quot;In BootReceiver.onReceive&quot;);
 
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-
-    // This key introduced in res/xml/settings.xml
-    String key = &quot;refresh_interval&quot;;
-    long interval = DEFAULT_INTERVAL;
     // We check for a valid user inputted interval and use it if it exists
-    // Otherwise use DEFAULT_INTERVAL
-    String value = prefs.getString(key, Long.toString(DEFAULT_INTERVAL));
+    // Otherwise use DEFAULT_INTERVAL - the second parameter here following is a default.
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+    String key = &quot;refresh_interval&quot;;  // This key introduced in res/xml/settings.xml
+    long interval = DEFAULT_INTERVAL;
+    String value = prefs.getString(key, Long.toString(interval)); // last param is a default val
+    // Check if input value is valid and if so this becomes the refresh interval, overwriting the default
     if (NumUtil.isPositiveNumber(value))
     {
       interval = Long.parseLong(value);
+      interval *= 60000;//here we convert minutes to milliseconds since input at settings menu is specified in minutes
     }
-    // Convert interval from minutes to milliseconds
-    interval *= 60000;//here we convert minutes to milliseconds since input at settings menu is specified in minutes
     // Set an arbitrary minimum interval value of 60 seconds to avoid overloading service.
-    interval = interval &lt; 60000 ? 60000 : interval; 
+    interval = interval &lt; 60000 ? 60000 : interval;
 
     // Prepare an PendingIntent with a view to triggering RefreshService
     PendingIntent operation = PendingIntent.getService(
