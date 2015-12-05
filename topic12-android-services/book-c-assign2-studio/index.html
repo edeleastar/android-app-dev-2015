@@ -116,6 +116,9 @@ h3
       <a class="item" data-tab="08">
         08
       </a>
+      <a class="item" data-tab="09">
+        09
+      </a>
     </div>
 </div>
 
@@ -581,6 +584,137 @@ dependencies {
 </code></pre>
   </div>
   <div  class="ui tab segment lab" data-tab="08">
+    <h1>Capture geolocation</h1>
+<p>The logged-in-tweeter's marker is draggable. This provides a convenient method of setting its geolocation which could be as follows:</p>
+<ul>
+<li>Extend the Tweeter api to facilitate updating a Tweeter.</li>
+<li>Refactor the Android client so that when a tweeter switches out of the tweet fragment view the geolocation is saved to the service.</li>
+</ul>
+<p>Here are some sample code snippets:</p>
+<p><strong>Service</strong></p>
+<p>conf/routes</p>
+<pre><code>PUT     /api/tweeters            TweetersAPI.updateTweeter
+</code></pre>
+
+<p>TweetersAPI</p>
+<pre><code>  /**
+   * Update fields in existing tweeter (excluding id).
+   * @param body
+   */
+  public static void updateTweeter(JsonElement body)
+  {
+    Tweeter updatedTweeter = gson.fromJson(body.toString(), Tweeter.class);
+    Tweeter tweeter = Tweeter.findById(updatedTweeter.id);
+    tweeter.update(updatedTweeter);
+    tweeter.save();
+    renderJSON(gson.toJson(tweeter));
+  }
+</code></pre>
+
+<p>models/Tweeter</p>
+<pre><code>  /**
+   * Update this tweeter but leave id unchanged
+   * @param other
+   */
+  public void update(Tweeter other)
+  {
+    firstName   = other.firstName;
+    lastName    = other.lastName;
+    email       = other.email;
+    password    = other.password; 
+    geolocation = other.geolocation;
+    zoom        = other.zoom;
+  }
+</code></pre>
+
+<p><strong>Tester</strong></p>
+<p>TweetServiceProxy</p>
+<pre><code>  @PUT(&quot;/api/tweeters&quot;)
+  Call&lt;Tweeter&gt; updateTweeter(@Body Tweeter tweeter);
+</code></pre>
+
+<p>TweetsServiceAPI</p>
+<pre><code>  public Tweeter updateTweeter(Tweeter tweeter) throws Exception
+  {
+    Call&lt;Tweeter&gt; call = (Call&lt;Tweeter&gt;) service.updateTweeter(tweeter);
+    Response&lt;Tweeter&gt; returnedTweeter = call.execute();
+    return returnedTweeter.body();
+  }
+</code></pre>
+
+<p><strong>Android client</strong></p>
+<p>MyTweetServiceProxy</p>
+<pre><code>  @PUT(&quot;/api/tweeters&quot;)
+  Call&lt;Tweeter&gt; updateTweeter(@Body Tweeter tweeter);
+
+</code></pre>
+
+<p>MyTweetApp</p>
+<pre><code>public class MyTweetApp extends Application implements Callback&lt;Tweeter&gt;
+{
+
+...
+...
+
+  public void updateTweeter()
+  {
+    Call&lt;Tweeter&gt; call = tweetService.updateTweeter(logged_in_tweeter);
+    call.enqueue(this);
+  }
+
+  @Override
+  public void onResponse(Response&lt;Tweeter&gt; response, Retrofit retrofit)
+  {
+    if(response.body() != null)
+    {
+      Tweeter returnedTweeter = (Tweeter)response.body();
+      if (returnedTweeter.id.equals(logged_in_tweeter.id))
+      {
+        Toast.makeText(this,&quot;Successfully updated Tweeter&quot;, Toast.LENGTH_SHORT).show();
+      }
+    }
+    else
+    {
+      Toast.makeText(this,&quot;Failed to update Tweeter&quot;, Toast.LENGTH_SHORT).show();
+    }
+  }
+
+  @Override
+  public void onFailure(Throwable t)
+  {
+    Toast.makeText(this,&quot;Failed to update Tweeter&quot;, Toast.LENGTH_SHORT).show();
+  }
+
+}
+</code></pre>
+
+<p>TweetFragment (or TweetActivity if no fragment)</p>
+<p>In method: onMarkerDragEnd capture geolocation and assign to logged_in_tweeter.</p>
+<pre><code>  @Override
+  public void onMarkerDragEnd(Marker marker)
+  {
+    currentGeolocation = MapHelper.latLng(marker.getPosition());
+    app.logged_in_tweeter.geolocation = currentGeolocation; //&lt;&lt;-- update Tweeter geolocation
+
+    getActivity().setTitle(currentGeolocation);
+
+    gmap.animateCamera(CameraUpdateFactory.newLatLng(marker.getPosition()));
+  }
+</code></pre>
+
+<p>In method oPause invoke TweetApp updateTweeter method. </p>
+<p>onPause is invoked when switching out of TweetFragment.</p>
+<pre><code>  @Override
+  public void onPause()
+  {
+    super.onPause();
+    ...
+    ...
+    app.updateTweeter();
+  }
+</code></pre>
+  </div>
+  <div  class="ui tab segment lab" data-tab="09">
     <h1>Markers</h1>
 <p>Maps Live: Getting Started with Markers on Android</p>
 <p><a href="http://youtu.be/l3bw8Senjmg">viewable here</a></p>
