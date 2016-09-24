@@ -7,18 +7,18 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
 
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
       <style>
-
+        
 
 body 
 {
@@ -40,15 +40,17 @@ figcaption
 {
   min-height:20px;
 }
+
+
     </style>
 
   </head>
 
   <body>
+    
 
-  <div class="ui container">
 <style>
-
+  
 
 code
 {
@@ -79,74 +81,285 @@ h3
   border-bottom: thin solid black;
 }
 
+
+
 </style>
 
-<div class="ui fixed top pointing inverted menu labmenu">
-  <header class="header item">
-    <a href="../index.html">
-      <i class="sitemap icon"></i>
-      4: Platform & Events
-    </a>
-  </header>
-  <div class="right tab-menu menu">
-    <a class="active item" data-tab="MyRent-02">
-        MyRent-02
-    </a>
-      <a class="item" data-tab="01">
-        01
-      </a>
-      <a class="item" data-tab="02">
-        02
-      </a>
-      <a class="item" data-tab="03">
-        03
-      </a>
-      <a class="item" data-tab="04">
-        04
-      </a>
-      <a class="item" data-tab="05">
-        05
-      </a>
-      <a class="item" data-tab="06">
-        06
-      </a>
-      <a class="item" data-tab="07">
-        07
-      </a>
-      <a class="item" data-tab="08">
-        08
-      </a>
-      <a class="item" data-tab="09">
-        09
-      </a>
-      <a class="item" data-tab="10">
-        10
-      </a>
-    </div>
-</div>
 
-<br><br>
-
-  <div  class="ui tab segment lab" data-tab="MyRent-02">
-    <h1>ListView</h1>
-<p>Our current version of MyRent (V01) only permits a single Residence to be entered. In this lab we seek to manage a list of residences. To do this we need to extend the model by including a new class - 'Portfolio' - to manage all our residences. We will also need a new Activity - ResidenceListActivity - to display the full portfolio of residences.</p>
+<div class="ui bottom attached segment pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-a-android-tools-01/index.html">
+          Android-Tools-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-b-donation-01/index.html">
+          Donation-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-c-android-tools-02/index.html">
+          Android-Tools-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic02-activities-and-layouts/book-a-donation-02/index.html">
+          Donation-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-a-donation-03/index.html">
+          Donation-03
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-b-myrent-00/index.html">
+          MyRent-00
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-c-myrent-01/index.html">
+          MyRent-01
+        </a>
+      
+    
+      
+        <a class="active item" href="../../topic04-widgets-and-events/book-a-myrent-02/index.html">
+          MyRent-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic04-widgets-and-events/book-b-event-handling/index.html">
+          Event-Handling
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-a-myrent-03/index.html">
+          MyRent-03
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-b-myrent-04/index.html">
+          MyRent-04
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-c-myrent-05/index.html">
+          MyRent-05
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-d-event-handler-soln/index.html">
+          Event-Handling-Solution
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic06-streams-and-fileio/book-a/index.html">
+          MyRent-06
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic06-streams-and-fileio/book-b/index.html">
+          MyRent-07
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic07-tdd-and-fragments/book-a/index.html">
+          TDD-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic07-tdd-and-fragments/book-b/index.html">
+          MyRent-08
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-a-jpa-01/index.html">
+          JPA-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-b-jpa-02/index.html">
+          JPA-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-c-myrent-09/index.html">
+          MyRent-09
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-a-donation-04/index.html">
+          Donation-04
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-b-donation-05/index.html">
+          Donation-05
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-c-donation-06/index.html">
+          Donation-06
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-a-donation-07/index.html">
+          Donation-07
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-b-donation-08/index.html">
+          Donation-08
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-c-assign2-studio/index.html">
+          MyTweet-Assignment-Studio
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic11-assignment-studio/book-a-donation-09/index.html">
+          Donation-09
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic11-assignment-studio/book-b-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-a-donation-10/index.html">
+          Donation-10
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-b-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-c-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-03
+        </a>
+      
+    
   </div>
-  <div  class="ui tab segment lab" data-tab="01">
-    <h1>Objectives</h1>
+  <div class="pusher">
+    <div class="ui container">
+
+      <div class="ui fixed top pointing inverted menu labmenu">
+        <header class="header item">
+          <i id="toc" class="sitemap icon"></i>
+          <a href="../index.html">
+            4: Platform & Events
+          </a>
+        </header>
+        <div class="right tab-menu menu">
+          
+            <a class="item" data-tab="MyRent-02">
+              MyRent-02
+            </a>
+          
+            <a class="item" data-tab="01">
+              01
+            </a>
+          
+            <a class="item" data-tab="02">
+              02
+            </a>
+          
+            <a class="item" data-tab="03">
+              03
+            </a>
+          
+            <a class="item" data-tab="04">
+              04
+            </a>
+          
+            <a class="item" data-tab="05">
+              05
+            </a>
+          
+            <a class="item" data-tab="06">
+              06
+            </a>
+          
+            <a class="item" data-tab="07">
+              07
+            </a>
+          
+            <a class="item" data-tab="08">
+              08
+            </a>
+          
+            <a class="item" data-tab="09">
+              09
+            </a>
+          
+            <a class="item" data-tab="10">
+              10
+            </a>
+          
+          </div>
+      </div>
+
+      <br><br>
+
+      
+      <div  class="ui tab segment lab" data-tab="MyRent-02">
+        <h1>ListView</h1>
+<p>Our current version of MyRent (V01) only permits a single Residence to be entered. In this lab we seek to manage a list of residences. To do this we need to extend the model by including a new class - &#39;Portfolio&#39; - to manage all our residences. We will also need a new Activity - ResidenceListActivity - to display the full portfolio of residences.</p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="01">
+        <h1>Objectives</h1>
 <p>This lab will significantly extend the MyRent app to include a new ListView where all residences can be inspected:</p>
 <p>Continue building the MyRent app that you commenced in the previous lab.</p>
 <p>For reference, we are providing a version here, MyRent-01:</p>
-<pre><code>git clone https://github.com/wit-computing/myrent-01.git
-</code></pre>
-
-<p><img alt="" src="img/01.png"></p>
+<pre><code>git clone https://github.com/wit-computing/myrent-01.git</code></pre>
+<p><img src="img/01.png" alt=""></p>
 <p>Clicking on any residence will take the user to the appropriate residence detail view:</p>
-<p><img alt="" src="img/02.png"></p>
+<p><img src="img/02.png" alt=""></p>
 <p>The Project will take on a different shape with some interesting new classes and approaches:</p>
-<p><img alt="" src="img/03.png"></p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="02">
-    <h1>Model</h1>
+<p><img src="img/03.png" alt=""></p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="02">
+        <h1>Model</h1>
 <p>When introducing new features, it is often useful to start with the model. </p>
 <ul>
 <li>We would like to incorporate a collection of Residence instances as opposed to just a single Residence as previously. </li>
@@ -207,25 +420,25 @@ public class Portfolio
       residences.add(r);
     }
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>Notice that, for test purposes, we are populating residences list with a random set of Residence objects.</p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="03">
-    <h1>Application</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="03">
+        <h1>Application</h1>
 <p>To manage the list of residences, we use an <code>Application</code> object. </p>
 <ul>
 <li>This is an object created when the application is launched, and we are guaranteed that there will only ever be one of them. </li>
 <li>This is extremely useful - and we would use it to create the single Portfolio object, which in turn contains the list of residences our app is managing.</li>
 </ul>
-<p>Create a package called 'org.wit.myrent.app' and introduce the following class:</p>
+<p>Create a package called &#39;org.wit.myrent.app&#39; and introduce the following class:</p>
 <ul>
 <li>To create the package, select <em>java</em> in the Android panel on the left of the Android Studio screen, right click to open the context menu and select new package. This opens the Choose Destination Directory window in which you should select the option <em>../app/src/main/java</em>. These steps are illustrated in Figures 1, 2 and 3 below.</li>
 </ul>
-<p><img alt="Figure 1" src="img/13.png">
-<img alt="Figure 2" src="img/14.png">
-<img alt="Figure 3" src="img/15.png"></p>
+<p><img src="img/13.png" alt="Figure 1">
+<img src="img/14.png" alt="Figure 2">
+<img src="img/15.png" alt="Figure 3"></p>
 <p>Add the MyRentApp class to the newly created package:</p>
 <pre><code>package org.wit.myrent.app;
 
@@ -242,9 +455,7 @@ public class MyRentApp extends Application
     super.onCreate();
     portfolio = new Portfolio();
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>We will not create  MyRentApp object, it will be created for us by the operating system (OS). </p>
 <ul>
 <li>However, we do need to let the OS know that we have introduced an application object which is to be created. </li>
@@ -256,29 +467,27 @@ public class MyRentApp extends Application
         android:allowBackup=&quot;true&quot;
         android:icon=&quot;@mipmap/ic_launcher&quot;
         android:label=&quot;@string/app_name&quot;
-        android:theme=&quot;@style/AppTheme&quot; &gt;
-</code></pre>
-
+        android:theme=&quot;@style/AppTheme&quot; &gt;</code></pre>
 <p>Notice the new entry here:</p>
-<pre><code>    android:name=&quot;.app.MyRentApp&quot;
-</code></pre>
-
+<pre><code>    android:name=&quot;.app.MyRentApp&quot;</code></pre>
 <p>Run the app now, and place a breakpoint in the onCreate method. If the app stops at this point, then you have successfully introduced an application object.
-<img alt="" src="img/08.png"></p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="04">
-    <h1>Layouts</h1>
+<img src="img/08.png" alt=""></p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="04">
+        <h1>Layouts</h1>
 <p>We need two new layout resources in order to build the list view:</p>
 <ul>
 <li>activity_residencelist.xml</li>
 <li>list_item_residence.xml</li>
 </ul>
 <p>activity_residencelist represents a full activity containing a single ListView widget:</p>
-<p><img alt="Figure 1: activity_residencelist" src="img/04.png"></p>
+<p><img src="img/04.png" alt="Figure 1: activity_residencelist"></p>
 <p>list_item_residence will represent an individual list item:</p>
-<p><img alt="Figure 2: list_item" src="img/05.png"></p>
+<p><img src="img/05.png" alt="Figure 2: list_item"></p>
 <p>The screen shots Figures 1 &amp; 2 above should give you enough clues to create these resources. They will be added to the res/layout folder in the project as shown in Figure 3:</p>
-<p><img alt="Figure 3: new resources in layout folder" src="img/06.png"></p>
+<p><img src="img/06.png" alt="Figure 3: new resources in layout folder"></p>
 <p>Here are the full xml files for reference purposes:</p>
 <h2>activity_residencelist.xml</h2>
 <pre><code>&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
@@ -292,9 +501,7 @@ public class MyRentApp extends Application
         android:layout_height=&quot;wrap_content&quot; &gt;
     &lt;/ListView&gt;
 
-&lt;/RelativeLayout&gt;
-</code></pre>
-
+&lt;/RelativeLayout&gt;</code></pre>
 <h2>list_item_residence.xml</h2>
 <pre><code>&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     android:layout_width=&quot;match_parent&quot;
@@ -332,11 +539,12 @@ public class MyRentApp extends Application
         android:paddingRight=&quot;4dp&quot;
         android:paddingTop=&quot;4dp&quot;/&gt;
 
-&lt;/RelativeLayout&gt;
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="05">
-    <h1>ResidenceListActivity</h1>
+&lt;/RelativeLayout&gt;</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="05">
+        <h1>ResidenceListActivity</h1>
 <p>We can now start to introduce the ResidenceListActivity class</p>
 <h2>ResidenceListActivity</h2>
 <pre><code>package org.wit.myrent.activities;
@@ -365,10 +573,8 @@ public class ResidenceListActivity extends Activity
     MyRentApp app = (MyRentApp) getApplication();
     portfolio = app.portfolio;
   }
-}
-</code></pre>
-
-<p>This version does not do much. However, if it is to be started at all, we need to change the AndroidManifest.xml again, indicating that this is the 'Launch' activity for the app:</p>
+}</code></pre>
+<p>This version does not do much. However, if it is to be started at all, we need to change the AndroidManifest.xml again, indicating that this is the &#39;Launch&#39; activity for the app:</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
           package=&quot;org.wit.myrent&quot;&gt;
@@ -395,16 +601,15 @@ public class ResidenceListActivity extends Activity
     &lt;/activity&gt;
   &lt;/application&gt;
 
-&lt;/manifest&gt;
-
-</code></pre>
-
-<p>Inspect the above closely, and note how our app now contains 2 activities, with ResidenceListActivity being the 'MAIN' one.</p>
+&lt;/manifest&gt;</code></pre>
+<p>Inspect the above closely, and note how our app now contains 2 activities, with ResidenceListActivity being the &#39;MAIN&#39; one.</p>
 <p>Verify that the app runs corrrectly. Drop a breakpoint in the onCreate method above, and verify that the portfolio is properly initialised. Also notice that the listView is initialised.
-<img alt="Figure 1: Execution halted immediately following instantiation of Portfolio object" src="img/09.png"></p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="06">
-    <h1>Adapters</h1>
+<img src="img/09.png" alt="Figure 1: Execution halted immediately following instantiation of Portfolio object"></p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="06">
+        <h1>Adapters</h1>
 <p>In order to update the list with the residence objects contained in the portfolio, we need an Adapter. </p>
 <ul>
 <li>An Adapter is a special class we can append to the end of the existing ResidenceListActivity class (make sure it is outside the closing brace of ResidenceListActivity).</li>
@@ -440,9 +645,7 @@ public class ResidenceListActivity extends Activity
 
     return convertView;
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>Introducing <em>ResidenceAdapter</em> requires the following additional import statements:</p>
 <pre><code>import android.content.Context;
 import android.view.LayoutInflater;
@@ -452,22 +655,15 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import java.util.ArrayList;
-import org.wit.myrent.models.Residence;
-
-</code></pre>
-
+import org.wit.myrent.models.Residence;</code></pre>
 <p>This class, ResidenceAdapter, acts as a mediator between our model and the view elements.</p>
 <p>In order to incorporate it into ResidenceListActivity, first introduce a new field:</p>
-<pre><code>  private ResidenceAdapter adapter;
-</code></pre>
-
+<pre><code>  private ResidenceAdapter adapter;</code></pre>
 <p>and the, in order to trigger it, we need the following code at the very end of OnCreate in ResidenceListActivity:</p>
 <pre><code>    adapter = new ResidenceAdapter(this, portfolio.residences);
-    listView.setAdapter(adapter);
-</code></pre>
-
+    listView.setAdapter(adapter);</code></pre>
 <p>Run the app now - it should display the list of random residences:</p>
-<p><img alt="" src="img/01.png"></p>
+<p><img src="img/01.png" alt=""></p>
 <p>This is the complete ResidenceListActivity class for references purposes:</p>
 <pre><code>package org.wit.myrent.activities;
 
@@ -542,46 +738,37 @@ class ResidenceAdapter extends ArrayAdapter&lt;Residence&gt;
 
     return convertView;
   }
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="07">
-    <h1>Intents</h1>
-<p>Currently the application just displays the list, and we do not have any way of navigating from the list to individual residences. To bind them we will first have to listen for clicks on the list in ResidenceListActivity. This requires that we implement OnItemClickListener:</p>
-<pre><code>public class ResidenceListActivity extends Activity  implements AdapterView.OnItemClickListener
-</code></pre>
+}</code></pre>
 
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="07">
+        <h1>Intents</h1>
+<p>Currently the application just displays the list, and we do not have any way of navigating from the list to individual residences. To bind them we will first have to listen for clicks on the list in ResidenceListActivity. This requires that we implement OnItemClickListener:</p>
+<pre><code>public class ResidenceListActivity extends Activity  implements AdapterView.OnItemClickListener</code></pre>
 <p>Use Android Studio method of adding the required interface method. This is described in detail in step 09 of lab MyRent-00.</p>
 <pre><code>  @Override
   public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id)
   {
 
-  }
-</code></pre>
-
+  }</code></pre>
 <p>Replace the above generated method with the following version (we have changed the argument names to more meaningful ones):</p>
 <pre><code>  @Override
   public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id)
   {
     Intent intent = new Intent(this, ResidenceActivity.class);
     startActivity(intent);
-  }
-</code></pre>
-
+  }</code></pre>
 <p>Import the <em>Intent</em> class:</p>
-<pre><code>import android.content.Intent;
-</code></pre>
-
+<pre><code>import android.content.Intent;</code></pre>
 <p>If the user clicks on an item, we should start our ResidenceActivity - the one we deisgned earlier. Try this now.</p>
 <p>It doesnt work? This is because we didnt install the ResidenceListActivity object as a listener. Add this line to OnCreate:</p>
-<pre><code>    listView.setOnItemClickListener(this);
-</code></pre>
-
+<pre><code>    listView.setOnItemClickListener(this);</code></pre>
 <p>You should now be able to navigate from any list item to the detail view as shown in Figure 1.</p>
 <ul>
 <li>Note however that, for the moment, the detailed view rendered is always the first in the list irrespective of which list item is clicked.</li>
 </ul>
-<p><img alt="Figure 1: Click any list item to navigate to a detail view" src="img/10.png"></p>
+<p><img src="img/10.png" alt="Figure 1: Click any list item to navigate to a detail view"></p>
 <p>For reference, this is the complete ResidenceListActivity and ResidenceAdapter classes at this stage:</p>
 <pre><code>package org.wit.myrent.activities;
 
@@ -668,20 +855,19 @@ class ResidenceAdapter extends ArrayAdapter&lt;Residence&gt;
 
     return convertView;
   }
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="08">
-    <h1>Activity Arguments</h1>
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="08">
+        <h1>Activity Arguments</h1>
 <ul>
-<li>
-<p>When ResidenceActivity is started, it doesn't seem to display anything useful - and certainly not the items in the list we started it from. </p>
+<li><p>When ResidenceActivity is started, it doesn&#39;t seem to display anything useful - and certainly not the items in the list we started it from. </p>
 <ul>
 <li>Study Figure 1 in the previous step where this is illustrated.</li>
 </ul>
 </li>
-<li>
-<p>We need to be able to pass information to ResidenceActivity, so it can display the correct Residence model object - that which we have selected in the list of residences. </p>
+<li><p>We need to be able to pass information to ResidenceActivity, so it can display the correct Residence model object - that which we have selected in the list of residences. </p>
 </li>
 <li>This will involve making changes in both ResidenceListActivity and ResidenceActivity.</li>
 </ul>
@@ -693,10 +879,7 @@ class ResidenceAdapter extends ArrayAdapter&lt;Residence&gt;
     Intent intent = new Intent(this, ResidenceActivity.class);
     intent.putExtra(&quot;RESIDENCE_ID&quot;, residence.id);
     startActivity(intent);
-  }
-
-</code></pre>
-
+  }</code></pre>
 <p>In the above. notice that:</p>
 <ul>
 <li>The argument <em>residence.id</em> in <em>putExtra</em> represents the residence the user clicked on (by position). <ul>
@@ -705,58 +888,41 @@ class ResidenceAdapter extends ArrayAdapter&lt;Residence&gt;
 </li>
 </ul>
 <p>In ResidenceActivity first introduce a new field:</p>
-<pre><code>  private Portfolio portfolio; 
-</code></pre>
-
+<pre><code>  private Portfolio portfolio;</code></pre>
 <p>Then, at the end of onCreate, initialise this field:</p>
 <pre><code>    MyRentApp app = (MyRentApp) getApplication();
-    portfolio = app.portfolio;
-</code></pre>
-
+    portfolio = app.portfolio;</code></pre>
 <p>Add these imports:</p>
 <pre><code>import org.wit.myrent.models.Portfolio;
-import org.wit.myrent.app.MyRentApp;
-
-</code></pre>
-
+import org.wit.myrent.app.MyRentApp;</code></pre>
 <p>Now we can recover the ID passed to us via the intent:</p>
-<pre><code>    UUID resId = (UUID) getIntent().getExtras().getSerializable(&quot;RESIDENCE_ID&quot;);
-</code></pre>
-
+<pre><code>    UUID resId = (UUID) getIntent().getExtras().getSerializable(&quot;RESIDENCE_ID&quot;);</code></pre>
 <p>and get the Residence Object from the portfolio:</p>
 <pre><code>    UUID resId = (UUID) getIntent().getExtras().getSerializable(&quot;RESIDENCE_ID&quot;);
-    residence = portfolio.getResidence(resId);
-</code></pre>
-
+    residence = portfolio.getResidence(resId);</code></pre>
 <p>This is the complete four lines we add:</p>
 <pre><code>    MyRentApp app = (MyRentApp) getApplication();
     portfolio = app.portfolio;    
 
     UUID resId = (UUID) getIntent().getExtras().getSerializable(&quot;RESIDENCE_ID&quot;);
-    residence = portfolio.getResidence(resId);
-</code></pre>
-
+    residence = portfolio.getResidence(resId);</code></pre>
 <p>Now all that remains is to send the residence data to the view widgets. We can write a special method for that:</p>
 <pre><code>  public void updateControls(Residence residence)
   {
     geolocation.setText(residence.geolocation);
     rented.setChecked(residence.rented);
     dateButton.setText(residence.getDateString());
-  }
-</code></pre>
-
+  }</code></pre>
 <p>and call this method if we are sure we found a valid reference:</p>
 <pre><code>    if (residence != null)
     {
       updateControls(residence);
-    }
-</code></pre>
-
+    }</code></pre>
 <p>Build and launch the app:</p>
 <ul>
 <li>We should now ne able to navigate and inspect the details of any Residence from the list as illustrated in Figure 1.</li>
 </ul>
-<p><img alt="Figure 1: Select and click on specific residence to reveal its detail view" src="img/11.png"></p>
+<p><img src="img/11.png" alt="Figure 1: Select and click on specific residence to reveal its detail view"></p>
 <p>This is the complete new version of ResidenceActivity:</p>
 <pre><code>package org.wit.myrent.activities;
 
@@ -874,13 +1040,12 @@ public class ResidenceActivity extends AppCompatActivity implements TextWatcher,
     Log.i(this.getClass().getSimpleName(), &quot;rented Checked&quot;);
     residence.rented = isChecked;
   }
-}
+}</code></pre>
 
-
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="09">
-    <h1>onResume</h1>
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="09">
+        <h1>onResume</h1>
 <p>You might notice that any changes you make in Residence do not seem to be appearing on the list. i.e. if you check or uncheck the rented status, it remains unchanged in the list view.</p>
 <p>We should fix this, as it is counter-intuitive. </p>
 <p>Back in ResidenceListActivity, introduce a new method into the class (ensuring that you locate it within ResidenceListActivity and not ResidenceAdapter):</p>
@@ -889,9 +1054,7 @@ public class ResidenceActivity extends AppCompatActivity implements TextWatcher,
   {
     super.onResume();
     adapter.notifyDataSetChanged();
-  }  
-</code></pre>
-
+  }</code></pre>
 <p>Run the app again now - and verify that changes made in the ResidenceActivity are reflected in the list. </p>
 <ul>
 <li>Can you explain what is happening?</li>
@@ -991,12 +1154,13 @@ class ResidenceAdapter extends ArrayAdapter&lt;Residence&gt;
 
     return convertView;
   }
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="10">
-    <h1>LogHelpers</h1>
-<p>Our final step will be to incorporate some helper classes, upon which we will build later. Create a new package called 'org.wit.android.helpers' - and introduce this class:</p>
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="10">
+        <h1>LogHelpers</h1>
+<p>Our final step will be to incorporate some helper classes, upon which we will build later. Create a new package called &#39;org.wit.android.helpers&#39; - and introduce this class:</p>
 <pre><code>package org.wit.android.helpers;
 
 import android.util.Log;
@@ -1007,16 +1171,12 @@ public class LogHelpers
   {
     Log.i(parent.getClass().getSimpleName(), message);
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>Follow the procedure we described earlier in this lab to create the new package. Once the package has been created, it may help to switch to the Packages view before creating the new class - as shown in Figure 1.</p>
-<p><img alt="Figure 1: org.wit.android.helpers package" src="img/16.png"></p>
-<p>This class doesn't do much - but it might make is more inclined to use logging more frequently - as the class wraps up the log call into something easier to type.</p>
+<p><img src="img/16.png" alt="Figure 1: org.wit.android.helpers package"></p>
+<p>This class doesn&#39;t do much - but it might make is more inclined to use logging more frequently - as the class wraps up the log call into something easier to type.</p>
 <p>So, for instance, in MyRentApp, import the above as follows:</p>
-<pre><code>import static org.wit.android.helpers.LogHelpers.info;
-</code></pre>
-
+<pre><code>import static org.wit.android.helpers.LogHelpers.info;</code></pre>
 <p>(the import syntax is slightly different, as we are importing a specific method)</p>
 <p>Then, in onCreate we can have this:</p>
 <pre><code>  @Override
@@ -1026,39 +1186,22 @@ public class LogHelpers
     portfolio = new Portfolio();
 
     info(this, &quot;MyRent app launched&quot;);
-  }
-</code></pre>
-
+  }</code></pre>
 <p>You might consider introducing other log messages in the app now. THe advantage of logs is that you can quickly appreciate the health of various aspects of the app by looking at the logs.</p>
-<p><img alt="Figure 1: Log output generated within MyRentApp.onCreate" src="img/12.png"></p>
-  </div>
-<script>
-$('.ui.menu .item')
-  .tab({
-    history: true,
-    historyType: 'hash'
-  })
-;
-</script>
-   </div>
+<p><img src="img/12.png" alt="Figure 1: Log output generated within MyRentApp.onCreate"></p>
 
-
-
-  <br><br>
-  <div class="ui bottom fixed borderless menu">
-    <div class="ui small item">
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-     </a>
-     </p>
+      </div>
+     
     </div>
-  </div>    <script>
+  </div>
+</div>
 
+    <script>
+      
 $(document).ready(function()
 {
   $("img").addClass ("ui image");
+  $('.ui.embed').embed();
 
   var images = $(".lab img");
   jQuery.each(images, function(i)  {
@@ -1071,7 +1214,22 @@ $(document).ready(function()
       $(div_label).insertBefore(images[i]);
     }
   });
-})    </script>
 
+  $('.ui.sidebar')
+      .sidebar({ context: $('.bottom.segment') })
+      .sidebar('attach events', '#toc');
+
+  $('.ui.menu .item')
+      .tab({
+        history: true,
+        historyType: 'hash',
+      });
+
+  $('.popup').popup();
+
+});
+
+    </script>
   </body>
+
  </html>

@@ -7,18 +7,18 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
 
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
       <style>
-
+        
 
 body 
 {
@@ -40,15 +40,17 @@ figcaption
 {
   min-height:20px;
 }
+
+
     </style>
 
   </head>
 
   <body>
+    
 
-  <div class="ui container">
 <style>
-
+  
 
 code
 {
@@ -79,70 +81,282 @@ h3
   border-bottom: thin solid black;
 }
 
+
+
 </style>
 
-<div class="ui fixed top pointing inverted menu labmenu">
-  <header class="header item">
-    <a href="../index.html">
-      <i class="sitemap icon"></i>
-      8: JPA & Maps
-    </a>
-  </header>
-  <div class="right tab-menu menu">
-    <a class="active item" data-tab="JPA-01">
-        JPA-01
-    </a>
-      <a class="item" data-tab="01">
-        01
-      </a>
-      <a class="item" data-tab="02">
-        02
-      </a>
-      <a class="item" data-tab="03">
-        03
-      </a>
-      <a class="item" data-tab="04">
-        04
-      </a>
-      <a class="item" data-tab="05">
-        05
-      </a>
-      <a class="item" data-tab="06">
-        06
-      </a>
-      <a class="item" data-tab="07">
-        07
-      </a>
-      <a class="item" data-tab="08">
-        08
-      </a>
-      <a class="item" data-tab="09">
-        09
-      </a>
-      <a class="item" data-tab="10">
-        10
-      </a>
-      <a class="item" data-tab="11">
-        11
-      </a>
-    </div>
-</div>
 
-<br><br>
-
-  <div  class="ui tab segment lab" data-tab="JPA-01">
-    <h1>Objectives</h1>
-<p>Build  new project to explore JPA relationships in more depth. in particular, define a model with OneToMany, MnyToOne and ManyToMany relations - and test each of the relationships via unit tests in order to ensure they are correctly implemented.</p>
+<div class="ui bottom attached segment pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-a-android-tools-01/index.html">
+          Android-Tools-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-b-donation-01/index.html">
+          Donation-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-c-android-tools-02/index.html">
+          Android-Tools-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic02-activities-and-layouts/book-a-donation-02/index.html">
+          Donation-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-a-donation-03/index.html">
+          Donation-03
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-b-myrent-00/index.html">
+          MyRent-00
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-c-myrent-01/index.html">
+          MyRent-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic04-widgets-and-events/book-a-myrent-02/index.html">
+          MyRent-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic04-widgets-and-events/book-b-event-handling/index.html">
+          Event-Handling
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-a-myrent-03/index.html">
+          MyRent-03
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-b-myrent-04/index.html">
+          MyRent-04
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-c-myrent-05/index.html">
+          MyRent-05
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-d-event-handler-soln/index.html">
+          Event-Handling-Solution
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic06-streams-and-fileio/book-a/index.html">
+          MyRent-06
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic06-streams-and-fileio/book-b/index.html">
+          MyRent-07
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic07-tdd-and-fragments/book-a/index.html">
+          TDD-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic07-tdd-and-fragments/book-b/index.html">
+          MyRent-08
+        </a>
+      
+    
+      
+        <a class="active item" href="../../topic08-jpa-and-maps/book-a-jpa-01/index.html">
+          JPA-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-b-jpa-02/index.html">
+          JPA-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-c-myrent-09/index.html">
+          MyRent-09
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-a-donation-04/index.html">
+          Donation-04
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-b-donation-05/index.html">
+          Donation-05
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-c-donation-06/index.html">
+          Donation-06
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-a-donation-07/index.html">
+          Donation-07
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-b-donation-08/index.html">
+          Donation-08
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-c-assign2-studio/index.html">
+          MyTweet-Assignment-Studio
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic11-assignment-studio/book-a-donation-09/index.html">
+          Donation-09
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic11-assignment-studio/book-b-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-a-donation-10/index.html">
+          Donation-10
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-b-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-c-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-03
+        </a>
+      
+    
   </div>
-  <div  class="ui tab segment lab" data-tab="01">
-    <h1>Exercises</h1>
+  <div class="pusher">
+    <div class="ui container">
+
+      <div class="ui fixed top pointing inverted menu labmenu">
+        <header class="header item">
+          <i id="toc" class="sitemap icon"></i>
+          <a href="../index.html">
+            8: JPA & Maps
+          </a>
+        </header>
+        <div class="right tab-menu menu">
+          
+            <a class="item" data-tab="JPA-01">
+              JPA-01
+            </a>
+          
+            <a class="item" data-tab="01">
+              01
+            </a>
+          
+            <a class="item" data-tab="02">
+              02
+            </a>
+          
+            <a class="item" data-tab="03">
+              03
+            </a>
+          
+            <a class="item" data-tab="04">
+              04
+            </a>
+          
+            <a class="item" data-tab="05">
+              05
+            </a>
+          
+            <a class="item" data-tab="06">
+              06
+            </a>
+          
+            <a class="item" data-tab="07">
+              07
+            </a>
+          
+            <a class="item" data-tab="08">
+              08
+            </a>
+          
+            <a class="item" data-tab="09">
+              09
+            </a>
+          
+            <a class="item" data-tab="10">
+              10
+            </a>
+          
+            <a class="item" data-tab="11">
+              11
+            </a>
+          
+          </div>
+      </div>
+
+      <br><br>
+
+      
+      <div  class="ui tab segment lab" data-tab="JPA-01">
+        <h1>Objectives</h1>
+<p>Build  new project to explore JPA relationships in more depth. in particular, define a model with OneToMany, MnyToOne and ManyToMany relations - and test each of the relationships via unit tests in order to ensure they are correctly implemented.</p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="01">
+        <h1>Exercises</h1>
 <p>The witpress-v2 app, completed during the summer school, implements a simple blogging app with comments. You may have this app in your workspace. If not, this is the archive here:</p>
 <ul>
 <li><a href="https://github.com/wit-computing/witpressapp/releases/tag/V01">https://github.com/wit-computing/witpressapp/releases/tag/V01</a></li>
 </ul>
 <h2>Exercise 1:</h2>
 <p>Your task is to implement a comprehensive set of unit tests to fully exercise the model classes. The following screen capture is and example of the type of tests you should attempt to implement:</p>
-<p><img alt="" src="img/12a.png"></p>
+<p><img src="img/12a.png" alt=""></p>
 <p>You should have sufficient guidance from this lab to complete these tests. Note that the test names indicate approximately the focus on each of the tests.</p>
 <p>The PostTests are a little different in that they exercise features form the collection library - rather than the model classes themselves. I.e. they represent tests that are focused not so much on your classes, but on verifying your understanding of how some library classes work.</p>
 <h2>Exercise 1 Solution:</h2>
@@ -168,9 +382,11 @@ h3
 <li>UI, sufficient changes have been made to the UI to enable it to function using the revised model.</li>
 </ul>
 <p>Note: this solution uses the <a href="http://getbootstrap.com/">Bootstrap</a> ui library instead of <a href="http://semantic-ui.com">Semantic UI</a>. You can ignore that aspect, and focus on the models + tests.</p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="02">
-    <h1>Update Play</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="02">
+        <h1>Update Play</h1>
 <p>Play has just been updated to 1.4.0</p>
 <ul>
 <li><a href="https://www.playframework.com/download">https://www.playframework.com/download</a></li>
@@ -178,23 +394,17 @@ h3
 <p>Download and replace your version with this.</p>
 <h1>JPA Model Project</h1>
 <p>Create a brand new Play project. Do this by navigating to the correct folder folder (most likely your workspace) and running a command prompt. Then type:</p>
-<pre><code>play new jpamodel
-</code></pre>
-
+<pre><code>play new jpamodel</code></pre>
 <p>Once this has completed, change into the folder just created (jpamodel) and run the eclipsify command:</p>
 <pre><code>cd jpamodel
-play eclipsify
-</code></pre>
-
+play eclipsify</code></pre>
 <p>You can now import the project into eclipse in the usual way.</p>
 <p>Once imported, you may need to make sure the project is configured for an in-memory database - by verifying that <code>conf/application.conf</code> contains the following:</p>
-<pre><code>db.default=mem
-</code></pre>
-
+<pre><code>db.default=mem</code></pre>
 <h2>Initial Model for Player and Club</h2>
 <p>In your jpamodel eclipse project, create two new classes in the model package:</p>
 <h2>Club</h2>
-<pre><code class="java">package models;
+<pre><code class="lang-java">package models;
 
 import javax.persistence.Entity;
 import play.db.jpa.Model;
@@ -208,11 +418,9 @@ public class Club extends Model
   {
     this.name = name;
   }
-}
-</code></pre>
-
+}</code></pre>
 <h2>Player</h2>
-<pre><code class="java">package models;
+<pre><code class="lang-java">package models;
 
 import javax.persistence.Entity;
 import play.db.jpa.Model;
@@ -226,12 +434,10 @@ public class Player extends Model
   {
     this.name = name;
   }
-}
-</code></pre>
-
-<p>Now we create the unit test harnesses. In 'test/default package' create these two tests:</p>
+}</code></pre>
+<p>Now we create the unit test harnesses. In &#39;test/default package&#39; create these two tests:</p>
 <h2>ClubTest</h2>
-<pre><code class="java">import org.junit.*;
+<pre><code class="lang-java">import org.junit.*;
 
 import java.util.*;
 import play.test.*;
@@ -254,11 +460,9 @@ public class ClubTest extends UnitTest
   {
 
   }
-}
-</code></pre>
-
+}</code></pre>
 <h2>PlayerTest</h2>
-<pre><code class="java">import org.junit.*;
+<pre><code class="lang-java">import org.junit.*;
 
 import java.util.*;
 import play.test.*;
@@ -281,32 +485,30 @@ public class PlayerTest extends UnitTest
   {
 
   }
-}
-</code></pre>
-
-<p>Run the app now in 'test' mode:</p>
-<pre><code>play test
-</code></pre>
-
+}</code></pre>
+<p>Run the app now in &#39;test&#39; mode:</p>
+<pre><code>play test</code></pre>
 <p>...and navigate to the test runner page:</p>
 <ul>
-<li><a href="http://localhost:9000/@tests">http://localhost:9000/@tests</a></li>
+<li><a href="&#x6d;&#97;&#105;&#x6c;&#116;&#x6f;&#58;&#x68;&#x74;&#x74;&#112;&#x3a;&#x2f;&#x2f;&#108;&#111;&#99;&#97;&#x6c;&#104;&#111;&#x73;&#116;&#x3a;&#57;&#x30;&#x30;&#x30;&#47;&#64;&#x74;&#x65;&#x73;&#x74;&#x73;">&#x68;&#x74;&#x74;&#112;&#x3a;&#x2f;&#x2f;&#108;&#111;&#99;&#97;&#x6c;&#104;&#111;&#x73;&#116;&#x3a;&#57;&#x30;&#x30;&#x30;&#47;&#64;&#x74;&#x65;&#x73;&#x74;&#x73;</a></li>
 </ul>
 <p>Select the Club and Player tests - and they should be green.</p>
 <p>Also try the database interface:</p>
 <ul>
-<li><a href="http://localhost:9000/@db">http://localhost:9000/@db</a></li>
+<li><a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x68;&#116;&#x74;&#112;&#x3a;&#x2f;&#x2f;&#108;&#111;&#x63;&#x61;&#108;&#x68;&#x6f;&#115;&#116;&#x3a;&#57;&#x30;&#48;&#48;&#47;&#64;&#x64;&#98;">&#x68;&#116;&#x74;&#112;&#x3a;&#x2f;&#x2f;&#108;&#111;&#x63;&#x61;&#108;&#x68;&#x6f;&#115;&#116;&#x3a;&#57;&#x30;&#48;&#48;&#47;&#64;&#x64;&#98;</a></li>
 </ul>
 <h2>Repository so far:</h2>
 <ul>
 <li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V02">https://github.com/wit-computing/jpamodel/releases/tag/V02</a></li>
 </ul>
-  </div>
-  <div  class="ui tab segment lab" data-tab="03">
-    <h1>Initial Tests for Player and Club</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="03">
+        <h1>Initial Tests for Player and Club</h1>
 <h2>PlayerTest</h2>
 <p>In PlayerTest introduce a fixture and create some test objects:</p>
-<pre><code class="java">public class PlayerTest extends UnitTest 
+<pre><code class="lang-java">public class PlayerTest extends UnitTest 
 {
   private Player p1, p2, p3;
 
@@ -333,24 +535,18 @@ public class PlayerTest extends UnitTest
   public void testCreate()
   { 
   }
-}
-</code></pre>
-
-<p>Run the tests - and have a look at the database admin interface (<a href="http://localhost:9000/@db">http://localhost:9000/@db</a>). Can you see any player objects? No because teardown() is deleteing all of the objects. Comment out the @After annotation:</p>
-<pre><code class="java"> //@After
-</code></pre>
-
+}</code></pre>
+<p>Run the tests - and have a look at the database admin interface (<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#x68;&#x74;&#x74;&#x70;&#58;&#x2f;&#x2f;&#108;&#111;&#99;&#97;&#x6c;&#x68;&#111;&#115;&#x74;&#x3a;&#x39;&#48;&#x30;&#48;&#x2f;&#x40;&#100;&#x62;">&#x68;&#x74;&#x74;&#x70;&#58;&#x2f;&#x2f;&#108;&#111;&#99;&#97;&#x6c;&#x68;&#111;&#115;&#x74;&#x3a;&#x39;&#48;&#x30;&#48;&#x2f;&#x40;&#100;&#x62;</a>). Can you see any player objects? No because teardown() is deleteing all of the objects. Comment out the @After annotation:</p>
+<pre><code class="lang-java"> //@After</code></pre>
 <p>and run the tests again. This time - if you refresh the database page - you will see the three player objects.  Being able to see them in the database interface can be particularly useful if you are introducing new relationships between objects.</p>
 <p>Now we will bring in  utility function into the Player class:</p>
-<pre><code class="java">  public static Player findByName(String name)
+<pre><code class="lang-java">  public static Player findByName(String name)
   {
     return find(&quot;name&quot;, name).first();
-  }
-</code></pre>
-
-<p>Note this method is 'static'.</p>
+  }</code></pre>
+<p>Note this method is &#39;static&#39;.</p>
 <p>Now we can actually implement a test. </p>
-<pre><code class="java">  @Test
+<pre><code class="lang-java">  @Test
   public void testCreate()
   {
     Player a = Player.findByName(&quot;mike&quot;);
@@ -362,30 +558,24 @@ public class PlayerTest extends UnitTest
     Player c = Player.findByName(&quot;frank&quot;);
     assertNotNull(c);
     assertEquals(&quot;frank&quot;, c.name);
-  }
-</code></pre>
-
+  }</code></pre>
 <p>This test should pass. Change one of the strings to deliberately force an error just to be sure.</p>
 <p>Do one more (negative) test to make sure that if we try to find an object that is not there, we get null:</p>
-<pre><code class="java">  @Test
+<pre><code class="lang-java">  @Test
   public void testNotThere()
   {
     Player a = Player.findByName(&quot;george&quot;);
     assertNull(a);
-  }
-</code></pre>
-
+  }</code></pre>
 <p>All tests should pass now.</p>
 <h2>ClubTest</h2>
 <p>Extend Club with the same utility methods as Player:</p>
-<pre><code class="java">  public static Club findByName(String name)
+<pre><code class="lang-java">  public static Club findByName(String name)
   {
     return find(&quot;name&quot;, name).first();
-  }  
-</code></pre>
-
+  }</code></pre>
 <p>and now we can write a similar set of tests in PlayerTest:</p>
-<pre><code class="java">import org.junit.*;
+<pre><code class="lang-java">import org.junit.*;
 
 import java.util.*;
 import play.test.*;
@@ -434,21 +624,21 @@ public class ClubTest extends UnitTest
     Club a = Club.findByName(&quot;george&quot;);
     assertNull(a);
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>These tests should run successfully. Experiment with commenting out the @After annotation and seeing the actual objects in the database.</p>
 <h2>Repository so far:</h2>
 <ul>
 <li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V03">https://github.com/wit-computing/jpamodel/releases/tag/V03</a></li>
 </ul>
-  </div>
-  <div  class="ui tab segment lab" data-tab="04">
-    <h1>Modeling a Player / Club Relationship</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="04">
+        <h1>Modeling a Player / Club Relationship</h1>
 <p>Currently there is no relationship between player and club - which can be modeled like this:</p>
-<p><img alt="" src="img/14.png"></p>
+<p><img src="img/14.png" alt=""></p>
 <p>We can now implement this relationship. Modify the Club class as follows:</p>
-<pre><code class="java">
+<pre><code class="lang-java">
 ...
 ...
 import java.util.ArrayList;
@@ -480,17 +670,13 @@ public class Club extends Model
     players.add(player);
   }
   //...
-}
-</code></pre>
-
+}</code></pre>
 <p>This establishes the relationship as modeled in UML.</p>
 <h2>Testing a Player / Club Relationship</h2>
 <p>We will focus these tests in the ClubTest class. Expand the fixture:</p>
-<pre><code class="java">  private Player p1, p2, p3;
-</code></pre>
-
-<p>and in the setup(), create some players and add some of them (not all)  to the 'c1' club:</p>
-<pre><code class="java">  @Before
+<pre><code class="lang-java">  private Player p1, p2, p3;</code></pre>
+<p>and in the setup(), create some players and add some of them (not all)  to the &#39;c1&#39; club:</p>
+<pre><code class="lang-java">  @Before
   public void setup()
   {
     p1 = new Player(&quot;mike&quot;);
@@ -506,11 +692,9 @@ public class Club extends Model
     c1.save();
     c2.save();
     c3.save();
-  }
-</code></pre>
-
-<p>We can now write a new test to see if the 'tramore' has the players "mike" and "jim":</p>
-<pre><code class="java">  @Test
+  }</code></pre>
+<p>We can now write a new test to see if the &#39;tramore&#39; has the players &quot;mike&quot; and &quot;jim&quot;:</p>
+<pre><code class="lang-java">  @Test
   public void testPlayers()
   {
     Club tramore = Club.findByName(&quot;tramore&quot;);
@@ -524,13 +708,11 @@ public class Club extends Model
     assertTrue  (tramore.players.contains(mike));
     assertTrue  (tramore.players.contains(jim));
     assertFalse (tramore.players.contains(frank));
-  }  
-</code></pre>
-
+  }</code></pre>
 <p>This test should pass.</p>
 <p>We might be interested in seeing how the database models the relationship. Comment out the @After annotation, and also all of the @Test annotations except one (the last one). Run the test, and then explore the Player objects in the database interface. See if you can make sense of them. You may wish to do this occasionally, but be sure to comment in all the annotations, and perhaps also restart the application as leaving these annotations out will cause serious anomalies in the database.</p>
 <p>Now introduce the following test:</p>
-<pre><code class="java">  @Test
+<pre><code class="lang-java">  @Test
   public void testRemovePlayer()
   {
     Club tramore = Club.findByName(&quot;tramore&quot;);
@@ -545,69 +727,63 @@ public class Club extends Model
     assertEquals(1, c.players.size());
 
     mike.delete();
-  }
-</code></pre>
-
+  }</code></pre>
 <p>Read and absorb the logic of this test. As an experiment, comment out the final line (deleting mike). Then look to the database interface and note that mike is still in the database after the test have run. </p>
 <p>Note also that if we leave the deletion of mike commented out, and re-run the tests - then other tests start to fail. The only cure now will be to restart the application.</p>
 <h2>Repository so far:</h2>
 <ul>
 <li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V04">https://github.com/wit-computing/jpamodel/releases/tag/V04</a></li>
 </ul>
-  </div>
-  <div  class="ui tab segment lab" data-tab="05">
-    <h2>Bidirectional Club / Player Relationship</h2>
-<p>We might like each player to also 'know' which club he/she belongs to. In fact this is probably a more natural relationship for these model elements:</p>
-<p><img alt="" src="img/17.png"></p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="05">
+        <h2>Bidirectional Club / Player Relationship</h2>
+<p>We might like each player to also &#39;know&#39; which club he/she belongs to. In fact this is probably a more natural relationship for these model elements:</p>
+<p><img src="img/17.png" alt=""></p>
 <p>Contrast this with the earlier version:</p>
-<p><img alt="" src="img/14.png"></p>
+<p><img src="img/14.png" alt=""></p>
 <p>Implementing this variant of the relationship requires additional attributes and annotations in both Player and Club.</p>
 <h2>Player:</h2>
-<pre><code class="java">...
+<pre><code class="lang-java">...
 import javax.persistence.ManyToOne;
 ...
 
   @ManyToOne
-  public Club club;
-</code></pre>
-
+  public Club club;</code></pre>
 <h2>Club</h2>
 <pre><code>  @OneToMany(mappedBy=&quot;club&quot;, cascade=CascadeType.ALL)
-  public List&lt;Player&gt; players;
-</code></pre>
-
-<p>The name 'club' must match in both the annotation and the attribute. We also need to make the following adjustment to the Club.addPlayer method:</p>
-<pre><code class="java">  public void addPlayer(Player player)
+  public List&lt;Player&gt; players;</code></pre>
+<p>The name &#39;club&#39; must match in both the annotation and the attribute. We also need to make the following adjustment to the Club.addPlayer method:</p>
+<pre><code class="lang-java">  public void addPlayer(Player player)
   {
     player.club = this;
     players.add(player);
-  }
-</code></pre>
-
+  }</code></pre>
 <p>This method ensures that the relationship is correctly established.</p>
 <p>No adjustment to the model can be considered complete without a unit test. Introduce the following test to ClubTest:</p>
-<pre><code class="java">  @Test
+<pre><code class="lang-java">  @Test
   public void testPlayerClub()
   {
     Player mike  = Player.findByName(&quot;mike&quot;);
     assertNotNull (mike.club);
     assertEquals (&quot;tramore&quot;, mike.club.name);
-  }
-</code></pre>
-
+  }</code></pre>
 <p>Whenever you change the model you should restart the application. Do this now and make sure this passes.</p>
 <h2>Repository so far:</h2>
 <ul>
 <li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V05">https://github.com/wit-computing/jpamodel/releases/tag/V05</a></li>
 </ul>
-  </div>
-  <div  class="ui tab segment lab" data-tab="06">
-    <h1>Division + Sponsor</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="06">
+        <h1>Division + Sponsor</h1>
 <p>We would now like to extend the model to include the following extra classes:</p>
-<p><img alt="" src="img/19.png"></p>
+<p><img src="img/19.png" alt=""></p>
 <p>These are the new classes for Division &amp; Sponsor:</p>
 <h2>Division.java</h2>
-<pre><code class="java">package models;
+<pre><code class="lang-java">package models;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -648,11 +824,9 @@ public class Division extends Model
   {
     return find(&quot;name&quot;, name).first();
   }
-}
-</code></pre>
-
+}</code></pre>
 <h2>Sponsor.java</h2>
-<pre><code class="java">package models;
+<pre><code class="lang-java">package models;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -688,14 +862,12 @@ public class Sponsor extends Model
   {
     return name;
   }
-}
-</code></pre>
-
+}</code></pre>
 <ul>
 <li>some modifications to Club:</li>
 </ul>
 <h2>Club.java</h2>
-<pre><code class="java">
+<pre><code class="lang-java">
   //...
   @ManyToMany
   public List&lt;Sponsor&gt; sponsors;
@@ -711,19 +883,18 @@ public class Sponsor extends Model
   public void addSponsor(Sponsor company)
   {
     sponsors.add(company);  
-  }
-
-</code></pre>
-
+  }</code></pre>
 <h2>Repository so far:</h2>
 <ul>
 <li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V06">https://github.com/wit-computing/jpamodel/releases/tag/V06</a></li>
 </ul>
-  </div>
-  <div  class="ui tab segment lab" data-tab="07">
-    <h1>Tests</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="07">
+        <h1>Tests</h1>
 <p>We can significantly simplify aspects of the testing if we invest some time in setting up test objects in yaml first.</p>
-<p>Create a 'data.yml' file in 'conf' and populate as follows:</p>
+<p>Create a &#39;data.yml&#39; file in &#39;conf&#39; and populate as follows:</p>
 <pre><code>Sponsor(pub):
     name: pub 
 
@@ -788,12 +959,10 @@ Sponsor(newsagent):
 Sponsor(pub):
     name: pub 
     support:
-         - tramore
-</code></pre>
-
+         - tramore</code></pre>
 <p>Note carefully how the sponsors appear twice. Why is this?</p>
 <p>Now bring in a new test class that will exercise this model:</p>
-<pre><code class="java">import org.junit.*;
+<pre><code class="lang-java">import org.junit.*;
 
 import java.util.*;
 
@@ -930,20 +1099,20 @@ public class ComprehensiveTest extends UnitTest
 
     assertEquals(1, newsagent.support.size());  
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>Run the app in test mode, and run this new test suite. All of these tests should run.</p>
 <h2>Repository so far:</h2>
 <ul>
 <li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V07">https://github.com/wit-computing/jpamodel/releases/tag/V07</a></li>
 </ul>
-  </div>
-  <div  class="ui tab segment lab" data-tab="08">
-    <h1>Controllers/View</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="08">
+        <h1>Controllers/View</h1>
 <p>Incorporate all of these controllers so we can interact with the model via the UI:</p>
 <h2>Players</h2>
-<pre><code class="java">package controllers;
+<pre><code class="lang-java">package controllers;
 
 import java.util.List;
 
@@ -957,11 +1126,9 @@ public class Players extends Controller
     List&lt;Player&gt; players = Player.findAll();
     render (players);
   }
-}
-</code></pre>
-
+}</code></pre>
 <h2>Clubs</h2>
-<pre><code class="java">package controllers;
+<pre><code class="lang-java">package controllers;
 
 import java.util.List;
 
@@ -975,11 +1142,9 @@ public class Clubs extends Controller
     List&lt;Club&gt; clubs = Club.findAll();
     render (clubs);
   }
-}
-</code></pre>
-
+}</code></pre>
 <h2>Sponsors</h2>
-<pre><code class="java">package controllers;
+<pre><code class="lang-java">package controllers;
 
 import java.util.List;
 
@@ -993,11 +1158,9 @@ public class Sponsors extends Controller
     List&lt;Sponsor&gt; sponsors = Sponsor.findAll();
     render (sponsors);
   }
-}
-</code></pre>
-
+}</code></pre>
 <h2>Divisions</h2>
-<pre><code class="java">package controllers;
+<pre><code class="lang-java">package controllers;
 
 import java.util.List;
 
@@ -1012,13 +1175,11 @@ public class Division extends Controller
 
     render (divisions);
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>You will also need the corresponding views - each one called <code>index.html</code>:</p>
 <h2>views/Players</h2>
-<pre><code class="html">#{extends 'main.html' /}
-#{set title:'Players' /}
+<pre><code class="lang-html">#{extends &#39;main.html&#39; /}
+#{set title:&#39;Players&#39; /}
 
 &lt;nav&gt;
   &lt;a class=&quot;item&quot;         href=&quot;/divisions&quot;&gt; Divisions &lt;/a&gt;
@@ -1040,7 +1201,7 @@ public class Division extends Controller
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      #{list items:players, as:'player'}
+      #{list items:players, as:&#39;player&#39;}
         &lt;tr&gt;
           &lt;td&gt;${player.name}&lt;/td&gt;
           &lt;td&gt;&lt;/td&gt;
@@ -1049,12 +1210,10 @@ public class Division extends Controller
       #{/list}
     &lt;/tbody&gt;
   &lt;/table&gt;
-&lt;/section&gt;
-</code></pre>
-
+&lt;/section&gt;</code></pre>
 <h2>views/Clubs</h2>
-<pre><code class="html">#{extends 'main.html' /}
-#{set title:'Clubs' /}
+<pre><code class="lang-html">#{extends &#39;main.html&#39; /}
+#{set title:&#39;Clubs&#39; /}
 
 &lt;nav&gt;
   &lt;a class=&quot;item&quot;         href=&quot;/divisions&quot;&gt; Divisions &lt;/a&gt;
@@ -1076,7 +1235,7 @@ public class Division extends Controller
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      #{list items:clubs, as:'club'}
+      #{list items:clubs, as:&#39;club&#39;}
         &lt;tr&gt;
           &lt;td&gt;${club.name}&lt;/td&gt;
           &lt;td&gt;&lt;/td&gt;
@@ -1085,14 +1244,10 @@ public class Division extends Controller
       #{/list}
     &lt;/tbody&gt;
   &lt;/table&gt;
-&lt;/section&gt;
-
-
-</code></pre>
-
+&lt;/section&gt;</code></pre>
 <h2>views/Sponsors</h2>
-<pre><code class="html">#{extends 'main.html' /}
-#{set title:'Sponsors'/}
+<pre><code class="lang-html">#{extends &#39;main.html&#39; /}
+#{set title:&#39;Sponsors&#39;/}
 
 &lt;nav&gt;
   &lt;a class=&quot;item&quot;         href=&quot;/divisions&quot;&gt; Divisions &lt;/a&gt;
@@ -1114,7 +1269,7 @@ public class Division extends Controller
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      #{list items:sponsors, as:'sponsor'}
+      #{list items:sponsors, as:&#39;sponsor&#39;}
         &lt;tr&gt;
           &lt;td&gt;${sponsor.name}&lt;/td&gt;
           &lt;td&gt;&lt;/td&gt;
@@ -1123,12 +1278,10 @@ public class Division extends Controller
       #{/list}
     &lt;/tbody&gt;
   &lt;/table&gt;
-&lt;/section&gt;
-</code></pre>
-
+&lt;/section&gt;</code></pre>
 <h2>views/Divisions</h2>
-<pre><code class="html">#{extends 'main.html' /}
-#{set title:'Divisions' /}
+<pre><code class="lang-html">#{extends &#39;main.html&#39; /}
+#{set title:&#39;Divisions&#39; /}
 
 &lt;nav&gt;
   &lt;a class=&quot;active item&quot;  href=&quot;/divisions&quot;&gt; Divisions &lt;/a&gt;
@@ -1150,7 +1303,7 @@ public class Division extends Controller
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      #{list items:divisions, as:'division'}
+      #{list items:divisions, as:&#39;division&#39;}
         &lt;tr&gt;
           &lt;td&gt;${division.name}&lt;/td&gt;
           &lt;td&gt;&lt;/td&gt;
@@ -1159,29 +1312,25 @@ public class Division extends Controller
       #{/list}
     &lt;/tbody&gt;
   &lt;/table&gt;
-&lt;/section&gt;
-</code></pre>
-
+&lt;/section&gt;</code></pre>
 <h2>Repository so far:</h2>
 <ul>
 <li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V08">https://github.com/wit-computing/jpamodel/releases/tag/V08</a></li>
 </ul>
-  </div>
-  <div  class="ui tab segment lab" data-tab="09">
-    <h1>Routes + Test Data</h1>
-<p>Before we can start the app in normal mode, we will need to make sure this line is uncommented in the <code>application.conf</code> file:</p>
-<pre><code>db.default=mem
-</code></pre>
 
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="09">
+        <h1>Routes + Test Data</h1>
+<p>Before we can start the app in normal mode, we will need to make sure this line is uncommented in the <code>application.conf</code> file:</p>
+<pre><code>db.default=mem</code></pre>
 <p>Now incorporate the following routes:</p>
 <pre><code># Home page
 GET     /                                       Divisions.index
 GET     /divisions                              Divisions.index
 GET     /clubs                                  Clubs.index
 GET     /players                                Players.index
-GET     /sponsors                               Sponsors.index
-</code></pre>
-
+GET     /sponsors                               Sponsors.index</code></pre>
 <p>Save everything and run (not in test mode). Browse to</p>
 <ul>
 <li><a href="http://localhost:9000/players">http://localhost:9000/players</a></li>
@@ -1190,9 +1339,9 @@ GET     /sponsors                               Sponsors.index
 <li><a href="http://localhost:9000/divisions">http://localhost:9000/divisions</a></li>
 </ul>
 <p>It views will be largely bank and unformatted. </p>
-<p>Create a class called 'BootStrap.java' in you 'app' folder, and replace its content with this source here:</p>
+<p>Create a class called &#39;BootStrap.java&#39; in you &#39;app&#39; folder, and replace its content with this source here:</p>
 <h2>BootStrap.java</h2>
-<pre><code class="java">import java.util.List;
+<pre><code class="lang-java">import java.util.List;
 
 import play.*;
 import play.jobs.*;
@@ -1207,21 +1356,21 @@ public class Bootstrap extends Job
     Fixtures.deleteDatabase(); 
     Fixtures.loadModels(&quot;data.yml&quot;);
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>Run the app again, and you should start to see some data.</p>
 <h2>Repository so far:</h2>
 <ul>
 <li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V09">https://github.com/wit-computing/jpamodel/releases/tag/V09</a></li>
 </ul>
-  </div>
-  <div  class="ui tab segment lab" data-tab="10">
-    <h1>Showing Division/Club/Player Relationships</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="10">
+        <h1>Showing Division/Club/Player Relationships</h1>
 <p>Currently UI for the model if read only - and we can only see each model in isolation (we cant see relationships).</p>
 <p>First, we tackle the relationships. Update the <code>&lt;table&gt;</code> element of the following views with this version:</p>
 <h2>views/Players/index.html</h2>
-<pre><code class="html">&lt;section&gt;        
+<pre><code class="lang-html">&lt;section&gt;        
  &lt;h1&gt;Players&lt;/h1&gt;
   &lt;table&gt;
     &lt;thead&gt;
@@ -1232,7 +1381,7 @@ public class Bootstrap extends Job
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      #{list items:players, as:'player'}
+      #{list items:players, as:&#39;player&#39;}
         &lt;tr&gt;
           &lt;td&gt;${player.name}&lt;/td&gt;
           &lt;td&gt;${player.club.name}&lt;/td&gt;
@@ -1241,11 +1390,9 @@ public class Bootstrap extends Job
       #{/list}
     &lt;/tbody&gt;
   &lt;/table&gt;
-&lt;/section&gt;
-</code></pre>
-
+&lt;/section&gt;</code></pre>
 <h2>views/ClubsController/index.html</h2>
-<pre><code class="html">&lt;section&gt;        
+<pre><code class="lang-html">&lt;section&gt;        
   &lt;h1&gt;Clubs&lt;/h1&gt;
   &lt;table&gt;
     &lt;thead&gt;
@@ -1256,13 +1403,13 @@ public class Bootstrap extends Job
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      #{list items:clubs, as:'club'}
+      #{list items:clubs, as:&#39;club&#39;}
         &lt;tr&gt;
           &lt;td&gt;${club.name}&lt;/td&gt;
           &lt;td&gt;
              &lt;table&gt;
                &lt;tr&gt;
-               #{list items:club.players, as:'player'}
+               #{list items:club.players, as:&#39;player&#39;}
                  &lt;td&gt;${player.name}&lt;/td&gt; &lt;/tr&gt;
                #{/list}
                &lt;/tr&gt;
@@ -1273,11 +1420,9 @@ public class Bootstrap extends Job
       #{/list}
     &lt;/tbody&gt;
   &lt;/table&gt;
-&lt;/section&gt;
-</code></pre>
-
+&lt;/section&gt;</code></pre>
 <h2>views/DivisionsController/index.html</h2>
-<pre><code class="html">&lt;section&gt;        
+<pre><code class="lang-html">&lt;section&gt;        
   &lt;h1&gt;Divisions&lt;/h1&gt;
   &lt;table&gt;
     &lt;thead&gt;
@@ -1290,13 +1435,13 @@ public class Bootstrap extends Job
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      #{list items:divisions, as:'division'}
+      #{list items:divisions, as:&#39;division&#39;}
         &lt;tr&gt;
           &lt;td&gt;${division.name}&lt;/td&gt;
           &lt;td&gt;
             &lt;table class=&quot;table&quot;&gt;
               &lt;tr&gt;
-              #{list items:division.members, as:'club'}
+              #{list items:division.members, as:&#39;club&#39;}
                 &lt;td&gt;${club.name}&lt;/td&gt; &lt;/tr&gt;
               #{/list}
               &lt;/tr&gt;
@@ -1307,19 +1452,19 @@ public class Bootstrap extends Job
       #{/list}
     &lt;/tbody&gt;
   &lt;/table&gt;
-&lt;/section&gt;
-</code></pre>
-
+&lt;/section&gt;</code></pre>
 <p>See if you can make sense of the above templates. Save everything and reload. You should be able to see what players belong to which clubs, and also what divisions the clubs are in.</p>
 <h2>Repository so far:</h2>
 <ul>
 <li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V10">https://github.com/wit-computing/jpamodel/releases/tag/V10</a></li>
 </ul>
-  </div>
-  <div  class="ui tab segment lab" data-tab="11">
-    <h1>Delete Player Feature</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="11">
+        <h1>Delete Player Feature</h1>
 <p>Introduce the following method into the controllers/Players:</p>
-<pre><code class="java">  public static void delete(Long id)
+<pre><code class="lang-java">  public static void delete(Long id)
   {
     Player player = Player.findById(id);
     if (player != null)
@@ -1332,65 +1477,42 @@ public class Bootstrap extends Job
       player.delete();
     }
     index();
-  }
-</code></pre>
-
+  }</code></pre>
 <p>Which requires this method in models/Club.java</p>
-<pre><code class="java">  public void removePlayer(Player player)
+<pre><code class="lang-java">  public void removePlayer(Player player)
   {
     players.remove(player);
-  }
-</code></pre>
-
-<p>Now change the loop in the 'views/Players/index.html' file:</p>
-<pre><code class="html">      #{list items:players, as:'player'}
+  }</code></pre>
+<p>Now change the loop in the &#39;views/Players/index.html&#39; file:</p>
+<pre><code class="lang-html">      #{list items:players, as:&#39;player&#39;}
         &lt;tr&gt;
           &lt;td&gt;${player.name}&lt;/td&gt;
           &lt;td&gt;${player.club.name}&lt;/td&gt;
           &lt;td&gt; &lt;a href=&quot;/players/delete/${player.id}&quot;&gt;Delete&lt;/a&gt; &lt;/td&gt;
           &lt;td&gt;&lt;/td&gt;
         &lt;/tr&gt;
-      #{/list}
-</code></pre>
-
+      #{/list}</code></pre>
 <p>(just one line changed in the above).</p>
 <p>Run the app - players now have a delete button, when you press it, you get an error. This is because we need to establish a route for the delete link. Introduce this in to conf/routes now:</p>
-<pre><code>GET    /players/delete/{id}                     Players.delete
-</code></pre>
-
+<pre><code>GET    /players/delete/{id}                     Players.delete</code></pre>
 <p>And try again. You should be able to delete players.</p>
 <h2>Repository so far:</h2>
 <ul>
 <li><a href="https://github.com/wit-computing/jpamodel/releases/tag/V11">https://github.com/wit-computing/jpamodel/releases/tag/V11</a></li>
 </ul>
-  </div>
-<script>
-$('.ui.menu .item')
-  .tab({
-    history: true,
-    historyType: 'hash'
-  })
-;
-</script>
-   </div>
 
-
-
-  <br><br>
-  <div class="ui bottom fixed borderless menu">
-    <div class="ui small item">
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-     </a>
-     </p>
+      </div>
+     
     </div>
-  </div>    <script>
+  </div>
+</div>
 
+    <script>
+      
 $(document).ready(function()
 {
   $("img").addClass ("ui image");
+  $('.ui.embed').embed();
 
   var images = $(".lab img");
   jQuery.each(images, function(i)  {
@@ -1403,7 +1525,22 @@ $(document).ready(function()
       $(div_label).insertBefore(images[i]);
     }
   });
-})    </script>
 
+  $('.ui.sidebar')
+      .sidebar({ context: $('.bottom.segment') })
+      .sidebar('attach events', '#toc');
+
+  $('.ui.menu .item')
+      .tab({
+        history: true,
+        historyType: 'hash',
+      });
+
+  $('.popup').popup();
+
+});
+
+    </script>
   </body>
+
  </html>

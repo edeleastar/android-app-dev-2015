@@ -7,18 +7,18 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
 
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
       <style>
-
+        
 
 body 
 {
@@ -40,17 +40,51 @@ figcaption
 {
   min-height:20px;
 }
+
+
     </style>
 
   </head>
 
   <body>
+    
 
-  <div class="ui container">
+<div class="ui bottom attached segment pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    
+      <a class="item" href="talk-a-android-services/d-intent-services.pdf">
+        Intent Services
+      </a>
+    
+      <a class="item" href="talk-b-project-placement/project-briefing.pdf">
+        Placement Project
+      </a>
+    
+      <a class="item" href="book-a-donation-10/index.html">
+        Donation-10
+      </a>
+    
+      <a class="item" href="book-b-assign2-studio/index.html">
+        MyTweet-Assignment-Studio-02
+      </a>
+    
+      <a class="item" href="book-c-assign2-studio/index.html">
+        MyTweet-Assignment-Studio-03
+      </a>
+    
+  </div>
+
+  <div class="pusher">
+    <div class="ui container">
+      
   <header class="ui middle aligned center aligned stackable grid segment">
-    <div class="eight wide  column">
+    <a class="ui blue left corner label">
+      <div id="showTOC" class="popup" data-content="Reveal TOC">
+        <i id="toc" class="big sitemap icon"></i>
+      </div>
+    </a>
+    <div class="eight wide center aligned column">
       <h2> 12: Android Services </h2>
-      <!--<h3> () </h3>-->
     </div>
     <div class="one wide column sitemap">
       <div class="popup" data-content="Top Level Topic View">
@@ -75,109 +109,118 @@ figcaption
     </div>
   </header>
 
-<script>
-  $('.popup')
-  .popup()
-;
-</script>
 
+      <div class="ui four doubling stackable cards">
 
-<div class="ui four doubling stackable cards">
-      <a class="ui card" href="./talk-a-android-services/d-intent-services.pdf">
+        
+        
+  <a class="ui raised link card" href="talk-a-android-services/d-intent-services.pdf">
     <div class="content">
-      <div class="right floated meta"> <i class="film large icon"></i></div>
-      <div class="header"> Intent Services </div>
+        <div class="right floated meta"> <i class="film large icon"></i></div>
+        <div class="header"> Intent Services </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./talk-a-android-services/d-intent-services.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="talk-a-android-services/d-intent-services.png">
     </div>
     <div class="content">
       <div class="description">
          <p>Donation Android V6 suffers one significant drawback - new tweets arriving at the server will not be propagated to android clients. Here we look at one way of solving this problem.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="./talk-b-project-placement/project-briefing.pdf">
+        
+        
+  <a class="ui raised link card" href="talk-b-project-placement/project-briefing.pdf">
     <div class="content">
-      <div class="right floated meta"> <i class="film large icon"></i></div>
-      <div class="header"> Placement Project </div>
+        <div class="right floated meta"> <i class="film large icon"></i></div>
+        <div class="header"> Placement Project </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./talk-b-project-placement/project-briefing.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="talk-b-project-placement/project-briefing.png">
     </div>
     <div class="content">
       <div class="description">
          <p>A discussion on the project to be carried out as part of the work placement.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="book-a-donation-10/index.html">
+        
+        
+  <a class="ui raised link card" href="book-a-donation-10/index.html">
     <div class="content">
-      <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <div class="header"> Donation-10 </div>
+        <div class="right floated meta"> <i class="lab large icon"></i></div>
+        <div class="header"> Donation-10 </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./book-a-donation-10/img/main.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="book-a-donation-10/img/main.png">
     </div>
     <div class="content">
       <div class="description">
          <p>Here we refactor Donation Android client to update the donations list from the service. Two methods are explored. One technique handles a menu-generated event. The other makes use of an Android service.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="book-b-assign2-studio/index.html">
+        
+        
+  <a class="ui raised link card" href="book-b-assign2-studio/index.html">
     <div class="content">
-      <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <div class="header"> MyTweet-Assignment-Studio-02 </div>
+        <div class="right floated meta"> <i class="lab large icon"></i></div>
+        <div class="header"> MyTweet-Assignment-Studio-02 </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./book-b-assign2-studio/img/main.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="book-b-assign2-studio/img/main.png">
     </div>
     <div class="content">
       <div class="description">
          <p>This is a follow-on lab to MyTweet-Assignment-Studio-01. The lab provides guidance but <span style="color:red">not comprehensive instructions</span> (which is reasonable given that it relates to an assignment). The guidance addesses issues that might otherwise prove quite difficult to resolve.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="book-c-assign2-studio/index.html">
+        
+        
+  <a class="ui raised link card" href="book-c-assign2-studio/index.html">
     <div class="content">
-      <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <div class="header"> MyTweet-Assignment-Studio-03 </div>
+        <div class="right floated meta"> <i class="lab large icon"></i></div>
+        <div class="header"> MyTweet-Assignment-Studio-03 </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./book-c-assign2-studio/img/main.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="book-c-assign2-studio/img/main.png">
     </div>
     <div class="content">
       <div class="description">
-         <p>This lab has been developed to assist in the preparation of the current assignment which comprises the development of a MyTweet suite of apps. Almost all the material here has been mined from the MyRent application, the subject of a set of labs presented earlier in the course. The lab delves into how a map may be embeded on the tweet-creation page on which the registered tweeters' locations are represented by markers. Only the logged-in-tweeter's marker is draggable. It is coloured differently to the remaining markers.</p>
+         <p>This lab has been developed to assist in the preparation of the current assignment which comprises the development of a MyTweet suite of apps. Almost all the material here has been mined from the MyRent application, the subject of a set of labs presented earlier in the course. The lab delves into how a map may be embeded on the tweet-creation page on which the registered tweeters&#39; locations are represented by markers. Only the logged-in-tweeter&#39;s marker is draggable. It is coloured differently to the remaining markers.</p>
+
       </div>
     </div>
   </a>
 
-  </div>
-   </div>
+        
 
-
-
-  <br><br>
-  <div class="ui bottom fixed borderless menu">
-    <div class="ui small item">
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+      </div>
+      <div class="ui center aligned rasied mini message segment">
+   Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
      <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
      </a>
-     </p>
+</div>
     </div>
-  </div>    <script>
+   </div>
+</div>
 
+    <script>
+      
 $(document).ready(function()
 {
   $("img").addClass ("ui image");
+  $('.ui.embed').embed();
 
   var images = $(".lab img");
   jQuery.each(images, function(i)  {
@@ -190,7 +233,22 @@ $(document).ready(function()
       $(div_label).insertBefore(images[i]);
     }
   });
-})    </script>
 
+  $('.ui.sidebar')
+      .sidebar({ context: $('.bottom.segment') })
+      .sidebar('attach events', '#toc');
+
+  $('.ui.menu .item')
+      .tab({
+        history: true,
+        historyType: 'hash',
+      });
+
+  $('.popup').popup();
+
+});
+
+    </script>
   </body>
+
  </html>

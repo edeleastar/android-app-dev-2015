@@ -7,18 +7,18 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
 
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
       <style>
-
+        
 
 body 
 {
@@ -40,15 +40,17 @@ figcaption
 {
   min-height:20px;
 }
+
+
     </style>
 
   </head>
 
   <body>
+    
 
-  <div class="ui container">
 <style>
-
+  
 
 code
 {
@@ -79,75 +81,278 @@ h3
   border-bottom: thin solid black;
 }
 
+
+
 </style>
 
-<div class="ui fixed top pointing inverted menu labmenu">
-  <header class="header item">
-    <a href="../index.html">
-      <i class="sitemap icon"></i>
-      Listview & Lifecycles
-    </a>
-  </header>
-  <div class="right tab-menu menu">
-    <a class="active item" data-tab="MyRent-04">
-        MyRent-04
-    </a>
-      <a class="item" data-tab="01">
-        01
-      </a>
-      <a class="item" data-tab="02">
-        02
-      </a>
-      <a class="item" data-tab="03">
-        03
-      </a>
-      <a class="item" data-tab="04">
-        04
-      </a>
-      <a class="item" data-tab="05">
-        05
-      </a>
-      <a class="item" data-tab="06">
-        06
-      </a>
-      <a class="item" data-tab="07">
-        07
-      </a>
-      <a class="item" data-tab="08">
-        08
-      </a>
-    </div>
-</div>
 
-<br><br>
-
-  <div  class="ui tab segment lab" data-tab="MyRent-04">
-    <h1>File IO &amp; Menu Up Navigation</h1>
-<p>Introduce into MyRent a serialization mechanism to save &#124; restore the residence list to a file. The app will load the contents of this file on launch, and update the file if residence data is updated. In addition, continue to evolve the navigation support in the app, enabling an 'up' navigation in the action bar from the ResidenceActivity to the ResidenceListActivity.</p>
+<div class="ui bottom attached segment pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-a-android-tools-01/index.html">
+          Android-Tools-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-b-donation-01/index.html">
+          Donation-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-c-android-tools-02/index.html">
+          Android-Tools-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic02-activities-and-layouts/book-a-donation-02/index.html">
+          Donation-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-a-donation-03/index.html">
+          Donation-03
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-b-myrent-00/index.html">
+          MyRent-00
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-c-myrent-01/index.html">
+          MyRent-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic04-widgets-and-events/book-a-myrent-02/index.html">
+          MyRent-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic04-widgets-and-events/book-b-event-handling/index.html">
+          Event-Handling
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-a-myrent-03/index.html">
+          MyRent-03
+        </a>
+      
+    
+      
+        <a class="active item" href="../../topic05-listview-and-lifecycles/book-b-myrent-04/index.html">
+          MyRent-04
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-c-myrent-05/index.html">
+          MyRent-05
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-d-event-handler-soln/index.html">
+          Event-Handling-Solution
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic06-streams-and-fileio/book-a/index.html">
+          MyRent-06
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic06-streams-and-fileio/book-b/index.html">
+          MyRent-07
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic07-tdd-and-fragments/book-a/index.html">
+          TDD-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic07-tdd-and-fragments/book-b/index.html">
+          MyRent-08
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-a-jpa-01/index.html">
+          JPA-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-b-jpa-02/index.html">
+          JPA-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-c-myrent-09/index.html">
+          MyRent-09
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-a-donation-04/index.html">
+          Donation-04
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-b-donation-05/index.html">
+          Donation-05
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-c-donation-06/index.html">
+          Donation-06
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-a-donation-07/index.html">
+          Donation-07
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-b-donation-08/index.html">
+          Donation-08
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-c-assign2-studio/index.html">
+          MyTweet-Assignment-Studio
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic11-assignment-studio/book-a-donation-09/index.html">
+          Donation-09
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic11-assignment-studio/book-b-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-a-donation-10/index.html">
+          Donation-10
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-b-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-c-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-03
+        </a>
+      
+    
   </div>
-  <div  class="ui tab segment lab" data-tab="01">
-    <h1>Residence</h1>
+  <div class="pusher">
+    <div class="ui container">
+
+      <div class="ui fixed top pointing inverted menu labmenu">
+        <header class="header item">
+          <i id="toc" class="sitemap icon"></i>
+          <a href="../index.html">
+            Listview & Lifecycles
+          </a>
+        </header>
+        <div class="right tab-menu menu">
+          
+            <a class="item" data-tab="MyRent-04">
+              MyRent-04
+            </a>
+          
+            <a class="item" data-tab="01">
+              01
+            </a>
+          
+            <a class="item" data-tab="02">
+              02
+            </a>
+          
+            <a class="item" data-tab="03">
+              03
+            </a>
+          
+            <a class="item" data-tab="04">
+              04
+            </a>
+          
+            <a class="item" data-tab="05">
+              05
+            </a>
+          
+            <a class="item" data-tab="06">
+              06
+            </a>
+          
+            <a class="item" data-tab="07">
+              07
+            </a>
+          
+            <a class="item" data-tab="08">
+              08
+            </a>
+          
+          </div>
+      </div>
+
+      <br><br>
+
+      
+      <div  class="ui tab segment lab" data-tab="MyRent-04">
+        <h1>File IO &amp; Menu Up Navigation</h1>
+<p>Introduce into MyRent a serialization mechanism to save &#124; restore the residence list to a file. The app will load the contents of this file on launch, and update the file if residence data is updated. In addition, continue to evolve the navigation support in the app, enabling an &#39;up&#39; navigation in the action bar from the ResidenceActivity to the ResidenceListActivity.</p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="01">
+        <h1>Residence</h1>
 <p>Continue building the MyRent app that you developed in the previous lab.</p>
 <p>For reference, we are providing a version here of the completed MyRent-03:</p>
-<pre><code>git clone https://github.com/wit-computing/myrent-03.git
-</code></pre>
-
+<pre><code>git clone https://github.com/wit-computing/myrent-03.git</code></pre>
 <p>The residence model class will need an ability to save and restore itself to some external format. A convenient choice for this format is JSON:</p>
 <ul>
 <li><a href="http://json.org/">http://json.org/</a></li>
 </ul>
 <p>The ADK has support for this format in the libaries:</p>
 <pre><code>import org.json.JSONException;
-import org.json.JSONObject;
-</code></pre>
-
+import org.json.JSONObject;</code></pre>
 <p>.. we should define in our classes appropriate names for each of the fields we wish to serialize:</p>
 <pre><code>  private static final String JSON_ID             = &quot;id&quot;            ;
   private static final String JSON_GEOLOCATION    = &quot;geolocation&quot;   ; 
   private static final String JSON_DATE           = &quot;date&quot;          ; 
-  private static final String JSON_RENTED         = &quot;rented&quot;        ; 
-</code></pre>
-
+  private static final String JSON_RENTED         = &quot;rented&quot;        ;</code></pre>
 <p>This Residence class will need a new constructor to load a Residence object from JSON:</p>
 <pre><code>  public Residence(JSONObject json) throws JSONException
   {
@@ -155,9 +360,7 @@ import org.json.JSONObject;
     geolocation   = json.getString(JSON_GEOLOCATION);
     date          = new Date(json.getLong(JSON_DATE));
     rented        = json.getBoolean(JSON_RENTED);
-  }
-</code></pre>
-
+  }</code></pre>
 <p>... and a corresponding method to save an object to JSON:</p>
 <pre><code>  public JSONObject toJSON() throws JSONException
   {
@@ -167,13 +370,9 @@ import org.json.JSONObject;
     json.put(JSON_DATE          , date.getTime());       
     json.put(JSON_RENTED        , rented);         
     return json;
-  }
-</code></pre>
-
+  }</code></pre>
 <p>Also, add a default lat-long pair to the constructor to ensure that a meaningful value is always rendered in both ResidenceListActivity and ResidenceActivity screens:</p>
-<pre><code>    this.geolocation = &quot;52.253456,-7.187162&quot;;
-</code></pre>
-
+<pre><code>    this.geolocation = &quot;52.253456,-7.187162&quot;;</code></pre>
 <h2>Complete Revised Class for reference purposes:</h2>
 <pre><code>package org.wit.myrent.models;
 
@@ -232,11 +431,12 @@ public class Residence
   {
     this.geolocation = geolocation;
   }
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="02">
-    <h1>PortfolioSerializer</h1>
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="02">
+        <h1>PortfolioSerializer</h1>
 <p>In order to perform the actual serialization - we provide a new model class to save &#124; restore a list of Residences:</p>
 <pre><code>package org.wit.myrent.models;
 
@@ -324,18 +524,16 @@ public class PortfolioSerializer
     }
     return residences;
   }
-}
-</code></pre>
+}</code></pre>
+<p>Place this complete class in the &#39;models&#39; package.</p>
 
-<p>Place this complete class in the 'models' package.</p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="03">
-    <h1>Portfolio</h1>
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="03">
+        <h1>Portfolio</h1>
 <p>The portfolio class will now be equipped with the capability to use the serializer to save | restore the Residences it is managing. It will use the Serializee we just developed to do this.</p>
 <p>First, introduce the serializer as a members of the Portfolio class:</p>
-<pre><code>  private PortfolioSerializer   serializer;
-</code></pre>
-
+<pre><code>  private PortfolioSerializer   serializer;</code></pre>
 <p>... then revise the constructor to take a serializer when it is being initialised:</p>
 <pre><code>  public Portfolio(PortfolioSerializer serializer)
   {
@@ -349,9 +547,7 @@ public class PortfolioSerializer
       info(this, &quot;Error loading residences: &quot; + e.getMessage());
       residences = new ArrayList&lt;Residence&gt;();
     }
-  }
-</code></pre>
-
+  }</code></pre>
 <p>We can now introduce a new method to save all the residence to disk:</p>
 <pre><code>  public boolean saveResidences()
   {
@@ -366,20 +562,14 @@ public class PortfolioSerializer
       info(this, &quot;Error saving residences: &quot; + e.getMessage());
       return false;
     }
-  }  
-</code></pre>
-
+  }</code></pre>
 <p>The above will require an import statement for <em>info</em>:</p>
-<pre><code>import static org.wit.android.helpers.LogHelpers.info;
-</code></pre>
-
+<pre><code>import static org.wit.android.helpers.LogHelpers.info;</code></pre>
 <p>Add a method to add a residence to the list:</p>
 <pre><code>  public void addResidence(Residence residence)
   {
     residences.add(residence);
-  }
-</code></pre>
-
+  }</code></pre>
 <p>Here is the complete Portfolio class for reference purposes:</p>
 <pre><code>package org.wit.myrent.models;
 
@@ -448,27 +638,22 @@ public class Portfolio
   {
     residences.remove(c);
   }
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="04">
-    <h1>MyRentApp</h1>
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="04">
+        <h1>MyRentApp</h1>
 <p>The entire loading process is initially triggered by the application object, which is the entry point for our application.</p>
 <p>First introduce a field to hold the file name we will use to store the portfolio:</p>
-<pre><code>  private static final String FILENAME = &quot;portfolio.json&quot;;
-</code></pre>
-
+<pre><code>  private static final String FILENAME = &quot;portfolio.json&quot;;</code></pre>
 <p>Then we replace the current portfolio creation with the following:</p>
 <pre><code>    PortfolioSerializer serializer = new PortfolioSerializer(this, FILENAME);
-    portfolio = new Portfolio(serializer);
-</code></pre>
-
+    portfolio = new Portfolio(serializer);</code></pre>
 <p>Add an import statement for PortfolioSerializer:</p>
-<pre><code>import org.wit.myrent.models.PortfolioSerializer;
-</code></pre>
-
+<pre><code>import org.wit.myrent.models.PortfolioSerializer;</code></pre>
 <p>Run the app now. See if you can create some Residences. Can you determine if they are being saved?</p>
-<p>To do this, it may not be enough to just exit the app and launch again - as you will be merely restoring the already active app. See if you can actually 'kill' the application.</p>
+<p>To do this, it may not be enough to just exit the app and launch again - as you will be merely restoring the already active app. See if you can actually &#39;kill&#39; the application.</p>
 <p>If you manage to do this, you might find that the data is not actually saved. We will fix this in the next step.</p>
 <p>Here is the complete class for Reference Purposes:</p>
 <pre><code>package org.wit.myrent.app;
@@ -495,21 +680,20 @@ public class MyRentApp extends Application
 
     info(this, &quot;RentControl app launched&quot;);
   }
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="05">
-    <h1>ResidenceActivity</h1>
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="05">
+        <h1>ResidenceActivity</h1>
 <p>One method of ensuring the data is in fact saved, will be to trigger a save when the user leaves the ResidenceActivity:</p>
 <pre><code>  public void onPause() 
   {
     super.onPause();
     portfolio.saveResidences();
-  }
-</code></pre>
-
+  }</code></pre>
 <p>You should now be able to save/load the residences. Verify that this works now - you will need to completely kill the app for this to be verified.</p>
-<p><img alt="Figure 1: Kill app - remove from list" src="img/02.png"></p>
+<p><img src="img/02.png" alt="Figure 1: Kill app - remove from list"></p>
 <p>Here is the complete class for reference purposes:</p>
 <pre><code>package org.wit.myrent.activities;
 
@@ -635,35 +819,27 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
     portfolio.saveResidences();
   }
 
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="06">
-    <h1>IntentHelper</h1>
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="06">
+        <h1>IntentHelper</h1>
 <p>In order to support enhanced navigation, we define an additional Helper method in the IntentHelper class:</p>
 <pre><code>  public static void navigateUp(Activity parent)
   {
     Intent upIntent = NavUtils.getParentActivityIntent(parent);
     NavUtils.navigateUpTo(parent, upIntent);
-  }
-</code></pre>
-
+  }</code></pre>
 <p>Add an import statement for NavUtils:</p>
-<pre><code>import android.support.v4.app.NavUtils;
-</code></pre>
-
+<pre><code>import android.support.v4.app.NavUtils;</code></pre>
 <p>Add the following line to the dependencies block in build.gradle (Module:app):</p>
-<pre><code>compile 'com.android.support:support-v4:23.0.1'
-</code></pre>
-
+<pre><code>compile &#39;com.android.support:support-v4:23.0.1&#39;</code></pre>
 <p>The dependencies block now becomes:</p>
 <pre><code>dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-  compile 'com.android.support:support-v4:23.0.1'
-}
-
-</code></pre>
-
+  compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
+  compile &#39;com.android.support:support-v4:23.0.1&#39;
+}</code></pre>
 <p>Here, for reference purposes, is the complete class:</p>
 <pre><code>package org.wit.android.helpers;
 import java.io.Serializable;
@@ -699,21 +875,18 @@ public class IntentHelper
     Intent upIntent = NavUtils.getParentActivityIntent(parent);
     NavUtils.navigateUpTo(parent, upIntent);
   }
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="07">
-    <h1>ResidenceActivity</h1>
-<p>New we can make use of the helper we just introduced. We wish to support the 'up' style navigation:</p>
-<p><img alt="Figure 1: New Residence menu item &amp; Up button" src="img/01.png"></p>
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="07">
+        <h1>ResidenceActivity</h1>
+<p>New we can make use of the helper we just introduced. We wish to support the &#39;up&#39; style navigation:</p>
+<p><img src="img/01.png" alt="Figure 1: New Residence menu item &amp; Up button"></p>
 <p>First introduce the helper method into ResidenceActivity:</p>
-<pre><code>import static org.wit.android.helpers.IntentHelper.navigateUp;
-</code></pre>
-
+<pre><code>import static org.wit.android.helpers.IntentHelper.navigateUp;</code></pre>
 <p>Add the statement:</p>
-<pre><code>getActionBar().setDisplayHomeAsUpEnabled(true);
-</code></pre>
-
+<pre><code>getActionBar().setDisplayHomeAsUpEnabled(true);</code></pre>
 <p>to onCreate following <em>setContentView(...)</em> as indicated in the following code extract:</p>
 <pre><code>  @Override
   public void onCreate(Bundle savedInstanceState)
@@ -722,9 +895,7 @@ public class IntentHelper
     setContentView(R.layout.activity_residence);
     getActionBar().setDisplayHomeAsUpEnabled(true);
     ...
-  }
-</code></pre>
-
+  }</code></pre>
 <p>Now we override the <em>onOptionsItemSelected</em> method:</p>
 <pre><code>  @Override
   public boolean onOptionsItemSelected(MenuItem item)
@@ -735,12 +906,8 @@ public class IntentHelper
                                return true;
     }
     return super.onOptionsItemSelected(item);
-  }
-</code></pre>
-
-<pre><code>setContentView(R.layout.activity_residence);
-</code></pre>
-
+  }</code></pre>
+<pre><code>setContentView(R.layout.activity_residence);</code></pre>
 <p>For naming consistency we have changed the layout name from <em>activity_myrent</em> to <em>activity_residence</em>. </p>
 <ul>
 <li>Use the menu refactor command to change the name of the layout in <em>res/layout</em>.</li>
@@ -885,19 +1052,18 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
     return super.onOptionsItemSelected(item);
   }
 
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="08">
-    <h1>AndroidManifest</h1>
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="08">
+        <h1>AndroidManifest</h1>
 <p>The final piece of the puzzle is to layout in the manifest the parent/child relationship between the ResidenceListActivity and ResidenceActivity classes:</p>
 <pre><code>    &lt;activity
       android:name=&quot;.activities.ResidenceActivity&quot;
       android:label=&quot;@string/app_name&quot; &gt;  
       &lt;meta-data android:name=&quot;android.support.PARENT_ACTIVITY&quot; android:value=&quot;.activities.ResidenceListActivity&quot;/&gt;  
-    &lt;/activity&gt; 
-</code></pre>
-
+    &lt;/activity&gt;</code></pre>
 <p>In the above we are establishing this relationship. The navigation mechanism should work as expected now.</p>
 <p>Here is the complete manifest file for reference purposes:</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
@@ -928,36 +1094,20 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
     &lt;/activity&gt;
   &lt;/application&gt;
 
-&lt;/manifest&gt;
-</code></pre>
-  </div>
-<script>
-$('.ui.menu .item')
-  .tab({
-    history: true,
-    historyType: 'hash'
-  })
-;
-</script>
-   </div>
+&lt;/manifest&gt;</code></pre>
 
-
-
-  <br><br>
-  <div class="ui bottom fixed borderless menu">
-    <div class="ui small item">
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-     </a>
-     </p>
+      </div>
+     
     </div>
-  </div>    <script>
+  </div>
+</div>
 
+    <script>
+      
 $(document).ready(function()
 {
   $("img").addClass ("ui image");
+  $('.ui.embed').embed();
 
   var images = $(".lab img");
   jQuery.each(images, function(i)  {
@@ -970,7 +1120,22 @@ $(document).ready(function()
       $(div_label).insertBefore(images[i]);
     }
   });
-})    </script>
 
+  $('.ui.sidebar')
+      .sidebar({ context: $('.bottom.segment') })
+      .sidebar('attach events', '#toc');
+
+  $('.ui.menu .item')
+      .tab({
+        history: true,
+        historyType: 'hash',
+      });
+
+  $('.popup').popup();
+
+});
+
+    </script>
   </body>
+
  </html>

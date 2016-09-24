@@ -7,18 +7,18 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
 
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
       <style>
-
+        
 
 body 
 {
@@ -40,17 +40,55 @@ figcaption
 {
   min-height:20px;
 }
+
+
     </style>
 
   </head>
 
   <body>
+    
 
-  <div class="ui container">
+<div class="ui bottom attached segment pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    
+      <a class="item" href="talk-1/aa-tdd.pdf">
+        Test Driven Development
+      </a>
+    
+      <a class="item" href="talk-2/ab-play-tests.pdf">
+        TDD in Play
+      </a>
+    
+      <a class="item" href="talk-3/ac-blog-model.pdf">
+        Blog Model
+      </a>
+    
+      <a class="item" href="talk-4/bb-android_viewpager.pdf">
+        ViewPager
+      </a>
+    
+      <a class="item" href="book-a/index.html">
+        TDD-01
+      </a>
+    
+      <a class="item" href="book-b/index.html">
+        MyRent-08
+      </a>
+    
+  </div>
+
+  <div class="pusher">
+    <div class="ui container">
+      
   <header class="ui middle aligned center aligned stackable grid segment">
-    <div class="eight wide  column">
+    <a class="ui blue left corner label">
+      <div id="showTOC" class="popup" data-content="Reveal TOC">
+        <i id="toc" class="big sitemap icon"></i>
+      </div>
+    </a>
+    <div class="eight wide center aligned column">
       <h2> 7: TDD & ViewPager </h2>
-      <!--<h3> () </h3>-->
     </div>
     <div class="one wide column sitemap">
       <div class="popup" data-content="Top Level Topic View">
@@ -75,124 +113,136 @@ figcaption
     </div>
   </header>
 
-<script>
-  $('.popup')
-  .popup()
-;
-</script>
 
+      <div class="ui four doubling stackable cards">
 
-<div class="ui four doubling stackable cards">
-      <a class="ui card" href="./talk-1/aa-tdd.pdf">
+        
+        
+  <a class="ui raised link card" href="talk-1/aa-tdd.pdf">
     <div class="content">
-      <div class="right floated meta"> <i class="film large icon"></i></div>
-      <div class="header"> Test Driven Development </div>
+        <div class="right floated meta"> <i class="film large icon"></i></div>
+        <div class="header"> Test Driven Development </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./talk-1/aa-tdd.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="talk-1/aa-tdd.png">
     </div>
     <div class="content">
       <div class="description">
          <p>Testing is now considered an integral part of the programmers job. TDD is a technique that promotes reasonable simple unit test as precursor to implementation, significantly enhancing the robustness of the classes under test.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="./talk-2/ab-play-tests.pdf">
+        
+        
+  <a class="ui raised link card" href="talk-2/ab-play-tests.pdf">
     <div class="content">
-      <div class="right floated meta"> <i class="film large icon"></i></div>
-      <div class="header"> TDD in Play </div>
+        <div class="right floated meta"> <i class="film large icon"></i></div>
+        <div class="header"> TDD in Play </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./talk-2/ab-play-tests.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="talk-2/ab-play-tests.png">
     </div>
     <div class="content">
       <div class="description">
-         <p>The Play framework has very specific test support - facilitated via a variant of the JUnit libraries. This enables play applications to be launched in 'test' mode, and specific simple tests executed on the application classes.</p>
+         <p>The Play framework has very specific test support - facilitated via a variant of the JUnit libraries. This enables play applications to be launched in &#39;test&#39; mode, and specific simple tests executed on the application classes.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="./talk-3/ac-blog-model.pdf">
+        
+        
+  <a class="ui raised link card" href="talk-3/ac-blog-model.pdf">
     <div class="content">
-      <div class="right floated meta"> <i class="film large icon"></i></div>
-      <div class="header"> Blog Model </div>
+        <div class="right floated meta"> <i class="film large icon"></i></div>
+        <div class="header"> Blog Model </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./talk-3/ac-blog-model.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="talk-3/ac-blog-model.png">
     </div>
     <div class="content">
       <div class="description">
          <p>The focus on the tests for the moment is the Model classes only. In the lab you will attempt to build tests for the WitPress app. Here we review this model in this app in preparation the lab.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="./talk-4/bb-android_viewpager.pdf">
+        
+        
+  <a class="ui raised link card" href="talk-4/bb-android_viewpager.pdf">
     <div class="content">
-      <div class="right floated meta"> <i class="film large icon"></i></div>
-      <div class="header"> ViewPager </div>
+        <div class="right floated meta"> <i class="film large icon"></i></div>
+        <div class="header"> ViewPager </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./talk-4/bb-android_viewpager.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="talk-4/bb-android_viewpager.png">
     </div>
     <div class="content">
       <div class="description">
-         <p>In order to support 'swipe' between views at a specific level, we incorporate ViewLager support into the class.</p>
+         <p>In order to support &#39;swipe&#39; between views at a specific level, we incorporate ViewLager support into the class.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="book-a/index.html">
+        
+        
+  <a class="ui raised link card" href="book-a/index.html">
     <div class="content">
-      <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <div class="header"> TDD-01 </div>
+        <div class="right floated meta"> <i class="lab large icon"></i></div>
+        <div class="header"> TDD-01 </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./book-a/img/main.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="book-a/img/main.png">
     </div>
     <div class="content">
       <div class="description">
          <p>Explore the Unit test features of Play by writing some tests to verify the current behavior of the User and Message classes for the spacebook app.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="book-b/index.html">
+        
+        
+  <a class="ui raised link card" href="book-b/index.html">
     <div class="content">
-      <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <div class="header"> MyRent-08 </div>
+        <div class="right floated meta"> <i class="lab large icon"></i></div>
+        <div class="header"> MyRent-08 </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./book-b/img/main.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="book-b/img/main.png">
     </div>
     <div class="content">
       <div class="description">
          <p>Introduce a Google Map including necessary supporting resources such as Google Play Services Library and a personal API key. Additionally, support a landscape layout, validation of geolocation input, immediate mirroring any changes in this input in the view title and support for smaller small factor devices.</p>
+
       </div>
     </div>
   </a>
 
-  </div>
-   </div>
+        
 
-
-
-  <br><br>
-  <div class="ui bottom fixed borderless menu">
-    <div class="ui small item">
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+      </div>
+      <div class="ui center aligned rasied mini message segment">
+   Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
      <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
      </a>
-     </p>
+</div>
     </div>
-  </div>    <script>
+   </div>
+</div>
 
+    <script>
+      
 $(document).ready(function()
 {
   $("img").addClass ("ui image");
+  $('.ui.embed').embed();
 
   var images = $(".lab img");
   jQuery.each(images, function(i)  {
@@ -205,7 +255,22 @@ $(document).ready(function()
       $(div_label).insertBefore(images[i]);
     }
   });
-})    </script>
 
+  $('.ui.sidebar')
+      .sidebar({ context: $('.bottom.segment') })
+      .sidebar('attach events', '#toc');
+
+  $('.ui.menu .item')
+      .tab({
+        history: true,
+        historyType: 'hash',
+      });
+
+  $('.popup').popup();
+
+});
+
+    </script>
   </body>
+
  </html>

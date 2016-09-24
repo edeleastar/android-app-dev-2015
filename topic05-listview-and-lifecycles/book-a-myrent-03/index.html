@@ -7,18 +7,18 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
 
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
       <style>
-
+        
 
 body 
 {
@@ -40,15 +40,17 @@ figcaption
 {
   min-height:20px;
 }
+
+
     </style>
 
   </head>
 
   <body>
+    
 
-  <div class="ui container">
 <style>
-
+  
 
 code
 {
@@ -79,97 +81,293 @@ h3
   border-bottom: thin solid black;
 }
 
+
+
 </style>
 
-<div class="ui fixed top pointing inverted menu labmenu">
-  <header class="header item">
-    <a href="../index.html">
-      <i class="sitemap icon"></i>
-      Listview & Lifecycles
-    </a>
-  </header>
-  <div class="right tab-menu menu">
-    <a class="active item" data-tab="MyRent-03">
-        MyRent-03
-    </a>
-      <a class="item" data-tab="01">
-        01
-      </a>
-      <a class="item" data-tab="02">
-        02
-      </a>
-      <a class="item" data-tab="03">
-        03
-      </a>
-      <a class="item" data-tab="04">
-        04
-      </a>
-      <a class="item" data-tab="05">
-        05
-      </a>
-      <a class="item" data-tab="06">
-        06
-      </a>
-    </div>
-</div>
 
-<br><br>
-
-  <div  class="ui tab segment lab" data-tab="MyRent-03">
-    <h1>Action Bar &amp; Dialogs</h1>
-<p>In a significant update to the app, we introduce navigation within the app using an Action Bar. This will allow us to create new residences, or navigate to existing ones. Additionally, we will explore a simple date picker dialog to allow the user to select a registration date for the residence.</p>
+<div class="ui bottom attached segment pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-a-android-tools-01/index.html">
+          Android-Tools-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-b-donation-01/index.html">
+          Donation-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-c-android-tools-02/index.html">
+          Android-Tools-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic02-activities-and-layouts/book-a-donation-02/index.html">
+          Donation-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-a-donation-03/index.html">
+          Donation-03
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-b-myrent-00/index.html">
+          MyRent-00
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-c-myrent-01/index.html">
+          MyRent-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic04-widgets-and-events/book-a-myrent-02/index.html">
+          MyRent-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic04-widgets-and-events/book-b-event-handling/index.html">
+          Event-Handling
+        </a>
+      
+    
+      
+        <a class="active item" href="../../topic05-listview-and-lifecycles/book-a-myrent-03/index.html">
+          MyRent-03
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-b-myrent-04/index.html">
+          MyRent-04
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-c-myrent-05/index.html">
+          MyRent-05
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-d-event-handler-soln/index.html">
+          Event-Handling-Solution
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic06-streams-and-fileio/book-a/index.html">
+          MyRent-06
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic06-streams-and-fileio/book-b/index.html">
+          MyRent-07
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic07-tdd-and-fragments/book-a/index.html">
+          TDD-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic07-tdd-and-fragments/book-b/index.html">
+          MyRent-08
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-a-jpa-01/index.html">
+          JPA-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-b-jpa-02/index.html">
+          JPA-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-c-myrent-09/index.html">
+          MyRent-09
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-a-donation-04/index.html">
+          Donation-04
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-b-donation-05/index.html">
+          Donation-05
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-c-donation-06/index.html">
+          Donation-06
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-a-donation-07/index.html">
+          Donation-07
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-b-donation-08/index.html">
+          Donation-08
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-c-assign2-studio/index.html">
+          MyTweet-Assignment-Studio
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic11-assignment-studio/book-a-donation-09/index.html">
+          Donation-09
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic11-assignment-studio/book-b-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-a-donation-10/index.html">
+          Donation-10
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-b-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-c-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-03
+        </a>
+      
+    
   </div>
-  <div  class="ui tab segment lab" data-tab="01">
-    <h1>Overview</h1>
+  <div class="pusher">
+    <div class="ui container">
+
+      <div class="ui fixed top pointing inverted menu labmenu">
+        <header class="header item">
+          <i id="toc" class="sitemap icon"></i>
+          <a href="../index.html">
+            Listview & Lifecycles
+          </a>
+        </header>
+        <div class="right tab-menu menu">
+          
+            <a class="item" data-tab="MyRent-03">
+              MyRent-03
+            </a>
+          
+            <a class="item" data-tab="01">
+              01
+            </a>
+          
+            <a class="item" data-tab="02">
+              02
+            </a>
+          
+            <a class="item" data-tab="03">
+              03
+            </a>
+          
+            <a class="item" data-tab="04">
+              04
+            </a>
+          
+            <a class="item" data-tab="05">
+              05
+            </a>
+          
+            <a class="item" data-tab="06">
+              06
+            </a>
+          
+          </div>
+      </div>
+
+      <br><br>
+
+      
+      <div  class="ui tab segment lab" data-tab="MyRent-03">
+        <h1>Action Bar &amp; Dialogs</h1>
+<p>In a significant update to the app, we introduce navigation within the app using an Action Bar. This will allow us to create new residences, or navigate to existing ones. Additionally, we will explore a simple date picker dialog to allow the user to select a registration date for the residence.</p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="01">
+        <h1>Overview</h1>
 <p>At the end of this session the following features will have been added:</p>
 <ul>
-<li>
-<p>The action bar with menus as shown in Figure 1
-<img alt="Figure 1: Action bar and menu" src="img/13.png"></p>
-</li>
-<li>
-<p>Date picker as shown in Figure 2
-<img alt="Figure 2: Date picker to facilitate setting registration date" src="img/01.png"></p>
-</li>
+<li>The action bar with menus as shown in Figure 1
+<img src="img/13.png" alt="Figure 1: Action bar and menu"></li>
 </ul>
-  </div>
-  <div  class="ui tab segment lab" data-tab="02">
-    <h1>Resources</h1>
+<ul>
+<li>Date picker as shown in Figure 2
+<img src="img/01.png" alt="Figure 2: Date picker to facilitate setting registration date"></li>
+</ul>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="02">
+        <h1>Resources</h1>
 <p>Continue building the MyRent app that you commenced in the previous lab.</p>
 <p>For reference, we are providing a version here, MyRent-02:</p>
-<pre><code>git clone https://github.com/wit-computing/myrent-02.git
-</code></pre>
-
+<pre><code>git clone https://github.com/wit-computing/myrent-02.git</code></pre>
 <p>We perform some surgery as follows on the incoming code base to allow the menus we are about to introduce to render correctly. </p>
 <ul>
-<li>Replace <em>ResidenceActivity extends Activity</em>, changing the base class AppCompatActivity</li>
+<li>Replace <em>ResidenceActivity extends Activity</em>, changing the base class AppCompatActivity<pre><code>public class ResidenceActivity extends Activity implements TextWatcher, CompoundButton.OnCheckedChangeListener</code></pre>
+Remove the AppCompatActivity import and replace with:<pre><code>import android.app.Activity;</code></pre>
+</li>
 </ul>
-<pre><code>public class ResidenceActivity extends Activity implements TextWatcher, CompoundButton.OnCheckedChangeListener
-</code></pre>
-
-<p>Remove the AppCompatActivity import and replace with:</p>
-<pre><code>import android.app.Activity;
-</code></pre>
-
 <p>Make some changes to build.gradle:</p>
 <ul>
 <li>Target API 19</li>
 <li>Remove the appcompat dependency.</li>
 </ul>
 <p>The refactored build.gradle is provided at the foot of the page.</p>
-<p>In res/menu/myrent.xml replace tools:context=".MyRentActivity" with:</p>
-<pre><code>tools:context=&quot;.ResidenceActivity&quot;
-</code></pre>
-
+<p>In res/menu/myrent.xml replace tools:context=&quot;.MyRentActivity&quot; with:</p>
+<pre><code>tools:context=&quot;.ResidenceActivity&quot;</code></pre>
 <p>This to match the activity name change we introduced earlier.</p>
 <p>We are now ready to proceed to intruduce a new menu.</p>
 <ul>
 <li>Add these string resources to <em>res/values/strings.xml</em></li>
 </ul>
 <pre><code>  &lt;string name=&quot;new_residence&quot;&gt;New Residence&lt;/string&gt;
-  &lt;string name=&quot;settings&quot;&gt;Settings&lt;/string&gt;
-</code></pre>
-
+  &lt;string name=&quot;settings&quot;&gt;Settings&lt;/string&gt;</code></pre>
 <p>In the folder <em>res/menu</em> create a new file <em>residencelist.xml</em>.</p>
 <p>Here is the file content:</p>
 <p>Filename: residencelist.xml</p>
@@ -189,12 +387,7 @@ h3
       android:showAsAction=&quot;never&quot;
       android:title=&quot;@string/settings&quot;/&gt;
 
-&lt;/menu&gt;
-
-
-
-</code></pre>
-
+&lt;/menu&gt;</code></pre>
 <p>Next, we bind this newly-created menu to the activity within which we wish the menu to appear, namely ResidenceListActivity.</p>
 <ul>
 <li>Add this override to ResidenceListActivity:</li>
@@ -205,22 +398,17 @@ h3
     MenuInflater menuInflater = getMenuInflater();
     menuInflater.inflate(R.menu.residencelist, menu);
     return true;
-  }
-</code></pre>
-
+  }</code></pre>
 <p>These imports are required:</p>
 <pre><code>import android.view.Menu;
-import android.view.MenuInflater;
-
-</code></pre>
-
+import android.view.MenuInflater;</code></pre>
 <p>Observe in the above method, <em>onCreateOptionsMenu</em>, how the <em>residencelist</em> menu is accessed.</p>
 <p>Figure 1 shows the relationship between the xml and display.</p>
-<p><img alt="Figure 1: Action Bar &amp; Menu" src="img/14.png"></p>
+<p><img src="img/14.png" alt="Figure 1: Action Bar &amp; Menu"></p>
 <p>Build and run the application. You should see something like that shown in Figure 2.</p>
-<p><img alt="Figure 2: Action Bar Menu" src="img/16.png">
+<p><img src="img/16.png" alt="Figure 2: Action Bar Menu">
 Refactored build.gradle</p>
-<pre><code>apply plugin: 'com.android.application'
+<pre><code>apply plugin: &#39;com.android.application&#39;
 
 android {
   compileSdkVersion 23
@@ -236,18 +424,19 @@ android {
   buildTypes {
     release {
       minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
     }
   }
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="03">
-    <h1>Helpers</h1>
+  compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="03">
+        <h1>Helpers</h1>
 <p>Add a new class named <em>IntentHelper</em> to <em>org.wit.android.helpers</em>.</p>
 <p>Filename: IntentHelper.java</p>
 <pre><code>package org.wit.android.helpers;
@@ -277,22 +466,18 @@ public class IntentHelper
     intent.putExtra(extraID, extraData);
     parent.startActivityForResult(intent, idForResult);
   }
-}
+}</code></pre>
 
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="04">
-    <h1>Activities (ResidenceListActivity)</h1>
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="04">
+        <h1>Activities (ResidenceListActivity)</h1>
 <p>Here we shall provide the coding to respond to menu selection:</p>
 <p>Import the helpers provided in the previous step:</p>
 <pre><code>import static org.wit.android.helpers.IntentHelper.startActivityWithData;
-import static org.wit.android.helpers.IntentHelper.startActivityWithDataForResult;
-</code></pre>
-
+import static org.wit.android.helpers.IntentHelper.startActivityWithDataForResult;</code></pre>
 <p>This import statement is necessary:</p>
-<pre><code>import android.view.MenuItem;
-</code></pre>
-
+<pre><code>import android.view.MenuItem;</code></pre>
 <p>Now override <em>onOptionsItemSelected</em> to respond to selecting the menu item to create a new residence instance:</p>
 <pre><code>  @Override
   public boolean onOptionsItemSelected(MenuItem item)
@@ -306,35 +491,27 @@ import static org.wit.android.helpers.IntentHelper.startActivityWithDataForResul
 
       default:                           return super.onOptionsItemSelected(item);
     }
-  } 
-</code></pre>
-
+  }</code></pre>
 <p>Add this line of code to <em>onItemClick</em></p>
-<pre><code>startActivityWithData(this, ResidenceActivity.class, &quot;RESIDENCE_ID&quot;, residence.id);
-</code></pre>
-
+<pre><code>startActivityWithData(this, ResidenceActivity.class, &quot;RESIDENCE_ID&quot;, residence.id);</code></pre>
 <p>Delete remaining lines code: 
-<img alt="" src="img/10.png"></p>
+<img src="img/10.png" alt=""></p>
 <p>Here is refactored method:</p>
 <pre><code>  @Override
   public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id)
   {
     Residence residence = adapter.getItem(position);
     startActivityWithData(this, ResidenceActivity.class, &quot;RESIDENCE_ID&quot;, residence.id);
-  }
-</code></pre>
-
+  }</code></pre>
 <p>We no longer use test data. Delete this line from Portfolio:
-<img alt="" src="img/11.png"></p>
+<img src="img/11.png" alt=""></p>
 <p>Delete the now redundant method, also in Portfolio: <em>generateTestData</em></p>
-<p><img alt="" src="img/12.png"></p>
+<p><img src="img/12.png" alt=""></p>
 <p>One small final change to org.wit.myrent.models.Residence:</p>
 <ul>
 <li>Add a default value for geoloction in the default constructor:</li>
 </ul>
-<pre><code>    geolocation = &quot;52.253456,-7.187162&quot;;
-</code></pre>
-
+<pre><code>    geolocation = &quot;52.253456,-7.187162&quot;;</code></pre>
 <p>This will ensure the the residence list will always display some meaningful data.</p>
 <p>Here is the modified constructor:</p>
 <pre><code>  public Residence()
@@ -342,9 +519,7 @@ import static org.wit.android.helpers.IntentHelper.startActivityWithDataForResul
     id = UUID.randomUUID();
     date = new Date();
     geolocation = &quot;52.253456,-7.187162&quot;;
-  }
-</code></pre>
-
+  }</code></pre>
 <p>Check that the app works as expected:</p>
 <ul>
 <li>Launch the app and select the menu item (+)</li>
@@ -352,22 +527,26 @@ import static org.wit.android.helpers.IntentHelper.startActivityWithDataForResul
 <li>Switch back to the list view using the back-button.</li>
 </ul>
 <p>You should be presented with something similar to that shown in Figure 1.</p>
-<p><img alt="Figure 1: Using menu to add new residence" src="img/15.png"></p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="05">
-    <h1>Dialog</h1>
+<p><img src="img/15.png" alt="Figure 1: Using menu to add new residence"></p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="05">
+        <h1>Dialog</h1>
 <p>The dialog in Figure 1 is an instance of <a href="http://developer.android.com/reference/android/app/DatePickerDialog.html"><strong>DatePickerDialog</strong></a> which is a simple dialog containing a <a href="http://developer.android.com/reference/android/widget/DatePicker.html"><strong>DatePicker</strong></a>.</p>
 <ul>
 <li>A DatePicker is a widget for selecting a date.</li>
 </ul>
-<p><img alt="Figure 1: DatePicker widget" src="img/02.png"></p>
+<p><img src="img/02.png" alt="Figure 1: DatePicker widget"></p>
 <ul>
 <li>As shown in Figure 2, the DatePicker is contained in <em>ResidenceActivity</em>.</li>
 </ul>
-<p><img alt="Figure 2: Object diagram showing DatePickerDialog" src="img/03.png"></p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="06">
-    <h1>Activities (ResidenceActivity)</h1>
+<p><img src="img/03.png" alt="Figure 2: Object diagram showing DatePickerDialog"></p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="06">
+        <h1>Activities (ResidenceActivity)</h1>
 <p>We shall now implement the code to allow a user to set the registration date of a residence.</p>
 <p>In <em>org.wit.myrent.activities.ResidenceActivity</em> add these import statements:</p>
 <pre><code>import java.util.Calendar;
@@ -376,11 +555,9 @@ import java.util.GregorianCalendar;
 
 import android.app.DatePickerDialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-</code></pre>
-
+import android.view.View.OnClickListener;</code></pre>
 <p>Delete line disabling date button:
-<img alt="" src="img/09.png"></p>
+<img src="img/09.png" alt=""></p>
 <p>Change the signature of ResidenceActivity class by adding </p>
 <ul>
 <li>View.OnClickListener</li>
@@ -391,9 +568,7 @@ import android.view.View.OnClickListener;
 {
 ...
 ...
-}
-</code></pre>
-
+}</code></pre>
 <p>This change will trigger errors. Add unimplemented methods manually or using the Android Studio hot keys to autogenerate the methods (as described in detail in previous labs such as in step 9 MyRent-00):</p>
 <ul>
 <li>public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)</li>
@@ -410,22 +585,16 @@ import android.view.View.OnClickListener;
                                          dpd.show();
                                          break; 
     }
-  }
-</code></pre>
-
+  }</code></pre>
 <pre><code>  @Override
   public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
   {
     Date date = new GregorianCalendar(year, monthOfYear, dayOfMonth).getTime();
     residence.date = date;
     dateButton.setText(residence.getDateString());
-  }
-</code></pre>
-
+  }</code></pre>
 <p>Set the date button listener in <em>onCreate</em>:</p>
-<pre><code>dateButton  .setOnClickListener(this);
-</code></pre>
-
+<pre><code>dateButton  .setOnClickListener(this);</code></pre>
 <p>Launch the app and test that this code works as intended:</p>
 <ul>
 <li>Create a new residence</li>
@@ -584,37 +753,20 @@ public class ResidenceActivity extends Activity implements
     residence.date = date;
     dateButton.setText(residence.getDateString());
   }
-}
+}</code></pre>
 
-</code></pre>
-  </div>
-<script>
-$('.ui.menu .item')
-  .tab({
-    history: true,
-    historyType: 'hash'
-  })
-;
-</script>
-   </div>
-
-
-
-  <br><br>
-  <div class="ui bottom fixed borderless menu">
-    <div class="ui small item">
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-     </a>
-     </p>
+      </div>
+     
     </div>
-  </div>    <script>
+  </div>
+</div>
 
+    <script>
+      
 $(document).ready(function()
 {
   $("img").addClass ("ui image");
+  $('.ui.embed').embed();
 
   var images = $(".lab img");
   jQuery.each(images, function(i)  {
@@ -627,7 +779,22 @@ $(document).ready(function()
       $(div_label).insertBefore(images[i]);
     }
   });
-})    </script>
 
+  $('.ui.sidebar')
+      .sidebar({ context: $('.bottom.segment') })
+      .sidebar('attach events', '#toc');
+
+  $('.ui.menu .item')
+      .tab({
+        history: true,
+        historyType: 'hash',
+      });
+
+  $('.popup').popup();
+
+});
+
+    </script>
   </body>
+
  </html>

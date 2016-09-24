@@ -7,18 +7,18 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
 
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
       <style>
-
+        
 
 body 
 {
@@ -40,15 +40,17 @@ figcaption
 {
   min-height:20px;
 }
+
+
     </style>
 
   </head>
 
   <body>
+    
 
-  <div class="ui container">
 <style>
-
+  
 
 code
 {
@@ -79,79 +81,286 @@ h3
   border-bottom: thin solid black;
 }
 
+
+
 </style>
 
-<div class="ui fixed top pointing inverted menu labmenu">
-  <header class="header item">
-    <a href="../index.html">
-      <i class="sitemap icon"></i>
-      6: Streams & File IO
-    </a>
-  </header>
-  <div class="right tab-menu menu">
-    <a class="active item" data-tab="MyRent-06">
-        MyRent-06
-    </a>
-      <a class="item" data-tab="01">
-        01
-      </a>
-      <a class="item" data-tab="02">
-        02
-      </a>
-      <a class="item" data-tab="03">
-        03
-      </a>
-      <a class="item" data-tab="04">
-        04
-      </a>
-      <a class="item" data-tab="05">
-        05
-      </a>
-      <a class="item" data-tab="06">
-        06
-      </a>
-      <a class="item" data-tab="07">
-        07
-      </a>
-      <a class="item" data-tab="08">
-        08
-      </a>
-    </div>
-</div>
 
-<br><br>
-
-  <div  class="ui tab segment lab" data-tab="MyRent-06">
-    <h1>Fragments &amp; Maps</h1>
-<p>Modern Android Activities tend to be composed of one or more Fragments - as opposed to consisting of a single layouts. This introduces a slightly more complicated creation process. However, using fragments opens up other opportunities we will explore in later labs.</p>
+<div class="ui bottom attached segment pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-a-android-tools-01/index.html">
+          Android-Tools-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-b-donation-01/index.html">
+          Donation-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-c-android-tools-02/index.html">
+          Android-Tools-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic02-activities-and-layouts/book-a-donation-02/index.html">
+          Donation-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-a-donation-03/index.html">
+          Donation-03
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-b-myrent-00/index.html">
+          MyRent-00
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-c-myrent-01/index.html">
+          MyRent-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic04-widgets-and-events/book-a-myrent-02/index.html">
+          MyRent-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic04-widgets-and-events/book-b-event-handling/index.html">
+          Event-Handling
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-a-myrent-03/index.html">
+          MyRent-03
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-b-myrent-04/index.html">
+          MyRent-04
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-c-myrent-05/index.html">
+          MyRent-05
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-d-event-handler-soln/index.html">
+          Event-Handling-Solution
+        </a>
+      
+    
+      
+        <a class="active item" href="../../topic06-streams-and-fileio/book-a/index.html">
+          MyRent-06
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic06-streams-and-fileio/book-b/index.html">
+          MyRent-07
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic07-tdd-and-fragments/book-a/index.html">
+          TDD-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic07-tdd-and-fragments/book-b/index.html">
+          MyRent-08
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-a-jpa-01/index.html">
+          JPA-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-b-jpa-02/index.html">
+          JPA-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-c-myrent-09/index.html">
+          MyRent-09
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-a-donation-04/index.html">
+          Donation-04
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-b-donation-05/index.html">
+          Donation-05
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-c-donation-06/index.html">
+          Donation-06
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-a-donation-07/index.html">
+          Donation-07
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-b-donation-08/index.html">
+          Donation-08
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-c-assign2-studio/index.html">
+          MyTweet-Assignment-Studio
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic11-assignment-studio/book-a-donation-09/index.html">
+          Donation-09
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic11-assignment-studio/book-b-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-a-donation-10/index.html">
+          Donation-10
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-b-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-c-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-03
+        </a>
+      
+    
   </div>
-  <div  class="ui tab segment lab" data-tab="01">
-    <h1>Preview</h1>
+  <div class="pusher">
+    <div class="ui container">
+
+      <div class="ui fixed top pointing inverted menu labmenu">
+        <header class="header item">
+          <i id="toc" class="sitemap icon"></i>
+          <a href="../index.html">
+            6: Streams & File IO
+          </a>
+        </header>
+        <div class="right tab-menu menu">
+          
+            <a class="item" data-tab="MyRent-06">
+              MyRent-06
+            </a>
+          
+            <a class="item" data-tab="01">
+              01
+            </a>
+          
+            <a class="item" data-tab="02">
+              02
+            </a>
+          
+            <a class="item" data-tab="03">
+              03
+            </a>
+          
+            <a class="item" data-tab="04">
+              04
+            </a>
+          
+            <a class="item" data-tab="05">
+              05
+            </a>
+          
+            <a class="item" data-tab="06">
+              06
+            </a>
+          
+            <a class="item" data-tab="07">
+              07
+            </a>
+          
+            <a class="item" data-tab="08">
+              08
+            </a>
+          
+          </div>
+      </div>
+
+      <br><br>
+
+      
+      <div  class="ui tab segment lab" data-tab="MyRent-06">
+        <h1>Fragments &amp; Maps</h1>
+<p>Modern Android Activities tend to be composed of one or more Fragments - as opposed to consisting of a single layouts. This introduces a slightly more complicated creation process. However, using fragments opens up other opportunities we will explore in later labs.</p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="01">
+        <h1>Preview</h1>
 <p>This lab comprises the following:</p>
 <ul>
-<li>
-<p>Refactoring MyRent: introduction of fragments (Figure 1)</p>
+<li><p>Refactoring MyRent: introduction of fragments (Figure 1)</p>
 <ul>
 <li>Fragments will be necessary later in the course - but not in this lab.
-  <img alt="Figure 1: Using fragments" src="img/05.png"></li>
+<img src="img/05.png" alt="Figure 1: Using fragments"></li>
 </ul>
 </li>
-<li>
-<p>Launching a map application from within MyRent</p>
+<li><p>Launching a map application from within MyRent</p>
 <ul>
-<li>This will facilitate identifying each residence's geolocation (Figure 2)</li>
+<li>This will facilitate identifying each residence&#39;s geolocation (Figure 2)</li>
 </ul>
+<p><img src="img/06.png" alt="Figure 2: Using external Maps application to identify residence&#39;s geolocation"></p>
 </li>
 </ul>
-<p><img alt="Figure 2: Using external Maps application to identify residence's geolocation" src="img/06.png"></p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="02">
-    <h1>ResidenceActivity</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="02">
+        <h1>ResidenceActivity</h1>
 <p>Continue building the MyRent app that you developed in the previous lab.</p>
 <p>For reference, we are providing a version here of the completed MyRent-05:</p>
-<pre><code>git clone https://github.com/wit-computing/myrent-05.git
-</code></pre>
-
+<pre><code>git clone https://github.com/wit-computing/myrent-05.git</code></pre>
 <p>Much of the content of ResidenceActivity inherited from the previous version is being moved to its associated new fragment class, ResidenceFragment.</p>
 <p>We now begin refactoring:</p>
 <ul>
@@ -182,20 +391,19 @@ public class ResidenceActivity extends FragmentActivity
       manager.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
     }
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>Add a container for the associated fragment:</p>
 <p>Filename: res/layout/fragment_container.xml</p>
 <pre><code>&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
   android:id=&quot;@+id/fragmenContainer&quot;
   android:layout_width=&quot;match_parent&quot;
   android:layout_height=&quot;match_parent&quot;
-  /&gt;
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="03">
-    <h1>ResidenceFragment</h1>
+  /&gt;</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="03">
+        <h1>ResidenceFragment</h1>
 <p>Here is the new ResidenceFragment class which comprises, mostly, code migrated from ResidencyActivity in the previous version of MyRent:</p>
 <pre><code>package org.wit.myrent.activities;
 
@@ -386,14 +594,14 @@ public class ResidenceFragment extends Fragment implements TextWatcher,
     residence.date = date;
     dateButton.setText(residence.getDateString());
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>Rename res/layout/activity_residence.xml to the more appropriate name: fragment_residence.xml. </p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="04">
-    <h1>ResidenceListActivity</h1>
-<p>As is the case with ResidenceActivity, much of ResidenceListActivity's code is also moved to its new associated fragment class - ResidenceListFragment.</p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="04">
+        <h1>ResidenceListActivity</h1>
+<p>As is the case with ResidenceActivity, much of ResidenceListActivity&#39;s code is also moved to its new associated fragment class - ResidenceListFragment.</p>
 <p>Here is the refactored ResidenceListActivity:</p>
 <pre><code>package org.wit.myrent.activities;
 
@@ -420,11 +628,12 @@ public class ResidenceListActivity extends FragmentActivity
       manager.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
     }
   }
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="05">
-    <h1>ResidenceListFragment</h1>
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="05">
+        <h1>ResidenceListFragment</h1>
 <p>Here is the ResidenceListFragment class which comprises, mostly, code migrated from ResidencyListActivity in the previous version of MyRent:</p>
 <pre><code>package org.wit.myrent.activities;
 
@@ -563,27 +772,23 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
       return convertView;
     }
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>Build and install the app on a device and verify that it functions correctly.</p>
 <p>Next we shall engage an external maps application.</p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="06">
-    <h1>Resources (Layout &amp; Strings)</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="06">
+        <h1>Resources (Layout &amp; Strings)</h1>
 <ul>
 <li>Add a string resource for the Map button to <em>values/strings.xml</em></li>
 </ul>
 <pre><code>  &lt;string name=&quot;show_map&quot;&gt;Show Map&lt;/string&gt;  
-  &lt;string name=&quot;geolocation&quot;&gt;Geolocation&lt;/string&gt;
-</code></pre>
-
+  &lt;string name=&quot;geolocation&quot;&gt;Geolocation&lt;/string&gt;</code></pre>
 <ul>
-<li>
-<p>You will already have renamed activity_residence.xml as fragment_residence.xml.</p>
+<li><p>You will already have renamed activity_residence.xml as fragment_residence.xml.</p>
 </li>
-<li>
-<p>The following additions are required to the layout:</p>
+<li><p>The following additions are required to the layout:</p>
 <ul>
 <li>A map button</li>
 <li>A geolocation label</li>
@@ -682,17 +887,17 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
     android:layout_marginLeft=&quot;16dp&quot;
     android:layout_marginRight=&quot;16dp&quot;
     android:text=&quot;@string/residence_report&quot;/&gt; 
-&lt;/LinearLayout&gt;
-</code></pre>
-
+&lt;/LinearLayout&gt;</code></pre>
 <p>The changes are evident in the following Figure 1.</p>
 <ul>
 <li>Note that the registration date is not displayed: the reason for this is that the contents of Figure 1 are formed from screenshots of the Graphical Layout which does not display dynamically generated data (such as the registration dates).</li>
 </ul>
-<p><img alt="Figure 1: Layout before and following refactoring" src="img/04.png"></p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="07">
-    <h1>Map</h1>
+<p><img src="img/04.png" alt="Figure 1: Layout before and following refactoring"></p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="07">
+        <h1>Map</h1>
 <p>Add the following method to IntentHelper:</p>
 <pre><code>  public static void openPreferredLocationInMap(Activity parent, String location)
   {
@@ -707,11 +912,9 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
     }
     else
     {
-      LogHelpers.info(parent, &quot;Couldn't call &quot; + location + &quot;, no receiving apps installed!&quot;);
+      LogHelpers.info(parent, &quot;Couldn&#39;t call &quot; + location + &quot;, no receiving apps installed!&quot;);
     }
-  } 
-</code></pre>
-
+  }</code></pre>
 <p>In the above code you will notice that we are using an implicit Intent. </p>
 <ul>
 <li>This searches for components that are registered for the action we have specified, namely ACTION_VIEW.</li>
@@ -720,32 +923,21 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
 <p>Invoke this helper method from within ResidenceFragment by pressing the <em>mapButton</em>.</p>
 <p>Here is the wiring to facilitate this. It should be added to ResidenceFragment:</p>
 <p>Declare the map button:</p>
-<pre><code>  private Button   mapButton;
-
-</code></pre>
-
+<pre><code>  private Button   mapButton;</code></pre>
 <p>Add a map button listener:</p>
-<pre><code>   mapButton    = (Button)  v.findViewById(R.id.show_map);
-
-</code></pre>
-
+<pre><code>   mapButton    = (Button)  v.findViewById(R.id.show_map);</code></pre>
 <p>Register the map button listener:</p>
-<pre><code>    mapButton   .setOnClickListener(this);
-
-</code></pre>
-
+<pre><code>    mapButton   .setOnClickListener(this);</code></pre>
 <p>Add a handler in the existing <em>onClick(...)</em> method:</p>
 <pre><code>      case R.id.show_map               : IntentHelper.openPreferredLocationInMap(getActivity(), residence.geolocation);
-                                         break;   
-
-</code></pre>
-
+                                         break;</code></pre>
 <p>The following import statement will be necessary:</p>
-<pre><code>import org.wit.android.helpers.IntentHelper;
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="08">
-    <h1>Test</h1>
+<pre><code>import org.wit.android.helpers.IntentHelper;</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="08">
+        <h1>Test</h1>
 <p>Build and install the app on a phsical device or emulator:</p>
 <ul>
 <li>Create a new residence</li>
@@ -755,35 +947,20 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
 </ul>
 </li>
 </ul>
-<p><img alt="Figure 1: Test map functionality" src="img/03.png"></p>
-  </div>
-<script>
-$('.ui.menu .item')
-  .tab({
-    history: true,
-    historyType: 'hash'
-  })
-;
-</script>
-   </div>
+<p><img src="img/03.png" alt="Figure 1: Test map functionality"></p>
 
-
-
-  <br><br>
-  <div class="ui bottom fixed borderless menu">
-    <div class="ui small item">
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-     </a>
-     </p>
+      </div>
+     
     </div>
-  </div>    <script>
+  </div>
+</div>
 
+    <script>
+      
 $(document).ready(function()
 {
   $("img").addClass ("ui image");
+  $('.ui.embed').embed();
 
   var images = $(".lab img");
   jQuery.each(images, function(i)  {
@@ -796,7 +973,22 @@ $(document).ready(function()
       $(div_label).insertBefore(images[i]);
     }
   });
-})    </script>
 
+  $('.ui.sidebar')
+      .sidebar({ context: $('.bottom.segment') })
+      .sidebar('attach events', '#toc');
+
+  $('.ui.menu .item')
+      .tab({
+        history: true,
+        historyType: 'hash',
+      });
+
+  $('.popup').popup();
+
+});
+
+    </script>
   </body>
+
  </html>

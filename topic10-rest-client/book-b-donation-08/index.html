@@ -7,18 +7,18 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
 
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
       <style>
-
+        
 
 body 
 {
@@ -40,15 +40,17 @@ figcaption
 {
   min-height:20px;
 }
+
+
     </style>
 
   </head>
 
   <body>
+    
 
-  <div class="ui container">
 <style>
-
+  
 
 code
 {
@@ -79,65 +81,275 @@ h3
   border-bottom: thin solid black;
 }
 
+
+
 </style>
 
-<div class="ui fixed top pointing inverted menu labmenu">
-  <header class="header item">
-    <a href="../index.html">
-      <i class="sitemap icon"></i>
-      10: REST & AsyncTasks
-    </a>
-  </header>
-  <div class="right tab-menu menu">
-    <a class="active item" data-tab="Donation-08">
-        Donation-08
-    </a>
-      <a class="item" data-tab="01">
-        01
-      </a>
-      <a class="item" data-tab="02">
-        02
-      </a>
-      <a class="item" data-tab="03">
-        03
-      </a>
-      <a class="item" data-tab="04">
-        04
-      </a>
-      <a class="item" data-tab="05">
-        05
-      </a>
-      <a class="item" data-tab="06">
-        06
-      </a>
-      <a class="item" data-tab="07">
-        07
-      </a>
-      <a class="item" data-tab="08">
-        08
-      </a>
-      <a class="item" data-tab="Exercises">
-        Exercises
-      </a>
-    </div>
-</div>
 
-<br><br>
-
-  <div  class="ui tab segment lab" data-tab="Donation-08">
-    <h1>Objectives</h1>
-<p>Reintroduce the Donation Android app, refactor it to interact with the donation-play-service</p>
+<div class="ui bottom attached segment pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-a-android-tools-01/index.html">
+          Android-Tools-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-b-donation-01/index.html">
+          Donation-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01-overview-and-tools/book-c-android-tools-02/index.html">
+          Android-Tools-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic02-activities-and-layouts/book-a-donation-02/index.html">
+          Donation-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-a-donation-03/index.html">
+          Donation-03
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-b-myrent-00/index.html">
+          MyRent-00
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03-navigation-and-app-structure/book-c-myrent-01/index.html">
+          MyRent-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic04-widgets-and-events/book-a-myrent-02/index.html">
+          MyRent-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic04-widgets-and-events/book-b-event-handling/index.html">
+          Event-Handling
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-a-myrent-03/index.html">
+          MyRent-03
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-b-myrent-04/index.html">
+          MyRent-04
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-c-myrent-05/index.html">
+          MyRent-05
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05-listview-and-lifecycles/book-d-event-handler-soln/index.html">
+          Event-Handling-Solution
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic06-streams-and-fileio/book-a/index.html">
+          MyRent-06
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic06-streams-and-fileio/book-b/index.html">
+          MyRent-07
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic07-tdd-and-fragments/book-a/index.html">
+          TDD-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic07-tdd-and-fragments/book-b/index.html">
+          MyRent-08
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-a-jpa-01/index.html">
+          JPA-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-b-jpa-02/index.html">
+          JPA-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic08-jpa-and-maps/book-c-myrent-09/index.html">
+          MyRent-09
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-a-donation-04/index.html">
+          Donation-04
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-b-donation-05/index.html">
+          Donation-05
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic09-rest-services/book-c-donation-06/index.html">
+          Donation-06
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-a-donation-07/index.html">
+          Donation-07
+        </a>
+      
+    
+      
+        <a class="active item" href="../../topic10-rest-client/book-b-donation-08/index.html">
+          Donation-08
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic10-rest-client/book-c-assign2-studio/index.html">
+          MyTweet-Assignment-Studio
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic11-assignment-studio/book-a-donation-09/index.html">
+          Donation-09
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic11-assignment-studio/book-b-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-a-donation-10/index.html">
+          Donation-10
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-b-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic12-android-services/book-c-assign2-studio/index.html">
+          MyTweet-Assignment-Studio-03
+        </a>
+      
+    
   </div>
-  <div  class="ui tab segment lab" data-tab="01">
-    <h1>Donation-android app</h1>
+  <div class="pusher">
+    <div class="ui container">
+
+      <div class="ui fixed top pointing inverted menu labmenu">
+        <header class="header item">
+          <i id="toc" class="sitemap icon"></i>
+          <a href="../index.html">
+            10: REST & AsyncTasks
+          </a>
+        </header>
+        <div class="right tab-menu menu">
+          
+            <a class="item" data-tab="Donation-08">
+              Donation-08
+            </a>
+          
+            <a class="item" data-tab="01">
+              01
+            </a>
+          
+            <a class="item" data-tab="02">
+              02
+            </a>
+          
+            <a class="item" data-tab="03">
+              03
+            </a>
+          
+            <a class="item" data-tab="04">
+              04
+            </a>
+          
+            <a class="item" data-tab="05">
+              05
+            </a>
+          
+            <a class="item" data-tab="06">
+              06
+            </a>
+          
+            <a class="item" data-tab="07">
+              07
+            </a>
+          
+            <a class="item" data-tab="08">
+              08
+            </a>
+          
+            <a class="item" data-tab="Exercises">
+              Exercises
+            </a>
+          
+          </div>
+      </div>
+
+      <br><br>
+
+      
+      <div  class="ui tab segment lab" data-tab="Donation-08">
+        <h1>Objectives</h1>
+<p>Reintroduce the Donation Android app, refactor it to interact with the donation-play-service</p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="01">
+        <h1>Donation-android app</h1>
 <p>This is the donation android app as we left it with Donation-03 lab:</p>
 <ul>
 <li><a href="https://github.com/wit-computing/donation-android-2015-03/releases/tag/V03">https://github.com/wit-computing/donation-android-2015-03/releases/tag/V03</a></li>
 </ul>
 <p>If you have completed the last donation android lab, then you can use your own project. If not, use the above archive.</p>
 <h2>Libraries</h2>
-<p>Open the Build.Gradle file - there are two, so make sure it is the one into the 'app' folder:</p>
-<pre><code>apply plugin: 'com.android.application'
+<p>Open the Build.Gradle file - there are two, so make sure it is the one into the &#39;app&#39; folder:</p>
+<pre><code>apply plugin: &#39;com.android.application&#39;
 
 android {
   compileSdkVersion 23
@@ -153,32 +365,25 @@ android {
   buildTypes {
     release {
       minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
     }
   }
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-  compile 'com.android.support:appcompat-v7:23.0.0'
-}
-
-</code></pre>
-
+  compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
+  compile &#39;com.android.support:appcompat-v7:23.0.0&#39;
+}</code></pre>
 <p>Then modify the <code>dependencies</code> section to include extra entries:</p>
 <pre><code>dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-  compile 'com.android.support:appcompat-v7:23.0.0'
-  compile 'com.google.code.gson:gson:2.4'
-  compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
-  compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
-}
-</code></pre>
-
+  compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
+  compile &#39;com.android.support:appcompat-v7:23.0.0&#39;
+  compile &#39;com.google.code.gson:gson:2.4&#39;
+  compile &#39;com.squareup.retrofit:retrofit:2.0.0-beta2&#39;
+  compile &#39;com.squareup.retrofit:converter-gson:2.0.0-beta2&#39;
+}</code></pre>
 <p>Now open the <code>androidManifext.xml</code> file - and insert this new permission entry:</p>
-<pre><code>    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
-</code></pre>
-
+<pre><code>    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;</code></pre>
 <p>This should be entered before the <code>&lt;application&gt;</code> element as shown here:</p>
 <pre><code>&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     package=&quot;app.donation&quot; &gt;
@@ -189,14 +394,14 @@ dependencies {
       ....
       ....
       ....
-&lt;/manifest&gt;
-</code></pre>
-
-<p>You may be offered the 'Sync Now' button - press it. If not, locate it and press it (it is on the toolbar)</p>
+&lt;/manifest&gt;</code></pre>
+<p>You may be offered the &#39;Sync Now&#39; button - press it. If not, locate it and press it (it is on the toolbar)</p>
 <p>The project should sync successfully.</p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="02">
-    <h1>Models - User &amp; Donation</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="02">
+        <h1>Models - User &amp; Donation</h1>
 <p>The current User and Donation classes need some minor adjustments. Specifically, we need to include an id</p>
 <h2>Donation</h2>
 <pre><code>package app.donation.model;
@@ -212,9 +417,7 @@ public class Donation
     this.amount = amount;
     this.method = method;
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>We will rename User to Donor:</p>
 <h2>Donor</h2>
 <pre><code>package app.donation.model;
@@ -234,16 +437,16 @@ public class Donor
     this.email = email;
     this.password = password;
   }
-}
-</code></pre>
+}</code></pre>
+<p>Be sure to us the &#39;refactor&#39; menu to make the above change - as User is used in a few locations.</p>
 
-<p>Be sure to us the 'refactor' menu to make the above change - as User is used in a few locations.</p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="03">
-    <h1>Proxy</h1>
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="03">
+        <h1>Proxy</h1>
 <p>In main package, introduce the DonationServiceProxy interface from donation-service-test</p>
 <h1>DonationServiceProxy</h1>
-<pre><code class="java">package app.donation.main;
+<pre><code class="lang-java">package app.donation.main;
 
 import java.util.List;
 
@@ -290,11 +493,12 @@ public interface DonationServiceProxy
 
   @DELETE(&quot;/api/donors/{id}/donatinos/{donationId}&quot;)
   Call&lt;Donation&gt; deleteDonation(@Path(&quot;id&quot;) Long id, @Path(&quot;donationId&quot;) Long donationId);
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="04">
-    <h1>DontionApp</h1>
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="04">
+        <h1>DontionApp</h1>
 <p>This class will require substantial additions. Here is a new version:</p>
 <pre><code>package app.donation.main;
 
@@ -376,13 +580,13 @@ public class DonationApp extends Application
     donationService = retrofit.create(DonationServiceProxy.class);
     Log.v(&quot;Donation&quot;, &quot;Donation App Started&quot;);
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>This version sets up a DonationServiceProxy object - much like the donation-service-test did, and makes this service object available for the activities. We will explore how it is used in the next few steps.</p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="05">
-    <h1>Welcome</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="05">
+        <h1>Welcome</h1>
 <p>This is a new version of the Welcome Activity class</p>
 <pre><code>package app.donation.activity;
 
@@ -474,14 +678,10 @@ public class Welcome extends AppCompatActivity implements Callback&lt;List&lt;Do
     Toast toast = Toast.makeText(this, &quot;Donation Contacted Successfully&quot;, Toast.LENGTH_LONG);
     toast.show();
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>onResume is issuing a request to the API for the list of all donors...</p>
 <pre><code>    Call&lt;List&lt;Donor&gt;&gt; call = (Call&lt;List&lt;Donor&gt;&gt;) app.donationService.getAllDonors();
-    call.enqueue(this);
-</code></pre>
-
+    call.enqueue(this);</code></pre>
 <p>the response to this request is delivered into one of these two methods:</p>
 <pre><code>  @Override
   public void onResponse(Response&lt;List&lt;Donor&gt;&gt; response, Retrofit retrofit)
@@ -496,14 +696,14 @@ public class Welcome extends AppCompatActivity implements Callback&lt;List&lt;Do
   {
     app.donationServiceAvailable = false;
     serviceUnavailableMessage();
-  }
-</code></pre>
-
+  }</code></pre>
 <p>onResponse indicates success - so we store the donors in the app objects. onFailure sets a flag in app, and displays an error message.</p>
-<p>Run the app now (make sure the donation-service is running). You should get the 'Donation Contacted Successfully' messages. If not, we will need to discover why before proceeding to next steps...</p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="06">
-    <h1>Signup Activity</h1>
+<p>Run the app now (make sure the donation-service is running). You should get the &#39;Donation Contacted Successfully&#39; messages. If not, we will need to discover why before proceeding to next steps...</p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="06">
+        <h1>Signup Activity</h1>
 <p>We can rework the Signup Activity in a similar fashion:</p>
 <pre><code>package app.donation.activity;
 
@@ -563,15 +763,11 @@ public class Signup extends AppCompatActivity implements Callback&lt;Donor&gt;
     toast.show();
     startActivity (new Intent(this, Welcome.class));
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>Run the app now - and sign up a new user. It should work successfully. The significant changes are here:</p>
-<p>We send a new donors details to the service here"</p>
+<p>We send a new donors details to the service here&quot;</p>
 <pre><code>    Call&lt;Donor&gt; call = (Call&lt;Donor&gt;) app.donationService.createDonor(donor);
-    call.enqueue(this);
-</code></pre>
-
+    call.enqueue(this);</code></pre>
 <p>.. and we deal with the responses here:</p>
 <pre><code>  @Override
   public void onResponse(Response&lt;Donor&gt; response, Retrofit retrofit)
@@ -587,31 +783,27 @@ public class Signup extends AppCompatActivity implements Callback&lt;Donor&gt;
     Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
     toast.show();
     startActivity (new Intent(this, Welcome.class));
-  }
-</code></pre>
-
+  }</code></pre>
 <p>To verify that is has worked, check the api for the new donor:</p>
 <ul>
 <li><a href="http://localhost:9000/api/donors">http://localhost:9000/api/donors</a></li>
 </ul>
 <p>If it is not working correctly at this stage - you will need to discover why before moving on to the next steps.</p>
-  </div>
-  <div  class="ui tab segment lab" data-tab="07">
-    <h1>Donate</h1>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="07">
+        <h1>Donate</h1>
 <p>We will take Donate step by step this time to gain a better understanding of how the service is accessed.</p>
 <p>First, in Donate Activity, bring in these imports:</p>
 <pre><code>import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
-import retrofit.Retrofit;
-</code></pre>
-
+import retrofit.Retrofit;</code></pre>
 <p>The implement the following interface in the class:</p>
-<pre><code>public class Donate extends AppCompatActivity implements Callback&lt;Donation&gt;
-</code></pre>
-
+<pre><code>public class Donate extends AppCompatActivity implements Callback&lt;Donation&gt;</code></pre>
 <p>This will cause an error - and android studio may be able to suggest fixes via the following menu:</p>
-<p><img alt="" src="img/01x.png"></p>
+<p><img src="img/01x.png" alt=""></p>
 <p>Which will generate these methods:</p>
 <pre><code>  @Override
   public void onResponse(Response&lt;Donation&gt; response, Retrofit retrofit)
@@ -623,9 +815,7 @@ import retrofit.Retrofit;
   public void onFailure(Throwable t)
   {
 
-  }
-</code></pre>
-
+  }</code></pre>
 <p>We now change part of our donateButtonPressed method to make the call to the service:</p>
 <pre><code>  ...
     if (donatedAmount &gt; 0)
@@ -634,9 +824,7 @@ import retrofit.Retrofit;
       Call&lt;Donation&gt; call = (Call&lt;Donation&gt;) app.donationService.createDonation(app.currentUser.id, donation);
       call.enqueue(this);
     }
-  ...
-</code></pre>
-
+  ...</code></pre>
 <p>... and finally, the response/error methods can be implemented:</p>
 <pre><code>  @Override
   public void onResponse(Response&lt;Donation&gt; response, Retrofit retrofit)
@@ -656,10 +844,8 @@ import retrofit.Retrofit;
   {
     Toast toast = Toast.makeText(this, &quot;Error making donation&quot;, Toast.LENGTH_LONG);
     toast.show();
-  }
-</code></pre>
-
-<p>Run this now - and you should see 'donation accepted' message.</p>
+  }</code></pre>
+<p>Run this now - and you should see &#39;donation accepted&#39; message.</p>
 <p>Check the api to see if it is there:</p>
 <ul>
 <li><a href="http://localhost:9000/api/donations">http://localhost:9000/api/donations</a></li>
@@ -794,19 +980,18 @@ public class Donate extends AppCompatActivity implements Callback&lt;Donation&gt
     Toast toast = Toast.makeText(this, &quot;Error making donation&quot;, Toast.LENGTH_LONG);
     toast.show();
   }
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="08">
-    <h1>Report</h1>
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="08">
+        <h1>Report</h1>
 <p>Try the report now before making any changes.</p>
 <p>You will notice that it seems to list the donations. Where are these coming from? We havent made any changes to the Report activity yet...</p>
 <p>We can now adjust this - and have the report display ALL donations (not just the donations made on this device).</p>
 <p>Before we start, make the following changes to the Report class:</p>
 <p>Introduce a new private member:</p>
-<pre><code>  private DonationAdapter adapter;
-</code></pre>
-
+<pre><code>  private DonationAdapter adapter;</code></pre>
 <p>.. and change the onCreate method to initialise this member:</p>
 <pre><code>  public void onCreate(Bundle savedInstanceState)
   {
@@ -818,22 +1003,16 @@ public class Donate extends AppCompatActivity implements Callback&lt;Donation&gt
     listView = (ListView) findViewById(R.id.reportList);
     adapter = new DonationAdapter (this, app.donations);
     listView.setAdapter(adapter);
-  }
-</code></pre>
-
+  }</code></pre>
 <p>(we are just making the adapter a class member, previously it was local)</p>
 <p>Now, import the libraries we need:</p>
 <pre><code>import android.widget.Toast;
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
-import retrofit.Retrofit;
-</code></pre>
-
+import retrofit.Retrofit;</code></pre>
 <p>Then implement the callback:</p>
-<pre><code>public class Report extends AppCompatActivity implements Callback&lt;Donation&gt;
-</code></pre>
-
+<pre><code>public class Report extends AppCompatActivity implements Callback&lt;Donation&gt;</code></pre>
 <p>... and these are the required method overrides:</p>
 <pre><code>  @Override
   public void onResponse(Response&lt;List&lt;Donation&gt;&gt; response, Retrofit retrofit)
@@ -847,14 +1026,10 @@ import retrofit.Retrofit;
   {
     Toast toast = Toast.makeText(this, &quot;Error retrieving donations&quot;, Toast.LENGTH_LONG);
     toast.show();
-  }
-</code></pre>
-
+  }</code></pre>
 <p>and finally, in onCreate - make the call to retrieve the donations:</p>
 <pre><code>    Call&lt;List&lt;Donation&gt;&gt; call = (Call&lt;List&lt;Donation&gt;&gt;) app.donationService.getAllDonations();
-    call.enqueue(this);
-</code></pre>
-
+    call.enqueue(this);</code></pre>
 <p>Try this now - you should see a list of all dontations.</p>
 <p>Complete version of Report class at this stage:</p>
 <pre><code>package app.donation.activity;
@@ -974,11 +1149,12 @@ class DonationAdapter extends ArrayAdapter&lt;Donation&gt;
   {
     return donations.size();
   }
-}
-</code></pre>
-  </div>
-  <div  class="ui tab segment lab" data-tab="Exercises">
-    <h1>Exercises</h1>
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="Exercises">
+        <h1>Exercises</h1>
 <p>Archive of project so far:</p>
 <ul>
 <li><a href="https://github.com/wit-computing/donation-android-2015-03/releases/tag/V04">https://github.com/wit-computing/donation-android-2015-03/releases/tag/V04</a></li>
@@ -987,36 +1163,20 @@ class DonationAdapter extends ArrayAdapter&lt;Donation&gt;
 <p>Test the android application against the the heroku deployed service.</p>
 <p>You will need to insert the appropriate url into the DonationApp:</p>
 <pre><code>  public String               service_url  = &quot;http://10.0.2.2:9000&quot;;   // Standard Emulator IP Address
-  //public String               service_url  = &quot;http://10.0.3.2:9000&quot;; // Genymotion IP address
-</code></pre>
-  </div>
-<script>
-$('.ui.menu .item')
-  .tab({
-    history: true,
-    historyType: 'hash'
-  })
-;
-</script>
-   </div>
+  //public String               service_url  = &quot;http://10.0.3.2:9000&quot;; // Genymotion IP address</code></pre>
 
-
-
-  <br><br>
-  <div class="ui bottom fixed borderless menu">
-    <div class="ui small item">
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-     </a>
-     </p>
+      </div>
+     
     </div>
-  </div>    <script>
+  </div>
+</div>
 
+    <script>
+      
 $(document).ready(function()
 {
   $("img").addClass ("ui image");
+  $('.ui.embed').embed();
 
   var images = $(".lab img");
   jQuery.each(images, function(i)  {
@@ -1029,7 +1189,22 @@ $(document).ready(function()
       $(div_label).insertBefore(images[i]);
     }
   });
-})    </script>
 
+  $('.ui.sidebar')
+      .sidebar({ context: $('.bottom.segment') })
+      .sidebar('attach events', '#toc');
+
+  $('.ui.menu .item')
+      .tab({
+        history: true,
+        historyType: 'hash',
+      });
+
+  $('.popup').popup();
+
+});
+
+    </script>
   </body>
+
  </html>

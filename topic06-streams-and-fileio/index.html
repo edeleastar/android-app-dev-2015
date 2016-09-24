@@ -7,18 +7,18 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
 
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
       <style>
-
+        
 
 body 
 {
@@ -40,17 +40,63 @@ figcaption
 {
   min-height:20px;
 }
+
+
     </style>
 
   </head>
 
   <body>
+    
 
-  <div class="ui container">
+<div class="ui bottom attached segment pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    
+      <a class="item" href="talk-1-more-navigation/a-navigation-into-apps.pdf">
+        Navigation into Apps
+      </a>
+    
+      <a class="item" href="talk-2-file-formats/b-file-formats.pdf">
+        File Formats
+      </a>
+    
+      <a class="item" href="talk-3-streams/c-streams.pdf">
+        Streams
+      </a>
+    
+      <a class="item" href="talk-4-fileio-in-myrent/d-fileio-in-myrent.pdf">
+        File IO in MyRent
+      </a>
+    
+      <a class="item" href="talk-5-up-support/e-up-support-myrent.pdf">
+        Up Support
+      </a>
+    
+      <a class="item" href="talk-6-fragments/ba-android_fragments.pdf">
+        Fragments
+      </a>
+    
+      <a class="item" href="book-a/index.html">
+        MyRent-06
+      </a>
+    
+      <a class="item" href="book-b/index.html">
+        MyRent-07
+      </a>
+    
+  </div>
+
+  <div class="pusher">
+    <div class="ui container">
+      
   <header class="ui middle aligned center aligned stackable grid segment">
-    <div class="eight wide  column">
+    <a class="ui blue left corner label">
+      <div id="showTOC" class="popup" data-content="Reveal TOC">
+        <i id="toc" class="big sitemap icon"></i>
+      </div>
+    </a>
+    <div class="eight wide center aligned column">
       <h2> 6: Streams & File IO </h2>
-      <!--<h3> () </h3>-->
     </div>
     <div class="one wide column sitemap">
       <div class="popup" data-content="Top Level Topic View">
@@ -75,96 +121,108 @@ figcaption
     </div>
   </header>
 
-<script>
-  $('.popup')
-  .popup()
-;
-</script>
 
+      <div class="ui four doubling stackable cards">
 
-<div class="ui four doubling stackable cards">
-      <a class="ui card" href="./talk-1-more-navigation/a-navigation-into-apps.pdf">
+        
+        
+  <a class="ui raised link card" href="talk-1-more-navigation/a-navigation-into-apps.pdf">
     <div class="content">
-      <div class="right floated meta"> <i class="film large icon"></i></div>
-      <div class="header"> Navigation into Apps </div>
+        <div class="right floated meta"> <i class="film large icon"></i></div>
+        <div class="header"> Navigation into Apps </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./talk-1-more-navigation/a-navigation-into-apps.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="talk-1-more-navigation/a-navigation-into-apps.png">
     </div>
     <div class="content">
       <div class="description">
          <p>Last time we explored briefly navigation within an app. In this session we continue this discussion, with a focus on navigation from the users perspective, looking at how a user can arrive into an app, and also how they may move between apps.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="./talk-2-file-formats/b-file-formats.pdf">
+        
+        
+  <a class="ui raised link card" href="talk-2-file-formats/b-file-formats.pdf">
     <div class="content">
-      <div class="right floated meta"> <i class="film large icon"></i></div>
-      <div class="header"> File Formats </div>
+        <div class="right floated meta"> <i class="film large icon"></i></div>
+        <div class="header"> File Formats </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./talk-2-file-formats/b-file-formats.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="talk-2-file-formats/b-file-formats.png">
     </div>
     <div class="content">
       <div class="description">
          <p>To date we have seen a small number of file formats for data, namely CSV and YAML. These are common and well suited to a range of simple applications. In Android we often use XML and Json. Here we review examples of all of these briefly.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="./talk-3-streams/c-streams.pdf">
+        
+        
+  <a class="ui raised link card" href="talk-3-streams/c-streams.pdf">
     <div class="content">
-      <div class="right floated meta"> <i class="film large icon"></i></div>
-      <div class="header"> Streams </div>
+        <div class="right floated meta"> <i class="film large icon"></i></div>
+        <div class="header"> Streams </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./talk-3-streams/c-streams.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="talk-3-streams/c-streams.png">
     </div>
     <div class="content">
       <div class="description">
          <p>The android SDK comes with a subset of the Java JDK libraries. This subset is significantly reduced from the range available in the JDK. Among these is the Streams library, which we use for simple file I/O.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="./talk-4-fileio-in-myrent/d-fileio-in-myrent.pdf">
+        
+        
+  <a class="ui raised link card" href="talk-4-fileio-in-myrent/d-fileio-in-myrent.pdf">
     <div class="content">
-      <div class="right floated meta"> <i class="film large icon"></i></div>
-      <div class="header"> File IO in MyRent </div>
+        <div class="right floated meta"> <i class="film large icon"></i></div>
+        <div class="header"> File IO in MyRent </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./talk-4-fileio-in-myrent/d-fileio-in-myrent.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="talk-4-fileio-in-myrent/d-fileio-in-myrent.png">
     </div>
     <div class="content">
       <div class="description">
          <p>In MyRent Lab 04 we incorporated a simple serialization mechanism to write Java objects to a Json file format. This required some significant enhancements to the models package, including a completely new Serializer class. Here we review these classes in detail.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="./talk-5-up-support/e-up-support-myrent.pdf">
+        
+        
+  <a class="ui raised link card" href="talk-5-up-support/e-up-support-myrent.pdf">
     <div class="content">
-      <div class="right floated meta"> <i class="film large icon"></i></div>
-      <div class="header"> Up Support </div>
+        <div class="right floated meta"> <i class="film large icon"></i></div>
+        <div class="header"> Up Support </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./talk-5-up-support/e-up-support-myrent.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="talk-5-up-support/e-up-support-myrent.png">
     </div>
     <div class="content">
       <div class="description">
-         <p>Navigating "up" (as opposed to 'back') must be explicity implemented in the application. It involves enabling the up button in the action bar, handling the resultant event and also declaring the parent/child relationship in the manifest.</p>
+         <p>Navigating &quot;up&quot; (as opposed to &#39;back&#39;) must be explicity implemented in the application. It involves enabling the up button in the action bar, handling the resultant event and also declaring the parent/child relationship in the manifest.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="./talk-6-fragments/ba-android_fragments.pdf">
+        
+        
+  <a class="ui raised link card" href="talk-6-fragments/ba-android_fragments.pdf">
     <div class="content">
-      <div class="right floated meta"> <i class="film large icon"></i></div>
-      <div class="header"> Fragments </div>
+        <div class="right floated meta"> <i class="film large icon"></i></div>
+        <div class="header"> Fragments </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./talk-6-fragments/ba-android_fragments.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="talk-6-fragments/ba-android_fragments.png">
     </div>
     <div class="content">
       <div class="description">
@@ -173,56 +231,61 @@ figcaption
     </div>
   </a>
 
-      <a class="ui card" href="book-a/index.html">
+        
+        
+  <a class="ui raised link card" href="book-a/index.html">
     <div class="content">
-      <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <div class="header"> MyRent-06 </div>
+        <div class="right floated meta"> <i class="lab large icon"></i></div>
+        <div class="header"> MyRent-06 </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./book-a/img/main.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="book-a/img/main.png">
     </div>
     <div class="content">
       <div class="description">
          <p>Modern Android Activities tend to be composed of one or more Fragments - as opposed to consisting of a single layouts. This introduces a slightly more complicated creation process. However, using fragments opens up other opportunities we will explore in later labs.</p>
+
       </div>
     </div>
   </a>
 
-      <a class="ui card" href="book-b/index.html">
+        
+        
+  <a class="ui raised link card" href="book-b/index.html">
     <div class="content">
-      <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <div class="header"> MyRent-07 </div>
+        <div class="right floated meta"> <i class="lab large icon"></i></div>
+        <div class="header"> MyRent-07 </div>
     </div>
-    <div class="ui bordered rounded image">
-      <img src="./book-b/img/main.png">
+    <div class="image">
+      <img class="ui bordered rounded image" src="book-b/img/main.png">
     </div>
     <div class="content">
       <div class="description">
-         <p>In this lab we introduce a facility to select and delete a subset of residences in the list view. The selected items need not be contiguous. Also, introduce a new feature to support 'swipe' interaction. This allows a user to swipe left/right to page through the residence list.</p>
+         <p>In this lab we introduce a facility to select and delete a subset of residences in the list view. The selected items need not be contiguous. Also, introduce a new feature to support &#39;swipe&#39; interaction. This allows a user to swipe left/right to page through the residence list.</p>
+
       </div>
     </div>
   </a>
 
-  </div>
-   </div>
+        
 
-
-
-  <br><br>
-  <div class="ui bottom fixed borderless menu">
-    <div class="ui small item">
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+      </div>
+      <div class="ui center aligned rasied mini message segment">
+   Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
      <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
      </a>
-     </p>
+</div>
     </div>
-  </div>    <script>
+   </div>
+</div>
 
+    <script>
+      
 $(document).ready(function()
 {
   $("img").addClass ("ui image");
+  $('.ui.embed').embed();
 
   var images = $(".lab img");
   jQuery.each(images, function(i)  {
@@ -235,7 +298,22 @@ $(document).ready(function()
       $(div_label).insertBefore(images[i]);
     }
   });
-})    </script>
 
+  $('.ui.sidebar')
+      .sidebar({ context: $('.bottom.segment') })
+      .sidebar('attach events', '#toc');
+
+  $('.ui.menu .item')
+      .tab({
+        history: true,
+        historyType: 'hash',
+      });
+
+  $('.popup').popup();
+
+});
+
+    </script>
   </body>
+
  </html>
