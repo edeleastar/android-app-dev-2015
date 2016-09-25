@@ -7,12 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" type="text/css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
 
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -36,9 +36,14 @@ figcaption
   align-items: center;
 }
 
-.credits
-{
-  min-height:20px;
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.Site-content {
+  flex: 1;
 }
 
 
@@ -46,7 +51,7 @@ figcaption
 
   </head>
 
-  <body>
+  <body class="Site">
     
 
 <style>
@@ -86,7 +91,7 @@ h3
 </style>
 
 
-<div class="ui bottom attached segment pushable">
+<div class="ui segment pushable">
   <div class="ui inverted labeled icon left inline vertical sidebar menu">
     
       
@@ -277,7 +282,7 @@ h3
     
   </div>
   <div class="pusher">
-    <div class="ui container">
+    <div class="ui basic segment">
 
       <div class="ui fixed top pointing inverted menu labmenu">
         <header class="header item">
@@ -490,12 +495,12 @@ public class PlayerTest extends UnitTest
 <pre><code>play test</code></pre>
 <p>...and navigate to the test runner page:</p>
 <ul>
-<li><a href="&#x6d;&#97;&#105;&#x6c;&#116;&#x6f;&#58;&#x68;&#x74;&#x74;&#112;&#x3a;&#x2f;&#x2f;&#108;&#111;&#99;&#97;&#x6c;&#104;&#111;&#x73;&#116;&#x3a;&#57;&#x30;&#x30;&#x30;&#47;&#64;&#x74;&#x65;&#x73;&#x74;&#x73;">&#x68;&#x74;&#x74;&#112;&#x3a;&#x2f;&#x2f;&#108;&#111;&#99;&#97;&#x6c;&#104;&#111;&#x73;&#116;&#x3a;&#57;&#x30;&#x30;&#x30;&#47;&#64;&#x74;&#x65;&#x73;&#x74;&#x73;</a></li>
+<li><a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x68;&#116;&#116;&#112;&#x3a;&#x2f;&#47;&#108;&#111;&#x63;&#x61;&#x6c;&#x68;&#x6f;&#115;&#116;&#58;&#x39;&#48;&#48;&#48;&#47;&#64;&#x74;&#101;&#115;&#116;&#115;">&#x68;&#116;&#116;&#112;&#x3a;&#x2f;&#47;&#108;&#111;&#x63;&#x61;&#x6c;&#x68;&#x6f;&#115;&#116;&#58;&#x39;&#48;&#48;&#48;&#47;&#64;&#x74;&#101;&#115;&#116;&#115;</a></li>
 </ul>
 <p>Select the Club and Player tests - and they should be green.</p>
 <p>Also try the database interface:</p>
 <ul>
-<li><a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x68;&#116;&#x74;&#112;&#x3a;&#x2f;&#x2f;&#108;&#111;&#x63;&#x61;&#108;&#x68;&#x6f;&#115;&#116;&#x3a;&#57;&#x30;&#48;&#48;&#47;&#64;&#x64;&#98;">&#x68;&#116;&#x74;&#112;&#x3a;&#x2f;&#x2f;&#108;&#111;&#x63;&#x61;&#108;&#x68;&#x6f;&#115;&#116;&#x3a;&#57;&#x30;&#48;&#48;&#47;&#64;&#x64;&#98;</a></li>
+<li><a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#104;&#x74;&#116;&#x70;&#x3a;&#x2f;&#47;&#x6c;&#x6f;&#x63;&#x61;&#108;&#x68;&#x6f;&#x73;&#x74;&#58;&#x39;&#x30;&#x30;&#48;&#x2f;&#x40;&#100;&#x62;">&#104;&#x74;&#116;&#x70;&#x3a;&#x2f;&#47;&#x6c;&#x6f;&#x63;&#x61;&#108;&#x68;&#x6f;&#x73;&#x74;&#58;&#x39;&#x30;&#x30;&#48;&#x2f;&#x40;&#100;&#x62;</a></li>
 </ul>
 <h2>Repository so far:</h2>
 <ul>
@@ -536,7 +541,7 @@ public class PlayerTest extends UnitTest
   { 
   }
 }</code></pre>
-<p>Run the tests - and have a look at the database admin interface (<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#x68;&#x74;&#x74;&#x70;&#58;&#x2f;&#x2f;&#108;&#111;&#99;&#97;&#x6c;&#x68;&#111;&#115;&#x74;&#x3a;&#x39;&#48;&#x30;&#48;&#x2f;&#x40;&#100;&#x62;">&#x68;&#x74;&#x74;&#x70;&#58;&#x2f;&#x2f;&#108;&#111;&#99;&#97;&#x6c;&#x68;&#111;&#115;&#x74;&#x3a;&#x39;&#48;&#x30;&#48;&#x2f;&#x40;&#100;&#x62;</a>). Can you see any player objects? No because teardown() is deleteing all of the objects. Comment out the @After annotation:</p>
+<p>Run the tests - and have a look at the database admin interface (<a href="&#x6d;&#97;&#105;&#108;&#x74;&#111;&#58;&#x68;&#116;&#x74;&#x70;&#x3a;&#47;&#47;&#x6c;&#111;&#99;&#97;&#108;&#x68;&#111;&#115;&#x74;&#58;&#x39;&#48;&#x30;&#48;&#47;&#x40;&#100;&#x62;">&#x68;&#116;&#x74;&#x70;&#x3a;&#47;&#47;&#x6c;&#111;&#99;&#97;&#108;&#x68;&#111;&#115;&#x74;&#58;&#x39;&#48;&#x30;&#48;&#47;&#x40;&#100;&#x62;</a>). Can you see any player objects? No because teardown() is deleteing all of the objects. Comment out the @After annotation:</p>
 <pre><code class="lang-java"> //@After</code></pre>
 <p>and run the tests again. This time - if you refresh the database page - you will see the three player objects.  Being able to see them in the database interface can be particularly useful if you are introducing new relationships between objects.</p>
 <p>Now we will bring in  utility function into the Player class:</p>
@@ -1507,6 +1512,14 @@ public class Bootstrap extends Job
   </div>
 </div>
 
+    <footer>
+      <div class="ui center aligned mini message segment">
+   Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+</div>
+    </footer>
     <script>
       
 $(document).ready(function()
@@ -1526,9 +1539,6 @@ $(document).ready(function()
     }
   });
 
-  $('.ui.sidebar')
-      .sidebar({ context: $('.bottom.segment') })
-      .sidebar('attach events', '#toc');
 
   $('.ui.menu .item')
       .tab({
@@ -1538,6 +1548,10 @@ $(document).ready(function()
 
   $('.popup').popup();
 
+  $('.ui.sidebar')
+      .sidebar({ context: $('.pushable') })
+      .sidebar('setting', 'transition', 'slide out')
+      .sidebar('attach events', '#toc');
 });
 
     </script>
