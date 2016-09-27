@@ -36,15 +36,6 @@ figcaption
   align-items: center;
 }
 
-.Site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.Site-content {
-  flex: 1;
-}
 
 
     </style>
@@ -90,6 +81,68 @@ h3
 
 </style>
 
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <i id="toc" class="sitemap icon"></i>
+    <a href="../index.html">
+      11: Assignment Studio
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    
+    <a class="item" data-tab="MyTweet-Assignment-Studio-01">
+      MyTweet-Assignment-Studio-01
+    </a>
+    
+    <a class="item" data-tab="01">
+      01
+    </a>
+    
+    <a class="item" data-tab="02">
+      02
+    </a>
+    
+    <a class="item" data-tab="03">
+      03
+    </a>
+    
+    <a class="item" data-tab="04">
+      04
+    </a>
+    
+    <a class="item" data-tab="05">
+      05
+    </a>
+    
+    <a class="item" data-tab="06">
+      06
+    </a>
+    
+    <a class="item" data-tab="07">
+      07
+    </a>
+    
+    <a class="item" data-tab="08">
+      08
+    </a>
+    
+    <a class="item" data-tab="09">
+      09
+    </a>
+    
+    <a class="item" data-tab="10">
+      10
+    </a>
+    
+    <a class="item" data-tab="11">
+      11
+    </a>
+    
+    <a class="item" href="../../index.html">
+      <i class="home icon"></i>
+    </a>
+  </div>
+</div>
 
 <div class="ui segment pushable">
   <div class="ui inverted labeled icon left inline vertical sidebar menu">
@@ -283,69 +336,7 @@ h3
   </div>
   <div class="pusher">
     <div class="ui basic segment">
-
-      <div class="ui fixed top pointing inverted menu labmenu">
-        <header class="header item">
-          <i id="toc" class="sitemap icon"></i>
-          <a href="../index.html">
-            11: Assignment Studio
-          </a>
-        </header>
-        <div class="right tab-menu menu">
-          
-            <a class="item" data-tab="MyTweet-Assignment-Studio-01">
-              MyTweet-Assignment-Studio-01
-            </a>
-          
-            <a class="item" data-tab="01">
-              01
-            </a>
-          
-            <a class="item" data-tab="02">
-              02
-            </a>
-          
-            <a class="item" data-tab="03">
-              03
-            </a>
-          
-            <a class="item" data-tab="04">
-              04
-            </a>
-          
-            <a class="item" data-tab="05">
-              05
-            </a>
-          
-            <a class="item" data-tab="06">
-              06
-            </a>
-          
-            <a class="item" data-tab="07">
-              07
-            </a>
-          
-            <a class="item" data-tab="08">
-              08
-            </a>
-          
-            <a class="item" data-tab="09">
-              09
-            </a>
-          
-            <a class="item" data-tab="10">
-              10
-            </a>
-          
-            <a class="item" data-tab="11">
-              11
-            </a>
-          
-          </div>
-      </div>
-
-      <br><br>
-
+      <br>
       
       <div  class="ui tab segment lab" data-tab="MyTweet-Assignment-Studio-01">
         <h1>Objectives</h1>
@@ -608,7 +599,8 @@ public class TweetsAPI extends Controller
     Tweet tweet = gson.fromJson(body.toString(), Tweet.class);
     tweet.save();
     renderJSON(gson.toJson(tweet));
-  }</code></pre>
+  }
+}</code></pre>
 <pre><code>package controllers;
 
 import java.util.List;
@@ -651,6 +643,25 @@ Tweet(tweet_2):
     id: 56611600-898f-11e5-8369-0002a5d5c51b
     message: tweet_2
     datestamp: &#39;14-11-2015-08-21&#39;</code></pre>
+<p>Add a Bootstrap class in the default package (root):</p>
+<pre><code>import java.util.List;
+
+import play.jobs.*;
+import play.test.*;
+import models.*;
+
+@OnApplicationStart
+public class Bootstrap extends Job 
+{ 
+  public void doJob()
+  {
+    if (Tweet.count() == 0)
+    {
+     Fixtures.deleteDatabase(); 
+     Fixtures.loadModels(&quot;data.yml&quot;);
+    }
+  }
+}</code></pre>
 <ul>
 <li>Launch the server from within the project folder in a terminal:</li>
 </ul>
@@ -737,7 +748,6 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import app.models.Tweet;
-import app.models.Tweeter;
 import retrofit.Call;
 import retrofit.GsonConverterFactory;
 import retrofit.Response;
@@ -1197,7 +1207,7 @@ public class Tweet extends GenericModel
   <div class="ui bottom fixed borderless right menu">
     <div class="ui right tiny menu">
       <div class="ui mini message segment">
-        <a href="mailto:edeleastar@wit.ie">Eamonn de Leastar</a> & <a href="johnjfitzgerald@outlook.com">John Fitzgerald</a>, <a href="http:/www.wit.ie"> WIT </a>.
+        Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com).
         <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
             target="_blank">Creative Commons License
         </a>

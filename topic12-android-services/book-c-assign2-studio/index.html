@@ -36,15 +36,6 @@ figcaption
   align-items: center;
 }
 
-.Site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.Site-content {
-  flex: 1;
-}
 
 
     </style>
@@ -90,6 +81,60 @@ h3
 
 </style>
 
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <i id="toc" class="sitemap icon"></i>
+    <a href="../index.html">
+      12: Android Services
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    
+    <a class="item" data-tab="MyTweet-Assignment-Studio-03">
+      MyTweet-Assignment-Studio-03
+    </a>
+    
+    <a class="item" data-tab="01">
+      01
+    </a>
+    
+    <a class="item" data-tab="02">
+      02
+    </a>
+    
+    <a class="item" data-tab="03">
+      03
+    </a>
+    
+    <a class="item" data-tab="04">
+      04
+    </a>
+    
+    <a class="item" data-tab="05">
+      05
+    </a>
+    
+    <a class="item" data-tab="06">
+      06
+    </a>
+    
+    <a class="item" data-tab="07">
+      07
+    </a>
+    
+    <a class="item" data-tab="08">
+      08
+    </a>
+    
+    <a class="item" data-tab="09">
+      09
+    </a>
+    
+    <a class="item" href="../../index.html">
+      <i class="home icon"></i>
+    </a>
+  </div>
+</div>
 
 <div class="ui segment pushable">
   <div class="ui inverted labeled icon left inline vertical sidebar menu">
@@ -283,57 +328,7 @@ h3
   </div>
   <div class="pusher">
     <div class="ui basic segment">
-
-      <div class="ui fixed top pointing inverted menu labmenu">
-        <header class="header item">
-          <i id="toc" class="sitemap icon"></i>
-          <a href="../index.html">
-            12: Android Services
-          </a>
-        </header>
-        <div class="right tab-menu menu">
-          
-            <a class="item" data-tab="MyTweet-Assignment-Studio-03">
-              MyTweet-Assignment-Studio-03
-            </a>
-          
-            <a class="item" data-tab="01">
-              01
-            </a>
-          
-            <a class="item" data-tab="02">
-              02
-            </a>
-          
-            <a class="item" data-tab="03">
-              03
-            </a>
-          
-            <a class="item" data-tab="04">
-              04
-            </a>
-          
-            <a class="item" data-tab="05">
-              05
-            </a>
-          
-            <a class="item" data-tab="06">
-              06
-            </a>
-          
-            <a class="item" data-tab="07">
-              07
-            </a>
-          
-            <a class="item" data-tab="08">
-              08
-            </a>
-          
-          </div>
-      </div>
-
-      <br><br>
-
+      <br>
       
       <div  class="ui tab segment lab" data-tab="MyTweet-Assignment-Studio-03">
         <h1>MyTweet Assignment 03</h1>
@@ -392,7 +387,7 @@ h3
         <h2>Layout</h2>
 <p>We are aiming to produce a layout something like that shown in Figure 1.</p>
 <p><img src="img/03.png" alt="Figure 1: Refactored Tweet view layout showing map placeholder">
-Here is a sample layout file.</p>
+Here is a sample layout file. </p>
 <p>A framelayout contained within a linear layout element has been introduced for the map. This is located towards the end of the file.</p>
 <pre><code>&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
                 xmlns:tools=&quot;http://schemas.android.com/tools&quot;
@@ -491,6 +486,8 @@ Here is a sample layout file.</p>
   &lt;/LinearLayout&gt;
 
 &lt;/LinearLayout&gt;</code></pre>
+<p>Note that a RelativeLayout could also have been employed. If you decide to implement a landscape layout then you might consider using a <a href="http://developer.android.com/reference/android/widget/ScrollView.html">ScrollView</a>, an implementation of which is demonstrated in MyRent. The key point to remember with the ScrollView is that only a single direct child view is permitted as shown here in Figure 1. This single child contains all the remaining layout&#39;s content.</p>
+<p><img src="img/04.png" alt="Figure 1: Scrollview contents contained in its single direct child"></p>
 
       </div>
      
@@ -559,8 +556,10 @@ public class MapHelper
 <p>In this lab it is assumed we are working with a TweetFragment (or similarly named) class. This manages the tweet composition and dispatch. The map will be embedded in this view. See Figure 1 here for a representation of the view.</p>
 <p><img src="img/02.png" alt="Figure 1: Tweet view with embedded map"></p>
 <p>Here is a list of import statements required:</p>
-<pre><code>import java.util.Iterator;
+<pre><code>import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import org.wit.android.helpers.MapHelper;
 import org.wit.ictskills.models.Tweeter;
 import android.support.v4.app.FragmentManager;
@@ -591,53 +590,27 @@ import com.google.android.gms.maps.model.MarkerOptions;</code></pre>
   GoogleMap gmap;
   Marker marker;
   LatLng markerPosition;
-  boolean markerDragged = false;   
-  boolean dragFlag = true; //indicates if the markers may be dragged.
-  String currentGeolocation;// Example: &quot;52.253456,-7.187162&quot;</code></pre>
+  String currentGeolocation;// = &quot;52.253456,-7.187162&quot;
+  public HashMap&lt;Marker, String&gt; markers = new HashMap&lt;&gt;();</code></pre>
 <p>Here is the remaining code. The end of the class, just before the closing curly brace, would be a good location.</p>
-<pre><code>  //-------------------------Google Map------------------------------------------//
+<pre><code>    //-------------------------Google Map------------------------------------------//
     /*
    * This Camera refers to Google map camera, not device camera.
    * When camera changes, this equivalent to changed map position here.
    * For example by panning map to new position:
-   * Method does the following:
-   *      saves zoom position to model layer,
-   *      removes existing non-null marker,
-   *      creates and positions new marker to tweeter geolocation.
-   * Marker draggable attribute set by flag dragFlag.
    */
   @Override
   public void onCameraChange(CameraPosition cameraPosition)
   {
     app.logged_in_tweeter.zoom = cameraPosition.zoom;
-    markerPosition = MapHelper.latLng(getActivity(), currentGeolocation);
-    if (marker != null)
-    {
-      marker.remove();
-    }
-
-    marker = gmap.addMarker(new MarkerOptions()
-        .position(markerPosition)
-        .draggable(dragFlag)
-        .visible(true)
-        .title(&quot;tweeter origin&quot;)
-        .alpha(0.7f)
-        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
-        .snippet(&quot;GPS : &quot; + markerPosition.toString()));
     addVisibleRegionMarkers();
   }
 
   @Override
-  public void onMarkerDragStart(Marker marker)
-  {
-
-  }
+  public void onMarkerDragStart(Marker marker) {}
 
   @Override
-  public void onMarkerDrag(Marker marker)
-  {
-
-  }
+  public void onMarkerDrag(Marker marker) {}
 
   @Override
   public void onMarkerDragEnd(Marker marker)
@@ -646,7 +619,6 @@ import com.google.android.gms.maps.model.MarkerOptions;</code></pre>
     getActivity().setTitle(currentGeolocation);
     app.logged_in_tweeter.geolocation = currentGeolocation;
     gmap.animateCamera(CameraUpdateFactory.newLatLng(marker.getPosition()));
-    markerDragged = true;
   }
 
   private void initializeMapFragment()
@@ -661,42 +633,27 @@ import com.google.android.gms.maps.model.MarkerOptions;</code></pre>
   }
 
   /**
-   * Add markers within visible region (that is the visible screen)
+   * Make markers visible that are present within visible map region
    */
   public void addVisibleRegionMarkers()
   {
+    // Obtain the bounds of the visible map
     LatLngBounds bounds = gmap.getProjection().getVisibleRegion().latLngBounds;
 
-    List&lt;Tweeter&gt; tweeters = app.tweetersList;
-    Iterator&lt;Tweeter&gt; it = tweeters.iterator();
+    Set keys = markers.keySet();
+    Iterator it = keys.iterator();
     while(it.hasNext())
     {
-      Tweeter r = it.next();
-      LatLng markerPoint = MapHelper.latLng(getActivity(), r.geolocation);
-      //include points within visible region not including current tweeter
-      if(bounds.contains(markerPoint) &amp;&amp; !r.id.equals(app.logged_in_tweeter.id))
+      Marker marker = (Marker)it.next();
+      if(bounds.contains(marker.getPosition()))
       {
-        addMarker(r);
+        marker.setVisible(true);
+      }
+      else
+      {
+        marker.setVisible(false);
       }
     }
-  }
-
-  /**
-   * Add a marker to map corresponding to location of arg res
-   * Markers set non-draggable.
-   * @param : The Tweeter object for which marker added to map.
-   */
-  public void addMarker(Tweeter tweeter)
-  {
-    LatLng pos = MapHelper.latLng(getActivity(), tweeter.geolocation);
-    MarkerOptions options = new MarkerOptions().position(pos)
-        .draggable(false)
-        .visible(true)
-        .alpha(0.7f)
-        .title(&quot;Tweeter Location&quot;)
-        .snippet(&quot;GPS : &quot; + tweeter.geolocation);
-    gmap.addMarker(options);
-
   }
 
   /*
@@ -716,7 +673,46 @@ import com.google.android.gms.maps.model.MarkerOptions;</code></pre>
         gmap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         gmap.setOnMarkerDragListener(this);
         gmap.setOnCameraChangeListener(this);//this Camera refers to Google map, not device camera
+        createMarkersWeakHashMap();
       }
+    }
+  }
+
+  /*
+  * Create hash map of markers representing all tweeter locations.
+  * None of markers is draggable except that of logged in tweeter.
+  * Logged in tweeter marker coloured blue.
+  * Remaining markers default red.
+  * Set all markers invisible here.
+  */
+  public void createMarkersWeakHashMap()
+  {
+    List&lt;Tweeter&gt; tweeters = app.tweetersList;
+    Iterator&lt;Tweeter&gt; it = tweeters.iterator();
+    boolean isDraggable = false;
+
+    while(it.hasNext())
+    {
+      Tweeter tweeter = it.next();
+      boolean isLoggedInTweeter = tweeter.id.equals(app.logged_in_tweeter.id);
+      // only logged in tweeter marker draggable
+      isDraggable = isLoggedInTweeter == true ? true : false;
+      LatLng geolocation = MapHelper.latLng(getActivity(), tweeter.geolocation);
+
+      MarkerOptions options = new MarkerOptions()
+          .position(geolocation)
+          .draggable(isDraggable)
+          .visible(false)
+          .alpha(0.7f)
+          .title(&quot;Tweeter Location&quot;)
+          .snippet(&quot;GPS : &quot; + tweeter.geolocation);
+      Marker marker = gmap.addMarker(options);
+
+      // Logged in tweeter marker coloured differently
+      if (isLoggedInTweeter)
+        marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+
+      markers.put(marker, tweeter.id);
     }
   }
 
@@ -724,7 +720,6 @@ import com.google.android.gms.maps.model.MarkerOptions;</code></pre>
    * Necessary to wait until MapFragment created before initializing map fragment
    * Note that map fragment is nested within residence fragment. See the xml layout file for residence frag
   */
-
   @Override
   public void onActivityCreated(Bundle savedInstanceState)
   {
@@ -783,6 +778,121 @@ dependencies {
       </div>
      
       <div  class="ui tab segment lab" data-tab="08">
+        <h1>Capture geolocation</h1>
+<p>The logged-in-tweeter&#39;s marker is draggable. This provides a convenient method of setting its geolocation which could be as follows:</p>
+<ul>
+<li>Extend the Tweeter api to facilitate updating a Tweeter.</li>
+<li>Refactor the Android client so that when a tweeter switches out of the tweet fragment view the geolocation is saved to the service.</li>
+</ul>
+<p>Here are some sample code snippets:</p>
+<p><strong>Service</strong></p>
+<p>conf/routes</p>
+<pre><code>PUT     /api/tweeters            TweetersAPI.updateTweeter</code></pre>
+<p>TweetersAPI</p>
+<pre><code>  /**
+   * Update fields in existing tweeter (excluding id).
+   * @param body
+   */
+  public static void updateTweeter(JsonElement body)
+  {
+    Tweeter updatedTweeter = gson.fromJson(body.toString(), Tweeter.class);
+    Tweeter tweeter = Tweeter.findById(updatedTweeter.id);
+    tweeter.update(updatedTweeter);
+    tweeter.save();
+    renderJSON(gson.toJson(tweeter));
+  }</code></pre>
+<p>models/Tweeter</p>
+<pre><code>  /**
+   * Update this tweeter but leave id unchanged
+   * @param other
+   */
+  public void update(Tweeter other)
+  {
+    firstName   = other.firstName;
+    lastName    = other.lastName;
+    email       = other.email;
+    password    = other.password; 
+    geolocation = other.geolocation;
+    zoom        = other.zoom;
+  }</code></pre>
+<p><strong>Tester</strong></p>
+<p>TweetServiceProxy</p>
+<pre><code>  @PUT(&quot;/api/tweeters&quot;)
+  Call&lt;Tweeter&gt; updateTweeter(@Body Tweeter tweeter);</code></pre>
+<p>TweetsServiceAPI</p>
+<pre><code>  public Tweeter updateTweeter(Tweeter tweeter) throws Exception
+  {
+    Call&lt;Tweeter&gt; call = (Call&lt;Tweeter&gt;) service.updateTweeter(tweeter);
+    Response&lt;Tweeter&gt; returnedTweeter = call.execute();
+    return returnedTweeter.body();
+  }</code></pre>
+<p><strong>Android client</strong></p>
+<p>MyTweetServiceProxy</p>
+<pre><code>  @PUT(&quot;/api/tweeters&quot;)
+  Call&lt;Tweeter&gt; updateTweeter(@Body Tweeter tweeter);</code></pre>
+<p>MyTweetApp</p>
+<pre><code>public class MyTweetApp extends Application implements Callback&lt;Tweeter&gt;
+{
+
+...
+...
+
+  public void updateTweeter()
+  {
+    Call&lt;Tweeter&gt; call = tweetService.updateTweeter(logged_in_tweeter);
+    call.enqueue(this);
+  }
+
+  @Override
+  public void onResponse(Response&lt;Tweeter&gt; response, Retrofit retrofit)
+  {
+    if(response.body() != null)
+    {
+      Tweeter returnedTweeter = (Tweeter)response.body();
+      if (returnedTweeter.id.equals(logged_in_tweeter.id))
+      {
+        Toast.makeText(this,&quot;Successfully updated Tweeter&quot;, Toast.LENGTH_SHORT).show();
+      }
+    }
+    else
+    {
+      Toast.makeText(this,&quot;Failed to update Tweeter&quot;, Toast.LENGTH_SHORT).show();
+    }
+  }
+
+  @Override
+  public void onFailure(Throwable t)
+  {
+    Toast.makeText(this,&quot;Failed to update Tweeter&quot;, Toast.LENGTH_SHORT).show();
+  }
+
+}</code></pre>
+<p>TweetFragment (or TweetActivity if no fragment)</p>
+<p>In method: onMarkerDragEnd capture geolocation and assign to logged_in_tweeter.</p>
+<pre><code>  @Override
+  public void onMarkerDragEnd(Marker marker)
+  {
+    currentGeolocation = MapHelper.latLng(marker.getPosition());
+    app.logged_in_tweeter.geolocation = currentGeolocation; //&lt;&lt;-- update Tweeter geolocation
+
+    getActivity().setTitle(currentGeolocation);
+
+    gmap.animateCamera(CameraUpdateFactory.newLatLng(marker.getPosition()));
+  }</code></pre>
+<p>In method oPause invoke TweetApp updateTweeter method. </p>
+<p>onPause is invoked when switching out of TweetFragment.</p>
+<pre><code>  @Override
+  public void onPause()
+  {
+    super.onPause();
+    ...
+    ...
+    app.updateTweeter();
+  }</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="09">
         <h1>Markers</h1>
 <p>Maps Live: Getting Started with Markers on Android</p>
 <p><a href="http://youtu.be/l3bw8Senjmg">viewable here</a></p>
@@ -796,7 +906,7 @@ dependencies {
   <div class="ui bottom fixed borderless right menu">
     <div class="ui right tiny menu">
       <div class="ui mini message segment">
-        <a href="mailto:edeleastar@wit.ie">Eamonn de Leastar</a> & <a href="johnjfitzgerald@outlook.com">John Fitzgerald</a>, <a href="http:/www.wit.ie"> WIT </a>.
+        Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com).
         <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
             target="_blank">Creative Commons License
         </a>

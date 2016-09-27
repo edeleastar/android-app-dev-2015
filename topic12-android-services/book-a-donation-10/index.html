@@ -36,15 +36,6 @@ figcaption
   align-items: center;
 }
 
-.Site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.Site-content {
-  flex: 1;
-}
 
 
     </style>
@@ -90,6 +81,64 @@ h3
 
 </style>
 
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <i id="toc" class="sitemap icon"></i>
+    <a href="../index.html">
+      12: Android Services
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    
+    <a class="item" data-tab="Donation-10">
+      Donation-10
+    </a>
+    
+    <a class="item" data-tab="01">
+      01
+    </a>
+    
+    <a class="item" data-tab="02">
+      02
+    </a>
+    
+    <a class="item" data-tab="03">
+      03
+    </a>
+    
+    <a class="item" data-tab="04">
+      04
+    </a>
+    
+    <a class="item" data-tab="05">
+      05
+    </a>
+    
+    <a class="item" data-tab="06">
+      06
+    </a>
+    
+    <a class="item" data-tab="07">
+      07
+    </a>
+    
+    <a class="item" data-tab="08">
+      08
+    </a>
+    
+    <a class="item" data-tab="09">
+      09
+    </a>
+    
+    <a class="item" data-tab="Solution">
+      Solution
+    </a>
+    
+    <a class="item" href="../../index.html">
+      <i class="home icon"></i>
+    </a>
+  </div>
+</div>
 
 <div class="ui segment pushable">
   <div class="ui inverted labeled icon left inline vertical sidebar menu">
@@ -283,65 +332,7 @@ h3
   </div>
   <div class="pusher">
     <div class="ui basic segment">
-
-      <div class="ui fixed top pointing inverted menu labmenu">
-        <header class="header item">
-          <i id="toc" class="sitemap icon"></i>
-          <a href="../index.html">
-            12: Android Services
-          </a>
-        </header>
-        <div class="right tab-menu menu">
-          
-            <a class="item" data-tab="Donation-10">
-              Donation-10
-            </a>
-          
-            <a class="item" data-tab="01">
-              01
-            </a>
-          
-            <a class="item" data-tab="02">
-              02
-            </a>
-          
-            <a class="item" data-tab="03">
-              03
-            </a>
-          
-            <a class="item" data-tab="04">
-              04
-            </a>
-          
-            <a class="item" data-tab="05">
-              05
-            </a>
-          
-            <a class="item" data-tab="06">
-              06
-            </a>
-          
-            <a class="item" data-tab="07">
-              07
-            </a>
-          
-            <a class="item" data-tab="08">
-              08
-            </a>
-          
-            <a class="item" data-tab="09">
-              09
-            </a>
-          
-            <a class="item" data-tab="Solution">
-              Solution
-            </a>
-          
-          </div>
-      </div>
-
-      <br><br>
-
+      <br>
       
       <div  class="ui tab segment lab" data-tab="Donation-10">
         <h1>Donation</h1>
@@ -379,10 +370,10 @@ h3
 <ul>
 <li><a href="archives/donation-android-2015-03.zip">donation-android-2015-03</a>. </li>
 </ul>
-<p>Use the service completed at the end of donation-09:</p>
-<ul>
-<li><a href="https://github.com/wit-computing/donation-service-2015/tree/revision3">https://github.com/wit-computing/donation-service-2015/tree/revision3</a></li>
-</ul>
+<p>Use the service completed at the end of donation-09.</p>
+<p><a href="https://github.com/wit-computing/donation-service-2015/tree/revision3"><a href="https://github.com/wit-computing/donation-service-2015/tree/revision3">https://github.com/wit-computing/donation-service-2015/tree/revision3</a></a></p>
+<p>To update build paths run the eclipsify command before you run the service.</p>
+<pre><code>play eclipsify</code></pre>
 <h2>Lab summary</h2>
 <ul>
 <li>Manual refresh of donations list using a Retrofit call to the server.</li>
@@ -774,9 +765,13 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
   {
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-    String refreshInterval = prefs.getString(&quot;refresh_interval&quot;, &quot;5000&quot;); // parm 2 is default val in milli secs
+    // Parmeter 2 is default val in minutes set at 1 minute here for test purposes.
+    // The preference key *refresh_interval* is defined in *res/xml/settings.xml*.
+    String refreshInterval = prefs.getString(&quot;refresh_interval&quot;, &quot;1&quot;); 
+    // Precondition: user-input refresh frequency units are minutes.
+    // Convert refreshFrequency minutes to milliseconds.
     int refreshFrequency = Integer.parseInt(refreshInterval) * 60 * 1000;
-    int initialDelay = 1000;
+    int initialDelay = 1000; // Set an initial delay of 1 second
 
     timer.schedule(new TimerTask()
     {
@@ -785,7 +780,7 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
       {
         startService(new Intent(getBaseContext(), RefreshService.class));
       }
-    }, initialDelay, refreshFrequency  ); // Example 2*60*1000 == 2 x 60 secs x 1000 : 2 minutes -&gt; milliseconds
+    }, initialDelay, refreshFrequency); 
   }</code></pre>
 <p>  Observe that we are using the user-input refresh interval. This may be set in the preferences menu.</p>
 <p>  Invoke the method in onCreate once the timer has been instantiated.</p>
@@ -845,9 +840,7 @@ public class BootReceiver extends BroadcastReceiver
 <li>In reality 15 minutes would, perhaps, be much too small an interval. Remember that network traffic is expensive not only on the client but generally more so on the server. See, for example, this Wikipedia article on <a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">Denial-of-service attacks</a>.</li>
 <li>The input value should be in minutes: this is converted to milliseconds in the onReceive method which is the unit of time specified as argument in AlarmManager.setInexactRepeating.</li>
 </ul>
-<pre><code>package app.donation.receivers;
-import app.donation.services.RefreshService;
-import app.donation.utils.NumUtil;
+<pre><code>package org.wit.ictskills.receivers;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -858,41 +851,43 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import org.wit.ictskills.services.RefreshService;
+import org.wit.utils.NumUtil;
+
 
 /**
  * If permission set and BootReceiver registered in manifest file ...
  * and application manually launched, then...
  * then BootReceiver.onReceive method will be invoked by system when device started.
- * In this method we set the interval at which the alarm should trigger. 
- * This will be either a default or a value input by user in preference settings.
+ * In this method we set the interval at which the alarm should trigger.
+ * This will be either default 15 minutes or a value input by user in preference settings.
  */
 public class BootReceiver extends BroadcastReceiver
 {
-  private static final long DEFAULT_INTERVAL = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
+  // Set default interval to 15 minutes
+  private static final long DEFAULT_INTERVAL = AlarmManager.INTERVAL_FIFTEEN_MINUTES/60000;
   public static int REQUESTCODE = -1;
-  private String tag = &quot;Donation &quot;;
+  private String tag = &quot;MyTweet&quot;;
 
   @Override
   public void onReceive(Context context, Intent intent)
   {
     Log.i(tag, &quot;In BootReceiver.onReceive&quot;);
 
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-
-    // This key introduced in res/xml/settings.xml
-    String key = &quot;refresh_interval&quot;;
-    long interval = DEFAULT_INTERVAL;
     // We check for a valid user inputted interval and use it if it exists
-    // Otherwise use DEFAULT_INTERVAL
-    String value = prefs.getString(key, Long.toString(DEFAULT_INTERVAL));
+    // Otherwise use DEFAULT_INTERVAL - the second parameter here following is a default.
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+    String key = &quot;refresh_interval&quot;;  // This key introduced in res/xml/settings.xml
+    long interval = DEFAULT_INTERVAL;
+    String value = prefs.getString(key, Long.toString(interval)); // last param is a default val
+    // Check if input value is valid and if so this becomes the refresh interval, overwriting the default
     if (NumUtil.isPositiveNumber(value))
     {
       interval = Long.parseLong(value);
+      interval *= 60000;//here we convert minutes to milliseconds since input at settings menu is specified in minutes
     }
-    // Convert interval from minutes to milliseconds
-    interval *= 60000;//here we convert minutes to milliseconds since input at settings menu is specified in minutes
     // Set an arbitrary minimum interval value of 60 seconds to avoid overloading service.
-    interval = interval &lt; 60000 ? 60000 : interval; 
+    interval = interval &lt; 60000 ? 60000 : interval;
 
     // Prepare an PendingIntent with a view to triggering RefreshService
     PendingIntent operation = PendingIntent.getService(
@@ -969,7 +964,7 @@ public class NumUtil
   <div class="ui bottom fixed borderless right menu">
     <div class="ui right tiny menu">
       <div class="ui mini message segment">
-        <a href="mailto:edeleastar@wit.ie">Eamonn de Leastar</a> & <a href="johnjfitzgerald@outlook.com">John Fitzgerald</a>, <a href="http:/www.wit.ie"> WIT </a>.
+        Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com).
         <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
             target="_blank">Creative Commons License
         </a>

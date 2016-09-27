@@ -36,15 +36,6 @@ figcaption
   align-items: center;
 }
 
-.Site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.Site-content {
-  flex: 1;
-}
 
 
     </style>
@@ -90,6 +81,64 @@ h3
 
 </style>
 
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <i id="toc" class="sitemap icon"></i>
+    <a href="../index.html">
+      12: Android Services
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    
+    <a class="item" data-tab="MyTweet-Assignment-Studio-02">
+      MyTweet-Assignment-Studio-02
+    </a>
+    
+    <a class="item" data-tab="01">
+      01
+    </a>
+    
+    <a class="item" data-tab="02">
+      02
+    </a>
+    
+    <a class="item" data-tab="03">
+      03
+    </a>
+    
+    <a class="item" data-tab="04">
+      04
+    </a>
+    
+    <a class="item" data-tab="05">
+      05
+    </a>
+    
+    <a class="item" data-tab="06">
+      06
+    </a>
+    
+    <a class="item" data-tab="07">
+      07
+    </a>
+    
+    <a class="item" data-tab="08">
+      08
+    </a>
+    
+    <a class="item" data-tab="09">
+      09
+    </a>
+    
+    <a class="item" data-tab="Cutting room bin">
+      Cutting room bin
+    </a>
+    
+    <a class="item" href="../../index.html">
+      <i class="home icon"></i>
+    </a>
+  </div>
+</div>
 
 <div class="ui segment pushable">
   <div class="ui inverted labeled icon left inline vertical sidebar menu">
@@ -283,65 +332,7 @@ h3
   </div>
   <div class="pusher">
     <div class="ui basic segment">
-
-      <div class="ui fixed top pointing inverted menu labmenu">
-        <header class="header item">
-          <i id="toc" class="sitemap icon"></i>
-          <a href="../index.html">
-            12: Android Services
-          </a>
-        </header>
-        <div class="right tab-menu menu">
-          
-            <a class="item" data-tab="MyTweet-Assignment-Studio-02">
-              MyTweet-Assignment-Studio-02
-            </a>
-          
-            <a class="item" data-tab="01">
-              01
-            </a>
-          
-            <a class="item" data-tab="02">
-              02
-            </a>
-          
-            <a class="item" data-tab="03">
-              03
-            </a>
-          
-            <a class="item" data-tab="04">
-              04
-            </a>
-          
-            <a class="item" data-tab="05">
-              05
-            </a>
-          
-            <a class="item" data-tab="06">
-              06
-            </a>
-          
-            <a class="item" data-tab="07">
-              07
-            </a>
-          
-            <a class="item" data-tab="08">
-              08
-            </a>
-          
-            <a class="item" data-tab="09">
-              09
-            </a>
-          
-            <a class="item" data-tab="Cutting room bin">
-              Cutting room bin
-            </a>
-          
-          </div>
-      </div>
-
-      <br><br>
-
+      <br>
       
       <div  class="ui tab segment lab" data-tab="MyTweet-Assignment-Studio-02">
         <h1>Introduction</h1>
@@ -904,7 +895,7 @@ private MyTweetApp app;</code></pre>
 <p>Consider the TweetListFragment class, also referred to by some as TimeLineFragment.</p>
 <p>Here we show the parts of the class responsible for fetching a list of tweets from the service.</p>
 <ul>
-<li>The class implements the Callback interface using List<Tweet> as a parameter.</li>
+<li>The class implements the Callback interface using List &lt;Tweet&gt; as a parameter.</li>
 <li>It then implements the Callback methods:<ul>
 <li>onResponse</li>
 <li>onFailure</li>
@@ -987,6 +978,25 @@ call.enqueue(this);</code></pre>
     {
       Toast.makeText(getActivity(), &quot;Failed to delete all tweets&quot;, Toast.LENGTH_SHORT).show();
     }
+  }</code></pre>
+<p>Alternatively, you may use an anonymous class. This code would then replace the entire block immediately above.</p>
+<pre><code>  private void deleteAllRemoteTweets()
+  {
+    Call&lt;String&gt; call = app.tweetService.deleteAllTweets();
+    call.enqueue(new Callback&lt;String&gt;() {
+
+      @Override
+      public void onResponse(Response&lt;String&gt; response, Retrofit retrofit)
+      {
+        Toast.makeText(getActivity(), &quot;All Tweets deleted: &quot;+response.body(), Toast.LENGTH_SHORT).show();
+      }
+
+      @Override
+      public void onFailure(Throwable t)
+      {
+        Toast.makeText(getActivity(), &quot;Failed to delete all tweets&quot;, Toast.LENGTH_SHORT).show();
+      }
+    });
   }</code></pre>
 <p>Then at the point where you wish to delete all tweets you simple invoke the method:</p>
 <pre><code>deleteAllRemoteTweets();</code></pre>
@@ -1186,7 +1196,7 @@ public class TweetTest
   <div class="ui bottom fixed borderless right menu">
     <div class="ui right tiny menu">
       <div class="ui mini message segment">
-        <a href="mailto:edeleastar@wit.ie">Eamonn de Leastar</a> & <a href="johnjfitzgerald@outlook.com">John Fitzgerald</a>, <a href="http:/www.wit.ie"> WIT </a>.
+        Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com).
         <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
             target="_blank">Creative Commons License
         </a>
